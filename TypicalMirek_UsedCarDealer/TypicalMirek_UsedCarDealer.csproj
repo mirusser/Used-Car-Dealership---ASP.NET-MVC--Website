@@ -174,8 +174,25 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdditionalData.cs" />
+    <Compile Include="Models\AdditionalEquipment.cs" />
+    <Compile Include="Models\Body.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Gearbox.cs" />
+    <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MainData.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Propulsion.cs" />
+    <Compile Include="Models\SourceOfEnergy.cs" />
+    <Compile Include="Models\Type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
