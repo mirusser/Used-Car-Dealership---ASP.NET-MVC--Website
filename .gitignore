@@ -416,3 +416,4 @@ __pycache__/
 
 ### VisualStudio Patch ###
 build/
+/.vs
