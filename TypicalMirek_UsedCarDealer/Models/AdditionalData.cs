@@ -9,6 +9,7 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class AdditionalData
     {
+        [Key]
         [Required]
         public int Id { get; set; }
 
@@ -20,11 +21,17 @@ namespace TypicalMirek_UsedCarDealer.Models
         public int EnginePower { get; set; }
         public decimal Length { get; set; }
         public decimal Mass { get; set; }
-        public virtual Color Color { get; set; }
+       
         public decimal Milleage { get; set; }
         public bool Damaged { get; set; }
 
+        public int AdditionalEquipmentId { get; set; }
+        [ForeignKey("AdditionalEquipmentId")]
         public virtual AdditionalEquipment AdditionalEquipment { get; set; }
+
+        public int ColorId { get; set; }
+        [ForeignKey("ColorId")]
+        public virtual Color Color { get; set; }
 
         public int GearboxId { get; set; }
         [ForeignKey("GearboxId")]

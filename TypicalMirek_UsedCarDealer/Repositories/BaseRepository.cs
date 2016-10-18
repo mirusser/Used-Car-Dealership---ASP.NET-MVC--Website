@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Microsoft.Practices.ServiceLocation;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
 
@@ -13,6 +14,20 @@ namespace TypicalMirek_UsedCarDealer.Repositories
         #region Properties
         private readonly ApplicationDbContext dbContext;
         protected DbSet<T> Set { get; set; }
+
+        public IServiceLocator ServiceLocator1
+        {
+            get
+            {
+                return ServiceLocator;
+            }
+
+            set
+            {
+                ServiceLocator = value;
+            }
+        }
+
         private bool disposed = false;
         #endregion
 
@@ -25,9 +40,9 @@ namespace TypicalMirek_UsedCarDealer.Repositories
 
         #region Methods
 
-        public virtual IList<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
-            return Set.ToList();
+            return Set;
         }
 
         public virtual T GetById(int id)
@@ -64,5 +79,6 @@ namespace TypicalMirek_UsedCarDealer.Repositories
             }
         }
         #endregion
+
     }
 }

@@ -11,6 +11,7 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class MainData
     {
+        [Key]
         [Required]
        public int Id { get; set; }
 

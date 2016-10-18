@@ -9,6 +9,7 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Photo
     {
+        [Key]
         [Required]
         public int Id { get; set; }
 

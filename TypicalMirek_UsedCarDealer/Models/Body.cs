@@ -8,6 +8,7 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Body
     {
+        [Key]
         [Required]
         public int Id { get; set; }
 

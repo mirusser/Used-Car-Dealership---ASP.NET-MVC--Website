@@ -8,8 +8,10 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Country
     {
+        [Key]
         [Required]
         public int Id { get; set; }
+        [MinLength(3)]
         [Required]
         public string Name { get; set; }
     }

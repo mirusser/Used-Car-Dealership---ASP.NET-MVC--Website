@@ -9,10 +9,12 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Model
     {
+        [Key]
         [Required]
         public int Id { get; set; }
+
         [Required]
-        [StringLength(500)]
+        [MinLength(3)]
         public string Name { get; set; }
         public string Version { get; set; }
 

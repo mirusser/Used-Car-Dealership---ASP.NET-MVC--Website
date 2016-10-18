@@ -8,10 +8,12 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Category
     {
+        [Key]
         [Required]
         public int Id { get; set; }
+
         [Required]
-        [MaxLength(500)]
+        [MinLength(3)]
         public string Name { get; set; }
         public string Description { get; set; }
     }

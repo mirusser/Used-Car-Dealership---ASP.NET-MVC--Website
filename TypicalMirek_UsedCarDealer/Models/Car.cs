@@ -10,6 +10,7 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Car
     {
+        [Key]
         [Required]
         public int Id { get; set; }
 

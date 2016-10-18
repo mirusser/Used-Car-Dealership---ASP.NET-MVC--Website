@@ -8,11 +8,12 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Color
     {
+        [Key]
         [Required]
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MinLength(3)]
         public string Name { get; set; }
     }
 }
