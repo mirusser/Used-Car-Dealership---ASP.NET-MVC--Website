@@ -136,3 +136,10 @@ C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCar
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csprojResolveAssemblyReference.cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.pdb
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\Ninject.dll
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Common.dll
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Mvc.dll
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\WebActivatorEx.dll
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\Ninject.xml
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Common.xml
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Mvc.xml

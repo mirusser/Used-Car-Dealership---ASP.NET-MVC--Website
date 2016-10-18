@@ -10,6 +10,7 @@ namespace TypicalMirek_UsedCarDealer.Repositories.Interfaces
         void Add(T entity);
         void Update(T entity);
         void Delete(int id);
+        void Delete(T item);
         void Save();
         void Dispose();
     }
