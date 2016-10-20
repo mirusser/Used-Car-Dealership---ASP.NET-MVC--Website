@@ -13,15 +13,22 @@ namespace TypicalMirek_UsedCarDealer.Models
         [Required]
         public int Id { get; set; }
 
-        public int NumberOfSeats { get; set; }
+        [Required]
+        [Display(Name = "Year of production")]
         public int YearOfProduction { get; set; }
+
+        [Display(Name = "Number of Seats")]
+        public int NumberOfSeats { get; set; }
+        [Display(Name = "Number of previous owners")]
         public int NumberOfOwners { get; set; }
+        [Display(Name = "Engine Capacity")]
         public decimal EngineCapacity { get; set; }
+        [Display(Name = "Fuel tank capacity")]
         public decimal FuelTankCapacity { get; set; }
+        [Display(Name = "Engine power")]
         public int EnginePower { get; set; }
         public decimal Length { get; set; }
         public decimal Mass { get; set; }
-       
         public decimal Milleage { get; set; }
         public bool Damaged { get; set; }
 

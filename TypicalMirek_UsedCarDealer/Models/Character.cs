@@ -12,8 +12,8 @@ namespace TypicalMirek_UsedCarDealer.Models
         [Required]
         public int Id { get; set; }
 
-        [MinLength(3)]
         [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Name { get; set; }
     }
 }
