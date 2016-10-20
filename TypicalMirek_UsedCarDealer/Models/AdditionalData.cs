@@ -26,7 +26,7 @@ namespace TypicalMirek_UsedCarDealer.Models
         [Display(Name = "Fuel tank capacity")]
         public decimal FuelTankCapacity { get; set; }
         [Display(Name = "Engine power")]
-        public int EnginePower { get; set; }
+        public int? EnginePower { get; set; }
         public decimal Length { get; set; }
         public decimal Mass { get; set; }
         public decimal Milleage { get; set; }

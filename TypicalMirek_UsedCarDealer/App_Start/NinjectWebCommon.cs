@@ -1,4 +1,5 @@
 using TypicalMirek_UsedCarDealer.Models;
+using TypicalMirek_UsedCarDealer.Models.Context;
 using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(TypicalMirek_UsedCarDealer.App_Start.NinjectWebCommon), "Start")]

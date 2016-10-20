@@ -64,6 +64,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -190,6 +192,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610202200008_Initial.cs" />
+    <Compile Include="Migrations\201610202200008_Initial.Designer.cs">
+      <DependentUpon>201610202200008_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610202209347_AddedMissingForeignKeyinPhoto.cs" />
+    <Compile Include="Migrations\201610202209347_AddedMissingForeignKeyinPhoto.Designer.cs">
+      <DependentUpon>201610202209347_AddedMissingForeignKeyinPhoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
     <Compile Include="Models\AdditionalEquipment.cs" />
@@ -198,6 +209,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Context\ApplicationDbContext.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
@@ -281,6 +293,17 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610202200008_Initial.resx">
+      <DependentUpon>201610202200008_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610202209347_AddedMissingForeignKeyinPhoto.resx">
+      <DependentUpon>201610202209347_AddedMissingForeignKeyinPhoto.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
