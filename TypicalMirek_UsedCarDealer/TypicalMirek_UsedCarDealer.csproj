@@ -210,6 +210,7 @@
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Context\ApplicationDbContext.cs" />
+    <Compile Include="Models\Context\TypicalMirekEntities.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
@@ -285,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

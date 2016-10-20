@@ -63,7 +63,7 @@ namespace TypicalMirek_UsedCarDealer.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(IBaseRepository<>)).To(typeof(IBaseRepository<>)).InRequestScope();
+            //kernel.Bind(typeof(IBaseRepository<>)).To(typeof(IBaseRepository<>)).InRequestScope();
             kernel.Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
         }        
     }

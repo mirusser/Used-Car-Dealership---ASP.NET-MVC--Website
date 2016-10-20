@@ -13,7 +13,7 @@ using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Repositories
 {
-    public class BaseRepository<T, TEntity> : IBaseRepository<T>, IDisposable
+    public class BaseRepository<T, TEntity> : IBaseRepository<T, TEntity>, IDisposable
         where T : class
         where TEntity : ApplicationDbContext, new()
     {
