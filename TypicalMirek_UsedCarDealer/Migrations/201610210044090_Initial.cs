@@ -13,15 +13,15 @@ namespace TypicalMirek_UsedCarDealer.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         YearOfProduction = c.Int(nullable: false),
-                        NumberOfSeats = c.Int(nullable: false),
-                        NumberOfOwners = c.Int(nullable: false),
-                        EngineCapacity = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        FuelTankCapacity = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        NumberOfSeats = c.Int(),
+                        NumberOfOwners = c.Int(),
+                        EngineCapacity = c.Decimal(precision: 18, scale: 2),
+                        FuelTankCapacity = c.Decimal(precision: 18, scale: 2),
                         EnginePower = c.Int(),
-                        Length = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Mass = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Milleage = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Damaged = c.Boolean(nullable: false),
+                        Length = c.Decimal(precision: 18, scale: 2),
+                        Mass = c.Decimal(precision: 18, scale: 2),
+                        Milleage = c.Decimal(precision: 18, scale: 2),
+                        Damaged = c.Boolean(),
                         AdditionalEquipmentId = c.Int(nullable: false),
                         ColorId = c.Int(nullable: false),
                         GearboxId = c.Int(nullable: false),
@@ -93,7 +93,7 @@ namespace TypicalMirek_UsedCarDealer.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -180,17 +180,17 @@ namespace TypicalMirek_UsedCarDealer.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Photos",
+                "dbo.CarPhotoes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 100),
                         Image = c.Binary(nullable: false),
-                        Car_Id = c.Int(),
+                        CarId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cars", t => t.Car_Id)
-                .Index(t => t.Car_Id);
+                .ForeignKey("dbo.Cars", t => t.CarId, cascadeDelete: true)
+                .Index(t => t.CarId);
             
             CreateTable(
                 "dbo.Propulsions",
@@ -222,85 +222,13 @@ namespace TypicalMirek_UsedCarDealer.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Email = c.String(maxLength: 256),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserClaims",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        ClaimType = c.String(),
-                        ClaimValue = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.AspNetUserLogins",
-                c => new
-                    {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
-                        ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Cars", "SourceOfEnergyId", "dbo.SourceOfEnergies");
             DropForeignKey("dbo.Cars", "PropulsionId", "dbo.Propulsions");
-            DropForeignKey("dbo.Photos", "Car_Id", "dbo.Cars");
+            DropForeignKey("dbo.CarPhotoes", "CarId", "dbo.Cars");
             DropForeignKey("dbo.Cars", "MainDataId", "dbo.MainDatas");
             DropForeignKey("dbo.MainDatas", "TypeId", "dbo.Types");
             DropForeignKey("dbo.MainDatas", "ModelId", "dbo.Models");
@@ -313,13 +241,7 @@ namespace TypicalMirek_UsedCarDealer.Migrations
             DropForeignKey("dbo.AdditionalDatas", "CountryId", "dbo.Countries");
             DropForeignKey("dbo.AdditionalDatas", "ColorId", "dbo.Colors");
             DropForeignKey("dbo.AdditionalDatas", "AdditionalEquipmentId", "dbo.AdditionalEquipments");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Photos", new[] { "Car_Id" });
+            DropIndex("dbo.CarPhotoes", new[] { "CarId" });
             DropIndex("dbo.Models", new[] { "BrandId" });
             DropIndex("dbo.MainDatas", new[] { "ModelId" });
             DropIndex("dbo.MainDatas", new[] { "CharacterId" });
@@ -334,15 +256,10 @@ namespace TypicalMirek_UsedCarDealer.Migrations
             DropIndex("dbo.AdditionalDatas", new[] { "GearboxId" });
             DropIndex("dbo.AdditionalDatas", new[] { "ColorId" });
             DropIndex("dbo.AdditionalDatas", new[] { "AdditionalEquipmentId" });
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
             DropTable("dbo.Categories");
             DropTable("dbo.SourceOfEnergies");
             DropTable("dbo.Propulsions");
-            DropTable("dbo.Photos");
+            DropTable("dbo.CarPhotoes");
             DropTable("dbo.Types");
             DropTable("dbo.Models");
             DropTable("dbo.Characters");

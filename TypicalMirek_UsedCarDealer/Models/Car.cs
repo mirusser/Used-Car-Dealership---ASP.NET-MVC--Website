@@ -34,6 +34,6 @@ namespace TypicalMirek_UsedCarDealer.Models
         [ForeignKey("AdditionalDataId")]
         public virtual AdditionalData AdditionalData { get; set; }
 
-        public virtual ICollection<Photo> Photos { get; set; }
+        public virtual ICollection<CarPhoto> Photos { get; set; }
     }
 }

@@ -5,14 +5,14 @@ namespace TypicalMirek_UsedCarDealer.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TypicalMirek_UsedCarDealer.Models.Context.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TypicalMirek_UsedCarDealer.Models.Context.TypicalMirekEntities>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TypicalMirek_UsedCarDealer.Models.Context.ApplicationDbContext context)
+        protected override void Seed(TypicalMirek_UsedCarDealer.Models.Context.TypicalMirekEntities context)
         {
             //  This method will be called after migrating to the latest version.
 

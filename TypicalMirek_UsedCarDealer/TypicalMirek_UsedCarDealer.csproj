@@ -187,18 +187,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610202200008_Initial.cs" />
-    <Compile Include="Migrations\201610202200008_Initial.Designer.cs">
-      <DependentUpon>201610202200008_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610202209347_AddedMissingForeignKeyinPhoto.cs" />
-    <Compile Include="Migrations\201610202209347_AddedMissingForeignKeyinPhoto.Designer.cs">
-      <DependentUpon>201610202209347_AddedMissingForeignKeyinPhoto.cs</DependentUpon>
+    <Compile Include="Migrations\201610210044090_Initial.cs" />
+    <Compile Include="Migrations\201610210044090_Initial.Designer.cs">
+      <DependentUpon>201610210044090_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -218,13 +215,14 @@
     <Compile Include="Models\MainData.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model.cs" />
-    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\CarPhoto.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Propulsion.cs" />
     <Compile Include="Models\SourceOfEnergy.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -283,10 +281,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -300,11 +302,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610202200008_Initial.resx">
-      <DependentUpon>201610202200008_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610202209347_AddedMissingForeignKeyinPhoto.resx">
-      <DependentUpon>201610202209347_AddedMissingForeignKeyinPhoto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610210044090_Initial.resx">
+      <DependentUpon>201610210044090_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

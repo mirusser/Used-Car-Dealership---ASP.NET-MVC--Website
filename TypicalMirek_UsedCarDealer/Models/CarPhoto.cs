@@ -8,7 +8,7 @@ using System.Web;
 
 namespace TypicalMirek_UsedCarDealer.Models
 {
-    public class Photo
+    public class CarPhoto
     {
         [Key]
         [Required]

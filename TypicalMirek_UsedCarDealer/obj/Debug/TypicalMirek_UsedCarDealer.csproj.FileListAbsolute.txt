@@ -147,9 +147,6 @@ C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCar
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AddedMissingForeignKeyinPhoto.resources
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csprojResolveAssemblyReference.cache
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.Initial.resources
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AddedMissingForeignKeyinPhoto.resources
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.pdb
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\csc.exe
@@ -225,3 +222,5 @@ C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCar
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.Initial.resources
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache

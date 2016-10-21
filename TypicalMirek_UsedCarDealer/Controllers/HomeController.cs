@@ -11,17 +11,9 @@ namespace TypicalMirek_UsedCarDealer.Controllers
 {
     public class HomeController : Controller
     {
-        public BaseRepository<Category, TypicalMirekEntities> BaseRepository = new BaseRepository<Category, TypicalMirekEntities>();
 
         public ActionResult Index()
         {
-            var category = new Category()
-            {
-                Name = "Testowa categoria"
-            };
-            BaseRepository.Add(category);
-            BaseRepository.Save();
-
             return View();
         }
 
