@@ -1,4 +1,4 @@
-namespace TypicalMirek_UsedCarDealer.Factories.Interfaces
+namespace TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces
 {
     public interface IRepositoryFactory
     {

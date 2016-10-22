@@ -1,20 +1,18 @@
-using TypicalMirek_UsedCarDealer.Factories;
-using TypicalMirek_UsedCarDealer.Factories.Interfaces;
-using TypicalMirek_UsedCarDealer.Models;
+using System;
+using System.Web;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
+using TypicalMirek_UsedCarDealer;
+using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models.Context;
-using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(TypicalMirek_UsedCarDealer.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(TypicalMirek_UsedCarDealer.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
 
-namespace TypicalMirek_UsedCarDealer.App_Start
+namespace TypicalMirek_UsedCarDealer
 {
-    using System;
-    using System.Web;
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

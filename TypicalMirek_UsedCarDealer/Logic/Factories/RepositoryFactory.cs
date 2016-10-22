@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using TypicalMirek_UsedCarDealer.Factories.Interfaces;
-using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 
-namespace TypicalMirek_UsedCarDealer.Factories
+namespace TypicalMirek_UsedCarDealer.Logic.Factories
 {
     public class RepositoryFactory : IRepositoryFactory
     {
