@@ -6,16 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
+using TypicalMirek_UsedCarDealer.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
 using TypicalMirek_UsedCarDealer.Repositories;
+using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly CategoryRepository categoryRepository = new CategoryRepository();
+        private readonly CategoryRepository categoryRepository ;
+
+        public CategoriesController(IRepositoryFactory repositoryFactory)
+        {
+            categoryRepository = repositoryFactory.GetRepository<CategoryRepository>();
+        }
 
         // GET: Categories
         public ActionResult Index()

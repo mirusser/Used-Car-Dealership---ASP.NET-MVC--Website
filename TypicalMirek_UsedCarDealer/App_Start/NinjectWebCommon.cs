@@ -1,3 +1,5 @@
+using TypicalMirek_UsedCarDealer.Factories;
+using TypicalMirek_UsedCarDealer.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
 using TypicalMirek_UsedCarDealer.Repositories.Interfaces;
@@ -65,6 +67,7 @@ namespace TypicalMirek_UsedCarDealer.App_Start
         {
             //kernel.Bind(typeof(IBaseRepository<>)).To(typeof(IBaseRepository<>)).InRequestScope();
             kernel.Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
+            kernel.Bind<IRepositoryFactory>().To<RepositoryFactory>().InRequestScope();
         }        
     }
 }

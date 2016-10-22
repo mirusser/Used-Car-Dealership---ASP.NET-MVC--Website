@@ -4,9 +4,8 @@ using TypicalMirek_UsedCarDealer.Models.Context;
 
 namespace TypicalMirek_UsedCarDealer.Repositories.Interfaces
 {
-    public interface IBaseRepository<T, TEntity>
+    public interface IBaseRepository<T>
         where T : class
-         where TEntity : ApplicationDbContext, new()
     {
         IQueryable<T> GetAll();
         T GetById(int id);
