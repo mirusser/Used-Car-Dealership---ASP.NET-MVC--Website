@@ -2,25 +2,28 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Managers;
+using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
+using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly CategoryRepository categoryRepository;
+        private readonly CategoryManager categoryManager;
 
-        public CategoriesController(IRepositoryFactory repositoryFactory)
+        public CategoriesController(ManagerFactory managerFactory)
         {
-            categoryRepository = repositoryFactory.GetRepository<CategoryRepository>();
+            categoryManager = managerFactory.Get<CategoryManager>();
         }
 
         // GET: Categories
         public ActionResult Index()
         {
-            return View(categoryRepository.Items.ToList());
+            return View(categoryManager.GetAll().ToList());
         }
 
         // GET: Categories/Details/5
@@ -30,7 +33,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categoryRepository.GetById(Convert.ToInt32(id));
+            Category category = categoryManager.GetById(Convert.ToInt32(id));
             if (category == null)
             {
                 return HttpNotFound();
@@ -53,8 +56,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                categoryRepository.Add(category);
-                categoryRepository.Save();
+                categoryManager.Add<Category>(category);
+
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +71,9 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categoryRepository.GetById(Convert.ToInt32(id));
+
+            var category = categoryManager.GetById(Convert.ToInt32(id));
+
             if (category == null)
             {
                 return HttpNotFound();
@@ -85,8 +90,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                categoryRepository.Update(category);
-                categoryRepository.Save();
+                categoryManager.Modify(category);
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -99,7 +103,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categoryRepository.GetById(Convert.ToInt32(id));
+            var category = categoryManager.GetById(Convert.ToInt32(id));
             if (category == null)
             {
                 return HttpNotFound();
@@ -112,9 +116,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = categoryRepository.GetById(id);
-            categoryRepository.Delete(category);
-            categoryRepository.Save();
+            var category = categoryManager.GetById(id);
+            categoryManager.Delete(category);
             return RedirectToAction("Index");
         }
 
@@ -122,7 +125,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (disposing)
             {
-                categoryRepository.Dispose();
+                categoryManager.Dispose();
             }
             base.Dispose(disposing);
         }

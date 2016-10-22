@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Repositories;
+using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Factories
 {
-    public class RepositoryFactory : IRepositoryFactory
+    public class RepositoryFactory : Factory
     {
         private readonly Dictionary<Type, object> initializedRepositories = new Dictionary<Type, object>();
 
@@ -14,7 +16,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Factories
         /// </summary>
         /// <typeparam name="T">Repository class</typeparam>
         /// <returns></returns>
-        public T GetRepository<T>()
+        public override T Get<T>()
         {
             var repository = initializedRepositories.SingleOrDefault(r => r.Key == typeof(T)).Value;
 

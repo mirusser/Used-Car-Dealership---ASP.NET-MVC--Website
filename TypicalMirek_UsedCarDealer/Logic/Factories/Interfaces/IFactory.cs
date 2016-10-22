@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
+namespace TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces
 {
-    public interface IManager
+    public interface IFactory
     {
-
+        T Get<T>();
     }
 }

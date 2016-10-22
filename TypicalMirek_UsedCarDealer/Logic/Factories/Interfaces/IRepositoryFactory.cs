@@ -1,7 +1,7 @@
 namespace TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces
 {
-    public interface IRepositoryFactory
+    public interface IRepositoryFactory : IFactory
     {
-        T GetRepository<T>();
+        //Any additional method here
     }
 }

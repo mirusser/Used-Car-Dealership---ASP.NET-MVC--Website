@@ -65,7 +65,8 @@ namespace TypicalMirek_UsedCarDealer
         {
             //kernel.Bind(typeof(IBaseRepository<>)).To(typeof(IBaseRepository<>)).InRequestScope();
             kernel.Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
-            kernel.Bind<IRepositoryFactory>().To<RepositoryFactory>().InRequestScope();
+            kernel.Bind<RepositoryFactory>().To<RepositoryFactory>().InRequestScope();
+            kernel.Bind<ManagerFactory>().To<ManagerFactory>().InRequestScope();
         }        
     }
 }

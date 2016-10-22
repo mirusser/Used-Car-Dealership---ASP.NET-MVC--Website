@@ -190,13 +190,19 @@
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
+    <Compile Include="Logic\Factories\Factory.cs" />
+    <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
+    <Compile Include="Logic\Factories\Interfaces\IFactory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IRepositoryFactory.cs" />
     <Compile Include="Logic\Factories\ManagerFactory.cs" />
     <Compile Include="Logic\Factories\RepositoryFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Managers\CategoryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
+    <Compile Include="Logic\Managers\Manager.cs" />
     <Compile Include="Migrations\201610210044090_Initial.cs" />
     <Compile Include="Migrations\201610210044090_Initial.Designer.cs">
       <DependentUpon>201610210044090_Initial.cs</DependentUpon>

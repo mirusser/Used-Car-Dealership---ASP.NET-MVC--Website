@@ -2,23 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Ninject;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Factories
 {
-    public class ManagerFactory
+    public class ManagerFactory : Factory, IManagerFactory
     {
         private readonly Dictionary<Type, object> initializedManagers = new Dictionary<Type, object>();
 
-        private static Type assignableType => typeof(IManager);
-
-        private bool CheckIfImplementsInterface<T>()
+        /// <summary>
+        /// Get manager instance
+        /// </summary>
+        /// <typeparam name="T">Manager class</typeparam>
+        /// <returns></returns>
+        public override T Get<T>()
         {
-            if (!typeof(T).GetInterfaces().Contains(assignableType))
+            CheckIfImplementsInterface<T, IManager>();
+
+            var manager = initializedManagers.SingleOrDefault(r => r.Key == typeof(T)).Value;
+
+            if (manager == null)
             {
-               throw new NotImplementedException($"{nameof(T)} not implementing {nameof(assignableType)}");
+                manager = (T)Activator.CreateInstance(typeof(T), null);
+                initializedManagers.Add(typeof(T), manager);
             }
-            return true;
+
+            return (T)manager;
         }
 
     }
