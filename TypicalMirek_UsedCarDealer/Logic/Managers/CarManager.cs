@@ -42,16 +42,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public AddCarViewModel Add(AddCarViewModel car)
         {
-            var carToAdd = new Car
-            {
-
-            };
+            var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
 
             carRepository.Add(carToAdd);
             carRepository.Save();
 
             return null;
         }
+
         public AddCarViewModel CreateAddCarViewModel()
         {
             return new AddCarViewModel
