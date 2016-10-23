@@ -5,15 +5,13 @@ using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
-using TypicalMirek_UsedCarDealer.Logic.Repositories;
-using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly CategoryManager categoryManager;
+        private readonly ICategoryManager categoryManager;
 
         public CategoriesController(ManagerFactory managerFactory)
         {

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Factories
@@ -32,9 +30,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Factories
             return true;
         }
 
-        public virtual T Get<T>()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract T Get<T>();
     }
 }

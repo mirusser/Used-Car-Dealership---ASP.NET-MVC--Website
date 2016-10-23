@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Security.Permissions;
-using System.Web;
 
 namespace TypicalMirek_UsedCarDealer.Models
 {

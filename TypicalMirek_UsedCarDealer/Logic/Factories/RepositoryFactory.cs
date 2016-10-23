@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
-using TypicalMirek_UsedCarDealer.Logic.Repositories;
-using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Factories
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using Ninject;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
@@ -25,7 +25,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Factories
 
             if (manager == null)
             {
-                manager = (T)Activator.CreateInstance(typeof(T), null);
+                manager = (T)Activator.CreateInstance(typeof(T), DependencyResolver.Current.GetService<RepositoryFactory>());
+                
                 initializedManagers.Add(typeof(T), manager);
             }
 

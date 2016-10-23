@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Ninject;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
@@ -16,9 +14,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
     {
         private readonly ICategoryRepository categoryRepository;
 
-        public CategoryManager()
+        public CategoryManager() { }
+
+        public CategoryManager(RepositoryFactory repositoryFactory)
         {
-            categoryRepository = DependencyResolver.Current.GetService<RepositoryFactory>().Get<CategoryRepository>();
+            categoryRepository = repositoryFactory.Get<CategoryRepository>();
         }
 
         public T Add<T>(T entity)
@@ -47,11 +47,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             categoryRepository.Save();
         }
 
-
         public Category GetById(int id)
         {
             return categoryRepository.GetById(id);
         }
+
         public IQueryable<Category> GetAll()
         {
             return categoryRepository.GetAll();
