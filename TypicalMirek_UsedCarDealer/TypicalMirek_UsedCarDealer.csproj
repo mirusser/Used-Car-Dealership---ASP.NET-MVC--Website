@@ -200,6 +200,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Helpers\SelectListItemHelper.cs" />
     <Compile Include="Logic\Managers\CarManager.cs" />
     <Compile Include="Logic\Managers\CategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />

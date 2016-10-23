@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Helpers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
@@ -53,65 +54,15 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         }
         public AddCarViewModel CreateAddCarViewModel()
         {
-            //var foo = typeRepository.GetAll().Select(x => new SelectListItem
-            //{
-            //    Value = x.Id.ToString(),
-            //    Text = x.Name
-            //});
-            //var types = new SelectList(foo, "Value", "Text");
-
-            //var characters = characterRepository.GetAll().Select(x => new SelectListItem
-            //{
-            //    Value = x.Id.ToString(),
-            //    Text = x.Name
-            //});
-            //var brands = brandRepository.GetAll().Select(x => new SelectListItem
-            //{
-            //    Value = x.Id.ToString(),
-            //    Text = x.Name
-            //});
-            //var bodies = bodyRepository.GetAll().Select(x => new SelectListItem
-            //{
-            //    Value = x.Id.ToString(),
-            //    Text = x.Name
-            //});
-            //var propulsions = propulsionRepository.GetAll().Select(x => new SelectListItem
-            //{
-            //    Value = x.Id.ToString(),
-            //    Text = x.Name
-            //});
-            //var sourcesOfEnergy = sourceOfEnergyRepository.GetAll().Select(x => new SelectListItem
-            //{
-            //    Value = x.Id.ToString(),
-            //    Text = x.Name
-            //});
-
-            var types = getSelectListItem(typeRepository.GetAll());
-            var characters = getSelectListItem(characterRepository.GetAll());
-            var brands = getSelectListItem(brandRepository.GetAll());
-            var bodies = getSelectListItem(bodyRepository.GetAll());
-            var propulsions = getSelectListItem(propulsionRepository.GetAll());
-            var sourcesOfEnergy = getSelectListItem(sourceOfEnergyRepository.GetAll());
-
             return new AddCarViewModel
             {
-                Types = types,
-                Characters = characters,
-                Brands = brands,
-                Bodies = bodies,
-                Propulsions = propulsions,
-                SourcesOfEnergy = sourcesOfEnergy
+                Types = SelectListItemHelper.Get(typeRepository),
+                Characters = SelectListItemHelper.Get(characterRepository),
+                Brands = SelectListItemHelper.Get(brandRepository),
+                Bodies = SelectListItemHelper.Get(bodyRepository),
+                Propulsions = SelectListItemHelper.Get(propulsionRepository),
+                SourcesOfEnergy = SelectListItemHelper.Get(sourceOfEnergyRepository),
             };
-        }
-
-        private IQueryable<SelectListItem> getSelectListItem<T>(IQueryable<T> query) where T : BasicModel
-        {
-            
-            return query.Select(x => new SelectListItem()
-            {
-                Text = x.Name,
-                Value = x.Id.ToString()
-            });
         }
     }
 }
