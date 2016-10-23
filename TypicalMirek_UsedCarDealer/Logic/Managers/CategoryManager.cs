@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Mvc;
-using Ninject;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;

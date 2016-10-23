@@ -25,8 +25,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Factories
 
             if (manager == null)
             {
-                manager = (T)Activator.CreateInstance(typeof(T), DependencyResolver.Current.GetService<RepositoryFactory>());
-                
+                manager = (T)Activator.CreateInstance(typeof(T), DependencyResolver.Current.GetService<RepositoryFactory>());            
                 initializedManagers.Add(typeof(T), manager);
             }
 

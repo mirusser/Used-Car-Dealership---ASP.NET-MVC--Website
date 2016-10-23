@@ -15,7 +15,6 @@ namespace TypicalMirek_UsedCarDealer
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
-        public static StandardKernel kernel { get; set; }
 
         /// <summary>
         /// Starts the application
@@ -41,8 +40,7 @@ namespace TypicalMirek_UsedCarDealer
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            //var kernel = new StandardKernel();
-            kernel = new StandardKernel();
+            var kernel = new StandardKernel();
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);

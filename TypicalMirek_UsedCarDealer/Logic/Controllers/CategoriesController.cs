@@ -31,7 +31,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = categoryManager.GetById(Convert.ToInt32(id));
+            var category = categoryManager.GetById(Convert.ToInt32(id));
             if (category == null)
             {
                 return HttpNotFound();
