@@ -187,6 +187,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Logic\Controllers\AccountController.cs" />
+    <Compile Include="Logic\Controllers\CarManagementController.cs" />
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
@@ -297,6 +298,11 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\CarManagement\Create.cshtml" />
+    <Content Include="Views\CarManagement\Delete.cshtml" />
+    <Content Include="Views\CarManagement\Details.cshtml" />
+    <Content Include="Views\CarManagement\Edit.cshtml" />
+    <Content Include="Views\CarManagement\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,58 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalData.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalData.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainData.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainData.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Propulsion.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Propulsion.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceOfEnergy.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SourceOfEnergy.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

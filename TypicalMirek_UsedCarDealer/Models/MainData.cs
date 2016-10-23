@@ -7,7 +7,7 @@ namespace TypicalMirek_UsedCarDealer.Models
     {
         [Key]
         [Required]
-       public int Id { get; set; }
+        public int Id { get; set; }
 
         public int TypeId { get; set; }
         [ForeignKey("TypeId")]
