@@ -8,7 +8,7 @@ using TypicalMirek_UsedCarDealer.Models.Context;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
-    public class PropulsionRepository : BaseRepository<Propulsion, TypicalMirekEntities>, IPropulsioneRepository
+    public class PropulsionRepository : BaseRepository<Propulsion, TypicalMirekEntities>, IPropulsionRepository
     {
     }
 }
