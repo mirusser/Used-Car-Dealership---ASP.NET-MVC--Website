@@ -26,7 +26,7 @@ namespace TypicalMirek_UsedCarDealer.Models
         [ForeignKey("SourceOfEnergyId")]
         public virtual SourceOfEnergy SourceOfEnergy { get; set; }
 
-        public int AdditionalDataId { get; set; }
+        public int? AdditionalDataId { get; set; }
         [ForeignKey("AdditionalDataId")]
         public virtual AdditionalData AdditionalData { get; set; }
 

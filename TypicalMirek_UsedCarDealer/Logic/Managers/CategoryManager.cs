@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
@@ -14,7 +15,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public CategoryManager() { }
 
-        public CategoryManager(RepositoryFactory repositoryFactory)
+        public CategoryManager(IRepositoryFactory repositoryFactory)
         {
             categoryRepository = repositoryFactory.Get<CategoryRepository>();
         }

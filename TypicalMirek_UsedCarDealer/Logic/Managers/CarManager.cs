@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Helpers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
+using static TypicalMirek_UsedCarDealer.Logic.Helpers.SelectListItemHelper;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
@@ -23,12 +25,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         private readonly IBodyRepository bodyRepository;
         private readonly IPropulsionRepository propulsionRepository;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
+        private readonly IModelRepository modelRepository;
         #endregion
 
         #region Constructors
         public CarManager() { }
 
-        public CarManager(RepositoryFactory repositoryFactory)
+        public CarManager(IRepositoryFactory repositoryFactory)
         {
             carRepository = repositoryFactory.Get<CarRepository>();
             typeRepository = repositoryFactory.Get<TypeRepository>();
@@ -37,6 +40,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             bodyRepository = repositoryFactory.Get<BodyRepository>();
             propulsionRepository = repositoryFactory.Get<PropulsionRepository>();
             sourceOfEnergyRepository = repositoryFactory.Get<SourceOfEnergyRepository>();
+            modelRepository = repositoryFactory.Get<ModelRepository>();
         }
         #endregion
 
@@ -54,12 +58,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         {
             return new AddCarViewModel
             {
-                Types = SelectListItemHelper.Get(typeRepository),
-                Characters = SelectListItemHelper.Get(characterRepository),
-                Brands = SelectListItemHelper.Get(brandRepository),
-                Bodies = SelectListItemHelper.Get(bodyRepository),
-                Propulsions = SelectListItemHelper.Get(propulsionRepository),
-                SourcesOfEnergy = SelectListItemHelper.Get(sourceOfEnergyRepository),
+                Types = GetSelectListItem(typeRepository),
+                Characters = GetSelectListItem(characterRepository),
+                Brands = GetSelectListItem(brandRepository),
+                Bodies = GetSelectListItem(bodyRepository),
+                Propulsions = GetSelectListItem(propulsionRepository),
+                SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository),
+                Models = GetSelectListItem(modelRepository)
             };
         }
     }

@@ -51,11 +51,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         // GET: CarManagement/Create
         public ActionResult Create()
         {
-            ViewBag.AdditionalDataId = new SelectList(db.AdditionalDatas, "Id", "Id");
-            ViewBag.BodyId = new SelectList(db.Bodies, "Id", "Name");
-            ViewBag.MainDataId = new SelectList(db.MainDatas, "Id", "Id");
-            ViewBag.PropulsionId = new SelectList(db.Propulsions, "Id", "Name");
-            ViewBag.SourceOfEnergyId = new SelectList(db.SourcesOfEnergie, "Id", "Name");
+            //ViewBag.AdditionalDataId = new SelectList(db.AdditionalDatas, "Id", "Id");
+            //ViewBag.BodyId = new SelectList(db.Bodies, "Id", "Name");
+            //ViewBag.MainDataId = new SelectList(db.MainDatas, "Id", "Id");
+            //ViewBag.PropulsionId = new SelectList(db.Propulsions, "Id", "Name");
+            //ViewBag.SourceOfEnergyId = new SelectList(db.SourcesOfEnergie, "Id", "Name");
 
             var carToAdd = carManager.CreateAddCarViewModel();
             

@@ -16,7 +16,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
         /// <typeparam name="T">Model class that implements BasicModel</typeparam>
         /// <param name="repository">Repository that implements IBaseRepository</param>
         /// <returns>SelectListItem</returns>
-        public static IQueryable<SelectListItem> Get<T>(IBaseRepository<T> repository) where T : BasicModel
+        public static IQueryable<SelectListItem> GetSelectListItem<T>(IBaseRepository<T> repository) where T : BasicModel
         {
             return repository.GetAll().Select(x => new SelectListItem()
             {
