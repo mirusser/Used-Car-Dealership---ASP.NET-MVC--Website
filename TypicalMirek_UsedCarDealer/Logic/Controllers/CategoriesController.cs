@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
@@ -13,7 +14,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     {
         private readonly ICategoryManager categoryManager;
 
-        public CategoriesController(ManagerFactory managerFactory)
+        public CategoriesController(IManagerFactory managerFactory)
         {
             categoryManager = managerFactory.Get<CategoryManager>();
         }

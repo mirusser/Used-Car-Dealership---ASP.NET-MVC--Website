@@ -5,6 +5,7 @@ using Ninject;
 using Ninject.Web.Common;
 using TypicalMirek_UsedCarDealer;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models.Context;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
@@ -64,8 +65,8 @@ namespace TypicalMirek_UsedCarDealer
         {
             //kernel.Bind(typeof(IBaseRepository<>)).To(typeof(IBaseRepository<>)).InRequestScope();
             kernel.Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
-            kernel.Bind<RepositoryFactory>().To<RepositoryFactory>().InRequestScope();
-            kernel.Bind<ManagerFactory>().To<ManagerFactory>().InRequestScope();
+            kernel.Bind<IRepositoryFactory>().To<RepositoryFactory>().InRequestScope();
+            kernel.Bind<IManagerFactory>().To<ManagerFactory>().InRequestScope();
         }        
     }
 }

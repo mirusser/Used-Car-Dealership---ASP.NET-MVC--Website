@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
@@ -20,7 +21,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private TypicalMirekEntities db = new TypicalMirekEntities();
         private readonly ICarManager carManager;
 
-        public CarManagementController(ManagerFactory managerFactory)
+        public CarManagementController(IManagerFactory managerFactory)
         {
             carManager = managerFactory.Get<CarManager>();
         }

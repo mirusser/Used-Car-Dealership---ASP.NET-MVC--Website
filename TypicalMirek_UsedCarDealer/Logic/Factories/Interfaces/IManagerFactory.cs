@@ -1,6 +1,6 @@
 ﻿namespace TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces
 {
-    interface IManagerFactory : IFactory
+    public interface IManagerFactory : IFactory
     {
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Factories
 {
-    public class RepositoryFactory : Factory
+    public class RepositoryFactory : Factory, IRepositoryFactory
     {
         private readonly Dictionary<Type, object> initializedRepositories = new Dictionary<Type, object>();
 
