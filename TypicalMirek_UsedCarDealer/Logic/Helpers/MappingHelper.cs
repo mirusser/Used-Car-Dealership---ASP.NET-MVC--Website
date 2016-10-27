@@ -27,7 +27,23 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 },
                 BodyId = addCarViewModel.BodyId,
                 PropulsionId = addCarViewModel.PropulsionId,
-                SourceOfEnergyId = addCarViewModel.SourceOfEnergyId
+                SourceOfEnergyId = addCarViewModel.SourceOfEnergyId,
+                
+            };
+        }
+
+        //TODO add another properties
+        public static AddCarViewModel MappCarModelToAddingCarViewModel(Car car)
+        {
+            return new AddCarViewModel
+            {
+                TypeId = car.MainData.TypeId,
+                CharacterId = car.MainData.CharacterId,
+                BrandId = car.MainData.Model.BrandId,
+                ModelId = car.MainData.ModelId,
+                BodyId = car.BodyId,
+                PropulsionId = car.PropulsionId,
+                SourceOfEnergyId = car.SourceOfEnergyId,
             };
         }
 

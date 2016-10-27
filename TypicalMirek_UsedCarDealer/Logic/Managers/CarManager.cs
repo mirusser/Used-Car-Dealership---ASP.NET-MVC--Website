@@ -68,9 +68,32 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return null;
         }
 
+        public AddCarViewModel Modify(AddCarViewModel car)
+        {
+            var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
+
+            //carRepository.Update(carToAdd);
+            carRepository.Save();
+
+            return null;
+        }
+
         public Car GetCarById(int id)
         {
             return carRepository.GetById(id);
+        }
+
+        public AddCarViewModel GetAddCarViewModel(int id)
+        {
+            var car =  MappingHelper.MappCarModelToAddingCarViewModel(GetCarById(id));
+            car.Types = GetSelectListItem(typeRepository);
+            car.Characters = GetSelectListItem(characterRepository);
+            car.Brands = GetSelectListItem(brandRepository);
+            car.Bodies = GetSelectListItem(bodyRepository);
+            car.Propulsions = GetSelectListItem(propulsionRepository);
+            car.SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository);
+            car.Models = GetSelectListItem(modelRepository);
+            return car;
         }
 
         public IQueryable<Car> GetAllCars()

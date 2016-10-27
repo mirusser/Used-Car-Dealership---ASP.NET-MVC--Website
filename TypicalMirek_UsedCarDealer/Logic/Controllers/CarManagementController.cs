@@ -77,7 +77,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var car = carManager.GetCarById(Convert.ToInt32(id));
+            var car = carManager.GetAddCarViewModel(Convert.ToInt32(id));
             if (car == null)
             {
                 return HttpNotFound();
@@ -90,12 +90,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MainDataId,BodyId,PropulsionId,SourceOfEnergyId,AdditionalDataId")] Car car)
+        public ActionResult Edit(AddCarViewModel car)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(car).State = EntityState.Modified;
-                //db.SaveChanges();
+                carManager.Modify(car);
                 return RedirectToAction("Index");
             }
 
