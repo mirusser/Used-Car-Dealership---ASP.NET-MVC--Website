@@ -18,7 +18,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CarManagementController : Controller
     {
-        private TypicalMirekEntities db = new TypicalMirekEntities();
         private readonly ICarManager carManager;
 
         public CarManagementController(IManagerFactory managerFactory)
@@ -29,7 +28,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         // GET: CarManagement
         public ActionResult Index()
         {
-            var cars = db.Cars.Include(c => c.AdditionalData).Include(c => c.Body).Include(c => c.MainData).Include(c => c.Propulsion).Include(c => c.SourceOfEnergy);
+            var cars = carManager.GetAllCarsToDisplay();
             return View(cars.ToList());
         }
 
@@ -40,7 +39,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Car car = db.Cars.Find(id);
+            var car = carManager.GetCarById(Convert.ToInt32(id));
             if (car == null)
             {
                 return HttpNotFound();
@@ -51,42 +50,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         // GET: CarManagement/Create
         public ActionResult Create()
         {
-            //ViewBag.AdditionalDataId = new SelectList(db.AdditionalDatas, "Id", "Id");
-            //ViewBag.BodyId = new SelectList(db.Bodies, "Id", "Name");
-            //ViewBag.MainDataId = new SelectList(db.MainDatas, "Id", "Id");
-            //ViewBag.PropulsionId = new SelectList(db.Propulsions, "Id", "Name");
-            //ViewBag.SourceOfEnergyId = new SelectList(db.SourcesOfEnergie, "Id", "Name");
-
-            var carToAdd = carManager.CreateAddCarViewModel();
-            
+            var carToAdd = carManager.CreateAddCarViewModel();        
             return View(carToAdd);
         }
 
         //// POST: CarManagement/Create
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,MainDataId,BodyId,PropulsionId,SourceOfEnergyId,AdditionalDataId")] Car car)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Cars.Add(car);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.AdditionalDataId = new SelectList(db.AdditionalDatas, "Id", "Id", car.AdditionalDataId);
-        //    ViewBag.BodyId = new SelectList(db.Bodies, "Id", "Name", car.BodyId);
-        //    ViewBag.MainDataId = new SelectList(db.MainDatas, "Id", "Id", car.MainDataId);
-        //    ViewBag.PropulsionId = new SelectList(db.Propulsions, "Id", "Name", car.PropulsionId);
-        //    ViewBag.SourceOfEnergyId = new SelectList(db.SourcesOfEnergie, "Id", "Name", car.SourceOfEnergyId);
-        //    return View();
-        //}
-
-        // POST: CarManagement/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(AddCarViewModel car)
@@ -107,16 +77,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Car car = db.Cars.Find(id);
+            var car = carManager.GetCarById(Convert.ToInt32(id));
             if (car == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AdditionalDataId = new SelectList(db.AdditionalDatas, "Id", "Id", car.AdditionalDataId);
-            ViewBag.BodyId = new SelectList(db.Bodies, "Id", "Name", car.BodyId);
-            ViewBag.MainDataId = new SelectList(db.MainDatas, "Id", "Id", car.MainDataId);
-            ViewBag.PropulsionId = new SelectList(db.Propulsions, "Id", "Name", car.PropulsionId);
-            ViewBag.SourceOfEnergyId = new SelectList(db.SourcesOfEnergie, "Id", "Name", car.SourceOfEnergyId);
             return View(car);
         }
 
@@ -129,15 +94,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(car).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(car).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdditionalDataId = new SelectList(db.AdditionalDatas, "Id", "Id", car.AdditionalDataId);
-            ViewBag.BodyId = new SelectList(db.Bodies, "Id", "Name", car.BodyId);
-            ViewBag.MainDataId = new SelectList(db.MainDatas, "Id", "Id", car.MainDataId);
-            ViewBag.PropulsionId = new SelectList(db.Propulsions, "Id", "Name", car.PropulsionId);
-            ViewBag.SourceOfEnergyId = new SelectList(db.SourcesOfEnergie, "Id", "Name", car.SourceOfEnergyId);
+
             return View(car);
         }
 
@@ -148,7 +109,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Car car = db.Cars.Find(id);
+            var car = carManager.GetCarById(Convert.ToInt32(id));
             if (car == null)
             {
                 return HttpNotFound();
@@ -161,9 +122,9 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Car car = db.Cars.Find(id);
-            db.Cars.Remove(car);
-            db.SaveChanges();
+            var car = carManager.GetCarById(Convert.ToInt32(id));
+            //db.Cars.Remove(car);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -171,7 +132,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                carManager.Dispose();
             }
             base.Dispose(disposing);
         }

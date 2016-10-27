@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Car>
+﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.ViewModels.DisplayCarViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,19 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AdditionalData.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MainData.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Propulsion.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SourceOfEnergy.Name)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th></th>
     </tr>
@@ -32,19 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AdditionalData.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MainData.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Propulsion.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SourceOfEnergy.Name)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

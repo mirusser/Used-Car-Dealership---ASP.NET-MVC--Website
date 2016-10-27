@@ -44,16 +44,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         }
         #endregion
 
-        public AddCarViewModel Add(AddCarViewModel car)
-        {
-            var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
-
-            carRepository.Add(carToAdd);
-            carRepository.Save();
-
-            return null;
-        }
-
         public AddCarViewModel CreateAddCarViewModel()
         {
             return new AddCarViewModel
@@ -66,6 +56,36 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
                 SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository),
                 Models = GetSelectListItem(modelRepository)
             };
+        }
+
+        public AddCarViewModel Add(AddCarViewModel car)
+        {
+            var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
+
+            carRepository.Add(carToAdd);
+            carRepository.Save();
+
+            return null;
+        }
+
+        public Car GetCarById(int id)
+        {
+            return carRepository.GetById(id);
+        }
+
+        public IQueryable<Car> GetAllCars()
+        {
+            return carRepository.GetAll();
+        }
+
+        public IList<DisplayCarViewModel> GetAllCarsToDisplay()
+        {
+            return MappingHelper.MapCarsToListOfCarsToDisplay(carRepository);
+        }
+
+        public void Dispose()
+        {
+            carRepository.Dispose();
         }
     }
 }

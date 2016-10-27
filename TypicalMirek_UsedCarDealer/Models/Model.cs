@@ -17,6 +17,6 @@ namespace TypicalMirek_UsedCarDealer.Models
 
         public int BrandId { get; set; }
         [ForeignKey("BrandId")]
-        public Brand Brand{ get; set; }
+        public virtual Brand Brand{ get; set; }
     }
 }
