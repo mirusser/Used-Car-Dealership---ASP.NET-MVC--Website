@@ -26,7 +26,8 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
         public decimal? Length { get; set; }
         public decimal? Mass { get; set; }
         public decimal? Milleage { get; set; }
-        public bool? Damaged { get; set; }
+        public bool Damaged { get; set; }
+        public int? YearOfProduction { get; set; }
 
         [Display(Name = "Color")]
         public int? ColorId { get; set; }

@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201610262119528_AllowNullToAdditionalDataInCarModel.Designer.cs">
       <DependentUpon>201610262119528_AllowNullToAdditionalDataInCarModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.cs" />
+    <Compile Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.Designer.cs">
+      <DependentUpon>201610282016032_MadeSomeForeignKeyOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -365,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610262119528_AllowNullToAdditionalDataInCarModel.resx">
       <DependentUpon>201610262119528_AllowNullToAdditionalDataInCarModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.resx">
+      <DependentUpon>201610282016032_MadeSomeForeignKeyOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

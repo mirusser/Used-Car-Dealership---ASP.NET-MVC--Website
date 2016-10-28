@@ -19,16 +19,41 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
             //TODO fill another properties of Car class
             return new Car
             {
+
+                BodyId = addCarViewModel.BodyId,
+                PropulsionId = addCarViewModel.PropulsionId,
+                SourceOfEnergyId = addCarViewModel.SourceOfEnergyId,
+                Photos = addCarViewModel.Photos,
                 MainData = new MainData
                 {
                     TypeId = addCarViewModel.TypeId,
                     CharacterId = addCarViewModel.CharacterId,
                     ModelId = addCarViewModel.ModelId
                 },
-                BodyId = addCarViewModel.BodyId,
-                PropulsionId = addCarViewModel.PropulsionId,
-                SourceOfEnergyId = addCarViewModel.SourceOfEnergyId,
-                
+                AdditionalData = new AdditionalData
+                {
+                    NumberOfSeats = addCarViewModel.NumberOfSeats,
+                    EngineCapacity = addCarViewModel.EngineCapacity,
+                    Damaged = addCarViewModel.Damaged,
+                    Mass = addCarViewModel.Mass,
+                    EnginePower = addCarViewModel.EnginePower,
+                    Length = addCarViewModel.Length,
+                    NumberOfOwners = addCarViewModel.NumberOfOwners,
+                    Milleage = addCarViewModel.Milleage,
+                    FuelTankCapacity = addCarViewModel.FuelTankCapacity,
+                    YearOfProduction = Convert.ToInt32(addCarViewModel.YearOfProduction),
+                    ColorId = addCarViewModel.ColorId,
+                    CountryId = addCarViewModel.CountryId,
+                    GearboxId = addCarViewModel.GearboxId,
+                    PositionOfSteeringWheelId = addCarViewModel.PositionOfSteeringWheelId,
+                    AdditionalEquipment = new AdditionalEquipment
+                    {
+                        AdditionalWheels = addCarViewModel.AdditionalWheels,
+                        Climatisation = addCarViewModel.Climatisation,
+                        Radio = addCarViewModel.Radio,
+                        Towbar = addCarViewModel.Towbar
+                    },
+                },
             };
         }
 

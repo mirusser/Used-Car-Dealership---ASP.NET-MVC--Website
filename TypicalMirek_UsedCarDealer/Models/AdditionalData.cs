@@ -28,23 +28,23 @@ namespace TypicalMirek_UsedCarDealer.Models
         public decimal? Milleage { get; set; }
         public bool? Damaged { get; set; }
 
-        public int AdditionalEquipmentId { get; set; }
+        public int? AdditionalEquipmentId { get; set; }
         [ForeignKey("AdditionalEquipmentId")]
         public virtual AdditionalEquipment AdditionalEquipment { get; set; }
 
-        public int ColorId { get; set; }
+        public int? ColorId { get; set; }
         [ForeignKey("ColorId")]
         public virtual Color Color { get; set; }
 
-        public int GearboxId { get; set; }
+        public int? GearboxId { get; set; }
         [ForeignKey("GearboxId")]
         public virtual Gearbox GearBox { get; set; }
 
-        public int CountryId { get; set; }
+        public int? CountryId { get; set; }
         [ForeignKey("CountryId")]
         public virtual Country Country { get; set; }
 
-        public int PositionOfSteeringWheelId { get; set; }
+        public int? PositionOfSteeringWheelId { get; set; }
         [ForeignKey("PositionOfSteeringWheelId")]
         public virtual PositionOfSteeringWheel PositionOfSteeringWheel { get; set; }
     }
