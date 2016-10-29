@@ -348,6 +348,9 @@
     <Content Include="Views\CarBodies\Details.cshtml" />
     <Content Include="Views\CarBodies\Edit.cshtml" />
     <Content Include="Views\CarBodies\Index.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
