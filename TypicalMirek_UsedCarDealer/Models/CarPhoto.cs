@@ -16,6 +16,9 @@ namespace TypicalMirek_UsedCarDealer.Models
         [Required]
         public byte[] Image { get; set; }
 
+        [Required]
+        public string ImagePath { get; set; }
+
         public int CarId { get; set; }
         [ForeignKey("CarId")]
         public virtual Car Car { get; set; }

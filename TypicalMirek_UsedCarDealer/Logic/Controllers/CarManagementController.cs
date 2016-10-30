@@ -155,5 +155,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult GetCarImage(string imageName)
+        {
+            var path = Path.Combine(Server.MapPath("~/App_Data/Images"), imageName);
+            path = Path.GetFullPath(path);
+            return File(path, "image/jpeg/png/PNG/jpg");
+        }
     }
 }

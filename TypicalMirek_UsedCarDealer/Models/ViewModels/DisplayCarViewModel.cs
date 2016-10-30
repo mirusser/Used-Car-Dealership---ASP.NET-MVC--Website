@@ -15,6 +15,7 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public Image CarImage { get; set; }
+        public string CarImagePath { get; set; }
+        public string CarImageName { get; set; }
     }
 }

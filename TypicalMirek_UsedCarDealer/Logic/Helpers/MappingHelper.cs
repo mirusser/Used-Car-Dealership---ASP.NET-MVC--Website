@@ -17,13 +17,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
         public static Car MappAddingCarViewModelToCarModel(AddCarViewModel addCarViewModel)
         {
             //TODO fill another properties of Car class
-            return new Car
+            var car = new Car
             {
-
                 BodyId = addCarViewModel.BodyId,
                 PropulsionId = addCarViewModel.PropulsionId,
                 SourceOfEnergyId = addCarViewModel.SourceOfEnergyId,
-                Photos = addCarViewModel.Photos,
+                Photos = new List<CarPhoto>(),
                 MainData = new MainData
                 {
                     TypeId = addCarViewModel.TypeId,
@@ -60,6 +59,23 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                     },
                 },
             };
+
+            foreach (var file in addCarViewModel.Files)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(memoryStream);
+                    car.Photos.Add(new CarPhoto
+                    {
+                        Image = memoryStream.GetBuffer(),
+                        //Name = Path.GetFileNameWithoutExtension(file.FileName),
+                        Name = file.FileName,
+                        CarId = car.Id,
+                        ImagePath = AppDomain.CurrentDomain.BaseDirectory + "App_Data\\Images\\" + file.FileName,
+                    });
+                }
+            }
+            return car;
         }
 
         //TODO add another properties
@@ -92,25 +108,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
 
         public static DisplayCarViewModel MappCarModelToDisplayCarViewModel(Car car)
         {
-            Image carImage;
-
-            if (car.Photos.FirstOrDefault() != null)
+            var firstOrDefault = car.Photos.FirstOrDefault();
+            if (firstOrDefault != null)
             {
-                using (var memoryStream = new MemoryStream(car.Photos.FirstOrDefault()?.Image))
+                return new DisplayCarViewModel(car.MainData.Model)
                 {
-                    carImage = Image.FromStream(memoryStream);
-                }
+                    Id = car.Id,
+                    CarImagePath = firstOrDefault.ImagePath,
+                    CarImageName = firstOrDefault.Name
+                };
             }
             else
             {
-                carImage = null;
+                return new DisplayCarViewModel(car.MainData.Model)
+                {
+                    Id = car.Id,
+                    CarImagePath = null
+                };
             }
-
-            return new DisplayCarViewModel(car.MainData.Model)
-            {
-                Id = car.Id,
-                CarImage = carImage
-            };
         }
     }
 }

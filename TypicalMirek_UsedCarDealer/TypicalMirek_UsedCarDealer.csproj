@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.Designer.cs">
       <DependentUpon>201610282016032_MadeSomeForeignKeyOptional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.cs" />
+    <Compile Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.Designer.cs">
+      <DependentUpon>201610301550135_AddedImagePathToCarPhotoModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -376,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.resx">
       <DependentUpon>201610282016032_MadeSomeForeignKeyOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.resx">
+      <DependentUpon>201610301550135_AddedImagePathToCarPhotoModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
