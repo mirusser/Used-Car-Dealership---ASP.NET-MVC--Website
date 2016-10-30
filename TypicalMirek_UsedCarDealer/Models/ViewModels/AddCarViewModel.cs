@@ -67,7 +67,7 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
 
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string ModelName { get; set; }
-        public string Version { get; set; }
+        public string ModelVersion { get; set; }
 
         [Display(Name = "Brand")]
         public int BrandId { get; set; }
@@ -86,5 +86,6 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
         public IQueryable<SelectListItem> SourcesOfEnergy { get; set; }
 
         public ICollection<CarPhoto> Photos { get; set; }
+        public IEnumerable<HttpPostedFileBase> Files { get; set; }
     }
 }

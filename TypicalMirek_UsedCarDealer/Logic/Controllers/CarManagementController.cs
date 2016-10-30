@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -63,8 +64,27 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                carManager.Add(car);
-                return RedirectToAction("Index");
+                try
+                {
+                    foreach (var file in car.Files)
+                    {
+                        if (file.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            if (fileName != null)
+                            {
+                                var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                                file.SaveAs(path);
+                            }
+                        }
+                    }
+                    carManager.Add(car);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    return View(car);
+                }
             }
 
             return View(car);

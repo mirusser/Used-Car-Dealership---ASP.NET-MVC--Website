@@ -351,9 +351,10 @@
     <Content Include="Views\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

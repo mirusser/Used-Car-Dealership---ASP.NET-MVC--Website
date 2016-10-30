@@ -2,65 +2,51 @@
 
 <div class="form-horizontal">
     <h4>Main Data</h4>
-    <hr/>
-    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.TypeId, htmlAttributes: new {@class = "control-label col-md-2"})
+        @Html.LabelFor(model => model.TypeId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.TypeId, Model.Types, string.Empty, htmlAttributes: new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.TypeId, "", new {@class = "text-danger"})
+            @Html.DropDownListFor(model => model.TypeId, Model.Types, string.Empty, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Characters, "Character", htmlAttributes: new {@class = "control-label col-md-2"})
+        @Html.LabelFor(model => model.Characters, "Character", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CharacterId, Model.Characters, string.Empty, htmlAttributes: new {@class = "form-control", Placeholder = "Character"})
-            @Html.ValidationMessageFor(model => model.CharacterId, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Brands, "Brand", htmlAttributes: new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.BrandId, Model.Brands, string.Empty, htmlAttributes: new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.BrandId, "", new {@class = "text-danger"})
+            @Html.DropDownListFor(model => model.CharacterId, Model.Characters, string.Empty, htmlAttributes: new { @class = "form-control", Placeholder = "Character" })
+            @Html.ValidationMessageFor(model => model.CharacterId, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Propulsions, "Propulsion", htmlAttributes: new {@class = "control-label col-md-2"})
+        @Html.LabelFor(model => model.Propulsions, "Propulsion", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.PropulsionId, Model.Propulsions, string.Empty, htmlAttributes: new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.PropulsionId, "", new {@class = "text-danger"})
+            @Html.DropDownListFor(model => model.PropulsionId, Model.Propulsions, string.Empty, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PropulsionId, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.SourcesOfEnergy, htmlAttributes: new {@class = "control-label col-md-2"})
+        @Html.LabelFor(model => model.SourcesOfEnergy, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.SourceOfEnergyId, Model.SourcesOfEnergy, string.Empty, htmlAttributes: new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.SourceOfEnergyId, "", new {@class = "text-danger"})
+            @Html.DropDownListFor(model => model.SourceOfEnergyId, Model.SourcesOfEnergy, string.Empty, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SourceOfEnergyId, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Models, "Car model", htmlAttributes: new {@class = "control-label col-md-2"})
+        @Html.LabelFor(model => model.Bodies, "Bodies", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.ModelId, Model.Models, string.Empty, htmlAttributes: new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.ModelId, "", new {@class = "text-danger"})
-            @Html.ActionLink("Add", "Create", "CarModels")
+            @Html.DropDownListFor(model => model.BodyId, Model.Bodies, string.Empty, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BodyId, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Bodies, "Bodies", htmlAttributes: new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.BodyId, Model.Bodies, string.Empty, htmlAttributes: new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.BodyId, "", new {@class = "text-danger"})
-        </div>
-    </div>
+    @{
+        Html.RenderPartial($"PartialViews/_CreateCarModel", Model);
+    }
 
-    <hr/>
+    <hr />
 </div>

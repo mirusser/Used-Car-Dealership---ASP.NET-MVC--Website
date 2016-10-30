@@ -28,7 +28,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 {
                     TypeId = addCarViewModel.TypeId,
                     CharacterId = addCarViewModel.CharacterId,
-                    ModelId = addCarViewModel.ModelId
+                    Model = new Model
+                    {
+                        Name = addCarViewModel.ModelName,
+                        BrandId = addCarViewModel.BrandId,
+                        Version = addCarViewModel.ModelVersion
+                    }
                 },
                 AdditionalData = new AdditionalData
                 {
