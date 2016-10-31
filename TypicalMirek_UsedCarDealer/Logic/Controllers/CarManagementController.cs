@@ -40,7 +40,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var car = carManager.GetCarById(Convert.ToInt32(id));
+            var car = carManager.GetCarDetailsViewModelById(Convert.ToInt32(id));
             if (car == null)
             {
                 return HttpNotFound();

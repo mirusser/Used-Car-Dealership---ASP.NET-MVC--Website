@@ -16,6 +16,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         IList<DisplayCarViewModel> GetAllCarsToDisplay();
         Car GetCarById(int id);
         AddCarViewModel GetAddCarViewModel(int id);
+        CarDetailsViewModel GetCarDetailsViewModelById(int id);
         void Dispose();
     }
 }

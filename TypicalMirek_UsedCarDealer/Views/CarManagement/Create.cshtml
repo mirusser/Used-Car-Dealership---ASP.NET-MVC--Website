@@ -14,7 +14,6 @@
         Html.RenderPartial($"PartialViews/_CreateCarMainData");
     }
 
-
     {
         Html.RenderPartial($"PartialViews/_UploadCarPhotos", Model);
     }
@@ -23,16 +22,9 @@
         Html.RenderPartial($"PartialViews/_CreateCarAdditionalData", Model);
     }
 
-    @*@Html.HiddenFor(model => model.Types)
-    @Html.HiddenFor(model => model.Characters)
-    @Html.HiddenFor(model => model.Propulsions)
-    @Html.HiddenFor(model => model.SourcesOfEnergy)
-    @Html.HiddenFor(model => model.Bodies)*@
-
     <div class="form-horizontal">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @*<input type="submit" value="Create" class="btn btn-default"/>*@
                 <input type="submit" name="submit" value="Create" class="btn btn-default"/>
             </div>
         </div>

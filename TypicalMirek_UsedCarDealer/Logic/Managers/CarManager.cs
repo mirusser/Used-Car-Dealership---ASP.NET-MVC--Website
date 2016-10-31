@@ -96,6 +96,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return car;
         }
 
+        public CarDetailsViewModel GetCarDetailsViewModelById(int id)
+        {
+            return MappingHelper.MappCarModelToCarDetailsViewModel(carRepository.GetById(id));
+        }
+
         public IQueryable<Car> GetAllCars()
         {
             return carRepository.GetAll();

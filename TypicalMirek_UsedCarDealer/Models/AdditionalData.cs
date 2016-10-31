@@ -12,7 +12,6 @@ namespace TypicalMirek_UsedCarDealer.Models
         [Required]
         [Display(Name = "Year of production")]
         public int YearOfProduction { get; set; }
-
         [Display(Name = "Number of Seats")]
         public int? NumberOfSeats { get; set; }
         [Display(Name = "Number of previous owners")]

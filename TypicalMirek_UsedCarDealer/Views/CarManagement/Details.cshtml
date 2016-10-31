@@ -1,4 +1,4 @@
-﻿@model TypicalMirek_UsedCarDealer.Models.Car
+﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.CarDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,43 +11,202 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AdditionalData.Id)
+            @Html.DisplayNameFor(model => model.Brand)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AdditionalData.Id)
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Body.Name)
+            @Html.DisplayNameFor(model => model.ModelVersion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Body.Name)
+            @Html.DisplayFor(model => model.ModelVersion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MainData.Id)
+            @Html.DisplayNameFor(model => model.Type)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MainData.Id)
+            @Html.DisplayFor(model => model.Type)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Propulsion.Name)
+            @Html.DisplayNameFor(model => model.Character)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Propulsion.Name)
+            @Html.DisplayFor(model => model.Character)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SourceOfEnergy.Name)
+            @Html.DisplayNameFor(model => model.Body)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SourceOfEnergy.Name)
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Propulsion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Propulsion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceOfEnergy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SourceOfEnergy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearOfProduction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearOfProduction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSeats)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfOwners)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfOwners)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelTankCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelTankCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnginePower)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnginePower)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Milleage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Milleage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Damaged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Damaged)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gearbox)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gearbox)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionOfSteeringWheel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositionOfSteeringWheel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Climatisation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Climatisation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalWheels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalWheels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Towbar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Towbar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radio)
         </dd>
 
     </dl>

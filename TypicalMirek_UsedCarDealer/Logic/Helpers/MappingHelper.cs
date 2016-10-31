@@ -127,5 +127,40 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 };
             }
         }
+
+        public static CarDetailsViewModel MappCarModelToCarDetailsViewModel(Car car)
+        {
+            return new CarDetailsViewModel
+            {
+                Id = car.Id,
+                Type = car.MainData.Type.Name,
+                EngineCapacity = car.AdditionalData.EngineCapacity,
+                Damaged = car.AdditionalData.Damaged,
+                NumberOfSeats = car.AdditionalData.NumberOfSeats,
+                AdditionalWheels = car.AdditionalData.AdditionalEquipment.AdditionalWheels,
+                Body = car.Body.Name,
+                Brand = car.MainData.Model.Brand.Name,
+                Character = car.MainData.Character.Name,
+                Climatisation = car.AdditionalData.AdditionalEquipment.Climatisation,
+                Color = car.AdditionalData.Color?.Name,
+                Country = car.AdditionalData.Country?.Name,
+                EnginePower = car.AdditionalData.EnginePower,
+                FuelTankCapacity = car.AdditionalData.FuelTankCapacity,
+                Gearbox = car.AdditionalData.GearBox?.Name,
+                Length = car.AdditionalData.Length,
+                Mass = car.AdditionalData.Mass,
+                Milleage = car.AdditionalData.Milleage,
+                ModelName = car.MainData.Model.Name,
+                ModelVersion = car.MainData.Model.Version,
+                NumberOfOwners = car.AdditionalData.NumberOfOwners,
+                PositionOfSteeringWheel = car.AdditionalData.PositionOfSteeringWheel?.Position,
+                Propulsion = car.Propulsion.Name,
+                Radio = car.AdditionalData.AdditionalEquipment.Radio,
+                SourceOfEnergy = car.SourceOfEnergy.Name,
+                Towbar = car.AdditionalData.AdditionalEquipment.Towbar,
+                YearOfProduction = car.AdditionalData.YearOfProduction,
+                Photos = car.Photos
+            };
+        }
     }
 }
