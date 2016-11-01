@@ -10,7 +10,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class BaseRepository<T, TEntity> : IBaseRepository<T>, IDisposable
         where T : class
-        where TEntity : ApplicationDbContext, new()
+        //where TEntity : ApplicationDbContext, new()
+        where TEntity : TypicalMirekEntities, new()
     {
         #region Properties
         protected TEntity Entities { get; private set; }

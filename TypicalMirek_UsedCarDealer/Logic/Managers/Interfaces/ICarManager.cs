@@ -11,6 +11,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
     {
         AddCarViewModel Add(AddCarViewModel car);
         AddCarViewModel Modify(AddCarViewModel car);
+        void RemoveCarById(int id);
         AddCarViewModel CreateAddCarViewModel();
         IQueryable<Car> GetAllCars();
         IList<DisplayCarViewModel> GetAllCarsToDisplay();

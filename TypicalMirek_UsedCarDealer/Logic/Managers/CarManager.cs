@@ -26,6 +26,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         private readonly IPropulsionRepository propulsionRepository;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
         private readonly IModelRepository modelRepository;
+
+        private readonly IMainDataRepository mainDataRepository;
+        private readonly IAdditionalDataRepository additionalDataRepository;
+        private readonly IAdditionalEquipmentRepository additionalEquipmentRepository;
+        private readonly ICarPhotoRepository carPhotoRepository;
         #endregion
 
         #region Constructors
@@ -41,6 +46,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             propulsionRepository = repositoryFactory.Get<PropulsionRepository>();
             sourceOfEnergyRepository = repositoryFactory.Get<SourceOfEnergyRepository>();
             modelRepository = repositoryFactory.Get<ModelRepository>();
+
+            mainDataRepository = repositoryFactory.Get<MainDataRepository>();
+            additionalEquipmentRepository = repositoryFactory.Get<AdditionalEquipmentRepository>();
+            additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
+            carPhotoRepository = repositoryFactory.Get<CarPhotoRepository>();
         }
         #endregion
 
@@ -70,12 +80,41 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public AddCarViewModel Modify(AddCarViewModel car)
         {
-            var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
+            var carToModify = carRepository.GetById(car.Id);
+            MappingHelper.MappAddingCarViewModelToExistingCarModel(car, carToModify);
 
-            //carRepository.Update(carToAdd);
+            //carRepository.Update(carToModify);
             carRepository.Save();
 
             return null;
+        }
+
+        public void RemoveCarById(int id)
+        {
+            var car = carRepository.GetById(id);
+
+            if (car.AdditionalData != null)
+            {
+                if (car.AdditionalData.AdditionalEquipment != null)
+                {
+                    additionalEquipmentRepository.Delete(car.AdditionalData.AdditionalEquipment.Id);
+                    car.AdditionalData.AdditionalEquipmentId = null;
+                    additionalEquipmentRepository.Save();
+                }
+                additionalDataRepository.Delete(car.AdditionalData.Id);
+                car.AdditionalDataId = null;
+                additionalDataRepository.Save();
+            }
+
+            mainDataRepository.Delete(car.MainData.Id);
+            foreach (var carphoto in car.Photos)
+            {
+                carPhotoRepository.Delete(carphoto.Id);
+            }
+            carPhotoRepository.Save();
+
+            carRepository.Delete(car);
+            carRepository.Save();
         }
 
         public Car GetCarById(int id)

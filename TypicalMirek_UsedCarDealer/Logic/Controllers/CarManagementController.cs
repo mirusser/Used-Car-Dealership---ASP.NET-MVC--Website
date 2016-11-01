@@ -141,9 +141,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var car = carManager.GetCarById(Convert.ToInt32(id));
+            //var car = carManager.GetCarById(Convert.ToInt32(id));
             //db.Cars.Remove(car);
             //db.SaveChanges();
+
+            carManager.RemoveCarById(id);
             return RedirectToAction("Index");
         }
 

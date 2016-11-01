@@ -210,10 +210,16 @@
     <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
+    <Compile Include="Logic\Repositories\AdditionalDataRepository.cs" />
+    <Compile Include="Logic\Repositories\AdditionalEquipmentRepository.cs" />
     <Compile Include="Logic\Repositories\BodyRepository.cs" />
     <Compile Include="Logic\Repositories\BrandRepository.cs" />
+    <Compile Include="Logic\Repositories\CarPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\CarRepository.cs" />
     <Compile Include="Logic\Repositories\CharacterRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IAdditionalDataRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IAdditionalEquipmentRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICarPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IMainDataRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IBodyRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IBrandRepository.cs" />
