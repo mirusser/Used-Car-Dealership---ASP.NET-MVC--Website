@@ -217,20 +217,28 @@
     <Compile Include="Logic\Repositories\CarPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\CarRepository.cs" />
     <Compile Include="Logic\Repositories\CharacterRepository.cs" />
+    <Compile Include="Logic\Repositories\ColorRepository.cs" />
+    <Compile Include="Logic\Repositories\CountryRepository.cs" />
+    <Compile Include="Logic\Repositories\GearboxRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IAdditionalDataRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IAdditionalEquipmentRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICarPhotoRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IColorRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICountryRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IGearboxRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IMainDataRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IBodyRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IBrandRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICarRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICharacterRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IModelRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IPositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPropulsionRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ISourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
     <Compile Include="Logic\Repositories\MainDataRepository.cs" />
     <Compile Include="Logic\Repositories\ModelRepository.cs" />
+    <Compile Include="Logic\Repositories\PositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\PropulsionRepository.cs" />
     <Compile Include="Logic\Repositories\SourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\TypeRepository.cs" />
@@ -249,6 +257,10 @@
     <Compile Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.cs" />
     <Compile Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.Designer.cs">
       <DependentUpon>201610301550135_AddedImagePathToCarPhotoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.cs" />
+    <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.Designer.cs">
+      <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -390,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.resx">
       <DependentUpon>201610301550135_AddedImagePathToCarPhotoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.resx">
+      <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

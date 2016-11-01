@@ -31,6 +31,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         private readonly IAdditionalDataRepository additionalDataRepository;
         private readonly IAdditionalEquipmentRepository additionalEquipmentRepository;
         private readonly ICarPhotoRepository carPhotoRepository;
+
+        private readonly IColorRepository colorRepository;
+        private readonly IGearboxRepository gearboxRepository;
+        private readonly ICountryRepository countryRepository;
+        private readonly IPositionOfSteeringWheelRepository positionOfSteeringWheelRepository;
         #endregion
 
         #region Constructors
@@ -51,6 +56,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             additionalEquipmentRepository = repositoryFactory.Get<AdditionalEquipmentRepository>();
             additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
             carPhotoRepository = repositoryFactory.Get<CarPhotoRepository>();
+
+            colorRepository = repositoryFactory.Get<ColorRepository>();
+            gearboxRepository = repositoryFactory.Get<GearboxRepository>();
+            countryRepository = repositoryFactory.Get<CountryRepository>();
+            positionOfSteeringWheelRepository = repositoryFactory.Get<PositionOfSteeringWheelRepository>();
         }
         #endregion
 
@@ -64,7 +74,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
                 Bodies = GetSelectListItem(bodyRepository),
                 Propulsions = GetSelectListItem(propulsionRepository),
                 SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository),
-                Models = GetSelectListItem(modelRepository)
+                Models = GetSelectListItem(modelRepository),
+                Colors = GetSelectListItem(colorRepository),
+                Gearboxes = GetSelectListItem(gearboxRepository),
+                Countries = GetSelectListItem(countryRepository),
+                PositionsOfSteeringWheel = GetSelectListItem(positionOfSteeringWheelRepository)
             };
         }
 
@@ -124,7 +138,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public AddCarViewModel GetAddCarViewModel(int id)
         {
-            var car =  MappingHelper.MappCarModelToAddingCarViewModel(GetCarById(id));
+            var car = MappingHelper.MappCarModelToAddingCarViewModel(GetCarById(id));
             car.Types = GetSelectListItem(typeRepository);
             car.Characters = GetSelectListItem(characterRepository);
             car.Brands = GetSelectListItem(brandRepository);
@@ -132,6 +146,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             car.Propulsions = GetSelectListItem(propulsionRepository);
             car.SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository);
             car.Models = GetSelectListItem(modelRepository);
+            car.Colors = GetSelectListItem(colorRepository);
+            car.Gearboxes = GetSelectListItem(gearboxRepository);
+            car.Countries = GetSelectListItem(countryRepository);
+            car.PositionsOfSteeringWheel = GetSelectListItem(positionOfSteeringWheelRepository);
             return car;
         }
 

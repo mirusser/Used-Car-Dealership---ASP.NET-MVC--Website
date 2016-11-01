@@ -4,7 +4,39 @@
     <h5>
         Additional information about car
     </h5>
-    <hr />
+    <hr/>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Colors, "Color", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ColorId, Model.Colors, string.Empty, htmlAttributes: new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.ColorId, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Gearboxes, "Gearbox", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.GearboxId, Model.Gearboxes, string.Empty, htmlAttributes: new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.GearboxId, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Countries, "Country", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.CountryId, Model.Countries, string.Empty, htmlAttributes: new {@class = "form-control", Placeholder = "Character"})
+            @Html.ValidationMessageFor(model => model.CountryId, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PositionsOfSteeringWheel, "Position of steering wheel", htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.PositionOfSteeringWheelId, Model.PositionsOfSteeringWheel, string.Empty, htmlAttributes: new {@class = "form-control", Placeholder = "Character"})
+            @Html.ValidationMessageFor(model => model.PositionOfSteeringWheelId, "", new {@class = "text-danger"})
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.NumberOfSeats, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -71,13 +103,44 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Damaged, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Damaged, htmlAttributes: new {@class = "control-label col-md-2"})
         <div class="col-md-10">
             @Html.CheckBoxFor(model => model.Damaged, Model.Damaged)
-            @Html.ValidationMessageFor(model => model.Damaged, "", new { @class = "text-danger", @type = "boolean" })
+            @Html.ValidationMessageFor(model => model.Damaged, "", new {@class = "text-danger", @type = "boolean"})
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Climatisation, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.Climatisation, Model.Climatisation)
+            @Html.ValidationMessageFor(model => model.Climatisation, "", new {@class = "text-danger", @type = "boolean"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AdditionalWheels, htmlAttributes: new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.AdditionalWheels, Model.AdditionalWheels)
+            @Html.ValidationMessageFor(model => model.AdditionalWheels, "", new {@class = "text-danger", @type = "boolean"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Towbar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.Towbar, Model.Towbar)
+            @Html.ValidationMessageFor(model => model.Towbar, "", new { @class = "text-danger", @type = "boolean" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Radio, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(model => model.Radio, Model.Radio)
+            @Html.ValidationMessageFor(model => model.Radio, "", new { @class = "text-danger", @type = "boolean" })
+        </div>
+    </div>
 </div>
 <hr />
 

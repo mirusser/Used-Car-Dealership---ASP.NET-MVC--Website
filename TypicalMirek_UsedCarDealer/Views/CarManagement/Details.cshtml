@@ -142,7 +142,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Damaged)
+            @if (Model.Damaged == null)
+            {
+                Model.Damaged = false;
+            }
+            @Html.CheckBoxFor(model => model.Damaged.Value, new { @disabled = "disabled" })
         </dd>
 
         <dt>
@@ -182,7 +186,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Climatisation)
+            @if (Model.Climatisation == null)
+            {
+                Model.Climatisation = false;
+            }
+            @Html.CheckBoxFor(model => model.Climatisation.Value, new { @disabled = "disabled" })
         </dd>
 
         <dt>
@@ -190,7 +198,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AdditionalWheels)
+            @if (Model.AdditionalWheels == null)
+            {
+                Model.AdditionalWheels = false;
+            }
+            @Html.CheckBoxFor(model => model.AdditionalWheels.Value, new { @disabled = "disabled" })
         </dd>
 
         <dt>
@@ -198,7 +210,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Towbar)
+            @if (Model.Towbar == null)
+            {
+                Model.Towbar = false;
+            }
+            @Html.CheckBoxFor(model => model.Towbar.Value, new { @disabled = "disabled" })
         </dd>
 
         <dt>
@@ -206,7 +222,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Radio)
+            @if (Model.Radio == null)
+            {
+                Model.Radio = false;
+            }
+            @Html.CheckBoxFor(model => model.Radio.Value, new { @disabled = "disabled" })
         </dd>
 
     </dl>

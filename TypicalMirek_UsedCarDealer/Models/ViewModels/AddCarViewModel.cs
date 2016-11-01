@@ -43,10 +43,10 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
         public IQueryable<SelectListItem> PositionsOfSteeringWheel { get; set; }
 
         #region Additional equipment
-        public bool? Climatisation { get; set; }
-        public bool? AdditionalWheels { get; set; }
-        public bool? Towbar { get; set; }
-        public bool? Radio { get; set; }
+        public bool Climatisation { get; set; }
+        public bool AdditionalWheels { get; set; }
+        public bool Towbar { get; set; }
+        public bool Radio { get; set; }
         #endregion
 
         #endregion
