@@ -187,10 +187,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Logic\Controllers\AccountController.cs" />
+    <Compile Include="Logic\Controllers\AdminController.cs" />
     <Compile Include="Logic\Controllers\CarBodiesController.cs" />
     <Compile Include="Logic\Controllers\CarManagementController.cs" />
     <Compile Include="Logic\Controllers\CarModelsController.cs" />
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
+    <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
@@ -297,8 +299,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Images\image-slider-1.jpg" />
+    <Content Include="App_Data\Images\image-slider-2.jpg" />
+    <Content Include="App_Data\Images\image-slider-3.jpg" />
+    <Content Include="App_Data\Images\image-slider-4.jpg" />
+    <Content Include="App_Data\Images\image-slider-5.jpg" />
+    <Content Include="App_Data\Slider\bullet.png" />
+    <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\js-image-slider.css" />
+    <Content Include="Content\PureDropdownMenu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -313,6 +324,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-image-slider.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -375,9 +387,12 @@
     <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_PureDropdownMenu.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Images\" />
+    <Folder Include="App_Data\Car\" />
+    <Folder Include="Views\GetPhoto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
