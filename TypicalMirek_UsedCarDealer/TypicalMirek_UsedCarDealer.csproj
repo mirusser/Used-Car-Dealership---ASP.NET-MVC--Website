@@ -299,11 +299,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Images\image-slider-1.jpg" />
-    <Content Include="App_Data\Images\image-slider-2.jpg" />
-    <Content Include="App_Data\Images\image-slider-3.jpg" />
-    <Content Include="App_Data\Images\image-slider-4.jpg" />
-    <Content Include="App_Data\Images\image-slider-5.jpg" />
+    <Content Include="App_Data\Images\image1.jpg" />
+    <Content Include="App_Data\Images\image2.jpg" />
+    <Content Include="App_Data\Images\image3.jpg" />
+    <Content Include="App_Data\Images\image4.jpg" />
+    <Content Include="App_Data\Images\image5.jpg" />
     <Content Include="App_Data\Slider\bullet.png" />
     <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
