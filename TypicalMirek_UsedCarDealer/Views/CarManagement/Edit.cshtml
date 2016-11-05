@@ -1,0 +1,38 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", $"CarManagement", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    {
+        Html.RenderPartial($"PartialViews/_CreateCarMainData");
+    }
+
+    {
+        Html.RenderPartial($"PartialViews/_UploadCarPhotos", Model);
+    }
+
+    {
+        Html.RenderPartial($"PartialViews/_CreateCarAdditionalData", Model);
+    }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Edit" class="btn btn-default" />
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

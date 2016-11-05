@@ -49,9 +49,23 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -101,6 +115,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -165,25 +183,133 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Logic\Controllers\AccountController.cs" />
+    <Compile Include="Logic\Controllers\AdminController.cs" />
+    <Compile Include="Logic\Controllers\CarBodiesController.cs" />
+    <Compile Include="Logic\Controllers\CarManagementController.cs" />
+    <Compile Include="Logic\Controllers\CarModelsController.cs" />
+    <Compile Include="Logic\Controllers\CategoriesController.cs" />
+    <Compile Include="Logic\Controllers\GetPhotoController.cs" />
+    <Compile Include="Logic\Controllers\HomeController.cs" />
+    <Compile Include="Logic\Controllers\ManageController.cs" />
+    <Compile Include="Logic\Factories\Factory.cs" />
+    <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
+    <Compile Include="Logic\Factories\Interfaces\IFactory.cs" />
+    <Compile Include="Logic\Factories\Interfaces\IRepositoryFactory.cs" />
+    <Compile Include="Logic\Factories\ManagerFactory.cs" />
+    <Compile Include="Logic\Factories\RepositoryFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Helpers\MappingHelper.cs" />
+    <Compile Include="Logic\Helpers\SelectListItemHelper.cs" />
+    <Compile Include="Logic\Managers\CarManager.cs" />
+    <Compile Include="Logic\Managers\CategoryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
+    <Compile Include="Logic\Managers\Manager.cs" />
+    <Compile Include="Logic\Repositories\AdditionalDataRepository.cs" />
+    <Compile Include="Logic\Repositories\AdditionalEquipmentRepository.cs" />
+    <Compile Include="Logic\Repositories\BodyRepository.cs" />
+    <Compile Include="Logic\Repositories\BrandRepository.cs" />
+    <Compile Include="Logic\Repositories\CarPhotoRepository.cs" />
+    <Compile Include="Logic\Repositories\CarRepository.cs" />
+    <Compile Include="Logic\Repositories\CharacterRepository.cs" />
+    <Compile Include="Logic\Repositories\ColorRepository.cs" />
+    <Compile Include="Logic\Repositories\CountryRepository.cs" />
+    <Compile Include="Logic\Repositories\GearboxRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IAdditionalDataRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IAdditionalEquipmentRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICarPhotoRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IColorRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICountryRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IGearboxRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IMainDataRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IBodyRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IBrandRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICarRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICharacterRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IModelRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IPositionOfSteeringWheelRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IPropulsionRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ISourceOfEnergyRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
+    <Compile Include="Logic\Repositories\MainDataRepository.cs" />
+    <Compile Include="Logic\Repositories\ModelRepository.cs" />
+    <Compile Include="Logic\Repositories\PositionOfSteeringWheelRepository.cs" />
+    <Compile Include="Logic\Repositories\PropulsionRepository.cs" />
+    <Compile Include="Logic\Repositories\SourceOfEnergyRepository.cs" />
+    <Compile Include="Logic\Repositories\TypeRepository.cs" />
+    <Compile Include="Migrations\201610210044090_Initial.cs" />
+    <Compile Include="Migrations\201610210044090_Initial.Designer.cs">
+      <DependentUpon>201610210044090_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610262119528_AllowNullToAdditionalDataInCarModel.cs" />
+    <Compile Include="Migrations\201610262119528_AllowNullToAdditionalDataInCarModel.Designer.cs">
+      <DependentUpon>201610262119528_AllowNullToAdditionalDataInCarModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.cs" />
+    <Compile Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.Designer.cs">
+      <DependentUpon>201610282016032_MadeSomeForeignKeyOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.cs" />
+    <Compile Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.Designer.cs">
+      <DependentUpon>201610301550135_AddedImagePathToCarPhotoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.cs" />
+    <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.Designer.cs">
+      <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdditionalData.cs" />
+    <Compile Include="Models\AdditionalEquipment.cs" />
+    <Compile Include="Models\Body.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Context\ApplicationDbContext.cs" />
+    <Compile Include="Models\Context\TypicalMirekEntities.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Gearbox.cs" />
+    <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MainData.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\CarPhoto.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Propulsion.cs" />
+    <Compile Include="Models\SourceOfEnergy.cs" />
+    <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\ViewModels\AddCarViewModel.cs" />
+    <Compile Include="Models\ViewModels\BasicModel.cs" />
+    <Compile Include="Models\ViewModels\CarDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModels\DisplayCarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Logic\Repositories\BaseRepository.cs" />
+    <Compile Include="Logic\Repositories\CategoryRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Images\image1.jpg" />
+    <Content Include="App_Data\Images\image2.jpg" />
+    <Content Include="App_Data\Images\image3.jpg" />
+    <Content Include="App_Data\Images\image4.jpg" />
+    <Content Include="App_Data\Images\image5.jpg" />
+    <Content Include="App_Data\Slider\bullet.png" />
+    <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\js-image-slider.css" />
+    <Content Include="Content\PureDropdownMenu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -198,6 +324,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-image-slider.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -236,9 +363,36 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\CarManagement\Create.cshtml" />
+    <Content Include="Views\CarManagement\Delete.cshtml" />
+    <Content Include="Views\CarManagement\Details.cshtml" />
+    <Content Include="Views\CarManagement\Edit.cshtml" />
+    <Content Include="Views\CarManagement\Index.cshtml" />
+    <Content Include="Views\CarModels\Create.cshtml" />
+    <Content Include="Views\CarModels\Delete.cshtml" />
+    <Content Include="Views\CarModels\Details.cshtml" />
+    <Content Include="Views\CarModels\Edit.cshtml" />
+    <Content Include="Views\CarModels\Index.cshtml" />
+    <Content Include="Views\CarBodies\Create.cshtml" />
+    <Content Include="Views\CarBodies\Delete.cshtml" />
+    <Content Include="Views\CarBodies\Details.cshtml" />
+    <Content Include="Views\CarBodies\Edit.cshtml" />
+    <Content Include="Views\CarBodies\Index.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_PureDropdownMenu.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Car\" />
+    <Folder Include="Views\GetPhoto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -247,6 +401,26 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610210044090_Initial.resx">
+      <DependentUpon>201610210044090_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610262119528_AllowNullToAdditionalDataInCarModel.resx">
+      <DependentUpon>201610262119528_AllowNullToAdditionalDataInCarModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610282016032_MadeSomeForeignKeyOptional.resx">
+      <DependentUpon>201610282016032_MadeSomeForeignKeyOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610301550135_AddedImagePathToCarPhotoModel.resx">
+      <DependentUpon>201610301550135_AddedImagePathToCarPhotoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.resx">
+      <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

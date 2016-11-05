@@ -1,1 +1,2 @@
-# -Used-Car-Dealership---ASP.NET-MVC--Website
+# Used Car Dealership "Typical Mirek" 
+# ASP.NET MVC Website

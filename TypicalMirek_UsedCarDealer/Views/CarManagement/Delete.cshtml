@@ -1,0 +1,64 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.Car
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayText("Additional Data Id:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalData.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayText("Main Data Id")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainData.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Propulsion.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Propulsion.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceOfEnergy.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SourceOfEnergy.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

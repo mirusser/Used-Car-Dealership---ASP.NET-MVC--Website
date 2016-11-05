@@ -1,0 +1,19 @@
+﻿@{
+    //po zakomentowaniu poniższego się jebie
+    //zapewne style
+    //Layout = null;
+}
+@model int
+
+<table>
+    <tr>
+        <th>
+            @{
+                Html.RenderPartial($"PartialViews/_PureDropdownMenu");
+            }
+        </th>
+        <th>
+            @Model
+        </th>
+    </tr>
+</table>
