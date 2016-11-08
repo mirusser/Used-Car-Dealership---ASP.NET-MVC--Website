@@ -23,6 +23,8 @@ namespace TypicalMirek_UsedCarDealer
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/fileinput.css",
+                        "~/Content/fileinput.min.css",
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/site.css"));
