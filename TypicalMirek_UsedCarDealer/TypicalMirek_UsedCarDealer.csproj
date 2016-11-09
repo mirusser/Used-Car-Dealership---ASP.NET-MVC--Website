@@ -310,6 +310,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\js-image-slider.css" />
     <Content Include="Content\PureDropdownMenu.css" />
+    <Content Include="Content\simple-sidebar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -373,11 +374,11 @@
     <Content Include="Views\CarManagement\Details.cshtml" />
     <Content Include="Views\CarManagement\Edit.cshtml" />
     <Content Include="Views\CarManagement\Index.cshtml" />
-    <Content Include="Views\CarModels\Create.cshtml" />
-    <Content Include="Views\CarModels\Delete.cshtml" />
-    <Content Include="Views\CarModels\Details.cshtml" />
-    <Content Include="Views\CarModels\Edit.cshtml" />
-    <Content Include="Views\CarModels\Index.cshtml" />
+    <Content Include="Views\CarManagement\CarModels\Create.cshtml" />
+    <Content Include="Views\CarManagement\CarModels\Delete.cshtml" />
+    <Content Include="Views\CarManagement\CarModels\Details.cshtml" />
+    <Content Include="Views\CarManagement\CarModels\Edit.cshtml" />
+    <Content Include="Views\CarManagement\CarModels\Index.cshtml" />
     <Content Include="Views\CarBodies\Create.cshtml" />
     <Content Include="Views\CarBodies\Delete.cshtml" />
     <Content Include="Views\CarBodies\Details.cshtml" />
@@ -387,8 +388,8 @@
     <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
-    <Content Include="Views\Admin\PartialViews\_PureDropdownMenu.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />

@@ -9,11 +9,43 @@
     <tr>
         <th>
             @{
-                Html.RenderPartial($"PartialViews/_PureDropdownMenu");
+                Html.RenderPartial($"PartialViews/_Sidebar");
             }
         </th>
         <th>
-            @Model
-        </th>
+            @{
+                switch (Model)
+                {
+                    case 1:
+                        Html.RenderPartial($"CarManagement/Create");
+                        break;
+                    case 2:
+                        Html.RenderPartial($"CarManagement/Delete");
+                        break;
+                    case 3:
+                        Html.RenderPartial($"CarManagement/Details");
+                        break;
+                    case 4:
+                        Html.RenderPartial($"CarManagement/Edit");
+                        break;
+                    case 5:
+                        Html.RenderPartial($"Categories/Create");
+                        break;
+                    case 6:
+                        Html.RenderPartial($"Categories/Delete");
+                        break;
+                    case 7:
+                        Html.RenderPartial($"Categories/Details");
+                        break;
+                    case 8:
+                        Html.RenderPartial($"Categories/Edit");
+                        break;
+                    case 9:
+                        Html.RenderPartial($"Categories/Edit");
+                        break;
+                }
+                }
+                @Model
+            </th>
     </tr>
 </table>
