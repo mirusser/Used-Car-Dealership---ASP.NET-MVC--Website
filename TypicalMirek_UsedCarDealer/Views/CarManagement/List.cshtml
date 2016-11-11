@@ -1,0 +1,47 @@
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model IEnumerable<TypicalMirek_UsedCarDealer.Models.ViewModels.DisplayCarViewModel>
+
+@{
+    ViewBag.Title = "Car list";
+}
+
+<h2>Car List</h2>
+
+<p>
+    @Html.ActionLink(linkText: "New Car", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null }, htmlAttributes: null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.CarImageName))
+                {
+                    <div>
+                        <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.CarImageName})" alt="" height="100" width="100" />
+                    </div>
+                }
+            </td>
+            <td>
+                @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCar, Id = item.Id }, htmlAttributes: null) |
+                @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsCar, Id = item.Id }, htmlAttributes: null) |
+                @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteCar, Id = item.Id }, htmlAttributes: null)
+            </td>
+        </tr>
+    }
+
+</table>

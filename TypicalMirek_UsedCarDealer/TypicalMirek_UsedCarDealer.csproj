@@ -187,10 +187,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Logic\Controllers\AccountController.cs" />
+    <Compile Include="Logic\Controllers\AdminController.cs" />
     <Compile Include="Logic\Controllers\CarBodiesController.cs" />
     <Compile Include="Logic\Controllers\CarManagementController.cs" />
     <Compile Include="Logic\Controllers\CarModelsController.cs" />
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
+    <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
@@ -274,7 +276,9 @@
     <Compile Include="Models\Context\ApplicationDbContext.cs" />
     <Compile Include="Models\Context\TypicalMirekEntities.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Gearbox.cs" />
+    <Compile Include="Models\ParametersToAdminMenu.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainData.cs" />
@@ -297,10 +301,20 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Images\image1.jpg" />
+    <Content Include="App_Data\Images\image2.jpg" />
+    <Content Include="App_Data\Images\image3.jpg" />
+    <Content Include="App_Data\Images\image4.jpg" />
+    <Content Include="App_Data\Images\image5.jpg" />
+    <Content Include="App_Data\Slider\bullet.png" />
+    <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\js-image-slider.css" />
+    <Content Include="Content\PureDropdownMenu.css" />
+    <Content Include="Content\simple-sidebar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -317,6 +331,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-image-slider.js" />
     <Content Include="Scripts\locales\ar.js" />
     <Content Include="Scripts\locales\bg.js" />
     <Content Include="Scripts\locales\ca.js" />
@@ -356,6 +371,7 @@
     <Content Include="Scripts\plugins\sortable.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\simple-sidebar.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -364,7 +380,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -396,11 +414,6 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\CarManagement\Create.cshtml" />
-    <Content Include="Views\CarManagement\Delete.cshtml" />
-    <Content Include="Views\CarManagement\Details.cshtml" />
-    <Content Include="Views\CarManagement\Edit.cshtml" />
-    <Content Include="Views\CarManagement\Index.cshtml" />
     <Content Include="Views\CarModels\Create.cshtml" />
     <Content Include="Views\CarModels\Delete.cshtml" />
     <Content Include="Views\CarModels\Details.cshtml" />
@@ -411,13 +424,22 @@
     <Content Include="Views\CarBodies\Details.cshtml" />
     <Content Include="Views\CarBodies\Edit.cshtml" />
     <Content Include="Views\CarBodies\Index.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_Sidebar.cshtml" />
+    <Content Include="Views\CarManagement\Create.cshtml" />
+    <Content Include="Views\CarManagement\Delete.cshtml" />
+    <Content Include="Views\CarManagement\Details.cshtml" />
+    <Content Include="Views\CarManagement\Edit.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
-    <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
+    <Content Include="Views\CarManagement\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Images\" />
+    <Folder Include="App_Data\Car\" />
+    <Folder Include="Logic\Controllers\Admin\" />
+    <Folder Include="Views\GetPhoto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

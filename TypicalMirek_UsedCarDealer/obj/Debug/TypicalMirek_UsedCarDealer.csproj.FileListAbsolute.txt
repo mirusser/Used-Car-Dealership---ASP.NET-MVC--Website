@@ -146,20 +146,99 @@ C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCar
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.Initial.resources
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Mirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AddedMissingForeignKeyinPhoto.resources
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csprojResolveAssemblyReference.cache
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.dll
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.pdb
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\csc.exe
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\vbc.exe
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\VBCSCompiler.exe
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\TypicalMirek_UsedCarDealer.dll.config
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\TypicalMirek_UsedCarDealer.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\TypicalMirek_UsedCarDealer.pdb
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Antlr3.Runtime.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\EntityFramework.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\EntityFramework.SqlServer.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Newtonsoft.Json.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Ninject.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Common.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Mvc.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Owin.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Helpers.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Mvc.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Optimization.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Razor.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.WebPages.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.WebPages.Razor.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\WebActivatorEx.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\WebGrease.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Ninject.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Common.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Ninject.Web.Mvc.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Helpers.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Mvc.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Optimization.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.Razor.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.WebPages.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\System.Web.WebPages.Razor.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Antlr3.Runtime.pdb
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Newtonsoft.Json.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\EntityFramework.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\EntityFramework.SqlServer.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.Initial.resources
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AllowNullToAdditionalDataInCarModel.resources
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.MadeSomeForeignKeyOptional.resources
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AddedImagePathToCarPhotoModel.resources
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.RenamedColumnInPositionOfSteeringWheel.resources
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.dll
+C:\Users\Pablo\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\Development-Pawel\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.pdb
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\csc.exe
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\vbc.exe
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\VBCSCompiler.exe
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\TypicalMirek_UsedCarDealer.dll.config
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\TypicalMirek_UsedCarDealer.dll
@@ -222,9 +301,12 @@ C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCar
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csprojResolveAssemblyReference.cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.Initial.resources
-C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AllowNullToAdditionalDataInCarModel.resources
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.MadeSomeForeignKeyOptional.resources
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.AddedImagePathToCarPhotoModel.resources
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.RenamedColumnInPositionOfSteeringWheel.resources
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.dll
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.pdb

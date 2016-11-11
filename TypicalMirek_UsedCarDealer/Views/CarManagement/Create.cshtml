@@ -2,6 +2,7 @@
 @model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
 @{
     ViewBag.Title = "Create";
+    Layout = "";
 }
 
 <h2>Add car</h2>
@@ -34,7 +35,3 @@
 <div>
     @Html.ActionLink("Back to List", $"Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

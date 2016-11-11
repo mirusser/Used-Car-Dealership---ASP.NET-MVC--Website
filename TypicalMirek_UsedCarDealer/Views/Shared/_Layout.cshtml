@@ -9,7 +9,6 @@
     @RenderSection("scripts", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -27,18 +26,23 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cars", "Index", "CarManagement")</li>
+                   
+                    <li>@Html.ActionLink("Cars", "List", "CarManagement")</li>
+                    <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Typical Mirek - Used car dealership</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+</div>
+<div class="center-block">
+    <hr />
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Typical Mirek - Used car dealership</p>
+    </footer>
+</div>
+    
 </body>
 </html>
