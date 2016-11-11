@@ -1,15 +1,11 @@
 ﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
 
-
-<link href="~/Content/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 <script src="~/Scripts/plugins/canvas-to-blob.min.js"></script>
 <script src="~/Scripts/plugins/sortable.min.js"></script>
 <script src="~/Scripts/plugins/purify.min.js"></script>
 <script src="~/Scripts/fileinput.min.js"></script>
 <script src="~/Scripts/locales/pl.js"></script>
-@*<script src="~/Scripts/local/legacy/scriptForImages.js"></script>*@
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
 
@@ -32,27 +28,15 @@
 
     <div class="form-group">
         <div class="col-md-6 col-xs-12">
-            @*<form enctype="multipart/form-data">*@
                 <div class="form-group">
                     <input id="file-4" type="file" class="file" data-upload-url="#">
                 </div>
-            @*</form>*@
             @Html.ValidationMessageFor(model => Model.Photos)
         </div>
     </div>
 
 </div>
 <hr />
-
-@*<div class="container kv-main">
-    <form enctype="multipart/form-data">
-        <hr>
-        <div class="form-group">
-            <input id="file-4" type="file" class="file" data-upload-url="#">
-        </div>
-    </form>
-</div>*@
-
 <script>
     $('#file-fr').fileinput({
         language: 'fr',
@@ -73,7 +57,7 @@
         overwriteInitial: false,
         maxFileSize: 1000,
         maxFilesNum: 10,
-        //allowedFileTypes: ['image', 'video', 'flash'],
+        allowedFileTypes: ['image'],
         slugCallback: function (filename) {
             return filename.replace('(', '_').replace(']', '_');
         }
