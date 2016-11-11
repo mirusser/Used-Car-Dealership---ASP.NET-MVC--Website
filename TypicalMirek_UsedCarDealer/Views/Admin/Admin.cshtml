@@ -1,19 +1,60 @@
-﻿@{
-    //po zakomentowaniu poniższego się jebie
-    //zapewne style
-    Layout = null;
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model ParametersToAdminMenu
+@{
+    SidebarChoose? choise = (dynamic)Model.Chose;
 }
-@model int
 
-<table>
-    <tr>
-        <th>
+@using (Html.BeginForm())
+{
+    <div>
+        <div class="form-horizontal col-md-2">
+            <div class="form-group">
+                @{
+                    Html.RenderPartial($"PartialViews/_Sidebar");
+                }
+            </div>
+        </div>
+
+        <div class="form-horizontal col-md-10">
             @{
-                Html.RenderPartial($"PartialViews/_PureDropdownMenu");
+                switch (choise)
+                {
+                    case SidebarChoose.Nothing:
+                        {
+                            break;
+                        }
+                    case SidebarChoose.CarList:
+                        {
+                            @Html.Action("List", "CarManagement");
+                            break;
+                        }
+                    case SidebarChoose.CreateCar:
+                        {
+                            @Html.Action("Create", "CarManagement");
+                            break;
+                        }
+                    case SidebarChoose.DetailsCar:
+                        {
+                            @Html.Action("Details", "CarManagement", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.EditCar:
+                        {
+                            @Html.Action("Edit", "CarManagement", routeValues: new { id = Model.Id});
+                        break;
+                    }
+                case SidebarChoose.DeleteCar:
+                    {
+                        @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id})
+                        break;
+                    }
             }
-        </th>
-        <th>
-            @Model
-        </th>
-    </tr>
-</table>
+            }
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
