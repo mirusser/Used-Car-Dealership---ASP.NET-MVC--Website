@@ -16,7 +16,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private TypicalMirekEntities db = new TypicalMirekEntities();
 
         // GET: CarBodies
-        public ActionResult Index()
+        public ActionResult List()
         {
             return View(db.Bodies.ToList());
         }
@@ -53,7 +53,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 db.Bodies.Add(body);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
             return View(body);
@@ -85,7 +85,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 db.Entry(body).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             return View(body);
         }
@@ -113,7 +113,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             Body body = db.Bodies.Find(id);
             db.Bodies.Remove(body);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)

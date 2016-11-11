@@ -1,4 +1,6 @@
-﻿@model TypicalMirek_UsedCarDealer.Models.Car
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model TypicalMirek_UsedCarDealer.Models.Car
 
 @{
     ViewBag.Title = "Delete";
@@ -58,7 +60,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteBodies }, htmlAttributes: null) |
         </div>
     }
 </div>

@@ -44,12 +44,37 @@
                             @Html.Action("Edit", "CarManagement", routeValues: new { id = Model.Id});
                         break;
                     }
-                case SidebarChoose.DeleteCar:
-                    {
-                        @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id})
-                        break;
-                    }
-            }
+                    case SidebarChoose.DeleteCar:
+                        {
+                            @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id})
+                            break;
+                        }
+                    case SidebarChoose.BodiesList:
+                        {
+                            @Html.Action("List", "CarBodies");
+                            break;
+                        }
+                    case SidebarChoose.CreateBodies:
+                        {
+                            @Html.Action("Create", "CarBodies");
+                            break;
+                        }
+                    case SidebarChoose.DetailsBodies:
+                        {
+                            @Html.Action("Details", "CarBodies", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.EditBodies:
+                        {
+                            @Html.Action("Edit", "CarBodies", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.DeleteBodies:
+                        {
+                            @Html.Action("Delete", "CarBodies", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                }
             }
         </div>
     </div>

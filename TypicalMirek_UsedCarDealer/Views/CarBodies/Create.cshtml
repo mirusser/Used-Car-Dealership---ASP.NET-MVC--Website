@@ -1,4 +1,6 @@
-﻿@model TypicalMirek_UsedCarDealer.Models.Body
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model TypicalMirek_UsedCarDealer.Models.Body
 
 @{
     ViewBag.Title = "Create";
@@ -32,8 +34,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList }, htmlAttributes: null) |
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

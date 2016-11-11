@@ -236,12 +236,14 @@
     <Compile Include="Logic\Repositories\Interfaces\IModelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPropulsionRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ISliderPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ISourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
     <Compile Include="Logic\Repositories\MainDataRepository.cs" />
     <Compile Include="Logic\Repositories\ModelRepository.cs" />
     <Compile Include="Logic\Repositories\PositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\PropulsionRepository.cs" />
+    <Compile Include="Logic\Repositories\SliderPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\SourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\TypeRepository.cs" />
     <Compile Include="Migrations\201610210044090_Initial.cs" />
@@ -263,6 +265,10 @@
     <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.cs" />
     <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.Designer.cs">
       <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611112027538_SliderPhoto.cs" />
+    <Compile Include="Migrations\201611112027538_SliderPhoto.Designer.cs">
+      <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -287,6 +293,7 @@
     <Compile Include="Models\CarPhoto.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Propulsion.cs" />
+    <Compile Include="Models\SliderPhoto.cs" />
     <Compile Include="Models\SourceOfEnergy.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\ViewModels\AddCarViewModel.cs" />
@@ -423,7 +430,7 @@
     <Content Include="Views\CarBodies\Delete.cshtml" />
     <Content Include="Views\CarBodies\Details.cshtml" />
     <Content Include="Views\CarBodies\Edit.cshtml" />
-    <Content Include="Views\CarBodies\Index.cshtml" />
+    <Content Include="Views\CarBodies\List.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Admin\PartialViews\_Sidebar.cshtml" />
     <Content Include="Views\CarManagement\Create.cshtml" />
@@ -439,7 +446,6 @@
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
     <Folder Include="Logic\Controllers\Admin\" />
-    <Folder Include="Views\GetPhoto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.resx">
       <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611112027538_SliderPhoto.resx">
+      <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

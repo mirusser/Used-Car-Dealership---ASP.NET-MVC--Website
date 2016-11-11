@@ -310,3 +310,4 @@ C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCar
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.csproj.GenerateResource.Cache
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.dll
 C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.pdb
+C:\Users\Jan Kowalski\Documents\Visual Studio 2015\Projects\TypicalMirek_UsedCarDealer\TypicalMirek\TypicalMirek_UsedCarDealer\obj\Debug\TypicalMirek_UsedCarDealer.Migrations.SliderPhoto.resources

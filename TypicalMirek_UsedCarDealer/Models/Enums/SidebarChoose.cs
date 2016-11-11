@@ -12,6 +12,11 @@ namespace TypicalMirek_UsedCarDealer.Models.Enums
         CreateCar,
         DetailsCar,
         EditCar,
-        DeleteCar
+        DeleteCar,
+        BodiesList,
+        CreateBodies,
+        DetailsBodies,
+        EditBodies,
+        DeleteBodies
     }
 }
