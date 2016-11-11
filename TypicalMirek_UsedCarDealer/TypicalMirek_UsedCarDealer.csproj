@@ -329,6 +329,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\simple-sidebar.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -337,7 +338,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -369,30 +372,39 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\CarManagement\Create.cshtml" />
-    <Content Include="Views\CarManagement\Delete.cshtml" />
-    <Content Include="Views\CarManagement\Details.cshtml" />
-    <Content Include="Views\CarManagement\Edit.cshtml" />
-    <Content Include="Views\CarManagement\Index.cshtml" />
-    <Content Include="Views\CarManagement\CarModels\Create.cshtml" />
-    <Content Include="Views\CarManagement\CarModels\Delete.cshtml" />
-    <Content Include="Views\CarManagement\CarModels\Details.cshtml" />
-    <Content Include="Views\CarManagement\CarModels\Edit.cshtml" />
-    <Content Include="Views\CarManagement\CarModels\Index.cshtml" />
-    <Content Include="Views\CarBodies\Create.cshtml" />
-    <Content Include="Views\CarBodies\Delete.cshtml" />
-    <Content Include="Views\CarBodies\Details.cshtml" />
-    <Content Include="Views\CarBodies\Edit.cshtml" />
-    <Content Include="Views\CarBodies\Index.cshtml" />
-    <Content Include="Views\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
-    <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
-    <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
-    <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\Admin\CarManagement\Create.cshtml" />
+    <Content Include="Views\Admin\CarManagement\Delete.cshtml" />
+    <Content Include="Views\Admin\CarManagement\Details.cshtml" />
+    <Content Include="Views\Admin\CarManagement\Edit.cshtml" />
+    <Content Include="Views\Admin\CarManagement\Index.cshtml" />
+    <Content Include="Views\Admin\CarModels\Create.cshtml" />
+    <Content Include="Views\Admin\CarModels\Delete.cshtml" />
+    <Content Include="Views\Admin\CarModels\Details.cshtml" />
+    <Content Include="Views\Admin\CarModels\Edit.cshtml" />
+    <Content Include="Views\Admin\CarModels\Index.cshtml" />
+    <Content Include="Views\Admin\CarBodies\Create.cshtml" />
+    <Content Include="Views\Admin\CarBodies\Delete.cshtml" />
+    <Content Include="Views\Admin\CarBodies\Details.cshtml" />
+    <Content Include="Views\Admin\CarBodies\Edit.cshtml" />
+    <Content Include="Views\Admin\CarBodies\Index.cshtml" />
+    <Content Include="Views\Admin\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
+    <Content Include="Views\Admin\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
+    <Content Include="Views\Admin\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
+    <Content Include="Views\Admin\CarManagement\PartialViews\_CreateCarModel.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Admin\PartialViews\_Sidebar.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_CreateCarAdditionalData.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_CreateCarMainData.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\Admin\PartialViews\_UploadCarPhotos.cshtml" />
+    <Content Include="Views\Admin\CreateCar.cshtml" />
+    <Content Include="Views\Admin\ShowCarList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
+    <Folder Include="Views\Admin\css\" />
+    <Folder Include="Views\Admin\js\" />
+    <Folder Include="Views\Admin\tables\" />
     <Folder Include="Views\GetPhoto\" />
   </ItemGroup>
   <ItemGroup>

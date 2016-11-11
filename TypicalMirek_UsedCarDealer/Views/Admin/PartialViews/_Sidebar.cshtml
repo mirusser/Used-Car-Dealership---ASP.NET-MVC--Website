@@ -1,29 +1,33 @@
 ﻿@Styles.Render("~/Content/simple-sidebar")
+@Scripts.Render("~/bundles/simple-sidebar")
 
-<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Car Models<span class="caret"></span><span style="font-size: 16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-list"></span></a>
-                    <ul class="dropdown-menu forAnimate" role="menu">
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=1")>Create</a></li>
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=2")>Delete</a></li>
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=3")>Details</a></li>
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=4")>Edit</a></li>
-                    </ul>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a id="menu-toggle" href="#" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="home.xhtml">
+                logo
+            </a>
+        </div>
+        <div id="sidebar-wrapper" class="sidebar-toggle">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href=@Url.Content("~/Admin/Admin?parameter=1")>Show List</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-list"></span></a>
-                    <ul class="dropdown-menu forAnimate" role="menu">
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=5")>Create</a></li>
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=6")>Delete</a></li>
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=7")>Details</a></li>
-                        <li><a href=@Url.Content("~/Admin/Admin?parameter=8")>Edit</a></li>
-                    </ul>
+                <li>
+                    <a href="#item2">Item 2</a>
                 </li>
-                <li><a href=@Url.Content("~/Admin/Admin?parameter=9")>Slider <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-large"></span></a></li>
+                <li>
+                    <a href="#item3">Item 3</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+

@@ -10,6 +10,9 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new StyleBundle("~/Content/simple-sidebar").Include(
                       "~/Content/simple-sidebar.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/simple-sidebar").Include(
+                        "~/Scripts/simple-sidebar.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

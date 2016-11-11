@@ -1,9 +1,4 @@
-﻿@{
-    //po zakomentowaniu poniższego się jebie
-    //zapewne style
-    //Layout = null;
-}
-@model int
+﻿@model int
 
 <table>
     <tr>
@@ -17,7 +12,7 @@
                 switch (Model)
                 {
                     case 1:
-                        Html.RenderPartial($"CarManagement/Create");
+                        Html.RenderAction($"CreateCar");
                         break;
                     case 2:
                         Html.RenderPartial($"CarManagement/Delete");
@@ -44,8 +39,8 @@
                         Html.RenderPartial($"Categories/Edit");
                         break;
                 }
-                }
-                @Model
-            </th>
+            }
+            @Model
+        </th>
     </tr>
 </table>
