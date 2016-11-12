@@ -7,29 +7,13 @@
 @Styles.Render("~/Content/js-image-slider")
 @Scripts.Render("~/bundles/js-image-slider")
 
-<div class="row">
-    <div class="col-md-3">
-        car photo
-    </div>
-    <div class="col-md-3">
-        car photo
-    </div>
-    <div class="col-md-3">
-        car photo
-    </div>
-    <div class="col-md-3">
-        car photo
-    </div>
-</div>
-
 <div class="form-group">
     <div class="row">
         <div id="sliderFrame">
             <div id="slider" @*class="col-md-12 col-sm-12 col-lg-12 col-sx-12"*@>
-                <a href="http://www.menucool.com/javascript-image-slider" target="_blank">
+                @*<a href="http://www.menucool.com/javascript-image-slider" target="_blank">
                     <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image1.jpg")" alt="Welcome to Menucool.com"/>
-                </a>
-                
+                </a>*@
                 @*<img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image2.jpg")" alt=""/>
                 <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image3.jpg")" alt="Pure Javascript. No jQuery. No flash." />
                 <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image4.jpg")" alt="#htmlcaption" />

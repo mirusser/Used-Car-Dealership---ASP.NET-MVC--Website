@@ -12,7 +12,7 @@
                 @Html.ActionLink(linkText: "Car bodies", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList, Id = null })
             </li>
             <li>
-                <a href="">Item 3</a>
+                @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList, Id = null })
             </li>
         </ul>
 </div>

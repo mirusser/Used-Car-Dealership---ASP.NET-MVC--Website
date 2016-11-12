@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Managers;
+using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 
@@ -9,25 +11,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ISliderPhotoRepository sliderPhotoRepository;
-        private readonly ICarPhotoRepository carPhotoRepository;
+        private readonly ISliderPhotoManager sliderPhotoManager;
 
-        public HomeController(IRepositoryFactory repositoryFactory)
+        public HomeController(IManagerFactory managerFactory)
         {
-            sliderPhotoRepository = repositoryFactory.Get<SliderPhotoRepository>();
-            carPhotoRepository = repositoryFactory.Get<CarPhotoRepository>();
+            sliderPhotoManager = managerFactory.Get<SliderPhotoManager>();
         }
 
         public ActionResult Index()
         {
-            var sliderPhotoNames = new List<string>();
-            var sliderPhotos = sliderPhotoRepository.GetAll().ToList();
-            sliderPhotos.ForEach(p =>
-            {
-                sliderPhotoNames.Add(carPhotoRepository.GetById(p.Id).Name);
-            });
-
-            return View(sliderPhotoNames);
+            return View(sliderPhotoManager.GetNames());
         }
 
         public ActionResult About()

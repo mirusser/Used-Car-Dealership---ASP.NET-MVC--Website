@@ -188,6 +188,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Logic\Controllers\AccountController.cs" />
     <Compile Include="Logic\Controllers\AdminController.cs" />
+    <Compile Include="Logic\Controllers\BrandsController.cs" />
     <Compile Include="Logic\Controllers\CarBodiesController.cs" />
     <Compile Include="Logic\Controllers\CarManagementController.cs" />
     <Compile Include="Logic\Controllers\CarModelsController.cs" />
@@ -206,12 +207,16 @@
     </Compile>
     <Compile Include="Logic\Helpers\MappingHelper.cs" />
     <Compile Include="Logic\Helpers\SelectListItemHelper.cs" />
+    <Compile Include="Logic\Managers\BrandManager.cs" />
     <Compile Include="Logic\Managers\CarManager.cs" />
     <Compile Include="Logic\Managers\CategoryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
+    <Compile Include="Logic\Managers\SliderPhotoManager.cs" />
     <Compile Include="Logic\Repositories\AdditionalDataRepository.cs" />
     <Compile Include="Logic\Repositories\AdditionalEquipmentRepository.cs" />
     <Compile Include="Logic\Repositories\BodyRepository.cs" />
@@ -308,11 +313,28 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
+    <Content Include="App_Data\Images\Diagram.png" />
+    <Content Include="App_Data\Images\ex1.png" />
+    <Content Include="App_Data\Images\exception — kopia.png" />
+    <Content Include="App_Data\Images\exception.png" />
+    <Content Include="App_Data\Images\fractal blue.jpg" />
+    <Content Include="App_Data\Images\how to send signal to another object.PNG" />
     <Content Include="App_Data\Images\image1.jpg" />
     <Content Include="App_Data\Images\image2.jpg" />
     <Content Include="App_Data\Images\image3.jpg" />
     <Content Include="App_Data\Images\image4.jpg" />
     <Content Include="App_Data\Images\image5.jpg" />
+    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana — kopia.jpg" />
+    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana.jpg" />
+    <Content Include="App_Data\Images\projekt2016_Mirosław_Nawrot.png" />
+    <Content Include="App_Data\Images\sad funky face — kopia.png" />
+    <Content Include="App_Data\Images\sad funky face.png" />
+    <Content Include="App_Data\Images\sad.png" />
+    <Content Include="App_Data\Images\slack.png" />
+    <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
+    <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
+    <Content Include="App_Data\Images\ubrana w cień.jpg" />
     <Content Include="App_Data\Slider\bullet.png" />
     <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
@@ -442,6 +464,11 @@
     <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
     <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
     <Content Include="Views\CarManagement\List.cshtml" />
+    <Content Include="Views\Brands\Create.cshtml" />
+    <Content Include="Views\Brands\Delete.cshtml" />
+    <Content Include="Views\Brands\Details.cshtml" />
+    <Content Include="Views\Brands\Edit.cshtml" />
+    <Content Include="Views\Brands\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />

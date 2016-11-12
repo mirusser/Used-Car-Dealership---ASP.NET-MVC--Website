@@ -1,5 +1,6 @@
 ﻿@using TypicalMirek_UsedCarDealer.Models
 @using TypicalMirek_UsedCarDealer.Models.Enums
+
 @model ParametersToAdminMenu
 @{
     SidebarChoose? choise = (dynamic)Model.Chose;
@@ -15,8 +16,11 @@
                 }
             </div>
         </div>
+        <div class="col-md-1">
+            
+        </div>
 
-        <div class="form-horizontal col-md-10">
+        <div class="form-horizontal col-md-7">
             @{
                 switch (choise)
                 {
@@ -72,6 +76,31 @@
                     case SidebarChoose.DeleteBodies:
                         {
                             @Html.Action("Delete", "CarBodies", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.BrandList:
+                        {
+                            @Html.Action("List", "Brands");
+                            break;
+                        }
+                    case SidebarChoose.CreateBrand:
+                        {
+                            @Html.Action("Create", "Brands");
+                            break;
+                        }
+                    case SidebarChoose.DetailsBrand:
+                        {
+                            @Html.Action("Details", "Brands", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.EditBrand:
+                        {
+                            @Html.Action("Edit", "Brands", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.DeleteBrand:
+                        {
+                            @Html.Action("Delete", "Brands", routeValues: new { id = Model.Id })
                             break;
                         }
                 }
