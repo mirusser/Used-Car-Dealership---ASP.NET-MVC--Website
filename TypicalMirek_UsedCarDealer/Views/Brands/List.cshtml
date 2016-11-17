@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm("List", "Brands", null, FormMethod.Get))
 {
-    <h2>Index</h2>
+    <h2>List of brands</h2>
 
     <p>
         @Html.ActionLink(linkText: "New brand", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateBrand, Id = null }, htmlAttributes: null)

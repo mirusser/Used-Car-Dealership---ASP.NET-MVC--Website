@@ -208,9 +208,11 @@
     <Compile Include="Logic\Helpers\MappingHelper.cs" />
     <Compile Include="Logic\Helpers\SelectListItemHelper.cs" />
     <Compile Include="Logic\Managers\BrandManager.cs" />
+    <Compile Include="Logic\Managers\CarBodyManager.cs" />
     <Compile Include="Logic\Managers\CarManager.cs" />
     <Compile Include="Logic\Managers\CategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />

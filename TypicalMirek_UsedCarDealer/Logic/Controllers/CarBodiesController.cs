@@ -6,6 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Managers;
+using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
 
@@ -13,12 +17,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CarBodiesController : Controller
     {
-        private TypicalMirekEntities db = new TypicalMirekEntities();
+        //private TypicalMirekEntities db = new TypicalMirekEntities();
 
+        private readonly ICarBodyManager carBodyManager;
+
+        public CarBodiesController(IManagerFactory managerFactory)
+        {
+            carBodyManager = managerFactory.Get<CarBodyManager>();
+        }
         // GET: CarBodies
         public ActionResult List()
         {
-            return View(db.Bodies.ToList());
+            return View(carBodyManager.GetAll().ToList());
         }
 
         // GET: CarBodies/Details/5
@@ -28,7 +38,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Body body = db.Bodies.Find(id);
+            var body = carBodyManager.GetById(Convert.ToInt32(id));
             if (body == null)
             {
                 return HttpNotFound();
@@ -43,17 +53,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: CarBodies/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Body body)
         {
             if (ModelState.IsValid)
             {
-                db.Bodies.Add(body);
-                db.SaveChanges();
-                return RedirectToAction("List");
+                carBodyManager.Add(body);
+                return View("List", carBodyManager.GetAll().ToList());
             }
 
             return View(body);
@@ -66,7 +73,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Body body = db.Bodies.Find(id);
+            var body = carBodyManager.GetById(Convert.ToInt32(id));
             if (body == null)
             {
                 return HttpNotFound();
@@ -75,17 +82,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: CarBodies/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] Body body)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(body).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("List");
+                carBodyManager.Modify(body);
+                return View("List", carBodyManager.GetAll().ToList());
             }
             return View(body);
         }
@@ -97,7 +101,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Body body = db.Bodies.Find(id);
+            var body = carBodyManager.GetById(Convert.ToInt32(id));
             if (body == null)
             {
                 return HttpNotFound();
@@ -110,17 +114,15 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Body body = db.Bodies.Find(id);
-            db.Bodies.Remove(body);
-            db.SaveChanges();
-            return RedirectToAction("List");
+            carBodyManager.Delete(id);
+            return View("List", carBodyManager.GetAll().ToList());
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                carBodyManager.Dispose();
             }
             base.Dispose(disposing);
         }

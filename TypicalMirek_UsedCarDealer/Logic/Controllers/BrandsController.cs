@@ -99,7 +99,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 {
                     return View(brand);
                 }
-                return RedirectToAction("List");
+                return View("List", brandManager.GetAll().ToList());
             }
             return View(brand);
         }
@@ -130,7 +130,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 return HttpNotFound();
             }
             brandManager.Delete(brand);
-            return RedirectToAction("List");
+            return View("List", brandManager.GetAll().ToList());
         }
 
         protected override void Dispose(bool disposing)
