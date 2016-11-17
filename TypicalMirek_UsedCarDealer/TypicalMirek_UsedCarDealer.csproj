@@ -303,6 +303,7 @@
     <Compile Include="Models\SliderPhoto.cs" />
     <Compile Include="Models\SourceOfEnergy.cs" />
     <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Models\ViewModels\AddCarViewModel.cs" />
     <Compile Include="Models\ViewModels\BasicModel.cs" />
     <Compile Include="Models\ViewModels\CarDetailsViewModel.cs" />
@@ -341,6 +342,9 @@
     <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\js-image-slider.css" />
