@@ -10,5 +10,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class SourceOfEnergyRepository : BaseRepository<SourceOfEnergy, TypicalMirekEntities>, ISourceOfEnergyRepository
     {
+        public SourceOfEnergyRepository()
+        {
+            
+        }
+
+        public SourceOfEnergyRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

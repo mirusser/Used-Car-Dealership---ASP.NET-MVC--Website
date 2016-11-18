@@ -7,7 +7,7 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
-    interface IPositionOfSteeringWheelRepository : IBaseRepository<PositionOfSteeringWheel>
+    public interface IPositionOfSteeringWheelRepository : IBaseRepository<PositionOfSteeringWheel>
     {
     }
 }

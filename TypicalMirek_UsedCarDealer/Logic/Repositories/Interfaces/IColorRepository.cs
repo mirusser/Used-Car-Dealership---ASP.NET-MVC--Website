@@ -7,7 +7,7 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
-    interface IColorRepository : IBaseRepository<Color>
+    public interface IColorRepository : IBaseRepository<Color>
     {
     }
 }

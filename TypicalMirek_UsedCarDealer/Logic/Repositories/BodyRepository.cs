@@ -10,5 +10,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class BodyRepository : BaseRepository<Body, TypicalMirekEntities>, IBodyRepository
     {
+        public BodyRepository()
+        {
+            
+        }
+
+        public BodyRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

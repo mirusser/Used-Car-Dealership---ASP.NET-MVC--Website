@@ -10,5 +10,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class SliderPhotoRepository : BaseRepository<SliderPhoto, TypicalMirekEntities>, ISliderPhotoRepository
     {
+        public SliderPhotoRepository()
+        {
+            
+        }
+
+        public SliderPhotoRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

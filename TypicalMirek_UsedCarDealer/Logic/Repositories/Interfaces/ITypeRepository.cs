@@ -7,7 +7,7 @@ using Type = TypicalMirek_UsedCarDealer.Models.Type;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
-    interface ITypeRepository : IBaseRepository<Type>
+    public interface ITypeRepository : IBaseRepository<Type>
     {
     }
 }

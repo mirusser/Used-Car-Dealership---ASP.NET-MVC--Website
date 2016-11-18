@@ -160,21 +160,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 },
             };
 
-            foreach (var file in addCarViewModel.Files)
+            if (addCarViewModel.Files != null)
             {
-                if (file != null)
+                foreach (var file in addCarViewModel.Files)
                 {
-                    using (var memoryStream = new MemoryStream())
+                    if (file != null)
                     {
-                        file.InputStream.CopyTo(memoryStream);
-                        car.Photos.Add(new CarPhoto
+                        using (var memoryStream = new MemoryStream())
                         {
-                            Image = memoryStream.GetBuffer(),
-                            //Name = Path.GetFileNameWithoutExtension(file.FileName),
-                            Name = file.FileName,
-                            CarId = car.Id,
-                            ImagePath = AppDomain.CurrentDomain.BaseDirectory + "App_Data\\Images\\" + file.FileName,
-                        });
+                            file.InputStream.CopyTo(memoryStream);
+                            car.Photos.Add(new CarPhoto
+                            {
+                                Image = memoryStream.GetBuffer(),
+                                //Name = Path.GetFileNameWithoutExtension(file.FileName),
+                                Name = file.FileName,
+                                CarId = car.Id,
+                                ImagePath = AppDomain.CurrentDomain.BaseDirectory + "App_Data\\Images\\" + file.FileName,
+                            });
+                        }
                     }
                 }
             }
@@ -220,11 +223,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
         }
 
         //TODO refactor this method
-        public static IList<DisplayCarViewModel> MapCarsToListOfCarsToDisplay(ICarRepository carRepository)
+        public static IList<DisplayCarViewModel> MapCarsToListOfCarsToDisplay(/*ICarRepository carRepository*/IQueryable<Car> cars )
         {
             var listOfCarsToDisplay = new List<DisplayCarViewModel>();
 
-            carRepository.GetAll().ForEach(x =>
+            cars.ForEach(x =>
             {
                 listOfCarsToDisplay.Add(MappCarModelToDisplayCarViewModel(x));
             });
@@ -234,18 +237,32 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
 
         public static DisplayCarViewModel MappCarModelToDisplayCarViewModel(Car car)
         {
-            var firstOrDefault = car.Photos.FirstOrDefault();
+            var firstOrDefault = car.Photos?.FirstOrDefault();
             if (firstOrDefault != null)
             {
                 return new DisplayCarViewModel(car.MainData.Model)
                 {
                     Id = car.Id,
-                    CarImagePath = firstOrDefault.ImagePath,
+                    CarImagePath = firstOrDefault.ImagePath ?? null,
                     CarImageName = firstOrDefault.Name
                 };
             }
             else
             {
+                try
+                {
+                    if (car.MainData.Model?.Brand == null)
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    
+                    throw;
+                }
+                
+
                 return new DisplayCarViewModel(car.MainData.Model)
                 {
                     Id = car.Id,

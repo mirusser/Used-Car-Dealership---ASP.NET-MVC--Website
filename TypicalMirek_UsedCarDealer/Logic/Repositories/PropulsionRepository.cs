@@ -10,5 +10,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class PropulsionRepository : BaseRepository<Propulsion, TypicalMirekEntities>, IPropulsionRepository
     {
+        public PropulsionRepository()
+        {
+            
+        }
+
+        public PropulsionRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

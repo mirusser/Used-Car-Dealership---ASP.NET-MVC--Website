@@ -10,5 +10,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class AdditionalDataRepository : BaseRepository<AdditionalData, TypicalMirekEntities>, IAdditionalDataRepository
     {
+        public AdditionalDataRepository()
+        {
+            
+        }
+
+        public AdditionalDataRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }
