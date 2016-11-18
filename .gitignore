@@ -417,3 +417,7 @@ __pycache__/
 ### VisualStudio Patch ###
 build/
 /.vs
+/TypicalMirek_UsedCarDealer/obj
+/TypicalMirek_UsedCarDealer/bin/TypicalMirek_UsedCarDealer.dll
+/TypicalMirek_UsedCarDealer/bin/TypicalMirek_UsedCarDealer.pdb
+/TypicalMirek_UsedCarDealer/Web.config
