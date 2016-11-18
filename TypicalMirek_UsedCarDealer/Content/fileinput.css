@@ -1,0 +1,415 @@
+/*!
+ * bootstrap-fileinput v4.3.3
+ * http://plugins.krajee.com/file-input
+ *
+ * Author: Kartik Visweswaran
+ * Copyright: 2014 - 2016, Kartik Visweswaran, Krajee.com
+ *
+ * Licensed under the BSD 3-Clause
+ * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
+ */
+/* line 14, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-loading {
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  font-size: 999px;
+  text-align: right;
+  color: #fff;
+  background: transparent url("'../img/loading.gif") top left no-repeat;
+  border: none;
+}
+
+/* line 26, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-object {
+  margin: 0 0 -5px 0;
+  padding: 0;
+}
+
+/* line 31, ../../sass/bootstrap-fileinput/fileinput.scss */
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+/* line 35, ../../sass/bootstrap-fileinput/fileinput.scss */
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: right;
+  opacity: 0;
+  background: none repeat scroll 0 0 transparent;
+  cursor: inherit;
+  display: block;
+}
+
+/* line 49, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-caption-name {
+  display: inline-block;
+  overflow: hidden;
+  height: 20px;
+  word-break: break-all;
+}
+
+/* line 56, ../../sass/bootstrap-fileinput/fileinput.scss */
+.input-group-lg .file-caption-name {
+  height: 25px;
+}
+
+/* line 60, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog {
+  text-align: left;
+}
+
+/* line 64, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-error-message {
+  color: #a94442;
+  background-color: #f2dede;
+  margin: 5px;
+  border: 1px solid #ebccd1;
+  border-radius: 4px;
+  padding: 15px;
+}
+/* line 71, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-error-message pre, .file-error-message ul {
+  margin: 0;
+  text-align: left;
+}
+/* line 75, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-error-message pre {
+  margin: 5px 0;
+}
+
+/* line 80, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-caption-disabled {
+  background-color: #EEEEEE;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* line 86, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* line 94, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-frame {
+  position: relative;
+  display: table;
+  margin: 8px;
+  height: 160px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 5px 0 #a2958a;
+  padding: 6px;
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 105, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-frame:not(.file-preview-error):hover {
+  box-shadow: 3px 3px 5px 0 #333;
+}
+
+/* line 110, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-image {
+  vertical-align: middle;
+}
+
+/* line 114, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-text {
+  display: block;
+  color: #428bca;
+  border: 1px solid #ddd;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  outline: none;
+  padding: 8px;
+  resize: none;
+}
+
+/* line 124, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-html {
+  border: 1px solid #ddd;
+  padding: 8px;
+  overflow: auto;
+}
+
+/* line 130, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .file-preview-text {
+  font-size: 1.2em;
+}
+
+/* line 134, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-other {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+/* line 143, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-other:hover {
+  opacity: 0.8;
+}
+
+/* line 148, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-actions, .file-other-error {
+  text-align: left;
+}
+
+/* line 152, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-other-icon {
+  font-size: 4.8em;
+}
+
+/* noinspection CssOverwrittenProperties */
+/* line 157, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .file-other-icon {
+  font-size: 8em;
+  font-size: 55vmin;
+}
+
+/* line 163, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-input-new .file-preview, .file-input-new .close, .file-input-new .glyphicon-file, .file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button {
+  display: none;
+}
+
+/* line 169, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button {
+  display: none;
+}
+
+/* line 174, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-thumb-loading {
+  background: transparent url("'../img/loading.gif") no-repeat scroll center center content-box !important;
+}
+
+/* line 178, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-actions {
+  margin-top: 15px;
+}
+
+/* line 182, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-footer-buttons {
+  float: right;
+}
+
+/* line 186, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-upload-indicator {
+  display: inline;
+  cursor: default;
+  opacity: 0.8;
+  width: 60%;
+}
+/* line 191, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-upload-indicator:hover {
+  font-weight: bold;
+  opacity: 1;
+}
+
+/* line 197, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-footer-caption {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 160px;
+  text-align: center;
+  padding-top: 4px;
+  font-size: 11px;
+  color: #777;
+  margin: 5px auto;
+}
+
+/* line 210, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-error {
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+/* line 215, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-frame:not(.file-preview-error) .file-footer-caption:hover {
+  color: #000;
+}
+
+/* line 219, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-drop-zone {
+  border: 1px dashed #aaa;
+  border-radius: 4px;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  margin: 12px 15px 12px 12px;
+  padding: 5px;
+}
+
+/* line 229, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-drop-zone-title {
+  color: #aaa;
+  font-size: 40px;
+  padding: 85px 10px;
+}
+
+/* line 235, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-highlighted {
+  border: 2px dashed #999 !important;
+  background-color: #f0f0f0;
+}
+
+/* line 240, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-uploading {
+  background: url("'../img/loading-sm.gif") no-repeat center bottom 10px;
+  opacity: 0.65;
+}
+
+/* line 245, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-thumb-progress {
+  height: 10px;
+}
+/* line 247, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-thumb-progress .progress, .file-thumb-progress .progress-bar {
+  height: 10px;
+  font-size: 9px;
+  line-height: 10px;
+}
+
+/* line 254, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-thumbnail-footer {
+  position: relative;
+}
+
+/* line 258, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-thumb-progress {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+}
+
+/* line 266, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-fullscreen.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* line 273, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-fullscreen .modal-dialog {
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+/* line 280, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-fullscreen .modal-content {
+  border-radius: 0;
+  box-shadow: none;
+}
+/* line 284, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-fullscreen .modal-body {
+  overflow-y: auto;
+}
+
+/* line 290, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .modal-body {
+  position: relative !important;
+}
+/* line 293, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .btn-navigate {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+  opacity: 0.7;
+  top: 45%;
+  font-size: 4em;
+  color: #1c94c4;
+}
+/* line 305, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .floating-buttons {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+/* line 312, ../../sass/bootstrap-fileinput/fileinput.scss */
+.floating-buttons {
+  z-index: 3000;
+}
+/* line 314, ../../sass/bootstrap-fileinput/fileinput.scss */
+.floating-buttons .btn {
+  z-index: 3000;
+}
+
+/* line 319, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .kv-zoom-actions .btn, .floating-buttons .btn {
+  margin-left: 3px;
+}
+
+/* line 326, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .btn-navigate:not([disabled]):hover, .file-zoom-dialog .btn-navigate:not([disabled]):focus {
+  outline: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
+/* line 332, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .btn-navigate[disabled] {
+  opacity: 0.3;
+}
+/* line 336, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .btn-prev {
+  left: 1px;
+}
+/* line 339, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-dialog .btn-next {
+  right: 1px;
+}
+
+/* line 344, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-drag-handle {
+  display: inline;
+  margin-right: 2px;
+  font-size: 16px;
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
+/* line 350, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-drag-handle:hover {
+  opacity: 0.7;
+}
+
+/* line 355, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-zoom-content {
+  height: 480px;
+  text-align: center;
+}
+
+/* line 360, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-initial.sortable-chosen {
+  background-color: #d9edf7;
+}
+
+/* line 364, ../../sass/bootstrap-fileinput/fileinput.scss */
+.file-preview-frame.sortable-ghost {
+  background-color: #eee;
+}
+
+/* IE 10 fix */
+/* line 370, ../../sass/bootstrap-fileinput/fileinput.scss */
+.btn-file ::-ms-browse {
+  width: 100%;
+  height: 100%;
+}

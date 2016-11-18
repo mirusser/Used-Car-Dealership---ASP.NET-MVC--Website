@@ -7,38 +7,47 @@ using Microsoft.SqlServer.Server;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
+using TypicalMirek_UsedCarDealer.Models;
+using TypicalMirek_UsedCarDealer.Models.Enums;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly ICarManager carManager;
-
-        public AdminController(IManagerFactory managerFactory)
+        #region Constructors
+        public AdminController()
         {
-            carManager = managerFactory.Get<CarManager>();
+
         }
+        #endregion
 
         // GET: Admin
-        public ActionResult Admin(int? parameter)
+        public ActionResult Admin(ParametersToAdminMenu parametersToAdminMenu)
         {
-            if (parameter == null)
+            if (ModelState.IsValid)
             {
-                return View(0);
+                if (parametersToAdminMenu.Id == null)
+                {
+                    parametersToAdminMenu.Id = 0;
+                }
+                return parametersToAdminMenu == null ? View(new ParametersToAdminMenu
+                {
+                    Chose = SidebarChoose.Nothing,
+                    Id = parametersToAdminMenu.Id
+                }) : View(new ParametersToAdminMenu
+                {
+                    Chose = parametersToAdminMenu.Chose,
+                    Id = parametersToAdminMenu.Id
+                });
             }
-            return View((int)parameter);
+
+            //TODO
+            return View(/*info about validation errot*/parametersToAdminMenu);
         }
 
         public ActionResult CreateCar()
         {
-            var carToAdd = carManager.CreateAddCarViewModel();
-            return View(carToAdd);
-        }
-
-        public ActionResult ShowCarList()
-        {
-            var cars = carManager.GetAllCarsToDisplay();
-            return View(cars.ToList());
+            return RedirectToAction("Create", "CarManagement");
         }
     }
 }

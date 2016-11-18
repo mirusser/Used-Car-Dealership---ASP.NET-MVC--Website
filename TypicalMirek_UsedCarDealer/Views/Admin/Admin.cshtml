@@ -1,46 +1,114 @@
-﻿@model int
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
 
-<table>
-    <tr>
-        <th>
+@model ParametersToAdminMenu
+@{
+    SidebarChoose? choise = (dynamic)Model.Chose;
+}
+
+@using (Html.BeginForm())
+{
+    <div>
+        <div class="form-horizontal col-md-2">
+            <div class="form-group">
+                @{
+                    Html.RenderPartial($"PartialViews/_Sidebar");
+                }
+            </div>
+        </div>
+        <div class="col-md-1">
+            
+        </div>
+
+        <div class="form-horizontal col-md-7">
             @{
-                Html.RenderPartial($"PartialViews/_Sidebar");
-            }
-        </th>
-        <th>
-            @{
-                switch (Model)
+                switch (choise)
                 {
-                    case 1:
-                        Html.RenderAction($"CreateCar");
+                    case SidebarChoose.Nothing:
+                        {
+                            break;
+                        }
+                    case SidebarChoose.CarList:
+                        {
+                            @Html.Action("List", "CarManagement");
+                            break;
+                        }
+                    case SidebarChoose.CreateCar:
+                        {
+                            @Html.Action("Create", "CarManagement");
+                            break;
+                        }
+                    case SidebarChoose.DetailsCar:
+                        {
+                            @Html.Action("Details", "CarManagement", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.EditCar:
+                        {
+                            @Html.Action("Edit", "CarManagement", routeValues: new { id = Model.Id});
                         break;
-                    case 2:
-                        Html.RenderPartial($"CarManagement/Delete");
-                        break;
-                    case 3:
-                        Html.RenderPartial($"CarManagement/Details");
-                        break;
-                    case 4:
-                        Html.RenderPartial($"CarManagement/Edit");
-                        break;
-                    case 5:
-                        Html.RenderPartial($"Categories/Create");
-                        break;
-                    case 6:
-                        Html.RenderPartial($"Categories/Delete");
-                        break;
-                    case 7:
-                        Html.RenderPartial($"Categories/Details");
-                        break;
-                    case 8:
-                        Html.RenderPartial($"Categories/Edit");
-                        break;
-                    case 9:
-                        Html.RenderPartial($"Categories/Edit");
-                        break;
+                    }
+                    case SidebarChoose.DeleteCar:
+                        {
+                            @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id})
+                            break;
+                        }
+                    case SidebarChoose.BodiesList:
+                        {
+                            @Html.Action("List", "CarBodies");
+                            break;
+                        }
+                    case SidebarChoose.CreateBodies:
+                        {
+                            @Html.Action("Create", "CarBodies");
+                            break;
+                        }
+                    case SidebarChoose.DetailsBodies:
+                        {
+                            @Html.Action("Details", "CarBodies", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.EditBodies:
+                        {
+                            @Html.Action("Edit", "CarBodies", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.DeleteBodies:
+                        {
+                            @Html.Action("Delete", "CarBodies", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.BrandList:
+                        {
+                            @Html.Action("List", "Brands");
+                            break;
+                        }
+                    case SidebarChoose.CreateBrand:
+                        {
+                            @Html.Action("Create", "Brands");
+                            break;
+                        }
+                    case SidebarChoose.DetailsBrand:
+                        {
+                            @Html.Action("Details", "Brands", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.EditBrand:
+                        {
+                            @Html.Action("Edit", "Brands", routeValues: new { id = Model.Id });
+                            break;
+                        }
+                    case SidebarChoose.DeleteBrand:
+                        {
+                            @Html.Action("Delete", "Brands", routeValues: new { id = Model.Id })
+                            break;
+                        }
                 }
             }
-            @Model
-        </th>
-    </tr>
-</table>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

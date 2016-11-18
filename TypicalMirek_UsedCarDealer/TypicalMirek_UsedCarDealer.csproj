@@ -188,6 +188,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Logic\Controllers\AccountController.cs" />
     <Compile Include="Logic\Controllers\AdminController.cs" />
+    <Compile Include="Logic\Controllers\BrandsController.cs" />
     <Compile Include="Logic\Controllers\CarBodiesController.cs" />
     <Compile Include="Logic\Controllers\CarManagementController.cs" />
     <Compile Include="Logic\Controllers\CarModelsController.cs" />
@@ -206,12 +207,18 @@
     </Compile>
     <Compile Include="Logic\Helpers\MappingHelper.cs" />
     <Compile Include="Logic\Helpers\SelectListItemHelper.cs" />
+    <Compile Include="Logic\Managers\BrandManager.cs" />
+    <Compile Include="Logic\Managers\CarBodyManager.cs" />
     <Compile Include="Logic\Managers\CarManager.cs" />
     <Compile Include="Logic\Managers\CategoryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
+    <Compile Include="Logic\Managers\SliderPhotoManager.cs" />
     <Compile Include="Logic\Repositories\AdditionalDataRepository.cs" />
     <Compile Include="Logic\Repositories\AdditionalEquipmentRepository.cs" />
     <Compile Include="Logic\Repositories\BodyRepository.cs" />
@@ -236,12 +243,14 @@
     <Compile Include="Logic\Repositories\Interfaces\IModelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPropulsionRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\ISliderPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ISourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
     <Compile Include="Logic\Repositories\MainDataRepository.cs" />
     <Compile Include="Logic\Repositories\ModelRepository.cs" />
     <Compile Include="Logic\Repositories\PositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\PropulsionRepository.cs" />
+    <Compile Include="Logic\Repositories\SliderPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\SourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\TypeRepository.cs" />
     <Compile Include="Migrations\201610210044090_Initial.cs" />
@@ -264,6 +273,10 @@
     <Compile Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.Designer.cs">
       <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611112027538_SliderPhoto.cs" />
+    <Compile Include="Migrations\201611112027538_SliderPhoto.Designer.cs">
+      <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -276,7 +289,9 @@
     <Compile Include="Models\Context\ApplicationDbContext.cs" />
     <Compile Include="Models\Context\TypicalMirekEntities.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Gearbox.cs" />
+    <Compile Include="Models\ParametersToAdminMenu.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainData.cs" />
@@ -285,8 +300,10 @@
     <Compile Include="Models\CarPhoto.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Propulsion.cs" />
+    <Compile Include="Models\SliderPhoto.cs" />
     <Compile Include="Models\SourceOfEnergy.cs" />
     <Compile Include="Models\Type.cs" />
+    <Compile Include="Models\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Models\ViewModels\AddCarViewModel.cs" />
     <Compile Include="Models\ViewModels\BasicModel.cs" />
     <Compile Include="Models\ViewModels\CarDetailsViewModel.cs" />
@@ -299,15 +316,37 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
+    <Content Include="App_Data\Images\Diagram.png" />
+    <Content Include="App_Data\Images\ex1.png" />
+    <Content Include="App_Data\Images\exception — kopia.png" />
+    <Content Include="App_Data\Images\exception.png" />
+    <Content Include="App_Data\Images\fractal blue.jpg" />
+    <Content Include="App_Data\Images\how to send signal to another object.PNG" />
     <Content Include="App_Data\Images\image1.jpg" />
     <Content Include="App_Data\Images\image2.jpg" />
     <Content Include="App_Data\Images\image3.jpg" />
     <Content Include="App_Data\Images\image4.jpg" />
     <Content Include="App_Data\Images\image5.jpg" />
+    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana — kopia.jpg" />
+    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana.jpg" />
+    <Content Include="App_Data\Images\projekt2016_Mirosław_Nawrot.png" />
+    <Content Include="App_Data\Images\sad funky face — kopia.png" />
+    <Content Include="App_Data\Images\sad funky face.png" />
+    <Content Include="App_Data\Images\sad.png" />
+    <Content Include="App_Data\Images\slack.png" />
+    <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
+    <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
+    <Content Include="App_Data\Images\ubrana w cień.jpg" />
     <Content Include="App_Data\Slider\bullet.png" />
     <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\fileinput.css" />
+    <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\js-image-slider.css" />
     <Content Include="Content\PureDropdownMenu.css" />
     <Content Include="Content\simple-sidebar.css" />
@@ -318,6 +357,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\fileinput.js" />
+    <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -326,7 +367,43 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js-image-slider.js" />
+    <Content Include="Scripts\locales\ar.js" />
+    <Content Include="Scripts\locales\bg.js" />
+    <Content Include="Scripts\locales\ca.js" />
+    <Content Include="Scripts\locales\cr.js" />
+    <Content Include="Scripts\locales\cz.js" />
+    <Content Include="Scripts\locales\da.js" />
+    <Content Include="Scripts\locales\de.js" />
+    <Content Include="Scripts\locales\el.js" />
+    <Content Include="Scripts\locales\es.js" />
+    <Content Include="Scripts\locales\fa.js" />
+    <Content Include="Scripts\locales\fi.js" />
+    <Content Include="Scripts\locales\fr.js" />
+    <Content Include="Scripts\locales\hu.js" />
+    <Content Include="Scripts\locales\id.js" />
+    <Content Include="Scripts\locales\it.js" />
+    <Content Include="Scripts\locales\ja.js" />
+    <Content Include="Scripts\locales\LANG.js" />
+    <Content Include="Scripts\locales\nl.js" />
+    <Content Include="Scripts\locales\pl.js" />
+    <Content Include="Scripts\locales\pt-BR.js" />
+    <Content Include="Scripts\locales\pt.js" />
+    <Content Include="Scripts\locales\ro.js" />
+    <Content Include="Scripts\locales\ru.js" />
+    <Content Include="Scripts\locales\sk.js" />
+    <Content Include="Scripts\locales\th.js" />
+    <Content Include="Scripts\locales\tr.js" />
+    <Content Include="Scripts\locales\uk.js" />
+    <Content Include="Scripts\locales\vi.js" />
+    <Content Include="Scripts\locales\zh-TW.js" />
+    <Content Include="Scripts\locales\zh.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
+    <Content Include="Scripts\plugins\purify.js" />
+    <Content Include="Scripts\plugins\purify.min.js" />
+    <Content Include="Scripts\plugins\sortable.js" />
+    <Content Include="Scripts\plugins\sortable.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\simple-sidebar.js" />
@@ -372,40 +449,36 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Admin\CarManagement\Create.cshtml" />
-    <Content Include="Views\Admin\CarManagement\Delete.cshtml" />
-    <Content Include="Views\Admin\CarManagement\Details.cshtml" />
-    <Content Include="Views\Admin\CarManagement\Edit.cshtml" />
-    <Content Include="Views\Admin\CarManagement\Index.cshtml" />
-    <Content Include="Views\Admin\CarModels\Create.cshtml" />
-    <Content Include="Views\Admin\CarModels\Delete.cshtml" />
-    <Content Include="Views\Admin\CarModels\Details.cshtml" />
-    <Content Include="Views\Admin\CarModels\Edit.cshtml" />
-    <Content Include="Views\Admin\CarModels\Index.cshtml" />
-    <Content Include="Views\Admin\CarBodies\Create.cshtml" />
-    <Content Include="Views\Admin\CarBodies\Delete.cshtml" />
-    <Content Include="Views\Admin\CarBodies\Details.cshtml" />
-    <Content Include="Views\Admin\CarBodies\Edit.cshtml" />
-    <Content Include="Views\Admin\CarBodies\Index.cshtml" />
-    <Content Include="Views\Admin\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
-    <Content Include="Views\Admin\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
-    <Content Include="Views\Admin\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
-    <Content Include="Views\Admin\CarManagement\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\CarModels\Create.cshtml" />
+    <Content Include="Views\CarModels\Delete.cshtml" />
+    <Content Include="Views\CarModels\Details.cshtml" />
+    <Content Include="Views\CarModels\Edit.cshtml" />
+    <Content Include="Views\CarModels\Index.cshtml" />
+    <Content Include="Views\CarBodies\Create.cshtml" />
+    <Content Include="Views\CarBodies\Delete.cshtml" />
+    <Content Include="Views\CarBodies\Details.cshtml" />
+    <Content Include="Views\CarBodies\Edit.cshtml" />
+    <Content Include="Views\CarBodies\List.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Admin\PartialViews\_Sidebar.cshtml" />
-    <Content Include="Views\Admin\PartialViews\_CreateCarAdditionalData.cshtml" />
-    <Content Include="Views\Admin\PartialViews\_CreateCarMainData.cshtml" />
-    <Content Include="Views\Admin\PartialViews\_CreateCarModel.cshtml" />
-    <Content Include="Views\Admin\PartialViews\_UploadCarPhotos.cshtml" />
-    <Content Include="Views\Admin\CreateCar.cshtml" />
-    <Content Include="Views\Admin\ShowCarList.cshtml" />
+    <Content Include="Views\CarManagement\Create.cshtml" />
+    <Content Include="Views\CarManagement\Delete.cshtml" />
+    <Content Include="Views\CarManagement\Details.cshtml" />
+    <Content Include="Views\CarManagement\Edit.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarAdditionalData.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarMainData.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_CreateCarModel.cshtml" />
+    <Content Include="Views\CarManagement\PartialViews\_UploadCarPhotos.cshtml" />
+    <Content Include="Views\CarManagement\List.cshtml" />
+    <Content Include="Views\Brands\Create.cshtml" />
+    <Content Include="Views\Brands\Delete.cshtml" />
+    <Content Include="Views\Brands\Details.cshtml" />
+    <Content Include="Views\Brands\Edit.cshtml" />
+    <Content Include="Views\Brands\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
-    <Folder Include="Views\Admin\css\" />
-    <Folder Include="Views\Admin\js\" />
-    <Folder Include="Views\Admin\tables\" />
-    <Folder Include="Views\GetPhoto\" />
+    <Folder Include="Logic\Controllers\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -433,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611011604294_RenamedColumnInPositionOfSteeringWheel.resx">
       <DependentUpon>201611011604294_RenamedColumnInPositionOfSteeringWheel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611112027538_SliderPhoto.resx">
+      <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

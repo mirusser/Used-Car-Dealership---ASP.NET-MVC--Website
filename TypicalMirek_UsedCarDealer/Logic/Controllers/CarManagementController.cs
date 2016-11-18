@@ -27,7 +27,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // GET: CarManagement
-        public ActionResult Index()
+        public ActionResult List()
         {
             var cars = carManager.GetAllCarsToDisplay();
             return View(cars.ToList());
@@ -79,7 +79,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                         }
                     }
                     carManager.Add(car);
-                    return RedirectToAction("Index");
+                    return View("List", carManager.GetAllCarsToDisplay());
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +115,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             if (ModelState.IsValid)
             {
                 carManager.Modify(car);
-                return RedirectToAction("Index");
+                return View("List", carManager.GetAllCarsToDisplay());
             }
 
             return View(car);
@@ -146,7 +146,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             //db.SaveChanges();
 
             carManager.RemoveCarById(id);
-            return RedirectToAction("Index");
+            return View("List", carManager.GetAllCarsToDisplay());
         }
 
         protected override void Dispose(bool disposing)

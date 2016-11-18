@@ -21,5 +21,6 @@ namespace TypicalMirek_UsedCarDealer.Models.Context
         public DbSet<Propulsion> Propulsions { get; set; }
         public DbSet<SourceOfEnergy> SourcesOfEnergie { get; set; }
         public DbSet<Type> Types { get; set; }
+        public DbSet<SliderPhoto> SliderPhotos { get; set; }
     }
 }

@@ -31,7 +31,8 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css", "~/Content/fileinput.css",
+                      "~/Content/fileinput.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/js-image-slider").Include(
                       "~/Content/js-image-slider.css"));

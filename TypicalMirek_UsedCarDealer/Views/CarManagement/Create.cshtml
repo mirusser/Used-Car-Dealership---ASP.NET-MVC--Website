@@ -1,0 +1,39 @@
+﻿@using System.Web.Mvc.Html
+@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "";
+}
+
+<h2>Add car</h2>
+@using (Html.BeginForm("Create", $"CarManagement", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <hr/>
+
+    {
+        Html.RenderPartial($"PartialViews/_CreateCarMainData");
+    }
+
+    {
+        Html.RenderPartial($"PartialViews/_UploadCarPhotos", Model);
+    }
+
+    {
+        Html.RenderPartial($"PartialViews/_CreateCarAdditionalData", Model);
+    }
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="submit" value="Create" class="btn btn-default"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList}, htmlAttributes: null)
+</div>

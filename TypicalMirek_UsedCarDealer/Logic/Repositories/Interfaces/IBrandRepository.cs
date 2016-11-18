@@ -7,7 +7,7 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
-    interface IBrandRepository : IBaseRepository<Brand>
+    public interface IBrandRepository : IBaseRepository<Brand>
     {
     }
 }

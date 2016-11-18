@@ -1,0 +1,46 @@
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Brand>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = string.Empty;
+}
+
+@using (Html.BeginForm("List", "Brands", null, FormMethod.Get))
+{
+    <h2>List of brands</h2>
+
+    <p>
+        @Html.ActionLink(linkText: "New brand", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateBrand, Id = null }, htmlAttributes: null)
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditBrand, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsBrand, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteBrand, Id = item.Id }, htmlAttributes: null)
+                </td>
+            </tr>
+        }
+    </table>
+}
+
