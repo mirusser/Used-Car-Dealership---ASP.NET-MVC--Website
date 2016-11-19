@@ -34,11 +34,11 @@ namespace TypicalMirek_UsedCarDealer
                       "~/Content/site.css", "~/Content/fileinput.css",
                       "~/Content/fileinput.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/js-image-slider").Include(
-                      "~/Content/js-image-slider.css"));
+            bundles.Add(new ScriptBundle("~/bundles/HomeSlider").Include(
+                      "~/Scripts/jquery.bxslider.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/js-image-slider").Include(
-                      "~/Scripts/js-image-slider.js"));
+            bundles.Add(new StyleBundle("~/Content/HomeSlider").Include(
+                      "~/Content/jquery.bxslider.css"));
         }
     }
 }
