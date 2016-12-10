@@ -3,24 +3,29 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TypicalMirek_UsedCarDealer.Models;
+using TypicalMirek_UsedCarDealer.Models.Context;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private TypicalMirekEntities entities;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            entities = new TypicalMirekEntities();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
+            entities = new TypicalMirekEntities();
             UserManager = userManager;
             SignInManager = signInManager;
         }
@@ -152,6 +157,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var identityRole = entities.Roles.FirstOrDefault(i => i.Name.Equals("User"));
+                    if (identityRole != null)
+                    {
+                        entities.IdentityUserRoles.Add(new IdentityUserRole{RoleId = identityRole.Id, UserId = user.Id});
+                        entities.SaveChanges();
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

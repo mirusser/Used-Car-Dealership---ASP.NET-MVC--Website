@@ -200,11 +200,13 @@
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IFactory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IRepositoryFactory.cs" />
+    <Compile Include="Logic\Factories\Interfaces\IUnitOfWorkFactory.cs" />
     <Compile Include="Logic\Factories\ManagerFactory.cs" />
     <Compile Include="Logic\Factories\RepositoryFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Factories\UnitOfWorkFactory.cs" />
     <Compile Include="Logic\Helpers\MappingHelper.cs" />
     <Compile Include="Logic\Helpers\SelectListItemHelper.cs" />
     <Compile Include="Logic\Managers\BrandManager.cs" />
@@ -356,6 +358,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
