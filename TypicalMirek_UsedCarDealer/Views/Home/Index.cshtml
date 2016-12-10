@@ -4,30 +4,32 @@
     ViewBag.Title = "Home Page";
 }
 
-@Styles.Render("~/Content/js-image-slider")
-@Scripts.Render("~/bundles/js-image-slider")
+<!-- jQuery library (served from Google) -->
+@Styles.Render("~/Content/HomeSlider")
+@Scripts.Render("~/bundles/HomeSlider")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            auto: true,
+            autoControls: true,
+            pause: 2000,
+            slideHeight: 360
+        });
+    });
+</script>
 
 <div class="form-group">
     <div class="row">
-        <div id="sliderFrame">
-            <div id="slider" @*class="col-md-12 col-sm-12 col-lg-12 col-sx-12"*@>
-                @*<a href="http://www.menucool.com/javascript-image-slider" target="_blank">
-                    <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image1.jpg")" alt="Welcome to Menucool.com"/>
-                </a>*@
-                @*<img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image2.jpg")" alt=""/>
-                <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image3.jpg")" alt="Pure Javascript. No jQuery. No flash." />
-                <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image4.jpg")" alt="#htmlcaption" />
-                <img src="@Url.Content("~/CarManagement/GetCarImage?imageName=image5.jpg")"/>*@
+        <ul class="bxslider" style="width: auto; position: relative;">
 
-                @foreach (var item in Model)
-                {
-                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item})" alt="" height="100" width="100" />
-                }
-            </div>
-            <div id="htmlcaption" style="display: none;">
-                <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
-            </div>
-        </div>
+            @foreach (var item in Model)
+            {
+                <li><img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item})" alt=""/></li>
+            }
+
+        </ul>
+
     </div>
 
 </div>

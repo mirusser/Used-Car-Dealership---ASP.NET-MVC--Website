@@ -10,13 +10,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     public class GetPhotoController : Controller
     {
         [AcceptVerbs(HttpVerbs.Get)]
-        public FileResult Slider(int id)
-        {
-            var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Images/image-slider-" + id + ".jpg");
-            return new FileStreamResult(new FileStream(path, FileMode.Open), "image/jpeg");
-        }
-
-        [AcceptVerbs(HttpVerbs.Get)]
         //[OutputCache(CacheProfile = "SliderImages")]
         public FileResult Car(int id)
         {
