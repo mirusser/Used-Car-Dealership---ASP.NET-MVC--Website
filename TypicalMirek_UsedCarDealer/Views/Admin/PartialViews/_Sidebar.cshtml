@@ -12,7 +12,10 @@
                 @Html.ActionLink(linkText: "Car bodies", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList, Id = null })
             </li>
             <li>
-                @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList, Id = null })
+                @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.BrandList, Id = null})
+            </li>
+            <li>
+                @Html.ActionLink(linkText: "Change user role", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.ChangeUserRole, Id = null })
             </li>
         </ul>
 </div>

@@ -22,6 +22,8 @@ namespace TypicalMirek_UsedCarDealer.Models.Enums
         CreateBrand,
         DetailsBrand,
         EditBrand,
-        DeleteBrand
+        DeleteBrand,
+        ChangeUserRole,
+        ChangeUserRolePost
     }
 }
