@@ -481,7 +481,6 @@
     <Content Include="Views\Brands\Details.cshtml" />
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\List.cshtml" />
-    <Content Include="Web.config" />
     <Content Include="Views\Characters\Create.cshtml" />
     <Content Include="Views\Characters\Delete.cshtml" />
     <Content Include="Views\Characters\Details.cshtml" />
@@ -492,6 +491,7 @@
     <Content Include="Views\Types\Details.cshtml" />
     <Content Include="Views\Types\Edit.cshtml" />
     <Content Include="Views\Types\List.cshtml" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
