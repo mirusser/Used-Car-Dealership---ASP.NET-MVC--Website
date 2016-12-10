@@ -15,6 +15,15 @@
                 @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.BrandList, Id = null})
             </li>
             <li>
+                @Html.ActionLink(linkText: "Car characters", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.CharacterList, Id = null})
+            </li>
+            <li>
+                @Html.ActionLink(linkText: "Car types", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.TypeList, Id = null})
+            </li>
+            <li>
+                @Html.ActionLink(linkText: "Car categories", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CategoryList, Id = null })
+            </li>
+            <li>
                 @Html.ActionLink(linkText: "Change user role", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.ChangeUserRole, Id = null })
             </li>
         </ul>

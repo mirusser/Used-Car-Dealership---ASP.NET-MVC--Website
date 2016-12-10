@@ -1,0 +1,46 @@
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Type>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = string.Empty;
+}
+
+@using (Html.BeginForm("List", "Brands", null, FormMethod.Get))
+{
+    <h2>List of types</h2>
+
+    <p>
+        @Html.ActionLink(linkText: "New type", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateType, Id = null }, htmlAttributes: null)
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditType, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsType, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteType, Id = item.Id }, htmlAttributes: null)
+                </td>
+            </tr>
+        }
+    </table>
+}
+

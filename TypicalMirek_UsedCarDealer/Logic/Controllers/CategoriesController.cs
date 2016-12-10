@@ -20,7 +20,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // GET: Categories
-        public ActionResult Index()
+        public ActionResult List()
         {
             return View(categoryManager.GetAll().ToList());
         }
@@ -55,9 +55,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                categoryManager.Add<Category>(category);
-
-                return RedirectToAction("Index");
+                categoryManager.Add(category);
+                return View("List", categoryManager.GetAll().ToList());
             }
 
             return View(category);
@@ -90,7 +89,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             if (ModelState.IsValid)
             {
                 categoryManager.Modify(category);
-                return RedirectToAction("Index");
+                return View("List", categoryManager.GetAll().ToList());
             }
             return View(category);
         }
@@ -117,7 +116,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             var category = categoryManager.GetById(id);
             categoryManager.Delete(category);
-            return RedirectToAction("Index");
+            return View("List", categoryManager.GetAll().ToList());
         }
 
         protected override void Dispose(bool disposing)

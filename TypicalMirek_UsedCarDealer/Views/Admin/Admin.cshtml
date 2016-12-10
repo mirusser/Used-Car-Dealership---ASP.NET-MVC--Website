@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-md-1">
-            
+
         </div>
 
         <div class="form-horizontal col-md-7">
@@ -45,12 +45,12 @@
                         }
                     case SidebarChoose.EditCar:
                         {
-                            @Html.Action("Edit", "CarManagement", routeValues: new { id = Model.Id})
-                        break;
-                    }
+                            @Html.Action("Edit", "CarManagement", routeValues: new { id = Model.Id })
+                            break;
+                        }
                     case SidebarChoose.DeleteCar:
                         {
-                            @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id})
+                            @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id })
                             break;
                         }
                     case SidebarChoose.BodiesList:
@@ -103,6 +103,81 @@
                             @Html.Action("Delete", "Brands", routeValues: new { id = Model.Id })
                             break;
                         }
+                    case SidebarChoose.CharacterList:
+                        {
+                            @Html.Action("List", "Characters")
+                            break;
+                        }
+                    case SidebarChoose.CreateCharacter:
+                        {
+                            @Html.Action("Create", "Characters")
+                            break;
+                        }
+                    case SidebarChoose.DetailsCharacter:
+                        {
+                            @Html.Action("Details", "Characters", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.EditCharacter:
+                        {
+                            @Html.Action("Edit", "Characters", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.DeleteCharacter:
+                        {
+                            @Html.Action("Delete", "Characters", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.TypeList:
+                        {
+                            @Html.Action("List", "Types")
+                            break;
+                        }
+                    case SidebarChoose.CreateType:
+                        {
+                            @Html.Action("Create", "Types")
+                            break;
+                        }
+                    case SidebarChoose.DetailsType:
+                        {
+                            @Html.Action("Details", "Types", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.EditType:
+                        {
+                            @Html.Action("Edit", "Types", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.DeleteType:
+                        {
+                            @Html.Action("Delete", "Types", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.CategoryList:
+                        {
+                            @Html.Action("List", "Categories")
+                            break;
+                        }
+                    case SidebarChoose.CreateCategory:
+                        {
+                            @Html.Action("Create", "Categories")
+                            break;
+                        }
+                    case SidebarChoose.DetailsCategory:
+                        {
+                            @Html.Action("Details", "Categories", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.EditCategory:
+                        {
+                            @Html.Action("Edit", "Categories", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.DeleteCategory:
+                        {
+                            @Html.Action("Delete", "Categories", routeValues: new { id = Model.Id })
+                            break;
+                        }
                     case SidebarChoose.ChangeUserRole:
                         {
                             @Html.Action("ChangeUserRole", "Account")
@@ -110,7 +185,7 @@
                         }
                     case SidebarChoose.ChangeUserRolePost:
                         {
-                            @Html.Action("ChangeUserRole", "Account", routeValues: new  { result = Model.ChangeUserRoleViewModel })
+                            @Html.Action("ChangeUserRole", "Account", routeValues: new { result = Model.ChangeUserRoleViewModel })
                             break;
                         }
                 }

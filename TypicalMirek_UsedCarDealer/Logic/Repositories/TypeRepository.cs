@@ -19,5 +19,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         {
             
         }
+
+        public Models.Type GetByName(string name)
+        {
+            return Items.SingleOrDefault(t => t.Name.Equals(name));
+        }
     }
 }

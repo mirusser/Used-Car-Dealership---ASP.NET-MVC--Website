@@ -1,17 +1,16 @@
 ﻿@using TypicalMirek_UsedCarDealer.Models
 @using TypicalMirek_UsedCarDealer.Models.Enums
-@model TypicalMirek_UsedCarDealer.Models.Brand
+@model TypicalMirek_UsedCarDealer.Models.Character
 
 @{
     ViewBag.Title = "Delete";
-    Layout = string.Empty;
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Brand</h4>
+    <h4>Character</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -22,22 +21,16 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList }, htmlAttributes: null)
+            @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CharacterList }, htmlAttributes: null)
         </div>
     }
 </div>
+

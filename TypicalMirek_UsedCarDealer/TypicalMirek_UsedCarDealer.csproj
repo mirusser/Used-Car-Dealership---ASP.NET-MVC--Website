@@ -193,9 +193,11 @@
     <Compile Include="Logic\Controllers\CarManagementController.cs" />
     <Compile Include="Logic\Controllers\CarModelsController.cs" />
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
+    <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
+    <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IFactory.cs" />
@@ -213,12 +215,16 @@
     <Compile Include="Logic\Managers\CarBodyManager.cs" />
     <Compile Include="Logic\Managers\CarManager.cs" />
     <Compile Include="Logic\Managers\CategoryManager.cs" />
+    <Compile Include="Logic\Managers\CharacterManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICategoryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ICharacterManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\ITypeManager.cs" />
+    <Compile Include="Logic\Managers\TypeManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
     <Compile Include="Logic\Managers\SliderPhotoManager.cs" />
     <Compile Include="Logic\Repositories\AdditionalDataRepository.cs" />
@@ -359,16 +365,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Account\ChangeUserRole.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
@@ -457,7 +454,7 @@
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\List.cshtml" />
     <Content Include="Views\CarModels\Create.cshtml" />
     <Content Include="Views\CarModels\Delete.cshtml" />
     <Content Include="Views\CarModels\Details.cshtml" />
@@ -484,6 +481,23 @@
     <Content Include="Views\Brands\Details.cshtml" />
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\List.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Characters\Create.cshtml" />
+    <Content Include="Views\Characters\Delete.cshtml" />
+    <Content Include="Views\Characters\Details.cshtml" />
+    <Content Include="Views\Characters\Edit.cshtml" />
+    <Content Include="Views\Characters\List.cshtml" />
+    <Content Include="Views\Types\Create.cshtml" />
+    <Content Include="Views\Types\Delete.cshtml" />
+    <Content Include="Views\Types\Details.cshtml" />
+    <Content Include="Views\Types\Edit.cshtml" />
+    <Content Include="Views\Types\List.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
