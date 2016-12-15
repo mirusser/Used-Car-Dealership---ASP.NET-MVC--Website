@@ -9,5 +9,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class MainDataRepository : BaseRepository<MainData, TypicalMirekEntities>, IMainDataRepository
     {
+        public MainDataRepository()
+        {
+            
+        }
+
+        public MainDataRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

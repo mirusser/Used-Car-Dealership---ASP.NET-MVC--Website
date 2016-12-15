@@ -9,5 +9,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
     public class ColorRepository : BaseRepository<Color, TypicalMirekEntities>, IColorRepository
     {
+        public ColorRepository()
+        {
+            
+        }
+
+        public ColorRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

@@ -7,7 +7,7 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
-    interface ISourceOfEnergyRepository : IBaseRepository<SourceOfEnergy>
+    public interface ISourceOfEnergyRepository : IBaseRepository<SourceOfEnergy>
     {
     }
 }

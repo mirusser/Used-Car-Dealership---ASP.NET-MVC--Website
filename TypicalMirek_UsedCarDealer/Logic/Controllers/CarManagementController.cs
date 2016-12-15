@@ -66,15 +66,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 try
                 {
-                    foreach (var file in car.Files)
+                    if (car.Files != null)
                     {
-                        if (file.ContentLength > 0)
+                        foreach (var file in car.Files)
                         {
-                            var fileName = Path.GetFileName(file.FileName);
-                            if (fileName != null)
+                            if (file.ContentLength > 0)
                             {
-                                var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
-                                file.SaveAs(path);
+                                var fileName = Path.GetFileName(file.FileName);
+                                if (fileName != null)
+                                {
+                                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                                    file.SaveAs(path);
+                                }
                             }
                         }
                     }

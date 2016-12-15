@@ -10,5 +10,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class CountryRepository : BaseRepository<Country, TypicalMirekEntities>, ICountryRepository
     {
+        public CountryRepository()
+        {
+            
+        }
+
+        public CountryRepository(TypicalMirekEntities entities) : base(entities)
+        {
+            
+        }
     }
 }

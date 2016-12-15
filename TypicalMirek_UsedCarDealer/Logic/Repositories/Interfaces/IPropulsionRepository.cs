@@ -7,7 +7,7 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
-    interface IPropulsionRepository : IBaseRepository<Propulsion>
+    public interface IPropulsionRepository : IBaseRepository<Propulsion>
     {
     }
 }
