@@ -124,8 +124,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var color = colorManager.GetById(Convert.ToInt32(id));
-            colorManager.Delete(color);
-            return View("List", colorManager.GetAll().ToList());
+            if (colorManager.Delete(color))
+            {
+                return View("List", colorManager.GetAll().ToList());
+            }
+
+            ModelState.AddModelError(string.Empty, "Color is assigned to one or more car and cannot be deleted.");
+            return View(color);
         }
 
         protected override void Dispose(bool disposing)

@@ -13,12 +13,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
     public class ColorManager : Manager, IColorManager
     {
         private readonly IColorRepository colorRepository;
+        private readonly IAdditionalDataRepository additionalDataRepository;
 
         public ColorManager() {}
 
         public ColorManager(IRepositoryFactory repositoryFactory)
         {
             colorRepository = repositoryFactory.Get<ColorRepository>();
+            additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
         }
 
         //TODO check if color exist
@@ -54,10 +56,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return color;
         }
 
-        public void Delete(Color color)
+        public bool Delete(Color color)
         {
+            if (additionalDataRepository.CheckIfColorIsUsed(color.Id))
+            {
+                return false;
+            }
+
             colorRepository.Delete(color);
             colorRepository.Save();
+            return true;
         }
 
         public Color GetById(int id)
