@@ -1,0 +1,28 @@
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model TypicalMirek_UsedCarDealer.Models.Country
+
+@{
+    ViewBag.Title = "Details";
+    Layout = string.Empty;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Country</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCountry, Id = Model.Id }, htmlAttributes: null) |
+    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CountryList }, htmlAttributes: null)
+</p>

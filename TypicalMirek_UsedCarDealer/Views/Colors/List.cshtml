@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditColor, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditColor, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsColor, Id = item.Id }, htmlAttributes: null) |
                     @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteColor, Id = item.Id }, htmlAttributes: null)
                 </td>
             </tr>
