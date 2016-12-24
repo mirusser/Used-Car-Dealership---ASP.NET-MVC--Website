@@ -22,25 +22,36 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         }
 
         //TODO check if color exist
-        public T Add<T>(T entity)
+        public Color Add (Color color)
         {
-            var color = entity as Color;
+            if (color == null)
+            {
+                return null;
+            }
+
+            if (colorRepository.GetById(color.Id) != null || colorRepository.GetByName(color.Name) != null)
+            {
+                return null;
+            }
 
             colorRepository.Add(color);
             colorRepository.Save();
 
-            return (T)Convert.ChangeType(color, typeof(T));
+            return color;
         }
 
         //TODO check if color exist
-        public T Modify<T>(T entity)
+        public Color Modify(Color color)
         {
-            var color = entity as Color;
-
+            if (colorRepository.CheckIfEntityWithNameExists(color.Id, color.Name))
+            {
+                return null;
+            }
+            
             colorRepository.Update(color);
             colorRepository.Save();
 
-            return (T)Convert.ChangeType(color, typeof(T));
+            return color;
         }
 
         public void Delete(Color color)

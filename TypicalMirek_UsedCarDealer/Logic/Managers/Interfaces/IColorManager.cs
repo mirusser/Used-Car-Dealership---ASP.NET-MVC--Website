@@ -9,8 +9,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
 {
     public interface IColorManager : IManager
     {
-        T Add<T>(T entity);
-        T Modify<T>(T entity);
+        Color Add (Color color);
+        Color Modify(Color color);
         void Delete(Color color);
         Color GetById(int id);
         IQueryable<Color> GetAll();

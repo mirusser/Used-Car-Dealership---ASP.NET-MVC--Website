@@ -59,8 +59,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                colorManager.Add(color);
-                return View("List", colorManager.GetAll().ToList());
+                if (colorManager.Add(color) != null)
+                {
+                    return View("List", colorManager.GetAll().ToList());
+                };
+
+                ModelState.AddModelError(string.Empty, "Color already exists.");
             }
 
             return View(color);
@@ -90,8 +94,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                colorManager.Modify(color);
-                return View("List", colorManager.GetAll().ToList());
+                if (colorManager.Modify(color) != null)
+                {
+                    return View("List", colorManager.GetAll().ToList());
+                }
+                ModelState.AddModelError(string.Empty, "Color with that name already exists.");
             }
             return View(color);
         }
