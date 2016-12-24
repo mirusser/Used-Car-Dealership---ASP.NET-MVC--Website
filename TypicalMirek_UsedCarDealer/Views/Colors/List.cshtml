@@ -1,0 +1,39 @@
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Color>
+
+@{
+    ViewBag.Title = "List";
+    Layout = string.Empty;
+}
+
+@using (Html.BeginForm("List", "Colors", null, FormMethod.Get))
+{
+    <h2>List of categories</h2>
+
+    <p>
+        @Html.ActionLink(linkText: "New color", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateColor, Id = null }, htmlAttributes: null)
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditColor, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditColor, Id = item.Id }, htmlAttributes: null) |
+                    @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteColor, Id = item.Id }, htmlAttributes: null)
+                </td>
+            </tr>
+        }
+    </table>
+}

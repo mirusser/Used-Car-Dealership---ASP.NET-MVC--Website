@@ -38,6 +38,11 @@ namespace TypicalMirek_UsedCarDealer.Models.Enums
         DetailsCategory,
         EditCategory,
         DeleteCategory,
+        ColorList,
+        CreateColor,
+        DetailsColor,
+        EditColor,
+        DeleteColor,
         ChangeUserRole,
         ChangeUserRolePost
     }
