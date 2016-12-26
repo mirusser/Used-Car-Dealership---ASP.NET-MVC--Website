@@ -1,18 +1,131 @@
 ﻿@using TypicalMirek_UsedCarDealer.Models
 @using TypicalMirek_UsedCarDealer.Models.Enums
-@Styles.Render("~/Content/simple-sidebar")
-@Scripts.Render("~/bundles/simple-sidebar")
+@Styles.Render("~/Content/AdminMenu")
+@Scripts.Render("~/bundles/AdminMenu")
 
-<div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li>
-                @Html.ActionLink(linkText:"Cars", actionName:"Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList, Id = null})
-            </li>
-            <li>
-                @Html.ActionLink(linkText: "Car bodies", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList, Id = null })
-            </li>
-            <li>
-                @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList, Id = null })
-            </li>
-        </ul>
-</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-sidenav]').sidenav();
+    });
+</script>
+
+<a href="javascript:;" class="toggle" id="sidenav-toggle">
+    <i class="glyphicon glyphicon-th-list"></i>
+</a>
+
+<nav class="sidenav" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+    <div class="sidenav-header">
+        Section Header
+    </div>
+    <div class="sidenav-brand">
+        @Html.ActionLink(linkText: "Admin menu", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.Nothing, Id = null })
+    </div>
+    <div class="sidenav-header">
+        Cars
+    </div>
+    <ul class="sidenav-menu">
+        <li>
+            <a href="javascript:;" data-sidenav-dropdown-toggle class="active">
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-pushpin"></i>
+                </span>
+                <span class="sidenav-link-title">Cars</span>
+                <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </span>
+                <span class="sidenav-dropdown-icon" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </span>
+            </a>
+            <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                <li>@Html.ActionLink(linkText: "Show all cars", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList, Id = null })</li>
+                <li>@Html.ActionLink(linkText: "Add new car", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null })</li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" data-sidenav-dropdown-toggle class="active">
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </span>
+                <span class="sidenav-link-title">Edit categories</span>
+                <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </span>
+                <span class="sidenav-dropdown-icon" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </span>
+            </a>
+            <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                <li>
+                    @Html.ActionLink(linkText: "Car bodies", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList, Id = null })
+                </li>
+                <li>
+                    @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList, Id = null })
+                </li>
+                <li>
+                    @Html.ActionLink(linkText: "Car characters", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CharacterList, Id = null })
+                </li>
+                <li>
+                    @Html.ActionLink(linkText: "Car types", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.TypeList, Id = null })
+                </li>
+                <li>
+                    @Html.ActionLink(linkText: "Car categories", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CategoryList, Id = null })
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="sidenav-header">
+        Frontend
+    </div>
+    <ul class="sidenav-menu">
+        <li>
+            <a href="javascript:;" data-sidenav-dropdown-toggle class="active">
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <span class="sidenav-link-title">Home page</span>
+                <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </span>
+                <span class="sidenav-dropdown-icon" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </span>
+            </a>
+            <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                <li>@Html.ActionLink(linkText: "Slider", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.Nothing, Id = null})</li>
+                <li>@Html.ActionLink(linkText: "Recommended", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.Nothing, Id = null})</li>
+            </ul>
+        </li>
+        <li>
+            <a href=@Url.Action(actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.Nothing, Id = null})>
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                </span>
+                <span class="sidenav-link-title">About</span>
+            </a>
+        </li>
+        <li>
+            <a href=@Url.Action(actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.Nothing, Id = null})>
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-phone-alt"></i>
+                </span>
+                <span class="sidenav-link-title" >Contact</span>
+            </a>
+        </li>
+    </ul>
+    <div class="sidenav-header">
+        Users
+    </div>
+    <ul class="sidenav-menu">
+        <li>
+            <a href=@Url.Action(actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.ChangeUserRole, Id = null })>
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                <span class="sidenav-link-title">Change user role</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+

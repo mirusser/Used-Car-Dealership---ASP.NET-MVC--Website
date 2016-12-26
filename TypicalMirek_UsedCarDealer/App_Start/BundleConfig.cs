@@ -7,12 +7,6 @@ namespace TypicalMirek_UsedCarDealer
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/simple-sidebar").Include(
-                      "~/Content/simple-sidebar.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/simple-sidebar").Include(
-                        "~/Scripts/simple-sidebar.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -39,6 +33,12 @@ namespace TypicalMirek_UsedCarDealer
 
             bundles.Add(new StyleBundle("~/Content/HomeSlider").Include(
                       "~/Content/jquery.bxslider.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/AdminMenu").Include(
+                      "~/Scripts/sidenav.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/AdminMenu").Include(
+                      "~/Content/sidenav.css"));
         }
     }
 }

@@ -12,6 +12,7 @@ using TypicalMirek_UsedCarDealer.Models.Enums;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         #region Constructors

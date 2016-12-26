@@ -10,7 +10,6 @@ using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.UnitOfWork;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
 using static TypicalMirek_UsedCarDealer.Logic.Helpers.SelectListItemHelper;
 
@@ -18,26 +17,25 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
     public class CarManager : Manager, ICarManager
     {
-        private readonly UnitOfWork unitOfWork;
         #region Repositories
-        //private readonly ICarRepository carRepository;
-        //private readonly ITypeRepository typeRepository;
-        //private readonly ICharacterRepository characterRepository;
-        //private readonly IBrandRepository brandRepository;
-        //private readonly IBodyRepository bodyRepository;
-        //private readonly IPropulsionRepository propulsionRepository;
-        //private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
-        //private readonly IModelRepository modelRepository;
+        private readonly ICarRepository carRepository;
+        private readonly ITypeRepository typeRepository;
+        private readonly ICharacterRepository characterRepository;
+        private readonly IBrandRepository brandRepository;
+        private readonly IBodyRepository bodyRepository;
+        private readonly IPropulsionRepository propulsionRepository;
+        private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
+        private readonly IModelRepository modelRepository;
 
-        //private readonly IMainDataRepository mainDataRepository;
-        //private readonly IAdditionalDataRepository additionalDataRepository;
-        //private readonly IAdditionalEquipmentRepository additionalEquipmentRepository;
-        //private readonly ICarPhotoRepository carPhotoRepository;
+        private readonly IMainDataRepository mainDataRepository;
+        private readonly IAdditionalDataRepository additionalDataRepository;
+        private readonly IAdditionalEquipmentRepository additionalEquipmentRepository;
+        private readonly ICarPhotoRepository carPhotoRepository;
 
-        //private readonly IColorRepository colorRepository;
-        //private readonly IGearboxRepository gearboxRepository;
-        //private readonly ICountryRepository countryRepository;
-        //private readonly IPositionOfSteeringWheelRepository positionOfSteeringWheelRepository;
+        private readonly IColorRepository colorRepository;
+        private readonly IGearboxRepository gearboxRepository;
+        private readonly ICountryRepository countryRepository;
+        private readonly IPositionOfSteeringWheelRepository positionOfSteeringWheelRepository;
         #endregion
 
         #region Constructors
@@ -45,25 +43,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public CarManager(IRepositoryFactory repositoryFactory)
         {
-            unitOfWork = new UnitOfWork(repositoryFactory);
-            //carRepository = repositoryFactory.Get<CarRepository>();
-            //typeRepository = repositoryFactory.Get<TypeRepository>();
-            //characterRepository = repositoryFactory.Get<CharacterRepository>();
-            //brandRepository = repositoryFactory.Get<BrandRepository>();
-            //bodyRepository = repositoryFactory.Get<BodyRepository>();
-            //propulsionRepository = repositoryFactory.Get<PropulsionRepository>();
-            //sourceOfEnergyRepository = repositoryFactory.Get<SourceOfEnergyRepository>();
-            //modelRepository = repositoryFactory.Get<ModelRepository>();
+            carRepository = repositoryFactory.Get<CarRepository>();
+            typeRepository = repositoryFactory.Get<TypeRepository>();
+            characterRepository = repositoryFactory.Get<CharacterRepository>();
+            brandRepository = repositoryFactory.Get<BrandRepository>();
+            bodyRepository = repositoryFactory.Get<BodyRepository>();
+            propulsionRepository = repositoryFactory.Get<PropulsionRepository>();
+            sourceOfEnergyRepository = repositoryFactory.Get<SourceOfEnergyRepository>();
+            modelRepository = repositoryFactory.Get<ModelRepository>();
 
-            //mainDataRepository = repositoryFactory.Get<MainDataRepository>();
-            //additionalEquipmentRepository = repositoryFactory.Get<AdditionalEquipmentRepository>();
-            //additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
-            //carPhotoRepository = repositoryFactory.Get<CarPhotoRepository>();
+            mainDataRepository = repositoryFactory.Get<MainDataRepository>();
+            additionalEquipmentRepository = repositoryFactory.Get<AdditionalEquipmentRepository>();
+            additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
+            carPhotoRepository = repositoryFactory.Get<CarPhotoRepository>();
 
-            //colorRepository = repositoryFactory.Get<ColorRepository>();
-            //gearboxRepository = repositoryFactory.Get<GearboxRepository>();
-            //countryRepository = repositoryFactory.Get<CountryRepository>();
-            //positionOfSteeringWheelRepository = repositoryFactory.Get<PositionOfSteeringWheelRepository>();
+            colorRepository = repositoryFactory.Get<ColorRepository>();
+            gearboxRepository = repositoryFactory.Get<GearboxRepository>();
+            countryRepository = repositoryFactory.Get<CountryRepository>();
+            positionOfSteeringWheelRepository = repositoryFactory.Get<PositionOfSteeringWheelRepository>();
         }
         #endregion
 
@@ -71,17 +68,17 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         {
             return new AddCarViewModel
             {
-                Types = GetSelectListItem(unitOfWork.TypeRepository),
-                Characters = GetSelectListItem(unitOfWork.CharacterRepository),
-                Brands = GetSelectListItem(unitOfWork.BrandRepository),
-                Bodies = GetSelectListItem(unitOfWork.BodyRepository),
-                Propulsions = GetSelectListItem(unitOfWork.PropulsionRepository),
-                SourcesOfEnergy = GetSelectListItem(unitOfWork.SourceOfEnergyRepository),
-                Models = GetSelectListItem(unitOfWork.ModelRepository),
-                Colors = GetSelectListItem(unitOfWork.ColorRepository),
-                Gearboxes = GetSelectListItem(unitOfWork.GearboxRepository),
-                Countries = GetSelectListItem(unitOfWork.CountryRepository),
-                PositionsOfSteeringWheel = GetSelectListItem(unitOfWork.PositionOfSteeringWheelRepository)
+                Types = GetSelectListItem(typeRepository),
+                Characters = GetSelectListItem(characterRepository),
+                Brands = GetSelectListItem(brandRepository),
+                Bodies = GetSelectListItem(bodyRepository),
+                Propulsions = GetSelectListItem(propulsionRepository),
+                SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository),
+                Models = GetSelectListItem(modelRepository),
+                Colors = GetSelectListItem(colorRepository),
+                Gearboxes = GetSelectListItem(gearboxRepository),
+                Countries = GetSelectListItem(countryRepository),
+                PositionsOfSteeringWheel = GetSelectListItem(positionOfSteeringWheelRepository)
             };
         }
 
@@ -89,91 +86,93 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         {
             var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
 
-            unitOfWork.CarRepository.Add(carToAdd);
-            unitOfWork.Save();
+            carRepository.Add(carToAdd);
+            carRepository.Save();
 
             return null;
         }
 
         public AddCarViewModel Modify(AddCarViewModel car)
         {
-            var carToModify = unitOfWork.CarRepository.GetById(car.Id);
+            var carToModify = carRepository.GetById(car.Id);
             MappingHelper.MappAddingCarViewModelToExistingCarModel(car, carToModify);
 
-            //carRepository.Update(carToModify);
-            unitOfWork.Save();
+            carRepository.Save();
 
             return null;
         }
 
         public void RemoveCarById(int id)
         {
-            var car = unitOfWork.CarRepository.GetById(id);
+            var car = carRepository.GetById(id);
 
             if (car.AdditionalData != null)
             {
                 if (car.AdditionalData.AdditionalEquipment != null)
                 {
-                    unitOfWork.AdditionalEquipmentRepository.Delete(car.AdditionalData.AdditionalEquipment.Id);
+                    additionalEquipmentRepository.Delete(car.AdditionalData.AdditionalEquipment);
                     car.AdditionalData.AdditionalEquipmentId = null;
-                    unitOfWork.AdditionalEquipmentRepository.Save();
+                    car.AdditionalData.AdditionalEquipment = null;
+                    additionalDataRepository.Save();
+                    additionalEquipmentRepository.Save();
                 }
-                unitOfWork.AdditionalDataRepository.Delete(car.AdditionalData.Id);
+
+                additionalDataRepository.Delete(car.AdditionalData);
                 car.AdditionalDataId = null;
-                unitOfWork.AdditionalDataRepository.Save();
+                additionalDataRepository.Save();
             }
 
-            unitOfWork.MainDataRepository.Delete(car.MainData.Id);
+            mainDataRepository.Delete(car.MainData.Id);
             foreach (var carphoto in car.Photos)
             {
-                unitOfWork.CarPhotoRepository.Delete(carphoto.Id);
+                carPhotoRepository.Delete(carphoto.Id);
             }
-            unitOfWork.CarPhotoRepository.Save();
+            carPhotoRepository.Save();
 
-            unitOfWork.CarRepository.Delete(car);
-            unitOfWork.Save();
+            carRepository.Delete(car);
+            carRepository.Save();
         }
 
         public Car GetCarById(int id)
         {
-            return unitOfWork.CarRepository.GetById(id);
+            return carRepository.GetById(id);
         }
 
         public AddCarViewModel GetAddCarViewModel(int id)
         {
             var car = MappingHelper.MappCarModelToAddingCarViewModel(GetCarById(id));
-            car.Types = GetSelectListItem(unitOfWork.TypeRepository);
-            car.Characters = GetSelectListItem(unitOfWork.CharacterRepository);
-            car.Brands = GetSelectListItem(unitOfWork.BrandRepository);
-            car.Bodies = GetSelectListItem(unitOfWork.BodyRepository);
-            car.Propulsions = GetSelectListItem(unitOfWork.PropulsionRepository);
-            car.SourcesOfEnergy = GetSelectListItem(unitOfWork.SourceOfEnergyRepository);
-            car.Models = GetSelectListItem(unitOfWork.ModelRepository);
-            car.Colors = GetSelectListItem(unitOfWork.ColorRepository);
-            car.Gearboxes = GetSelectListItem(unitOfWork.GearboxRepository);
-            car.Countries = GetSelectListItem(unitOfWork.CountryRepository);
-            car.PositionsOfSteeringWheel = GetSelectListItem(unitOfWork.PositionOfSteeringWheelRepository);
+            car.Types = GetSelectListItem(typeRepository);
+            car.Characters = GetSelectListItem(characterRepository);
+            car.Brands = GetSelectListItem(brandRepository);
+            car.Bodies = GetSelectListItem(bodyRepository);
+            car.Propulsions = GetSelectListItem(propulsionRepository);
+            car.SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository);
+            car.Models = GetSelectListItem(modelRepository);
+            car.Colors = GetSelectListItem(colorRepository);
+            car.Gearboxes = GetSelectListItem(gearboxRepository);
+            car.Countries = GetSelectListItem(countryRepository);
+            car.PositionsOfSteeringWheel = GetSelectListItem(positionOfSteeringWheelRepository);
             return car;
         }
 
         public CarDetailsViewModel GetCarDetailsViewModelById(int id)
         {
-            return MappingHelper.MappCarModelToCarDetailsViewModel(unitOfWork.CarRepository.GetById(id));
+            return MappingHelper.MappCarModelToCarDetailsViewModel(carRepository.GetById(id));
         }
 
         public IQueryable<Car> GetAllCars()
         {
-            return unitOfWork.CarRepository.GetAll();
+            return carRepository.GetAll();
         }
 
         public IList<DisplayCarViewModel> GetAllCarsToDisplay()
         {
-            return MappingHelper.MapCarsToListOfCarsToDisplay(unitOfWork.CarRepository.GetAll());
+            return MappingHelper.MapCarsToListOfCarsToDisplay(carRepository.GetAll());
         }
 
         public void Dispose()
         {
-            unitOfWork.Dispose();
+            carRepository.Dispose();
         }
     }
 }

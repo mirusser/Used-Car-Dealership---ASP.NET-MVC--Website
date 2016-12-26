@@ -27,7 +27,7 @@
 
     <div class="form-horizontal">
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="@*col-md-offset-2*@ col-md-10">
                 <input type="submit" name="submit" value="Create" class="btn btn-default"/>
             </div>
         </div>
@@ -35,5 +35,5 @@
 }
 
 <div>
-    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList}, htmlAttributes: null)
+    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList}, htmlAttributes: null)
 </div>

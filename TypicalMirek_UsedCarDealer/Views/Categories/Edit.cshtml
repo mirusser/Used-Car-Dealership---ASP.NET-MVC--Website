@@ -1,7 +1,10 @@
-﻿@model TypicalMirek_UsedCarDealer.Models.Category
+﻿@using TypicalMirek_UsedCarDealer.Models
+@using TypicalMirek_UsedCarDealer.Models.Enums
+@model TypicalMirek_UsedCarDealer.Models.Category
 
 @{
     ViewBag.Title = "Edit";
+    Layout = string.Empty;
 }
 
 <h2>Edit</h2>
@@ -42,7 +45,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CategoryList }, htmlAttributes: null)
 </div>
 
 @section Scripts {

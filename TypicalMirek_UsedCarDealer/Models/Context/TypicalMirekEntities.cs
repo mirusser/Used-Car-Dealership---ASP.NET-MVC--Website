@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TypicalMirek_UsedCarDealer.Models.Context
 {
@@ -22,5 +23,6 @@ namespace TypicalMirek_UsedCarDealer.Models.Context
         public DbSet<SourceOfEnergy> SourcesOfEnergie { get; set; }
         public DbSet<Type> Types { get; set; }
         public DbSet<SliderPhoto> SliderPhotos { get; set; }
+        public DbSet<IdentityUserRole> IdentityUserRoles { get; set; }
     }
 }

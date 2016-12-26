@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
@@ -11,9 +9,11 @@ namespace TypicalMirek_UsedCarDealer.Models.UnitOfWork
 {
     public class UnitOfWork : IDisposable
     {
+        #region Properties
         private readonly IRepositoryFactory repositoryFactory;
         private TypicalMirekEntities context { get; set; }
         private ICollection<object> initializedRepositories { get; set; }
+        #endregion
 
         #region Repositories
 
@@ -243,19 +243,17 @@ namespace TypicalMirek_UsedCarDealer.Models.UnitOfWork
         #endregion
 
         #region Constructors
-        public UnitOfWork(IRepositoryFactory repositoryFactory)
+        public UnitOfWork(TypicalMirekEntities entities, IRepositoryFactory repositoryFactory)
         {
+            context = entities;
             this.repositoryFactory = repositoryFactory;
-            context = new TypicalMirekEntities();
             initializedRepositories = new List<object>();
         }
         #endregion
 
-        //TODO refreshing context each time, not so sure about that, but it works
         public void Save()
         {
             context.SaveChanges();
-            context = new TypicalMirekEntities();
         }
 
         public void Dispose()
