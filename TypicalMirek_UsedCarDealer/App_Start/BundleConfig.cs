@@ -25,20 +25,27 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap.min.css",
-                      "~/Content/site.css", "~/Content/fileinput.css",
+                      "~/Content/site.css",
+                      "~/Content/fileinput.css",
                       "~/Content/fileinput.min.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/HomeSlider").Include(
-                      "~/Scripts/jquery.bxslider.min.js"));
-
-            bundles.Add(new StyleBundle("~/Content/HomeSlider").Include(
-                      "~/Content/jquery.bxslider.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/AdminMenu").Include(
                       "~/Scripts/sidenav.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/AdminMenu").Include(
                       "~/Content/sidenav.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/HomeSlider").Include(
+                      "~/Scripts/responsiveslides.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/HomeSlider").Include(
+                      "~/Content/responsiveslides.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/OneScrollHeader").Include(
+                      "~/Scripts/jquery.oneScrollHeader.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/HideNavbar").Include(
+                      "~/Scripts/jquery.bootstrap-autohidingnavbar.js"));
         }
     }
 }

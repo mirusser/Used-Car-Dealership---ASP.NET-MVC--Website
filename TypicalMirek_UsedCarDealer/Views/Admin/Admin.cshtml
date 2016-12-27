@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     <div>
-        <div class="form-horizontal col-md-2">
+        <div margin="0 auto" class="col-md-1">
             <div class="form-group">
                 @{
                     Html.RenderPartial($"PartialViews/_Sidebar");
@@ -20,7 +20,7 @@
 
         </div>
 
-        <div class="form-horizontal col-md-7">
+        <div>
             @{
                 switch (choise)
                 {

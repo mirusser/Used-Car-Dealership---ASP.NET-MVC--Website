@@ -347,8 +347,8 @@
     <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
     <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
     <Content Include="App_Data\Images\ubrana w cień.jpg" />
-    <Content Include="App_Data\Slider\bx_loader.gif" />
-    <Content Include="App_Data\Slider\controls.png" />
+    <Content Include="App_Data\Header\ocean.jpg" />
+    <Content Include="App_Data\Header\ocean.mp4" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
@@ -357,16 +357,28 @@
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\jquery.bxslider.css" />
-    <Content Include="Content\PureDropdownMenu.css" />
+    <Content Include="Content\responsiveslides.css" />
     <Content Include="Content\sidenav.css" />
     <Content Include="Content\sidenav.min.css" />
     <Content Include="Content\simple-sidebar.css" />
+    <Content Include="App_Data\Slider\themes.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.bootstrap-autohidingnavbar.js" />
+    <Content Include="Scripts\jquery.fullPage.js" />
+    <Content Include="Scripts\jquery.fullPage.min.js" />
+    <Content Include="Scripts\jquery.oneScrollHeader.js" />
+    <Content Include="Scripts\jquery.oneScrollHeader.min.js" />
+    <Content Include="Scripts\jquery.scrollify.js" />
+    <Content Include="Scripts\jquery.scrollify.min.js" />
+    <Content Include="Scripts\responsiveslides.js" />
+    <Content Include="Scripts\responsiveslides.min.js" />
+    <Content Include="Scripts\scrolloverflow.js" />
+    <Content Include="Scripts\scrolloverflow.min.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\sidenav.min.js" />
     <Content Include="Views\Account\ChangeUserRole.cshtml" />
@@ -499,9 +511,11 @@
     <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
