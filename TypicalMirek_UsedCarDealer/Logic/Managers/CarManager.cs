@@ -170,6 +170,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return MappingHelper.MapCarsToListOfCarsToDisplay(carRepository.GetAll());
         }
 
+        public void IncrementNumberOfViews(int id)
+        {
+            carRepository.GetById(id).numberOfViews++;
+            carRepository.Save();
+        }
+
         public void Dispose()
         {
             carRepository.Dispose();

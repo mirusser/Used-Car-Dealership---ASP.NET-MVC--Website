@@ -289,6 +289,10 @@
     <Compile Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.Designer.cs">
       <DependentUpon>201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612272106003_AddColumnToCarTableNumberOfViews.cs" />
+    <Compile Include="Migrations\201612272106003_AddColumnToCarTableNumberOfViews.Designer.cs">
+      <DependentUpon>201612272106003_AddColumnToCarTableNumberOfViews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -330,6 +334,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Header\HeaderImage.jpg" />
     <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
     <Content Include="App_Data\Images\Diagram.png" />
     <Content Include="App_Data\Images\ex1.png" />
@@ -352,8 +357,6 @@
     <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
     <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
     <Content Include="App_Data\Images\ubrana w cień.jpg" />
-    <Content Include="App_Data\Header\ocean.jpg" />
-    <Content Include="App_Data\Header\ocean.mp4" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
@@ -362,7 +365,6 @@
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\hovergallery.css" />
-    <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\jquery.oneScrollHeader.css" />
     <Content Include="Content\responsiveslides.css" />
     <Content Include="Content\sidenav.css" />
@@ -380,8 +382,6 @@
     <Content Include="Scripts\jquery.fullPage.min.js" />
     <Content Include="Scripts\jquery.oneScrollHeader.js" />
     <Content Include="Scripts\jquery.oneScrollHeader.min.js" />
-    <Content Include="Scripts\jquery.scrollify.js" />
-    <Content Include="Scripts\jquery.scrollify.min.js" />
     <Content Include="Scripts\responsiveslides.js" />
     <Content Include="Scripts\responsiveslides.min.js" />
     <Content Include="Scripts\scrolloverflow.js" />
@@ -396,10 +396,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.bxslider.js" />
-    <Content Include="Scripts\jquery.bxslider.min.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
-    <Content Include="Scripts\jquery.fitvids.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -562,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.resx">
       <DependentUpon>201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612272106003_AddColumnToCarTableNumberOfViews.resx">
+      <DependentUpon>201612272106003_AddColumnToCarTableNumberOfViews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

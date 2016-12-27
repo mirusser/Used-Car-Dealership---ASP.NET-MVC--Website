@@ -15,18 +15,31 @@
   overflow: hidden;
   top: 0;
   left: 0;
-  background-color: rgba(75,75,75,0.7);
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
 .hovereffect:hover .overlay {
-  background-color: rgba(48, 152, 157, 0.4);
+  background-color: rgba(170,170,170,0.4);
+}
+
+.hovereffect h2, .hovereffect img {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .hovereffect img {
   display: block;
   position: relative;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.hovereffect:hover img {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 
 .hovereffect h2 {
@@ -37,17 +50,6 @@
   font-size: 17px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.6);
-  -webkit-transform: translateY(45px);
-  -ms-transform: translateY(45px);
-  transform: translateY(45px);
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-}
-
-.hovereffect:hover h2 {
-  -webkit-transform: translateY(5px);
-  -ms-transform: translateY(5px);
-  transform: translateY(5px);
 }
 
 .hovereffect a.info {
@@ -57,17 +59,22 @@
   text-transform: uppercase;
   color: #fff;
   border: 1px solid #fff;
+  margin: 50px 0 0 0;
   background-color: transparent;
   opacity: 0;
   filter: alpha(opacity=0);
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   font-weight: normal;
-  margin: -52px 0 0 0;
-  padding: 62px 100px;
+  height: 85%;
+  width: 85%;
+  position: absolute;
+  top: -20%;
+  left: 8%;
+  padding: 70px;
 }
 
 .hovereffect:hover a.info {
@@ -76,8 +83,5 @@
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-}
-
-.hovereffect a.info:hover {
-  box-shadow: 0 0 5px #fff;
+  background-color: rgba(0,0,0,0.4);
 }

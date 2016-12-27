@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
@@ -39,6 +40,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 });
             }
 
+            var cars = carManager.GetAllCars().Where(it => it.Photos.Count > 0).OrderBy(it => it.numberOfViews).Take(8);
+
+            foreach (var it in cars)
+            {
+                parameters.HotCars.Add(new ImageInfo
+                {
+                    imageName = it.Photos.First().Name,
+                    description = it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name
+                });
+            }
 
             return View(parameters);
         }

@@ -25,5 +25,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name + "." + extension);
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        //[OutputCache(CacheProfile = "SliderImages")]
+        public FileResult HeaderImage(string name, string extension)
+        {
+            var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Header/" + name + "." + extension);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name + "." + extension);
+        }
     }
 }

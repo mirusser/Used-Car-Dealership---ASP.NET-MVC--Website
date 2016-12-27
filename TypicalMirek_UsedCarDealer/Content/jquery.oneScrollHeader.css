@@ -1,6 +1,6 @@
 ﻿.header
 { 
-    background-image: url(https://unsplash.it/1800/1600?image=777);
+    background-image: url(/GetPhoto/HeaderImage?name=HeaderImage&extension=jpg);
     background-position: 50% 50%;
     background-repeat: no-repeat; 
     background-size: cover;
