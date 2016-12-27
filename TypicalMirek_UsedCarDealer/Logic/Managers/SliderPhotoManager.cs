@@ -6,6 +6,7 @@ using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
+using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
@@ -28,6 +29,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
                 sliderPhotoNames.Add(carPhotoRepository.GetById(p.CarPhotoId).Name);
             });
             return sliderPhotoNames;
+        }
+
+        public string GetName(int id)
+        {
+            return carPhotoRepository.GetById(id).Name;
+        }
+
+        public IQueryable<SliderPhoto> GetAllSlides()
+        {
+            return sliderPhotoRepository.GetAll();
         }
     }
 }

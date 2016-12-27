@@ -44,6 +44,12 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new ScriptBundle("~/bundles/OneScrollHeader").Include(
                       "~/Scripts/jquery.oneScrollHeader.js"));
 
+            bundles.Add(new StyleBundle("~/Content/OneScrollHeader").Include(
+                      "~/Content/jquery.oneScrollHeader.css"));
+
+            bundles.Add(new StyleBundle("~/Content/HoverGallery").Include(
+                      "~/Content/hovergallery.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/HideNavbar").Include(
                       "~/Scripts/jquery.bootstrap-autohidingnavbar.js"));
         }

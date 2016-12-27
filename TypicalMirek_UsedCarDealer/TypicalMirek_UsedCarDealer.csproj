@@ -285,6 +285,10 @@
     <Compile Include="Migrations\201611112027538_SliderPhoto.Designer.cs">
       <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs" />
+    <Compile Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.Designer.cs">
+      <DependentUpon>201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -300,6 +304,7 @@
     <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
+    <Compile Include="Models\ParametersToHome.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainData.cs" />
@@ -356,7 +361,9 @@
     <Content Include="Content\chosen.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\hovergallery.css" />
     <Content Include="Content\jquery.bxslider.css" />
+    <Content Include="Content\jquery.oneScrollHeader.css" />
     <Content Include="Content\responsiveslides.css" />
     <Content Include="Content\sidenav.css" />
     <Content Include="Content\sidenav.min.css" />
@@ -551,6 +558,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611112027538_SliderPhoto.resx">
       <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.resx">
+      <DependentUpon>201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,12 +15,12 @@
         var delayMove = 0;
         var touchScrollDirection;
 
-        var heightWindow = $(window).height();
+        var heightWindow = $(window).height() - 50;
         this.css({'height': heightWindow});
 
         function scrollTopAnimete(){
             $('body').stop().animate({
-                scrollTop: heightWindow - settings.marginTop
+                scrollTop: heightWindow - settings.marginTop + 50
             }, settings.animationTime);
             $('body').queue(function () {
                 $this.trigger('oneScrollHeader.end');
@@ -28,12 +28,12 @@
         };
 
         $this.on('touchstart', function (event) {
-            oneTouchstart = event.originalEvent.touches[0].pageY;
+            oneTouchstart = event.originalEvent.touches[0].pageY ;
         });
         $this.on('touchmove', function (event) {
             twoTouchmove = event.originalEvent.touches[0].pageY;
 
-            touchScrollDirection =  oneTouchstart - twoTouchmove > 0 ? 'up' : 'down';
+            touchScrollDirection =  oneTouchstart - twoTouchmove> 0 ? 'up' : 'down';
 
             if( touchScrollDirection === 'up') {
                 event.preventDefault();
