@@ -32,21 +32,27 @@
 <div class="header">
     <div align="center" class="col-md-offset-1 col-md-10">
         <h1>Welcome to Typical Mirek - Used car dealership!</h1>
-
-        <ul class="rslides" id="slider">
-            @foreach (var item in Model.Slider)
-            {
-                <li>
-                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt=""/>
-                    <p class="caption"><a href="#">@item.description</a></p>
-                </li>
-            }
-        </ul>
     </div>
 </div>
 
 
 <div>
+    <div align="center">
+        <h1>Mirek recommended!</h1>
+    </div>
+
+    <div>
+        <ul class="rslides" id="slider">
+            @foreach (var item in Model.Slider)
+            {
+                <li>
+                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="" />
+                    <p class="caption"><a href="/ShowCar/Index?id=@item.carId">@item.description</a></p>
+                </li>
+            }
+        </ul>
+    </div>
+
     <div align="center">
         <h1>Check our hot cars!</h1>
     </div>
@@ -59,13 +65,13 @@
                     <img class="img-responsive" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="" style="height: 300px; width: auto">
                     <div class="overlay">
                         <h2>@item.description</h2>
-                        <a class="info" href="#">Show me!</a>
+                        <a class="info" href="/ShowCar/Index?id=@item.carId">Show me!</a>
                     </div>
                 </div>
             </div>
         }
     </div>
-    
+
 
     <div align="center">
         <p>

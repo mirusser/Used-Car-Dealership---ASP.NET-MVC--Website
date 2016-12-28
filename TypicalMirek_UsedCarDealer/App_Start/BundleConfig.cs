@@ -52,6 +52,22 @@ namespace TypicalMirek_UsedCarDealer
 
             bundles.Add(new ScriptBundle("~/bundles/HideNavbar").Include(
                       "~/Scripts/jquery.bootstrap-autohidingnavbar.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Tabs").Include(
+                      "~/Scripts/jquery.pwstabs.js"));
+
+            bundles.Add(new StyleBundle("~/Content/Tabs").Include(
+                      "~/Content/jquery.pwstabs.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/CssAnimate").Include(
+                "~/Scripts/jquery.mb.browser.min.js",
+                "~/Scripts/jquery.mb.CSSAnimate.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/CarGallery").Include(
+                      "~/Scripts/jquery.mb.thumbGallery.js"));
+
+            bundles.Add(new StyleBundle("~/Content/CarGallery").Include(
+                      "~/Content/thumbGrid.css"));
         }
     }
 }

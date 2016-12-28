@@ -1,0 +1,168 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.Car
+
+@{
+    ViewBag.Title = "Car" + @Model.Id;
+}
+
+@Styles.Render("~/Content/Tabs")
+@Scripts.Render("~/bundles/Tabs")
+
+@Styles.Render("~/Content/CarGallery")
+@Scripts.Render("~/bundles/CssAnimate")
+@Scripts.Render("~/bundles/CarGallery")
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        $('.tabset').pwstabs({
+            containerWidth: '100%'
+        });
+        jQuery("#gallery").thumbGallery();
+    });
+</script>
+
+<body>
+<div>
+    <h1>
+        @if (Model.MainData.Model.Brand.Name != null)
+            {@Model.MainData.Model.Brand.Name}
+
+        @if (Model.MainData.Model.Name != null)
+            {@Model.MainData.Model.Name}
+    </h1>
+    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+
+<div class="tabset lead">
+        <div data-pws-tab="tab1" data-pws-tab-name="Basic info">
+            @if (Model.MainData.Model.Brand.Name != null)
+            {<p>Brand: @Model.MainData.Model.Brand.Name </p>}
+
+            @if (Model.MainData.Model.Name != null)
+            {<p>Model: @Model.MainData.Model.Name</p>}
+
+            @if (Model.MainData.Model.Version != null)
+            {<p>Version: @Model.MainData.Model.Version</p>}
+
+            @if (Model.Body.Name != null)
+            {<p>Body: @Model.Body.Name</p>}
+
+            @if (Model.Propulsion.Name != null)
+            {<p>Propulsion: @Model.Propulsion.Name</p>}
+
+            @if (Model.Propulsion.Description != null)
+            {<p>Description: @Model.Propulsion.Description</p>}
+
+            @if (@Model.SourceOfEnergy.Name != null)
+            {<p>Fuel: @Model.SourceOfEnergy.Name</p>}
+
+            @if (Model.SourceOfEnergy.Description != null)
+            {<p>Description: @Model.SourceOfEnergy.Description</p>}
+        </div>
+
+        <div data-pws-tab="tab2" data-pws-tab-name="Addiional info">
+            @if(Model.AdditionalData.Color != null)
+            {<p>Colour: @Model.AdditionalData.Color.Name</p>}
+
+            @if (Model.AdditionalData.Country != null)
+            {<p>Country: @Model.AdditionalData.Country.Name</p>}
+
+            @if (Model.AdditionalData.Damaged != null)
+            {<p>Damaged: @Model.AdditionalData.Damaged.Value</p>}
+
+            @if (Model.AdditionalData.EngineCapacity != null)
+            {<p>EngineCapacity: @Model.AdditionalData.EngineCapacity.Value</p>}
+
+            @if (Model.AdditionalData.FuelTankCapacity != null)
+            {<p>FuelTankCapacity: @Model.AdditionalData.FuelTankCapacity.Value</p>}
+
+            @if (Model.AdditionalData.GearBox != null)
+            {<p>GearBox: @Model.AdditionalData.GearBox.Name</p>}
+
+            @if (Model.AdditionalData.Length != null)
+            {<p>Length: @Model.AdditionalData.Length.Value</p>}
+
+            @if (Model.AdditionalData.Mass != null)
+            {<p>Mass: @Model.AdditionalData.Mass.Value</p>}
+
+            @if (Model.AdditionalData.EnginePower != null)
+            {<p>EnginePower: @Model.AdditionalData.EnginePower.Value</p>}
+
+            @if (Model.AdditionalData.Milleage != null)
+            {<p>Milleage: @Model.AdditionalData.Milleage.Value</p>}
+
+            @if (Model.AdditionalData.NumberOfOwners != null)
+            {<p>NumberOfOwners: @Model.AdditionalData.NumberOfOwners.Value</p>}
+
+            @if (Model.AdditionalData.NumberOfSeats != null)
+            {<p>NumberOfSeats: @Model.AdditionalData.NumberOfSeats.Value</p>}
+
+            @if (Model.AdditionalData.PositionOfSteeringWheel != null)
+            {<p>PositionOfSteeringWheel: @Model.AdditionalData.PositionOfSteeringWheel.Name</p>}
+
+            @if (Model.AdditionalData.YearOfProduction > 0)
+            {<p>YearOfProduction: @Model.AdditionalData.YearOfProduction</p>}
+        </div>
+
+        <div data-pws-tab="tab3" data-pws-tab-name="Equimpment">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
+        </div>
+
+    </div>
+
+    <div>
+        <h1>Description</h1>
+
+        @if (string.IsNullOrEmpty(Model.Description))
+        {
+            <p class="lead">
+                You have no typed any description to this car! Open admin menu, find this model and edit this!
+            </p>
+        }
+        else
+        {
+            <p class="lead">
+                @Model.Description
+            </p>
+        }
+    </div>
+
+<div>
+    <h1>Photoes</h1>
+    @if (Model.Photos.Count == 0)
+    {
+        <p class="lead">
+            You have no add any photos to this car! Open admin menu, find this model and add some!
+        </p>
+    }
+    else
+    {
+        <p class="lead">
+            Click on photo to zoom it!
+        </p>
+        <section class="content">
+            <div id="gallery"
+                 class="gallery"
+                 data-thumbGallery="true"
+                 data-nav_effect="slide_horizontal"
+                 data-nav_delay="100"
+                 data-nav_timing="1000"
+                 data-nav_show="true"
+                 data-nav_delay_inverse="1"
+                 data-nav_pagination="3"
+                 data-gallery_effect="slide_horizontal"
+                 data-gallery_fullscreenw="90%"
+                 data-gallery_fullscreenh="100%"
+                 data-gallery_cover="true">
+
+                @foreach (var item in Model.Photos)
+                {
+                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
+                         data-highres="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
+                         data-caption="@item.Name">
+                }
+            </div>
+        </section>
+    }
+</div>
+</body>

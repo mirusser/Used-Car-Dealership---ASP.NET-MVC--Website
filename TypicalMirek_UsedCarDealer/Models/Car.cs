@@ -32,6 +32,8 @@ namespace TypicalMirek_UsedCarDealer.Models
 
         public virtual ICollection<CarPhoto> Photos { get; set; }
 
+        public string Description { get; set; }
+
         public long numberOfViews { get; set; }
     }
 }
