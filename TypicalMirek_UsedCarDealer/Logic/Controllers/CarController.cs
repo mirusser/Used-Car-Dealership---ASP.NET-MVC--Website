@@ -9,16 +9,16 @@ using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
-    public class ShowCarController : Controller
+    public class CarController : Controller
     {
         private readonly ICarManager carManager;
 
-        public ShowCarController(IManagerFactory managerFactory)
+        public CarController(IManagerFactory managerFactory)
         {
             carManager = managerFactory.Get<CarManager>();
         }
         // GET: ShowCar
-        public ActionResult Index(int? id)
+        public ActionResult ShowCar(int? id)
         {
             if (id == null)
             {
@@ -34,6 +34,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             carManager.IncrementNumberOfViews(Convert.ToInt32(id));
 
             return View(car);
+        }
+
+        public ActionResult CarList(bool? lowerThan, int? price, int? page, int? perPage)
+        {
+            var cars = carManager.GetAllCars().ToList();
+
+            return View(cars);
         }
     }
 }

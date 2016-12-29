@@ -45,7 +45,7 @@
             @foreach (var item in Model.Slider)
             {
                 <li>
-                    <a href="/ShowCar/Index?id=@item.carId">
+                    <a href="/Car/ShowCar?id=@item.carId">
                         <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only 999$">
                     </a>
                 </li>
@@ -62,7 +62,7 @@
             {
                 <li>
                     <p style="text-align: center">@item.description</p>
-                    <a href="/ShowCar/Index?id=@item.carId">
+                    <a href="/Car/ShowCar?id=@item.carId">
                         <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
                     </a>
                     <p style="text-align: center">Price: only 999$</p>

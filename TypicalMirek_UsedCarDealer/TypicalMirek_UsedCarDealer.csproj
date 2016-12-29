@@ -197,7 +197,7 @@
     <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
-    <Compile Include="Logic\Controllers\ShowCarController.cs" />
+    <Compile Include="Logic\Controllers\CarController.cs" />
     <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
@@ -537,7 +537,8 @@
     <Content Include="Views\Types\Edit.cshtml" />
     <Content Include="Views\Types\List.cshtml" />
     <Content Include="Web.config" />
-    <Content Include="Views\ShowCar\Index.cshtml" />
+    <Content Include="Views\Car\ShowCar.cshtml" />
+    <Content Include="Views\Car\CarList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
