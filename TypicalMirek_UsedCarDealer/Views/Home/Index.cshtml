@@ -10,21 +10,20 @@
 @Styles.Render("~/Content/HomeSlider")
 @Scripts.Render("~/bundles/HomeSlider")
 
-@Styles.Render("~/Content/HoverGallery")
+@Styles.Render("~/Content/ProductShopSlider")
+@Scripts.Render("~/bundles/ProductShopSlider")
 
 <script type="text/javascript">
-
     $(document).ready(function () {
         $('.header').oneScrollHeader();
-    });
 
-    $(function() {
-        $("#slider").responsiveSlides({
-            auto: true,
-            pager: false,
-            nav: true,
-            speed: 500,
-            namespace: "callbacks"
+        jQuery(document).ready(function () {
+            jQuery('#recommendedcarslider').slippry();
+        });
+
+        $('#hotcarslider').elastislide({
+            minItems: 1,
+            speed: 1000
         });
     });
 </script>
@@ -38,16 +37,17 @@
 
 <div>
     <div align="center">
-        <h1>Mirek recommended!</h1>
+        <h1>Mirek reccomendation!</h1>
     </div>
 
     <div>
-        <ul class="rslides" id="slider">
+        <ul id="recommendedcarslider">
             @foreach (var item in Model.Slider)
             {
                 <li>
-                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="" />
-                    <p class="caption"><a href="/ShowCar/Index?id=@item.carId">@item.description</a></p>
+                    <a href="/ShowCar/Index?id=@item.carId">
+                        <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only 999$">
+                    </a>
                 </li>
             }
         </ul>
@@ -57,21 +57,18 @@
         <h1>Check our hot cars!</h1>
     </div>
 
-    <div>
+    <ul id="hotcarslider" class="elastislide-list" style="max-height: 100%">
         @foreach (var item in Model.HotCars)
-        {
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding-left: 0; padding-right: 0">
-                <div class="hovereffect">
-                    <img class="img-responsive" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="" style="height: 300px; width: auto">
-                    <div class="overlay">
-                        <h2>@item.description</h2>
-                        <a class="info" href="/ShowCar/Index?id=@item.carId">Show me!</a>
-                    </div>
-                </div>
-            </div>
+            {
+                <li>
+                    <p style="text-align: center">@item.description</p>
+                    <a href="/ShowCar/Index?id=@item.carId">
+                        <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
+                    </a>
+                    <p style="text-align: center">Price: only 999$</p>
+                </li>
         }
-    </div>
-
+    </ul>
 
     <div align="center">
         <p>

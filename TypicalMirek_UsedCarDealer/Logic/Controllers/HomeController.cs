@@ -41,7 +41,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 });
             }
 
-            var cars = carManager.GetAllCars().Where(it => it.Photos.Count > 0).OrderBy(it => it.numberOfViews).Take(8);
+            var cars = carManager.GetAllCars().Where(it => it.Photos.Count > 0).OrderByDescending(it => it.numberOfViews).Take(8);
 
             foreach (var it in cars)
             {

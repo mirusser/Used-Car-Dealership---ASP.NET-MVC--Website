@@ -36,35 +36,38 @@ namespace TypicalMirek_UsedCarDealer
                       "~/Content/sidenav.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/HomeSlider").Include(
-                      "~/Scripts/responsiveslides.min.js"));
+                      "~/Scripts/slippry.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/HomeSlider").Include(
-                      "~/Content/responsiveslides.css"));
+                      "~/Content/slippry.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/OneScrollHeader").Include(
-                      "~/Scripts/jquery.oneScrollHeader.js"));
+                      "~/Scripts/onescrollheader.js"));
 
             bundles.Add(new StyleBundle("~/Content/OneScrollHeader").Include(
-                      "~/Content/jquery.oneScrollHeader.css"));
+                      "~/Content/onescrollheader.css"));
 
-            bundles.Add(new StyleBundle("~/Content/HoverGallery").Include(
-                      "~/Content/hovergallery.css"));
+            bundles.Add(new StyleBundle("~/Content/ProductShopSlider").Include(
+                      "~/Content/elastislide.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ProductShopSlider").Include(
+                      "~/Scripts/elastislide.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/HideNavbar").Include(
-                      "~/Scripts/jquery.bootstrap-autohidingnavbar.js"));
+                      "~/Scripts/bootstrap-autohidingnavbar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Tabs").Include(
-                      "~/Scripts/jquery.pwstabs.js"));
+                      "~/Scripts/pwstabs.js"));
 
             bundles.Add(new StyleBundle("~/Content/Tabs").Include(
-                      "~/Content/jquery.pwstabs.css"));
+                      "~/Content/pwstabs.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/CssAnimate").Include(
-                "~/Scripts/jquery.mb.browser.min.js",
-                "~/Scripts/jquery.mb.CSSAnimate.min.js"));
+                "~/Scripts/mb.browser.min.js",
+                "~/Scripts/mb.CSSAnimate.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/CarGallery").Include(
-                      "~/Scripts/jquery.mb.thumbGallery.js"));
+                      "~/Scripts/mb.thumbGallery.js"));
 
             bundles.Add(new StyleBundle("~/Content/CarGallery").Include(
                       "~/Content/thumbGrid.css"));
