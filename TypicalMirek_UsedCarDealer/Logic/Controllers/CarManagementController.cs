@@ -163,6 +163,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult GetCarImage(string imageName)
         {
+            if (string.IsNullOrEmpty(imageName))
+            {
+                imageName = "empty";
+            }
             var path = Path.Combine(Server.MapPath("~/App_Data/Images"), imageName);
             path = Path.GetFullPath(path);
 
