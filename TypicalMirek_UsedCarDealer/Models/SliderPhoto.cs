@@ -16,5 +16,9 @@ namespace TypicalMirek_UsedCarDealer.Models
         public int CarPhotoId { get; set; }
         [ForeignKey("CarPhotoId")]
         public virtual CarPhoto CarPhoto { get; set; }
+
+        public int CarId { get; set; }
+        [ForeignKey("CarId")]
+        public virtual Car Car { get; set; }
     }
 }

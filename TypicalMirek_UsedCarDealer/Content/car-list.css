@@ -1,0 +1,14 @@
+﻿    .btn-product {
+        width: 100%;
+    }
+
+    #over img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.car-image {
+    max-height: 170px;
+    width: auto;
+}

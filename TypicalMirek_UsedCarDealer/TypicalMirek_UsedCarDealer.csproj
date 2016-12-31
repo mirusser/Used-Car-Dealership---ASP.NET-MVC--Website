@@ -199,6 +199,7 @@
     <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
+    <Compile Include="Logic\Controllers\CarController.cs" />
     <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
@@ -291,6 +292,18 @@
     <Compile Include="Migrations\201611112027538_SliderPhoto.Designer.cs">
       <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs" />
+    <Compile Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.Designer.cs">
+      <DependentUpon>201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612272106003_AddColumnToCarTableNumberOfViews.cs" />
+    <Compile Include="Migrations\201612272106003_AddColumnToCarTableNumberOfViews.Designer.cs">
+      <DependentUpon>201612272106003_AddColumnToCarTableNumberOfViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612280127578_AddDescriptionToCarTableInDatabase.cs" />
+    <Compile Include="Migrations\201612280127578_AddDescriptionToCarTableInDatabase.Designer.cs">
+      <DependentUpon>201612280127578_AddDescriptionToCarTableInDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -306,6 +319,7 @@
     <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
+    <Compile Include="Models\ParametersToHome.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainData.cs" />
@@ -321,6 +335,7 @@
     <Compile Include="Models\ViewModels\AddCarViewModel.cs" />
     <Compile Include="Models\ViewModels\BasicModel.cs" />
     <Compile Include="Models\ViewModels\CarDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModels\CarPhotoViewModel.cs" />
     <Compile Include="Models\ViewModels\ChangeUserRoleViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -331,6 +346,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Header\HeaderImage.jpg" />
     <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
     <Content Include="App_Data\Images\Diagram.png" />
     <Content Include="App_Data\Images\ex1.png" />
@@ -353,35 +369,66 @@
     <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
     <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
     <Content Include="App_Data\Images\ubrana w cień.jpg" />
-    <Content Include="App_Data\Slider\bx_loader.gif" />
-    <Content Include="App_Data\Slider\controls.png" />
+    <Content Include="App_Data\Slider\loading.gif" />
+    <Content Include="App_Data\Slider\nav.png" />
+    <Content Include="App_Data\Slider\sy-loader.gif" />
+    <Content Include="App_Data\Slider\themes.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\car-list.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
+    <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
-    <Content Include="Content\jquery.bxslider.css" />
-    <Content Include="Content\PureDropdownMenu.css" />
+    <Content Include="Content\onescrollheader.css" />
+    <Content Include="Content\pwstabs.css" />
+    <Content Include="Content\sidenav.css" />
+    <Content Include="Content\sidenav.min.css" />
     <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Content\slippry.css" />
+    <Content Include="Content\thumbGrid.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
+    <Content Include="Scripts\elastislide.js" />
+    <Content Include="Scripts\jquery.fullPage.js" />
+    <Content Include="Scripts\jquery.fullPage.min.js" />
+    <Content Include="Scripts\jquery.mousewheel.js" />
+    <Content Include="Scripts\mb.browser.min.js" />
+    <Content Include="Scripts\mb.CSSAnimate.min.js" />
+    <Content Include="Scripts\mb.thumbGallery.js" />
+    <Content Include="Scripts\mb.thumbGallery.min.js" />
+    <Content Include="Scripts\onescrollheader.js" />
+    <Content Include="Scripts\onescrollheader.min.js" />
+    <Content Include="Scripts\pwstabs.js" />
+    <Content Include="Scripts\scrolloverflow.js" />
+    <Content Include="Scripts\scrolloverflow.min.js" />
+    <Content Include="Scripts\sidenav.js" />
+    <Content Include="Scripts\sidenav.min.js" />
+    <Content Include="Scripts\slippry.min.js" />
     <Content Include="Views\Account\ChangeUserRole.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\thumbgallery.eot" />
+    <Content Include="fonts\thumbgallery.svg" />
+    <Content Include="fonts\thumbgallery.ttf" />
+    <Content Include="fonts\thumbgallery.woff" />
+    <Content Include="fonts\svg\close.svg" />
+    <Content Include="fonts\svg\next.svg" />
+    <Content Include="fonts\svg\prev.svg" />
+    <Content Include="App_Data\Slider\arrows.svg" />
+    <Content Include="Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.bxslider.js" />
-    <Content Include="Scripts\jquery.bxslider.min.js" />
-    <Content Include="Scripts\jquery.easing.1.3.js" />
-    <Content Include="Scripts\jquery.fitvids.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -497,7 +544,8 @@
     <Content Include="Views\Types\Details.cshtml" />
     <Content Include="Views\Types\Edit.cshtml" />
     <Content Include="Views\Types\List.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Car\ShowCar.cshtml" />
+    <Content Include="Views\Car\CarList.cshtml" />
     <Content Include="Views\Colors\Create.cshtml" />
     <Content Include="Views\Colors\Delete.cshtml" />
     <Content Include="Views\Colors\Details.cshtml" />
@@ -517,7 +565,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
-    <Folder Include="Logic\Controllers\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -548,6 +595,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611112027538_SliderPhoto.resx">
       <DependentUpon>201611112027538_SliderPhoto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612272013464_AddCarAsForeignKeyToSliderPhotoTable.resx">
+      <DependentUpon>201612272013464_AddCarAsForeignKeyToSliderPhotoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612272106003_AddColumnToCarTableNumberOfViews.resx">
+      <DependentUpon>201612272106003_AddColumnToCarTableNumberOfViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612280127578_AddDescriptionToCarTableInDatabase.resx">
+      <DependentUpon>201612280127578_AddDescriptionToCarTableInDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

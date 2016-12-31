@@ -1,0 +1,41 @@
+﻿@model IList<TypicalMirek_UsedCarDealer.Models.Car>
+
+@Styles.Render("~/Content/car-list")
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 col-md-3" style="height: 360px">
+                    <div class="thumbnail" id="over">
+                        @if (@item.Photos.Count == 0)
+                        {
+                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive car-image" alt="">
+                        }
+                        else
+                        {
+                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive car-image" alt="">
+                        }
+
+                        <div class="caption" style="text-align: center">
+                            <div class="row">
+                                <h4>@item.MainData.Model.Brand.Name @item.MainData.Model.Name</h4>
+                                <p>Only 999$</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="#" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Add to wishlist</a>
+                                </div>
+                                <div class="col-md-12">
+                                    <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
+                                </div>
+                            </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
