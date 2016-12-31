@@ -1,19 +1,6 @@
 ﻿@model IList<TypicalMirek_UsedCarDealer.Models.Car>
 
-<!DOCTYPE html>
-
-<style>
-    .btn-product {
-        width: 100%;
-    }
-
-    #over img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-</style>
-
+@Styles.Render("~/Content/car-list")
 
 <div class="container">
     <div class="row">
@@ -21,16 +8,16 @@
             @foreach (var item in Model)
             {
                 <div class="col-sm-4 col-md-3" style="height: 360px">
-                   <div class="thumbnail" id="over">
-                            @if (@item.Photos.Count == 0)
-                            {
-                                <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive" style="max-height: 170px; width: auto;" alt="">
-                            }
-                            else
-                            {
-                                <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive" style="max-height: 170px; width: auto;" alt="">
-                            }
-                       
+                    <div class="thumbnail" id="over">
+                        @if (@item.Photos.Count == 0)
+                        {
+                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive car-image" alt="">
+                        }
+                        else
+                        {
+                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive car-image" alt="">
+                        }
+
                         <div class="caption" style="text-align: center">
                             <div class="row">
                                 <h4>@item.MainData.Model.Brand.Name @item.MainData.Model.Name</h4>

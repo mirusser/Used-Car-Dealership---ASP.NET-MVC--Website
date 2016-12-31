@@ -17,6 +17,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             carManager = managerFactory.Get<CarManager>();
         }
+
         // GET: ShowCar
         public ActionResult ShowCar(int? id)
         {

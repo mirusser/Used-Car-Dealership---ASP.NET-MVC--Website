@@ -203,7 +203,7 @@
          */
         setControl: function (id, title)
         {
-            this.controls.append('<li><a data-tab-id="' + id + '">' + title + '</a></li>');
+            this.controls.append('<li class="col-xs-12 col-sm-4"><a data-tab-id="' + id + '">' + title + '</a></li>');
         },
         /**
          * Create Tabs controls for each Tab 

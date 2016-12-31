@@ -12,7 +12,6 @@
 @Scripts.Render("~/bundles/CarGallery")
 
 <script type="text/javascript">
-    
     $(document).ready(function () {
         $('.tabset').pwstabs({
             containerWidth: '100%'
@@ -21,20 +20,21 @@
     });
 </script>
 
+
+@*TODO move style to css file!*@
 <body>
-<div>
-    <h1>
-        @if (Model.MainData.Model.Brand.Name != null)
+    <div>
+        <h1 style="text-align: center">
+            @if (Model.MainData.Model.Brand.Name != null)
             {@Model.MainData.Model.Brand.Name}
 
-        @if (Model.MainData.Model.Name != null)
+            @if (Model.MainData.Model.Name != null)
             {@Model.MainData.Model.Name}
-    </h1>
-    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-</div>
+        </h1>
+    </div>
 
-<div class="tabset lead">
-        <div data-pws-tab="tab1" data-pws-tab-name="Basic info">
+    <div class="col-sm-12 col-xs-12 tabset lead" style="text-align: center">
+        <div class="col-sm-12 col-xs-12" data-pws-tab="tab1" data-pws-tab-name="Basic info" >
             @if (Model.MainData.Model.Brand.Name != null)
             {<p>Brand: @Model.MainData.Model.Brand.Name </p>}
 
@@ -60,8 +60,8 @@
             {<p>Description: @Model.SourceOfEnergy.Description</p>}
         </div>
 
-        <div data-pws-tab="tab2" data-pws-tab-name="Addiional info">
-            @if(Model.AdditionalData.Color != null)
+        <div class="col-sm-12 col-xs-12" data-pws-tab="tab2" data-pws-tab-name="Additional info">
+            @if (Model.AdditionalData.Color != null)
             {<p>Colour: @Model.AdditionalData.Color.Name</p>}
 
             @if (Model.AdditionalData.Country != null)
@@ -104,65 +104,51 @@
             {<p>YearOfProduction: @Model.AdditionalData.YearOfProduction</p>}
         </div>
 
-        <div data-pws-tab="tab3" data-pws-tab-name="Equimpment">
+        <div class="col-sm-12 col-xs-12" data-pws-tab="tab3" data-pws-tab-name="Equipment">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
         </div>
 
     </div>
 
-    <div>
-        <h1>Description</h1>
 
-        @if (string.IsNullOrEmpty(Model.Description))
-        {
-            <p class="lead">
-                You have no typed any description to this car! Open admin menu, find this model and edit this!
-            </p>
-        }
-        else
-        {
+    @if (!string.IsNullOrEmpty(Model.Description))
+    {
+        <div class="col-sm-12 col-xs-12">
+            <h1>Description</h1>
             <p class="lead">
                 @Model.Description
             </p>
-        }
-    </div>
-
-<div>
-    <h1>Photoes</h1>
-    @if (Model.Photos.Count == 0)
-    {
-        <p class="lead">
-            You have no add any photos to this car! Open admin menu, find this model and add some!
-        </p>
+        </div>
     }
-    else
-    {
-        <p class="lead">
-            Click on photo to zoom it!
-        </p>
-        <section class="content">
-            <div id="gallery"
-                 class="gallery"
-                 data-thumbGallery="true"
-                 data-nav_effect="slide_horizontal"
-                 data-nav_delay="100"
-                 data-nav_timing="1000"
-                 data-nav_show="true"
-                 data-nav_delay_inverse="1"
-                 data-nav_pagination="3"
-                 data-gallery_effect="slide_horizontal"
-                 data-gallery_fullscreenw="90%"
-                 data-gallery_fullscreenh="100%"
-                 data-gallery_cover="true">
 
-                @foreach (var item in Model.Photos)
-                {
-                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
-                         data-highres="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
-                         data-caption="@item.Name">
-                }
-            </div>
-        </section>
+    @if (Model.Photos != null && Model.Photos.Count > 0)
+    {
+        <div class="col-sx-12">
+            <h1 style="text-align: center">Photos</h1>
+            <section class="content">
+                <div id="gallery"
+                     class="gallery"
+                     data-thumbGallery="true"
+                     data-nav_effect="slide_horizontal"
+                     data-nav_delay="100"
+                     data-nav_timing="1000"
+                     data-nav_show="true"
+                     data-nav_delay_inverse="1"
+                     data-nav_pagination="3"
+                     data-gallery_effect="slide_horizontal"
+                     data-gallery_fullscreenw="90%"
+                     data-gallery_fullscreenh="100%"
+                     data-gallery_cover="true">
+
+                    @foreach (var item in Model.Photos)
+                    {
+                        <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
+                             data-highres="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
+                             data-caption="@item.Name">
+                    }
+                </div>
+            </section>
+        </div>
     }
-</div>
+
 </body>
