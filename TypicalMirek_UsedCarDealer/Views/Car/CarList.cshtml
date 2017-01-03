@@ -1,9 +1,14 @@
-﻿@model IList<TypicalMirek_UsedCarDealer.Models.Car>
+﻿@model List<TypicalMirek_UsedCarDealer.Models.ViewModels.CarDetailsViewModel>
 
 @Styles.Render("~/Content/car-list")
 
 <div class="container">
     <div class="row">
+        <div>
+            <h2>TODO</h2>
+            <h4>HERE NEED TO ADD SOME DROPDOWNLIST TO PARAMETIZE SEARCH</h4>
+            <h5>example of bootstrap list http://getbootstrap.com/components/#dropdowns</h5>
+            http://localhost:19224/Car/CarList?maxPrice=10&brand=Bugatti&orderby=newFirst&page=0&perPage=1        </div>
         <div class="col-md-12">
             @foreach (var item in Model)
             {
@@ -20,15 +25,15 @@
 
                         <div class="caption" style="text-align: center">
                             <div class="row">
-                                <h4>@item.MainData.Model.Brand.Name @item.MainData.Model.Name</h4>
-                                <p>Only 999$</p>
+                                <h4>@item.Brand @item.ModelName</h4>
+                                <p>Only @item.Price$</p>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <a href="#" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Add to wishlist</a>
                                 </div>
                                 <div class="col-md-12">
-                                    <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
+                                    <a href="/Car/ShowCar?id=@item.Id" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
                                 </div>
                             </div>
                             <p></p>

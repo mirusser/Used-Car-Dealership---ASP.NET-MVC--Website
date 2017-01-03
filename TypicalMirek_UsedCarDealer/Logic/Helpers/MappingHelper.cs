@@ -218,7 +218,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 Radio = car.AdditionalData?.AdditionalEquipment?.Radio ?? false,
                 Towbar = car.AdditionalData?.AdditionalEquipment?.Towbar ?? false,
                 YearOfProduction = car.AdditionalData?.YearOfProduction,
-                Photos = car.Photos
+                Photos = car.Photos,
+
+                Description = car.Description,
+                Price = car.Price,
+                AddTime = car.AddTime,
+                DeleteTime = car.DeleteTime,
+                numberOfViews = car.numberOfViews
             };
         }
 
@@ -302,7 +308,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 SourceOfEnergy = car.SourceOfEnergy.Name,
                 Towbar = car.AdditionalData?.AdditionalEquipment?.Towbar,
                 YearOfProduction = car.AdditionalData?.YearOfProduction,
-                Photos = car.Photos
+                Photos = car.Photos,
+                Description = car.Description,
+                Price = car.Price,
+                AddTime = car.AddTime,
+                DeleteTime = car.DeleteTime,
+                numberOfViews = car.numberOfViews
             };
         }
     }

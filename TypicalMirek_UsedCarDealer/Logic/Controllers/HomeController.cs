@@ -28,7 +28,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             ParametersToHome parameters = new ParametersToHome
             {
                 Slider = new List<CarPhotoViewModel>(),
-                HotCars = new List<CarPhotoViewModel>()
+                HotCars = new List<CarPhotoViewModel>(),
+                NewCars = new List<CarPhotoViewModel>()
             };
 
             foreach (var it in sliderPhotoManager.GetAllSlides())
@@ -37,19 +38,33 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 {
                     imageName = sliderPhotoManager.GetName(it.CarPhotoId),
                     description = it.Car.MainData.Model.Brand.Name + " " + it.Car.MainData.Model.Name,
-                    carId = it.Car.Id
+                    carId = it.Car.Id,
+                    price = it.Car.Price
                 });
             }
 
-            var cars = carManager.GetAllCars().Where(it => it.Photos.Count > 0).OrderByDescending(it => it.numberOfViews).Take(8);
+            var hotCars = carManager.GetAllCars().Where(it => it.Photos.Count > 0 && it.DeleteTime == null).OrderByDescending(it => it.numberOfViews).Take(8);
 
-            foreach (var it in cars)
+            foreach (var it in hotCars)
             {
                 parameters.HotCars.Add(new CarPhotoViewModel
                 {
                     imageName = it.Photos.First().Name,
                     description = it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name,
-                    carId = it.Id
+                    carId = it.Id,
+                    price = it.Price
+                });
+            }
+
+            var newCars = carManager.GetAllCars().Where(it => it.Photos.Count > 0 && it.DeleteTime == null).OrderByDescending(it => it.AddTime).Take(8);
+            foreach (var it in newCars)
+            {
+                parameters.NewCars.Add(new CarPhotoViewModel
+                {
+                    imageName = it.Photos.First().Name,
+                    description = it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name,
+                    carId = it.Id,
+                    price = it.Price
                 });
             }
 

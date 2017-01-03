@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,7 +34,9 @@ namespace TypicalMirek_UsedCarDealer.Models
         public virtual ICollection<CarPhoto> Photos { get; set; }
 
         public string Description { get; set; }
-
+        public double Price { get; set; }
+        public DateTime AddTime { get; set; }
+        public DateTime? DeleteTime { get; set; }
         public long numberOfViews { get; set; }
     }
 }

@@ -25,6 +25,11 @@
             minItems: 1,
             speed: 1000
         });
+
+        $('#newcarslider').elastislide({
+            minItems: 1,
+            speed: 1000
+        });
     });
 </script>
 
@@ -46,7 +51,7 @@
             {
                 <li>
                     <a href="/Car/ShowCar?id=@item.carId">
-                        <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only 999$">
+                        <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
                     </a>
                 </li>
             }
@@ -59,14 +64,31 @@
 
     <ul id="hotcarslider" class="elastislide-list" style="max-height: 100%">
         @foreach (var item in Model.HotCars)
+        {
+            <li>
+                <p style="text-align: center">@item.description</p>
+                <a href="/Car/ShowCar?id=@item.carId">
+                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
+                </a>
+                <p style="text-align: center">Price: only @item.price$</p>
+            </li>
+        }
+    </ul>
+
+    <div align="center">
+        <h1>Check recently added car!</h1>
+    </div>
+
+    <ul id="newcarslider" class="elastislide-list" style="max-height: 100%">
+        @foreach (var item in Model.NewCars)
             {
-                <li>
-                    <p style="text-align: center">@item.description</p>
-                    <a href="/Car/ShowCar?id=@item.carId">
-                        <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
-                    </a>
-                    <p style="text-align: center">Price: only 999$</p>
-                </li>
+            <li>
+                <p style="text-align: center">@item.description</p>
+                <a href="/Car/ShowCar?id=@item.carId">
+                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description" />
+                </a>
+                <p style="text-align: center">Price: only @item.price$</p>
+            </li>
         }
     </ul>
 
