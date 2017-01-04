@@ -10,7 +10,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/HideNavbar")
-
+    @* Below admin sidebar *@
+    @Styles.Render("~/Content/AdminMenu")
+    @Scripts.Render("~/bundles/AdminMenu")
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-sidenav]').sidenav();
+    });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -32,14 +39,21 @@
                     {
                         <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
                     }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+<div class="container body-content">
+    <a href="javascript:;" class="toggle" id="sidenav-toggle">
+        <i class="glyphicon glyphicon-th-list"></i>
+    </a>
+    @{
+        Html.RenderPartial($"../Admin/PartialViews/_Sidebar");
+    }
+    @RenderBody()
+</div>
     <div class="center-block">
         <hr />
         <footer class="text-center">

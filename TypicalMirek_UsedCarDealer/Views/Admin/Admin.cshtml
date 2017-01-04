@@ -8,18 +8,6 @@
 
 @using (Html.BeginForm())
 {
-    <div>
-        <div margin="0 auto" class="col-md-1">
-            <div class="form-group">
-                @{
-                    Html.RenderPartial($"PartialViews/_Sidebar");
-                }
-            </div>
-        </div>
-        <div class="col-md-1">
-
-        </div>
-
         <div>
             @{
                 switch (choise)
@@ -191,7 +179,6 @@
                 }
             }
         </div>
-    </div>
 }
 
 @section Scripts {
