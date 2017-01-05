@@ -317,6 +317,7 @@
     <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
+    <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Models\ViewModels\CarPhotoViewModel.cs" />
     <Compile Include="Models\ViewModels\ChangeUserRoleViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCarViewModel.cs" />
+    <Compile Include="Models\ViewModels\ItemsToDependendDropdownViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\Repositories\BaseRepository.cs" />
     <Compile Include="Logic\Repositories\CategoryRepository.cs" />
