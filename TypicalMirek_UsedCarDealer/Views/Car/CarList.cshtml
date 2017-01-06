@@ -7,7 +7,7 @@
 <script>
     $(document).ready(function () {
         $("#model").depdrop({
-            url: '/Car/Models',
+            url: '@Url.Action("Models", "Car")',
             depends: ['brand']
         });
     });
@@ -16,12 +16,16 @@
     <div class="row">
         <div>
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading text-center">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapse1"><i class="glyphicon glyphicon-plus"></i>PRESS TO OPEN SEARCH BAR</a>
+                        <a data-toggle="collapse" href="#collapse1">
+                            <i class="glyphicon glyphicon-arrow-down"></i>
+                            PRESS TO OPEN SEARCH BAR
+                            <i class="glyphicon glyphicon-arrow-down"></i>
+                        </a>
                     </h4>
                 </div>
-            <form id="collapse1" class="panel-collapse collapse" action="/Car/CarList" method="get">
+            <form id="collapse1" class="panel-collapse collapse" action="@Url.Action("CarList", "Car")" method="get">
             <div>
                 
             </div>
@@ -377,7 +381,7 @@
                 </div>
 
                 <div class="form-group col-md-2">
-                    <button type="submit" value="Submit" class="btn-success">
+                    <button type="submit" value="Submit" class="btn btn-success btn-product">
                         Search <span class="glyphicon glyphicon-search"></span>&nbsp;
                     </button>
                 </div>
@@ -410,7 +414,7 @@
                                 <a href="#" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Add to wishlist</a>
                             </div>
                             <div class="col-md-12">
-                                <a href="/Car/ShowCar?id=@item.Id" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
+                                <a href="@Url.Action("ShowCar", "Car", new {id=item.Id})" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
                             </div>
                         </div>
                         <p></p>
