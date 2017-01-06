@@ -222,7 +222,7 @@
     <Compile Include="Logic\Managers\CharacterManager.cs" />
     <Compile Include="Logic\Managers\ColorManager.cs" />
     <Compile Include="Logic\Managers\CountryManager.cs" />
-    <Compile Include="Logic\Managers\GarageManger.cs" />
+    <Compile Include="Logic\Managers\GarageManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
@@ -576,6 +576,8 @@
     <Content Include="Views\Garages\Details.cshtml" />
     <Content Include="Views\Garages\Edit.cshtml" />
     <Content Include="Views\Garages\Index.cshtml" />
+    <Content Include="Views\Garages\PartialViews\NoOrders.cshtml" />
+    <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

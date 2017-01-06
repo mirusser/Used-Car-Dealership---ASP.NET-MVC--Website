@@ -28,7 +28,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public GaragesController(ManagerFactory managerFactory)
         {
-            garageManager = managerFactory.Get<GarageManger>();
+            garageManager = managerFactory.Get<GarageManager>();
         }
 
         // GET: Garages
@@ -36,6 +36,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             var userGarage = garageManager.GetGarageByUserId(userId);
             return View(userGarage);
+        }
+
+        public ActionResult OrderCar(int carId)
+        {
+            garageManager.OrderCar(carId,userId);
+            return RedirectToAction("Index");
         }
 
         // GET: Garages/Details/5

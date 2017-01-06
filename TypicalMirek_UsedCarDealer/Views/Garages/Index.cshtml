@@ -6,27 +6,15 @@
 
 <h2>Your garage @User.Identity.Name</h2>
 
-<table class="table">
-    @if (Model.Orders != null)
-    {
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Orders)
-            </th>
-            <th></th>
-        </tr>
 
-        foreach (var order in Model.Orders)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => order.CarId)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => order.DateOfOrder)
-                </td>
-            </tr>
-        }
-    }
+@if (Model.Orders != null)
+{
+    <h3>Your Orders</h3>
+    Html.RenderPartial("PartialViews/Orders", Model.Orders);
+}
+else
+{
+    Html.RenderPartial("PartialViews/NoOrders");
+}
 
-</table>
+

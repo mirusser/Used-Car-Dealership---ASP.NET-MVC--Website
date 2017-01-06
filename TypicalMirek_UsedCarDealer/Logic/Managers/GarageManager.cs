@@ -10,20 +10,22 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
-    public class GarageManger : IGarageManager
+    public class GarageManager : IGarageManager
     {
         private readonly IGarageRepository garageRepository;
+        private readonly IOrderRepository orderRepository;
 
-        public GarageManger() { }
+        public GarageManager() { }
 
-        public GarageManger(IRepositoryFactory repositoryFactory)
+        public GarageManager(IRepositoryFactory repositoryFactory)
         {
             garageRepository = repositoryFactory.Get<GarageRepository>();
+            orderRepository = repositoryFactory.Get<OrderRepository>();
         }
 
         public Garage GetGarageByUserId(string userId)
         {
-            return string.IsNullOrEmpty(userId) ? garageRepository.GetGarageByUserId(userId) : createUserGarage(userId);
+            return garageRepository.GetGarageByUserId(userId) ?? createUserGarage(userId);
         }
 
         private Garage createUserGarage(string userId)
@@ -37,6 +39,27 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             garageRepository.Add(garage);
             garageRepository.Save();
             return garage;
+        }
+
+        public void OrderCar(int carId, string userId)
+        {
+            var garage = GetGarageByUserId(userId);
+            var order = new Order
+            {
+                CarId = carId,
+                UserId = userId,
+                DateOfOrder = DateTime.Now,
+            };
+
+            //orderRepository.Add(order);
+            //orderRepository.Save();
+
+            if (garage.Orders == null)
+            {
+                garage.Orders = new List<Order>();
+            }
+            garage.Orders.Add(order);
+            garageRepository.Save();
         }
     }
 }
