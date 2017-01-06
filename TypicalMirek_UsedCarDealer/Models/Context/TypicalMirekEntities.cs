@@ -24,5 +24,7 @@ namespace TypicalMirek_UsedCarDealer.Models.Context
         public DbSet<Type> Types { get; set; }
         public DbSet<SliderPhoto> SliderPhotos { get; set; }
         public DbSet<IdentityUserRole> IdentityUserRoles { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Garage> UserGarage { get; set; }
     }
 }

@@ -224,7 +224,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 Price = car.Price,
                 AddTime = car.AddTime,
                 DeleteTime = car.DeleteTime,
-                numberOfViews = car.numberOfViews
+                numberOfViews = car.NumberOfViews
             };
         }
 
@@ -313,7 +313,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 Price = car.Price,
                 AddTime = car.AddTime,
                 DeleteTime = car.DeleteTime,
-                numberOfViews = car.numberOfViews
+                numberOfViews = car.NumberOfViews
             };
         }
     }

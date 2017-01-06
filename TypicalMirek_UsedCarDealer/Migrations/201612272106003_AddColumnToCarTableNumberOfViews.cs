@@ -7,12 +7,12 @@ namespace TypicalMirek_UsedCarDealer.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Cars", "numberOfViews", c => c.Long(nullable: false));
+            AddColumn("dbo.Cars", "NumberOfViews", c => c.Long(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Cars", "numberOfViews");
+            DropColumn("dbo.Cars", "NumberOfViews");
         }
     }
 }
