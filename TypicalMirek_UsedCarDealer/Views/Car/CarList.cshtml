@@ -1,5 +1,4 @@
 ﻿@model TypicalMirek_UsedCarDealer.Models.ParametersToCarList
-
 @Styles.Render("~/Content/car-list")
 
 @Styles.Render("~/Content/DependendDropdown")
@@ -7,8 +6,6 @@
 
 <script>
     $(document).ready(function () {
-        $(".chosen-select").chosen();
-
         $("#model").depdrop({
             url: '/Car/Models',
             depends: ['brand']
@@ -17,275 +14,444 @@
 </script>
 <div class="container">
     <div class="row">
-        <div style="background-color: #e8eaef;">
-            <form action="/Car/CarList" method="get">
-                <fieldset>
-                    <div class="form-group col-md-12">
-                        <div class="form-group col-md-2">
-                            <select name="Brand" id="brand" class="form-control">
-                                <option selected disabled hidden>Brand</option>
-                                @foreach (var item in Model.BrandList)
-                                {
-                                    if (Request.QueryString["brand"] == item)
-                                    {
-                                        <option selected value="@item">@item</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item">@item</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            <select name="Model" id="model" class="form-control">
-                                <option selected disabled hidden>Model</option>
-                                @if (!string.IsNullOrEmpty(Request.QueryString["model"]))
-                                {
-                                <option selected>@Request.QueryString["model"]</option>
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            @if (string.IsNullOrEmpty(Request.QueryString["minPrice"]))
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1"><i class="glyphicon glyphicon-plus"></i>PRESS TO OPEN SEARCH BAR</a>
+                    </h4>
+                </div>
+            <form id="collapse1" class="panel-collapse collapse" action="/Car/CarList" method="get">
+            <div>
+                
+            </div>
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-2">
+                    <select id="character" class="form-control">
+                        <option selected disabled hidden>Character</option>
+                        @foreach (var item in Model.CharacterList)
+                        {
+                            if (Request.QueryString["character"] == item)
                             {
-                                <input type="text" class="form-control" name="minPrice" placeholder="Min price">
+                                <option selected value="@item">@item</option>
                             }
                             else
                             {
-                                <input value="@Request.QueryString["minPrice"]" type="text" class="form-control" name="minPrice" placeholder="Min price">
+                                <option value="@item">@item</option>
                             }
-                        </div>
+                        }
+                    </select>
+                </div>
 
-                        <div class="form-group col-md-2">
-                            @if (string.IsNullOrEmpty(Request.QueryString["maxPrice"]))
+                <div class="form-group col-md-2">
+                    <select id="brand" class="form-control">
+                        <option selected disabled hidden>Brand</option>
+                        @foreach (var item in Model.BrandList)
+                        {
+                            if (Request.QueryString["brand"] == item)
                             {
-                                <input type="text" class="form-control" name="maxPrice" placeholder="Max price">
+                                <option selected value="@item">@item</option>
                             }
                             else
                             {
-                                <input value="@Request.QueryString["maxPrice"]" type="text" class="form-control" name="maxPrice" placeholder="Max price">
+                                <option value="@item">@item</option>
                             }
-                        </div>
+                        }
+                    </select>
+                </div>
 
+                <div class="form-group col-md-2">
+                    <select id="model" class="form-control">
+                        <option selected disabled hidden>Model</option>
+                        @if (!string.IsNullOrEmpty(Request.QueryString["model"]))
+                        {
+                            <option selected>@Request.QueryString["model"]</option>
+                        }
+                    </select>
+                </div>
 
-                        <div class="form-group col-md-2">
-                            @if (string.IsNullOrEmpty(Request.QueryString["yearFrom"]))
-                            {
-                                <input type="text" class="form-control" name="yearFrom" placeholder="Min year">
-                            }
-                            else
-                            {
-                                <input value="@Request.QueryString["yearFrom"]" type="text" class="form-control" name="yearFrom" placeholder="Min year">
-                            }
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            @if (string.IsNullOrEmpty(Request.QueryString["yearTo"]))
-                            {
-                                <input type="text" class="form-control" name="yearTo" placeholder="Max year">
-                            }
-                            else
-                            {
-                                <input value="@Request.QueryString["yearTo"]" type="text" class="form-control" name="yearTo" placeholder="Max year">
-                            }
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12" id="fuel">
-                        <div id="fuel" class="form-group col-md-2">
-                            <select class="form-control">
-                                <option selected disabled hidden>Fuel</option>
-                                @foreach (var item in Model.FuelList)
-                                {
-                                    if (Request.QueryString["fuel"] == item)
-                                    {
-                                        <option selected value="@item">@item</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item">@item</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div id="body" class="form-group col-md-2">
-                            <select class="form-control">
-                                <option selected disabled hidden>Body</option>
-                                @foreach (var item in Model.BodyList)
-                                {
-                                    if (Request.QueryString["body"] == item)
-                                    {
-                                        <option selected value="@item">@item</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item">@item</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            @if (string.IsNullOrEmpty(Request.QueryString["milleageFrom"]))
-                            {
-                                <input type="text" class="form-control" name="milleageFrom" placeholder="Min milleage">
-                            }
-                            else
-                            {
-                                <input value="@Request.QueryString["milleageFrom"]" type="text" class="form-control" name="milleageFrom" placeholder="Min milleage">
-                            }
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            @if (string.IsNullOrEmpty(Request.QueryString["milleageTo"]))
-                            {
-                                <input type="text" class="form-control" name="milleageTo" placeholder="Max milleage">
-                            }
-                            else
-                            {
-                                <input value="@Request.QueryString["milleageTo"]" type="text" class="form-control" name="milleageTo" placeholder="Max milleage">
-                            }
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12" style="display: table; margin: 0 auto;">
-                        <div class="form-group col-md-2">
-                            <select id="perPage" class="form-control">
-                                @{
-                                    var perPage = Request.QueryString["perPage"];
-
-                                    switch (perPage)
-                                    {
-                                        case "10":
-                                            <option selected id="10">10</option>
-                                            <option id="20">20</option>
-                                            <option id="50">50</option>
-                                            <option id="100">100</option>
-                                            break;
-                                        case "20":
-                                            <option id="10">10</option>
-                                            <option selected id="20">20</option>
-                                            <option id="50">50</option>
-                                            <option id="100">100</option>
-                                            break;
-                                        case "50":
-                                            <option id="10">10</option>
-                                            <option id="20">20</option>
-                                            <option selected id="50">50</option>
-                                            <option id="100">100</option>
-                                            break;
-                                        case "100":
-                                            <option id="10">10</option>
-                                            <option id="20">20</option>
-                                            <option id="50">50</option>
-                                            <option selected id="100">100</option>
-                                            break;
-                                        default:
-                                            <option selected disabled hidden>Per page</option>
-                                            <option id="10">10</option>
-                                            <option id="20">20</option>
-                                            <option id="50">50</option>
-                                            <option id="100">100</option>
-                                            break;
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-2">
-                            <select name="sortBy" id="sortBy" class="form-control">
-                                <option selected disabled hidden>Sort by</option>
-                                @foreach (var item in Model.SortByList)
-                                {
-                                    if (Request.QueryString["sortBy"] == item)
-                                    {
-                                        <option selected value="@item">@item</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item">@item</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-1">
-                            <input type="submit" value="Submit" class="btn btn-default" />
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="col-md-12">
-            @foreach (var item in Model.Cars)
-                                            {
-                <div class="col-sm-4 col-md-3" style="height: 360px">
-                    <div class="thumbnail" id="over">
-                        @if (@item.Photos.Count == 0)
-                                            {
-                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive car-image" alt="">
+                <div class="form-group col-md-2">
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["minPrice"]))
+                        {
+                            <input type="text" class="form-control" name="minPrice" placeholder="&lt; price">
                         }
                         else
                         {
-                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive car-image" alt="">
+                            <input value="@Request.QueryString["minPrice"]" type="text" class="form-control" name="minPrice" placeholder="&lt; price">
                         }
-
-                        <div class="caption" style="text-align: center">
-                            <div class="row">
-                                <h4>@item.Brand @item.ModelName</h4>
-                                <p>Only @item.Price$</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <a href="#" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Add to wishlist</a>
-                                </div>
-                                <div class="col-md-12">
-                                    <a href="/Car/ShowCar?id=@item.Id" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
-                                </div>
-                            </div>
-                            <p></p>
-                        </div>
+                    </div>
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["maxPrice"]))
+                        {
+                            <input type="text" class="form-control" name="maxPrice" placeholder="&gt; price">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["maxPrice"]" type="text" class="form-control" name="maxPrice" placeholder="&gt; price">
+                        }
                     </div>
                 </div>
-            }
-        </div>
-        <div class="row" style="display: table; margin: 0 auto; ">
-            <nav aria-label="...">
-                <ul class="pagination">
-                    @for (var i = 0; i < Model.NumberOfPages; i++)
-                    {
-                        //ale odjebałem!!! XDDD
-                        string query;
-                        if (Request.Url.Query.Contains("page=" + Model.CurrentPage))
-                        {
-                            query = Request.Url.Query.Replace("page=" + Model.CurrentPage, "page=" + i);
-                        }
-                        else if (Request.Url.Query.Contains("page="))
-                        {
-                            query = Request.Url.Query.Replace("page=", "page=" + i);
-                        }
-                        else if (string.IsNullOrEmpty(Request.Url.Query))
-                        {
-                            query = "?page=" + i;
-                        }
-                        else
-                        {
-                            query = Request.Url.Query + "&page=" + i;
-                        }
 
-                        if (i == Model.CurrentPage)
+                <div class="form-group col-md-2">
+                    <select id="fuel" class="form-control">
+                        <option selected disabled hidden>Fuel</option>
+                        @foreach (var item in Model.FuelList)
                         {
-                            <li class="active"><a href="@query">@i</a></li>
+                            if (Request.QueryString["fuel"] == item)
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["yearFrom"]))
+                        {
+                            <input type="text" class="form-control" name="yearFrom" placeholder="&lt; year">
                         }
                         else
                         {
-                            <li><a href="@query">@i</a></li>
+                            <input value="@Request.QueryString["yearFrom"]" type="text" class="form-control" name="yearFrom" placeholder="&lt; year">
                         }
-                    }
-                </ul>
-            </nav>
+                    </div>
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["yearTo"]))
+                        {
+                            <input type="text" class="form-control" name="yearTo" placeholder="&gt; year">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["yearTo"]" type="text" class="form-control" name="yearTo" placeholder="&gt; year">
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-2">
+                    <select id="body" class="form-control">
+                        <option selected disabled hidden>Body</option>
+                        @foreach (var item in Model.BodyList)
+                        {
+                            if (Request.QueryString["body"] == item)
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["milleageFrom"]))
+                        {
+                            <input type="text" class="form-control" name="milleageFrom" placeholder="&lt; milleage">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["milleageFrom"]" type="text" class="form-control" name="milleageFrom" placeholder="&lt; milleage">
+                        }
+                    </div>
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["milleageTo"]))
+                        {
+                            <input type="text" class="form-control" name="milleageTo" placeholder="&gt; milleage">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["milleageTo"]" type="text" class="form-control" name="milleageTo" placeholder="&gt; milleage">
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <select id="damaged" class="form-control">
+                        @{
+                            var damaged = Request.QueryString["damaged"];
+
+                            switch (damaged)
+                            {
+                                case "true":
+                                    <option selected value="true">Yes</option>
+                                    <option value="false">No</option>
+                                    break;
+                                case "false":
+                                    <option value="true">Yes</option>
+                                    <option selected value="false">No</option>
+                                    break;
+                                default:
+                                    <option selected disabled hidden>Damaged</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                    break;
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["engineCapacityFrom"]))
+                        {
+                            <input type="text" class="form-control" name="engineCapacityFrom" placeholder="&lt; capacity">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["engineCapacityFrom"]" type="text" class="form-control" name="engineCapacityFrom" placeholder="&lt; capacity">
+                        }
+                    </div>
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["engineCapacityTo"]))
+                        {
+                            <input type="text" class="form-control" name="engineCapacityTo" placeholder="&gt; capacity">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["engineCapacityTo"]" type="text" class="form-control" name="engineCapacityTo" placeholder="&gt; capacity">
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["enginePowerFrom"]))
+                        {
+                            <input type="text" class="form-control" name="enginePowerFrom" placeholder="&lt; power">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["enginePowerFrom"]" type="text" class="form-control" name="enginePowerFrom" placeholder="&lt; power">
+                        }
+                    </div>
+                    <div class="row no-gutter col-md-8">
+                        @if (string.IsNullOrEmpty(Request.QueryString["enginePowerTo"]))
+                        {
+                            <input type="text" class="form-control" name="enginePowerTo" placeholder="&gt; power">
+                        }
+                        else
+                        {
+                            <input value="@Request.QueryString["enginePowerTo"]" type="text" class="form-control" name="enginePowerTo" placeholder="&gt; power">
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <select id="gearbox" class="form-control">
+                        <option selected disabled hidden>Gearbox</option>
+                        @foreach (var item in Model.GearboxList)
+                        {
+                            if (Request.QueryString["gearbox"] == item)
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-2">
+                    <select id="propulsion" class="form-control">
+                        <option selected disabled hidden>Propulsion</option>
+                        @foreach (var item in Model.PropulsionList)
+                        {
+                            if (Request.QueryString["propulsion"] == item)
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <select id="numberOfSeats" class="form-control">
+                        <option selected disabled hidden>Seats</option>
+                        @foreach (var item in Model.NumberOfSeatsList)
+                        {
+                            if (Request.QueryString["numberOfSeats"] == item.ToString())
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <select id="colour" class="form-control">
+                        <option selected disabled hidden>Colour</option>
+                        @foreach (var item in Model.ColorList)
+                        {
+                            if (Request.QueryString["colour"] == item)
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <select id="perPage" class="form-control">
+                        @{
+                            var perPage = Request.QueryString["perPage"];
+
+                            switch (perPage)
+                            {
+                                case "10":
+                                    <option selected id="10">10</option>
+                                    <option id="20">20</option>
+                                    <option id="50">50</option>
+                                    <option id="100">100</option>
+                                    break;
+                                case "20":
+                                    <option id="10">10</option>
+                                    <option selected id="20">20</option>
+                                    <option id="50">50</option>
+                                    <option id="100">100</option>
+                                    break;
+                                case "50":
+                                    <option id="10">10</option>
+                                    <option id="20">20</option>
+                                    <option selected id="50">50</option>
+                                    <option id="100">100</option>
+                                    break;
+                                case "100":
+                                    <option id="10">10</option>
+                                    <option id="20">20</option>
+                                    <option id="50">50</option>
+                                    <option selected id="100">100</option>
+                                    break;
+                                default:
+                                    <option selected disabled hidden>Per page</option>
+                                    <option id="10">10</option>
+                                    <option id="20">20</option>
+                                    <option id="50">50</option>
+                                    <option id="100">100</option>
+                                    break;
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <select name="sortBy" id="sortBy" class="form-control">
+                        <option selected disabled hidden>Sort by</option>
+                        @foreach (var item in Model.SortByList)
+                        {
+                            if (Request.QueryString["sortBy"] == item)
+                            {
+                                <option selected value="@item">@item</option>
+                            }
+                            else
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <button type="submit" value="Submit" class="btn-success">
+                        Search <span class="glyphicon glyphicon-search"></span>&nbsp;
+                    </button>
+                </div>
+            </div>
+            </form>
+            </div>
         </div>
+    </div>
+    <div class="col-md-12">
+        @foreach (var item in Model.Cars)
+            {
+            <div class="col-sm-4 col-md-3" style="height: 360px">
+                <div class="thumbnail" id="over">
+                    @if (@item.Photos.Count == 0)
+                    {
+                        <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive car-image" alt="">
+                    }
+                    else
+                    {
+                        <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive car-image" alt="">
+                    }
+
+                    <div class="caption" style="text-align: center">
+                        <div class="row">
+                            <h4>@item.Brand @item.ModelName</h4>
+                            <p>Only @item.Price$</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="#" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Add to wishlist</a>
+                            </div>
+                            <div class="col-md-12">
+                                <a href="/Car/ShowCar?id=@item.Id" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Show</a>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row" style="display: table; margin: 0 auto; ">
+        <nav aria-label="...">
+            <ul class="pagination">
+                @for (var i = 0; i < Model.NumberOfPages; i++)
+                {
+                    string query;
+                    if (Request.Url.Query.Contains("page=" + Request.QueryString["page"]))
+                    {
+                        query = Request.Url.Query.Replace("page=" + Request.QueryString["page"], "page=" + i);
+                    }
+                    else if (Request.Url.Query.Contains("page="))
+                    {
+                        query = Request.Url.Query.Replace("page=", "page=" + i);
+                    }
+                    else if (string.IsNullOrEmpty(Request.Url.Query))
+                    {
+                        query = "?page=" + i;
+                    }
+                    else
+                    {
+                        query = Request.Url.Query + "&page=" + i;
+                    }
+
+                    if (i == Convert.ToInt32(Request.QueryString["page"]))
+                    {
+                        <li class="active"><a href="@query">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@query">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
     </div>
 </div>
