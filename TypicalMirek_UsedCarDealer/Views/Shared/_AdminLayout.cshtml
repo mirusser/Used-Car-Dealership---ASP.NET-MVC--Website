@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Typical Mirek</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/HideNavbar")
+    @* Below admin sidebar *@
+    @Styles.Render("~/Content/AdminMenu")
+    @Scripts.Render("~/bundles/AdminMenu")
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-sidenav]').sidenav();
+    });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Typical Mirek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Cars", "CarList", "Car")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
+                    }
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+<div class="container body-content">
+    <a href="javascript:;" class="toggle" id="sidenav-toggle">
+        <i class="glyphicon glyphicon-th-list"></i>
+    </a>
+    @{
+        Html.RenderPartial($"../Admin/PartialViews/_Sidebar");
+    }
+    @RenderBody()
+</div>
+    <div class="center-block">
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - Typical Mirek - Used car dealership</p>
+            @*<p>Przedstawiona oferta cenowa ma charakter informacyjny, nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</p>*@
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -10,5 +10,6 @@ namespace TypicalMirek_UsedCarDealer.Models
     {
         public IList<CarPhotoViewModel> Slider { get; set; }
         public IList<CarPhotoViewModel> HotCars { get; set; }
+        public IList<CarPhotoViewModel> NewCars { get; set; }
     }
 }

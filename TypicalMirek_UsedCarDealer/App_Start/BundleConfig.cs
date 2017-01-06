@@ -79,7 +79,13 @@ namespace TypicalMirek_UsedCarDealer
                       "~/Content/thumbGrid.css"));
 
             bundles.Add(new StyleBundle("~/Content/car-list").Include(
-                       "~/Content/car-list.css"));
+                      "~/Content/car-list.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/DependendDropdown").Include(
+                      "~/Scripts/dependent-dropdown.js"));
+
+            bundles.Add(new StyleBundle("~/Content/DependendDropdown").Include(
+                      "~/Content/dependent-dropdown.css"));
         }
     }
 }

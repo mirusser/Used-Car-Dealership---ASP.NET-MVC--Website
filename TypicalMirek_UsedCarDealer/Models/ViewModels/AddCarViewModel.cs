@@ -87,5 +87,11 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
 
         public ICollection<CarPhoto> Photos { get; set; }
         public IEnumerable<HttpPostedFileBase> Files { get; set; }
+
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public DateTime AddTime { get; set; }
+        public DateTime? DeleteTime { get; set; }
+        public long numberOfViews { get; set; }
     }
 }

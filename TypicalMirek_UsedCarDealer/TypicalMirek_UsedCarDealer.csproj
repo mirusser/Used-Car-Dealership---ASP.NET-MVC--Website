@@ -304,6 +304,10 @@
     <Compile Include="Migrations\201612280127578_AddDescriptionToCarTableInDatabase.Designer.cs">
       <DependentUpon>201612280127578_AddDescriptionToCarTableInDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.cs" />
+    <Compile Include="Migrations\201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.Designer.cs">
+      <DependentUpon>201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -319,6 +323,7 @@
     <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
+    <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -338,6 +343,7 @@
     <Compile Include="Models\ViewModels\CarPhotoViewModel.cs" />
     <Compile Include="Models\ViewModels\ChangeUserRoleViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCarViewModel.cs" />
+    <Compile Include="Models\ViewModels\ItemsToDependendDropdownViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\Repositories\BaseRepository.cs" />
     <Compile Include="Logic\Repositories\CategoryRepository.cs" />
@@ -375,7 +381,6 @@
     <Content Include="App_Data\Slider\themes.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\car-list.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
@@ -397,9 +402,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
     <Content Include="Scripts\elastislide.js" />
-    <Content Include="Scripts\jquery.fullPage.js" />
-    <Content Include="Scripts\jquery.fullPage.min.js" />
-    <Content Include="Scripts\jquery.mousewheel.js" />
     <Content Include="Scripts\mb.browser.min.js" />
     <Content Include="Scripts\mb.CSSAnimate.min.js" />
     <Content Include="Scripts\mb.thumbGallery.js" />
@@ -407,8 +409,6 @@
     <Content Include="Scripts\onescrollheader.js" />
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
-    <Content Include="Scripts\scrolloverflow.js" />
-    <Content Include="Scripts\scrolloverflow.min.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\sidenav.min.js" />
     <Content Include="Scripts\slippry.min.js" />
@@ -544,8 +544,10 @@
     <Content Include="Views\Types\Details.cshtml" />
     <Content Include="Views\Types\Edit.cshtml" />
     <Content Include="Views\Types\List.cshtml" />
+    <Content Include="Web.config" />
     <Content Include="Views\Car\ShowCar.cshtml" />
     <Content Include="Views\Car\CarList.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Colors\Create.cshtml" />
     <Content Include="Views\Colors\Delete.cshtml" />
     <Content Include="Views\Colors\Details.cshtml" />
@@ -558,9 +560,11 @@
     <Content Include="Views\Countries\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -605,6 +609,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612280127578_AddDescriptionToCarTableInDatabase.resx">
       <DependentUpon>201612280127578_AddDescriptionToCarTableInDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.resx">
+      <DependentUpon>201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
