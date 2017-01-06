@@ -172,7 +172,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public void IncrementNumberOfViews(int id)
         {
-            carRepository.GetById(id).numberOfViews++;
+            carRepository.GetById(id).NumberOfViews++;
             carRepository.Save();
         }
 

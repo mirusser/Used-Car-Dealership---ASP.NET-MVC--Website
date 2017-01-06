@@ -243,12 +243,14 @@
     <Compile Include="Logic\Repositories\CharacterRepository.cs" />
     <Compile Include="Logic\Repositories\ColorRepository.cs" />
     <Compile Include="Logic\Repositories\CountryRepository.cs" />
+    <Compile Include="Logic\Repositories\GarageRepository.cs" />
     <Compile Include="Logic\Repositories\GearboxRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IAdditionalDataRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IAdditionalEquipmentRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICarPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IColorRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICountryRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IGarageRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IGearboxRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IMainDataRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IBodyRepository.cs" />
@@ -256,6 +258,7 @@
     <Compile Include="Logic\Repositories\Interfaces\ICarRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICharacterRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IModelRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IOrderRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPropulsionRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ISliderPhotoRepository.cs" />
@@ -263,6 +266,7 @@
     <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
     <Compile Include="Logic\Repositories\MainDataRepository.cs" />
     <Compile Include="Logic\Repositories\ModelRepository.cs" />
+    <Compile Include="Logic\Repositories\OrderRepository.cs" />
     <Compile Include="Logic\Repositories\PositionOfSteeringWheelRepository.cs" />
     <Compile Include="Logic\Repositories\PropulsionRepository.cs" />
     <Compile Include="Logic\Repositories\SliderPhotoRepository.cs" />
@@ -308,6 +312,10 @@
     <Compile Include="Migrations\201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.Designer.cs">
       <DependentUpon>201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701061417251_InitUserGarage.cs" />
+    <Compile Include="Migrations\201701061417251_InitUserGarage.Designer.cs">
+      <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -321,7 +329,9 @@
     <Compile Include="Models\Context\TypicalMirekEntities.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Enums\SidebarChoose.cs" />
+    <Compile Include="Models\Garage.cs" />
     <Compile Include="Models\Gearbox.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
     <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
@@ -612,6 +622,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.resx">
       <DependentUpon>201701031641154_AddPriceAddTimeAndNullableDeleteTimeToCarDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701061417251_InitUserGarage.resx">
+      <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
