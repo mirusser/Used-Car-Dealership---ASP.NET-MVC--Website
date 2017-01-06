@@ -166,6 +166,56 @@
                             @Html.Action("Delete", "Categories", routeValues: new { id = Model.Id })
                             break;
                         }
+                    case SidebarChoose.ColorList:
+                        {
+                            @Html.Action("List", "Colors")
+                            break;
+                        }
+                    case SidebarChoose.CreateColor:
+                        {
+                            @Html.Action("Create", "Colors")
+                            break;
+                        }
+                    case SidebarChoose.DetailsColor:
+                        {
+                            @Html.Action("Details", "Colors", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.EditColor:
+                        {
+                            @Html.Action("Edit", "Colors", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.DeleteColor:
+                        {
+                            @Html.Action("Delete", "Colors", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.CountryList:
+                        {
+                            @Html.Action("List", "Countries")
+                            break;
+                        }
+                    case SidebarChoose.CreateCountry:
+                        {
+                            @Html.Action("Create", "Countries")
+                            break;
+                        }
+                    case SidebarChoose.DetailsCountry:
+                        {
+                            @Html.Action("Details", "Countries", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.EditCountry:
+                        {
+                            @Html.Action("Edit", "Countries", routeValues: new { id = Model.Id })
+                            break;
+                        }
+                    case SidebarChoose.DeleteCountry:
+                        {
+                            @Html.Action("Delete", "Countries", routeValues: new { id = Model.Id })
+                            break;
+                        }
                     case SidebarChoose.ChangeUserRole:
                         {
                             @Html.Action("ChangeUserRole", "Account")

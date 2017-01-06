@@ -57,7 +57,13 @@
                     @Html.ActionLink(linkText: "Car types", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.TypeList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Car categories", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CategoryList, Id = null })
+                    @Html.ActionLink(linkText: "Car categories", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.CategoryList, Id = null})
+                </li>
+                <li>
+                    @Html.ActionLink(linkText: "Colors", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.ColorList, Id = null })
+                </li>
+                <li>
+                    @Html.ActionLink(linkText: "Countries", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CountryList, Id = null })
                 </li>
             </ul>
         </li>

@@ -19,5 +19,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         {
             
         }
+
+        public bool CheckIfColorIsUsed(int colorId)
+        {
+            return Items.Any(a => a.ColorId == colorId);
+        }
     }
 }
