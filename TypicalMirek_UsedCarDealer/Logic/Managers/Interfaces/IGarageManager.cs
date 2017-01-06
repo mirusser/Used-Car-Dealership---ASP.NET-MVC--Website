@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TypicalMirek_UsedCarDealer.Migrations;
 using TypicalMirek_UsedCarDealer.Models;
 
-namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
+namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
 {
-    public interface IGarageRepository : IBaseRepository<Garage>
+    public interface IGarageManager : IManager
     {
         Garage GetGarageByUserId(string userId);
     }

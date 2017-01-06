@@ -196,6 +196,7 @@
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
     <Compile Include="Logic\Controllers\CountriesController.cs" />
+    <Compile Include="Logic\Controllers\GaragesController.cs" />
     <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Logic\Managers\CharacterManager.cs" />
     <Compile Include="Logic\Managers\ColorManager.cs" />
     <Compile Include="Logic\Managers\CountryManager.cs" />
+    <Compile Include="Logic\Managers\GarageManger.cs" />
     <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
@@ -228,6 +230,7 @@
     <Compile Include="Logic\Managers\Interfaces\ICharacterManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IColorManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICountryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IGarageManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ITypeManager.cs" />
@@ -568,6 +571,11 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\List.cshtml" />
+    <Content Include="Views\Garages\Create.cshtml" />
+    <Content Include="Views\Garages\Delete.cshtml" />
+    <Content Include="Views\Garages\Details.cshtml" />
+    <Content Include="Views\Garages\Edit.cshtml" />
+    <Content Include="Views\Garages\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
