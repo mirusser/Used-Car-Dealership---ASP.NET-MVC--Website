@@ -221,6 +221,7 @@
     <Compile Include="Logic\Managers\CharacterManager.cs" />
     <Compile Include="Logic\Managers\ColorManager.cs" />
     <Compile Include="Logic\Managers\CountryManager.cs" />
+    <Compile Include="Logic\Managers\EmailConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarManager.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Logic\Managers\Interfaces\ICharacterManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IColorManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICountryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IEmailConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ITypeManager.cs" />
@@ -243,6 +245,7 @@
     <Compile Include="Logic\Repositories\CharacterRepository.cs" />
     <Compile Include="Logic\Repositories\ColorRepository.cs" />
     <Compile Include="Logic\Repositories\CountryRepository.cs" />
+    <Compile Include="Logic\Repositories\EmailConfigurationRepository.cs" />
     <Compile Include="Logic\Repositories\GarageRepository.cs" />
     <Compile Include="Logic\Repositories\GearboxRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IAdditionalDataRepository.cs" />
@@ -250,6 +253,7 @@
     <Compile Include="Logic\Repositories\Interfaces\ICarPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IColorRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICountryRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IEmailConfigurationRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IGarageRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IGearboxRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IMainDataRepository.cs" />
@@ -264,6 +268,7 @@
     <Compile Include="Logic\Repositories\Interfaces\ISliderPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ISourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IWebsiteContextRepository.cs" />
     <Compile Include="Logic\Repositories\MainDataRepository.cs" />
     <Compile Include="Logic\Repositories\ModelRepository.cs" />
     <Compile Include="Logic\Repositories\OrderRepository.cs" />
@@ -272,6 +277,7 @@
     <Compile Include="Logic\Repositories\SliderPhotoRepository.cs" />
     <Compile Include="Logic\Repositories\SourceOfEnergyRepository.cs" />
     <Compile Include="Logic\Repositories\TypeRepository.cs" />
+    <Compile Include="Logic\Repositories\WebsiteContextRepository.cs" />
     <Compile Include="Migrations\201610210044090_Initial.cs" />
     <Compile Include="Migrations\201610210044090_Initial.Designer.cs">
       <DependentUpon>201610210044090_Initial.cs</DependentUpon>
@@ -316,6 +322,10 @@
     <Compile Include="Migrations\201701061417251_InitUserGarage.Designer.cs">
       <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.cs" />
+    <Compile Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.Designer.cs">
+      <DependentUpon>201701062111263_AddEmailConfigurationAndWebsiteContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -328,12 +338,14 @@
     <Compile Include="Models\Context\ApplicationDbContext.cs" />
     <Compile Include="Models\Context\TypicalMirekEntities.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\EmailConfiguration.cs" />
     <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Garage.cs" />
     <Compile Include="Models\Gearbox.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
     <Compile Include="Models\ParametersToCarList.cs" />
+    <Compile Include="Models\ParametersToContact.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -353,7 +365,9 @@
     <Compile Include="Models\ViewModels\CarPhotoViewModel.cs" />
     <Compile Include="Models\ViewModels\ChangeUserRoleViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCarViewModel.cs" />
+    <Compile Include="Models\ViewModels\EmailFormViewModel.cs" />
     <Compile Include="Models\ViewModels\ItemsToDependendDropdownViewModel.cs" />
+    <Compile Include="Models\WebsiteContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\Repositories\BaseRepository.cs" />
     <Compile Include="Logic\Repositories\CategoryRepository.cs" />
@@ -565,6 +579,8 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\List.cshtml" />
+    <Content Include="Views\Home\EditContact.cshtml" />
+    <Content Include="Views\Home\SendingResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -622,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701061417251_InitUserGarage.resx">
       <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.resx">
+      <DependentUpon>201701062111263_AddEmailConfigurationAndWebsiteContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
