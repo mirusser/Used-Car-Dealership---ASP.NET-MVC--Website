@@ -22,6 +22,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly IBrandManager brandManager;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
         private readonly IEmailConfigurationManager emailConfigurationManager;
+        private readonly IWebsiteContextManager websiteContextManager;
 
         public HomeController(IManagerFactory managerFactory)
         {
@@ -30,6 +31,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             brandManager = managerFactory.Get<BrandManager>();
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
             emailConfigurationManager = managerFactory.Get<EmailConfigurationManager>();
+            websiteContextManager = managerFactory.Get<WebsiteContextManager>();
         }
 
         public ActionResult Index()
@@ -93,10 +95,17 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult Contact(string result = null)
         {
+            var context = websiteContextManager.GetContextByName("Contact");
+            string content = null;
+            if (context != null)
+            {
+                content = context.Context;
+            }
+
             var parametersToContact = new ParametersToContact
             {
                 Result = result,
-                Content = "Content downloaded from DB"
+                Content = content
             };
             return View(parametersToContact);
         }
@@ -136,11 +145,42 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult EditContact()
         {
-            ViewBag.Message = "Your contact page.";
+            var context = websiteContextManager.GetContextByName("Contact");
 
-            return View();
+            var parameters = new ParametersToWysiwyg
+            {
+                ActionNameForPost = "SaveContact",
+                ControllerNameForPost = "Home",
+                Context = context?.Context
+            };
+
+            return View(parameters);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)] //bo niebezieczna wartość
+        public ActionResult SaveContact(string htmlmarkups)
+        {
+            if(!ModelState.IsValid) return RedirectToAction("EditContact", "Home");
+
+            var context = websiteContextManager.GetContextByName("Contact");
+            if (context == null)
+            {
+                context = new WebsiteContext
+                {
+                    Id = 1,
+                    SiteName = "Contact",
+                    Context = htmlmarkups
+                };
+                websiteContextManager.Add(context);
+            }
+            context.Context = htmlmarkups;
+            websiteContextManager.Modify(context);
+
+            return RedirectToAction("EditContact", "Home");
         }
     }
 }

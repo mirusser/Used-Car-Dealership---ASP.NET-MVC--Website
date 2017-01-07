@@ -233,9 +233,11 @@
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ITypeManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IWebsiteContextManager.cs" />
     <Compile Include="Logic\Managers\TypeManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
     <Compile Include="Logic\Managers\SliderPhotoManager.cs" />
+    <Compile Include="Logic\Managers\WebsiteContextManager.cs" />
     <Compile Include="Logic\Repositories\AdditionalDataRepository.cs" />
     <Compile Include="Logic\Repositories\AdditionalEquipmentRepository.cs" />
     <Compile Include="Logic\Repositories\BodyRepository.cs" />
@@ -347,6 +349,7 @@
     <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToContact.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
+    <Compile Include="Models\ParametersToWysiwyg.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainData.cs" />
@@ -415,6 +418,7 @@
     <Content Include="Content\sidenav.min.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\slippry.css" />
+    <Content Include="Content\summernote.css" />
     <Content Include="Content\thumbGrid.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -430,9 +434,11 @@
     <Content Include="Scripts\mb.thumbGallery.min.js" />
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
+    <Content Include="Scripts\sendPost.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\sidenav.min.js" />
     <Content Include="Scripts\slippry.min.js" />
+    <Content Include="Scripts\summernote.js" />
     <Content Include="Views\Account\ChangeUserRole.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\thumbgallery.eot" />
@@ -444,6 +450,9 @@
     <Content Include="fonts\svg\prev.svg" />
     <Content Include="App_Data\Slider\arrows.svg" />
     <Content Include="Web.config" />
+    <Content Include="fonts\summernote.eot" />
+    <Content Include="fonts\summernote.ttf" />
+    <Content Include="fonts\summernote.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
@@ -580,7 +589,7 @@
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\List.cshtml" />
     <Content Include="Views\Home\EditContact.cshtml" />
-    <Content Include="Views\Home\SendingResult.cshtml" />
+    <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

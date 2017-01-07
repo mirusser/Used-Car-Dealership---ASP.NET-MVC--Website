@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace TypicalMirek_UsedCarDealer.Models
 {
@@ -14,6 +15,7 @@ namespace TypicalMirek_UsedCarDealer.Models
         [Required]
         public string SiteName { get; set; }
         [Required]
+        [AllowHtml]
         public string Context { get; set; }
     }
 }
