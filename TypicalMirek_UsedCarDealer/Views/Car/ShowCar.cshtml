@@ -22,133 +22,136 @@
 
 
 @*TODO move style to css file!*@
-<body>
-    <div>
-        <h1 style="text-align: center">
-            @if (Model.MainData.Model.Brand.Name != null)
-            {@Model.MainData.Model.Brand.Name}
+<div>
+    <h1 style="text-align: center">
+        @if (Model.MainData.Model.Brand.Name != null)
+            {@Model.MainData.Model.Brand.Name
+        }
 
-            @if (Model.MainData.Model.Name != null)
-            {@Model.MainData.Model.Name}
-        </h1>
-    </div>
+        @if (Model.MainData.Model.Name != null)
+            {@Model.MainData.Model.Name
+        }
+    </h1>
+</div>
 
-    <div class="col-sm-12 col-xs-12 tabset lead" style="text-align: center">
-        <div class="col-sm-12 col-xs-12" data-pws-tab="tab1" data-pws-tab-name="Basic info" >
-            @if (Model.MainData.Model.Brand.Name != null)
+<div class="col-sm-12 col-xs-12 tabset lead" style="text-align: center">
+    <div class="col-sm-12 col-xs-12" data-pws-tab="tab1" data-pws-tab-name="Basic info">
+        @if (Model.MainData.Model.Brand.Name != null)
             {<p>Brand: @Model.MainData.Model.Brand.Name </p>}
 
-            @if (Model.MainData.Model.Name != null)
+        @if (Model.MainData.Model.Name != null)
             {<p>Model: @Model.MainData.Model.Name</p>}
 
-            @if (Model.MainData.Model.Version != null)
+        @if (Model.MainData.Model.Version != null)
             {<p>Version: @Model.MainData.Model.Version</p>}
 
-            @if (Model.Body.Name != null)
+        @if (Model.Body.Name != null)
             {<p>Body: @Model.Body.Name</p>}
 
-            @if (Model.Propulsion.Name != null)
+        @if (Model.Propulsion.Name != null)
             {<p>Propulsion: @Model.Propulsion.Name</p>}
 
-            @if (Model.Propulsion.Description != null)
+        @if (Model.Propulsion.Description != null)
             {<p>Description: @Model.Propulsion.Description</p>}
 
-            @if (@Model.SourceOfEnergy.Name != null)
+        @if (@Model.SourceOfEnergy.Name != null)
             {<p>Fuel: @Model.SourceOfEnergy.Name</p>}
 
-            @if (Model.SourceOfEnergy.Description != null)
+        @if (Model.SourceOfEnergy.Description != null)
             {<p>Description: @Model.SourceOfEnergy.Description</p>}
-        </div>
-
-        <div class="col-sm-12 col-xs-12" data-pws-tab="tab2" data-pws-tab-name="Additional info">
-            @if (Model.AdditionalData.Color != null)
-            {<p>Colour: @Model.AdditionalData.Color.Name</p>}
-
-            @if (Model.AdditionalData.Country != null)
-            {<p>Country: @Model.AdditionalData.Country.Name</p>}
-
-            @if (Model.AdditionalData.Damaged != null)
-            {<p>Damaged: @Model.AdditionalData.Damaged.Value</p>}
-
-            @if (Model.AdditionalData.EngineCapacity != null)
-            {<p>EngineCapacity: @Model.AdditionalData.EngineCapacity.Value</p>}
-
-            @if (Model.AdditionalData.FuelTankCapacity != null)
-            {<p>FuelTankCapacity: @Model.AdditionalData.FuelTankCapacity.Value</p>}
-
-            @if (Model.AdditionalData.GearBox != null)
-            {<p>GearBox: @Model.AdditionalData.GearBox.Name</p>}
-
-            @if (Model.AdditionalData.Length != null)
-            {<p>Length: @Model.AdditionalData.Length.Value</p>}
-
-            @if (Model.AdditionalData.Mass != null)
-            {<p>Mass: @Model.AdditionalData.Mass.Value</p>}
-
-            @if (Model.AdditionalData.EnginePower != null)
-            {<p>EnginePower: @Model.AdditionalData.EnginePower.Value</p>}
-
-            @if (Model.AdditionalData.Milleage != null)
-            {<p>Milleage: @Model.AdditionalData.Milleage.Value</p>}
-
-            @if (Model.AdditionalData.NumberOfOwners != null)
-            {<p>NumberOfOwners: @Model.AdditionalData.NumberOfOwners.Value</p>}
-
-            @if (Model.AdditionalData.NumberOfSeats != null)
-            {<p>NumberOfSeats: @Model.AdditionalData.NumberOfSeats.Value</p>}
-
-            @if (Model.AdditionalData.PositionOfSteeringWheel != null)
-            {<p>PositionOfSteeringWheel: @Model.AdditionalData.PositionOfSteeringWheel.Name</p>}
-
-            @if (Model.AdditionalData.YearOfProduction > 0)
-            {<p>YearOfProduction: @Model.AdditionalData.YearOfProduction</p>}
-        </div>
-
-        <div class="col-sm-12 col-xs-12" data-pws-tab="tab3" data-pws-tab-name="Equipment">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
-        </div>
-
     </div>
 
+    <div class="col-sm-12 col-xs-12" data-pws-tab="tab2" data-pws-tab-name="Additional info">
+        @if (Model.AdditionalData.Color != null)
+            {<p>Colour: @Model.AdditionalData.Color.Name</p>}
 
-    @if (!string.IsNullOrEmpty(Model.Description))
-    {
-        <div class="col-sm-12 col-xs-12">
-            <h1>Description</h1>
-            <p class="lead">
-                @Model.Description
-            </p>
-        </div>
-    }
+        @if (Model.AdditionalData.Country != null)
+            {<p>Country: @Model.AdditionalData.Country.Name</p>}
 
-    @if (Model.Photos != null && Model.Photos.Count > 0)
-    {
-        <div class="col-sx-12">
-            <h1 style="text-align: center">Photos</h1>
-            <section class="content">
-                <div id="gallery"
-                     class="gallery"
-                     data-thumbGallery="true"
-                     data-nav_effect="slide_horizontal"
-                     data-nav_delay="100"
-                     data-nav_timing="1000"
-                     data-nav_show="true"
-                     data-nav_delay_inverse="1"
-                     data-nav_pagination="3"
-                     data-gallery_effect="slide_horizontal"
-                     data-gallery_fullscreenw="90%"
-                     data-gallery_fullscreenh="100%"
-                     data-gallery_cover="true">
+        @if (Model.AdditionalData.Damaged != null)
+            {<p>Damaged: @Model.AdditionalData.Damaged.Value</p>}
 
-                    @foreach (var item in Model.Photos)
-                    {
-                        <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
-                             data-highres="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
-                             data-caption="@item.Name">
-                    }
-                </div>
-            </section>
-        </div>
-    }
+        @if (Model.AdditionalData.EngineCapacity != null)
+            {<p>EngineCapacity: @Model.AdditionalData.EngineCapacity.Value</p>}
 
-</body>
+        @if (Model.AdditionalData.FuelTankCapacity != null)
+            {<p>FuelTankCapacity: @Model.AdditionalData.FuelTankCapacity.Value</p>}
+
+        @if (Model.AdditionalData.GearBox != null)
+            {<p>GearBox: @Model.AdditionalData.GearBox.Name</p>}
+
+        @if (Model.AdditionalData.Length != null)
+            {<p>Length: @Model.AdditionalData.Length.Value</p>}
+
+        @if (Model.AdditionalData.Mass != null)
+            {<p>Mass: @Model.AdditionalData.Mass.Value</p>}
+
+        @if (Model.AdditionalData.EnginePower != null)
+            {<p>EnginePower: @Model.AdditionalData.EnginePower.Value</p>}
+
+        @if (Model.AdditionalData.Milleage != null)
+            {<p>Milleage: @Model.AdditionalData.Milleage.Value</p>}
+
+        @if (Model.AdditionalData.NumberOfOwners != null)
+            {<p>NumberOfOwners: @Model.AdditionalData.NumberOfOwners.Value</p>}
+
+        @if (Model.AdditionalData.NumberOfSeats != null)
+            {<p>NumberOfSeats: @Model.AdditionalData.NumberOfSeats.Value</p>}
+
+        @if (Model.AdditionalData.PositionOfSteeringWheel != null)
+            {<p>PositionOfSteeringWheel: @Model.AdditionalData.PositionOfSteeringWheel.Name</p>}
+
+        @if (Model.AdditionalData.YearOfProduction > 0)
+            {<p>YearOfProduction: @Model.AdditionalData.YearOfProduction</p>}
+    </div>
+
+    <div class="col-sm-12 col-xs-12" data-pws-tab="tab3" data-pws-tab-name="Equipment">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
+    </div>
+
+</div>
+
+
+@if (!string.IsNullOrEmpty(Model.Description))
+{
+    <div class="col-sm-12 col-xs-12">
+        <h1>Description</h1>
+        <p class="lead">
+            @Model.Description
+        </p>
+    </div>
+}
+
+@if (Model.Photos != null && Model.Photos.Count > 0)
+{
+    <div class="col-sx-12">
+        <h1 style="text-align: center">Photos</h1>
+        <section class="content">
+            <div id="gallery"
+                 class="gallery"
+                 data-thumbGallery="true"
+                 data-nav_effect="slide_horizontal"
+                 data-nav_delay="100"
+                 data-nav_timing="1000"
+                 data-nav_show="true"
+                 data-nav_delay_inverse="1"
+                 data-nav_pagination="3"
+                 data-gallery_effect="slide_horizontal"
+                 data-gallery_fullscreenw="90%"
+                 data-gallery_fullscreenh="100%"
+                 data-gallery_cover="true">
+
+                @foreach (var item in Model.Photos)
+                {
+                    <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
+                         data-highres="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Name})"
+                         data-caption="@item.Name">
+                }
+            </div>
+        </section>
+    </div>
+}
+
+<div class="col-md-12 col-xs-12" style="text-align: center; margin: 0 auto">
+    <a href="/Garages/OrderCar?carId=@Model.Id" class="btn btn-primary btn-product col-md-12 col-xs-12" style="text-align: center; margin: 0 auto"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+</div>

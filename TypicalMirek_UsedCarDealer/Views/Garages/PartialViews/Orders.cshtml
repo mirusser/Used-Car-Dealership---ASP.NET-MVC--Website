@@ -36,11 +36,18 @@
                 @Html.DisplayFor(modelItem => item.IsConfirmed)
             </td>
             <td>
-                @Html.ActionLink("Confirm", "ConfirmOrder", new { id = item.Id }) |
-                @Html.ActionLink("Show order", "ShowOrder", new { id = item.Id }) |
+                @if (item.IsConfirmed)
+                {
+                    @Html.ActionLink("Deny", "DenyOrder", new { id = item.Id });
+                }
+                else
+                {
+                    @Html.ActionLink("Confirm", "ConfirmOrder", new { id = item.Id });
+                }
+
+                | @Html.ActionLink("Show order", "ShowOrder", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "DeleteOrder", new { id = item.Id })
             </td>
         </tr>
     }
 </table>
-
