@@ -41,20 +41,11 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new StyleBundle("~/Content/HomeSlider").Include(
                       "~/Content/slippry.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/OneScrollHeader").Include(
-                      "~/Scripts/onescrollheader.js"));
-
-            bundles.Add(new StyleBundle("~/Content/OneScrollHeader").Include(
-                      "~/Content/onescrollheader.css"));
-
             bundles.Add(new StyleBundle("~/Content/ProductShopSlider").Include(
                       "~/Content/elastislide.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/ProductShopSlider").Include(
                       "~/Scripts/elastislide.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/HideNavbar").Include(
-                      "~/Scripts/bootstrap-autohidingnavbar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Tabs").Include(
                       "~/Scripts/pwstabs.js"));

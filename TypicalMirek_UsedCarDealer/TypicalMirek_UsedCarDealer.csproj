@@ -369,7 +369,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Header\HeaderImage.jpg" />
+    <Content Include="App_Data\Header\logoFun.jpg" />
+    <Content Include="App_Data\Header\logoNormal.jpg" />
     <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
     <Content Include="App_Data\Images\Diagram.png" />
     <Content Include="App_Data\Images\ex1.png" />
@@ -398,13 +399,10 @@
     <Content Include="App_Data\Slider\themes.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\chosen-sprite%402x.png" />
-    <Content Include="Content\chosen-sprite.png" />
-    <Content Include="Content\chosen.css" />
+    <Content Include="Content\car-list.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
-    <Content Include="Content\onescrollheader.css" />
     <Content Include="Content\pwstabs.css" />
     <Content Include="Content\sidenav.css" />
     <Content Include="Content\sidenav.min.css" />
@@ -423,7 +421,6 @@
     <Content Include="Scripts\mb.CSSAnimate.min.js" />
     <Content Include="Scripts\mb.thumbGallery.js" />
     <Content Include="Scripts\mb.thumbGallery.min.js" />
-    <Content Include="Scripts\onescrollheader.js" />
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
     <Content Include="Scripts\sidenav.js" />

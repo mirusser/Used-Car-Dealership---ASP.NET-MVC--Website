@@ -20,7 +20,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
         private readonly ICarBodyManager carBodyManager;
         private readonly ICharacterManager characterManager;
-        private readonly IColorRepository colorRepository;
+        private readonly IColorManager colorRepository;
         private readonly IGearboxRepository geargoxRepository;
         private readonly IPropulsionRepository propulsionRepository;
         private readonly IModelRepository modelRepository;
@@ -33,7 +33,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
             carBodyManager = managerFactory.Get<CarBodyManager>();
             characterManager = managerFactory.Get<CharacterManager>();
-            colorRepository = new ColorRepository();
+            colorRepository = managerFactory.Get <ColorManager>();
             geargoxRepository = new GearboxRepository();
             propulsionRepository = new PropulsionRepository();
             modelRepository = new ModelRepository();

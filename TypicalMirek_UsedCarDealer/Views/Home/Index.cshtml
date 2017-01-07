@@ -4,21 +4,26 @@
     ViewBag.Title = "Home Page";
 }
 
-@Scripts.Render("~/bundles/OneScrollHeader")
-@Styles.Render("~/Content/OneScrollHeader")
-
 @Styles.Render("~/Content/HomeSlider")
 @Scripts.Render("~/bundles/HomeSlider")
+
+@Styles.Render("~/Content/DependendDropdown")
+@Scripts.Render("~/bundles/DependendDropdown")
 
 @Styles.Render("~/Content/ProductShopSlider")
 @Scripts.Render("~/bundles/ProductShopSlider")
 
+@Styles.Render("~/Content/car-list") @*for btn-product*@
+
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.header').oneScrollHeader();
-
         jQuery(document).ready(function () {
             jQuery('#recommendedcarslider').slippry();
+        });
+
+        $("#model").depdrop({
+            url: '@Url.Action("Models", "Car")',
+            depends: ['brand']
         });
 
         $('#hotcarslider').elastislide({
@@ -33,29 +38,99 @@
     });
 </script>
 
-<div class="header">
-    <div align="center" class="col-md-offset-1 col-md-10">
-        <h1>Welcome to Typical Mirek - Used car dealership!</h1>
-    </div>
-</div>
+<div class="container">
+    <div class="col-md-12">
+        <div class="form-group col-md-7">
+            <div>
+                <ul id="recommendedcarslider">
+                    @foreach (var item in Model.Slider)
+                    {
+                        <li>
+                            <a href="@Url.Action("ShowCar", "Car", new {id=item.carId})">
+                                <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
 
+        <div class="form-group col-md-5">
+            <div align="center">
+                <img class="img-responsive" src="@Url.Action("HeaderImage", "GetPhoto", new {name="logoFun"@*zmienic na logoNormal*@, extension="jpg"})"/>
+            </div>
 
-<div>
-    <div align="center">
-        <h1>Mirek reccomendation!</h1>
-    </div>
+            <form action=@Url.Action("CarList", "Car") method="get" style="background-color: rgb(242, 242, 242);">
+                <div class="form-group text-center col-md-12">
+                    <h4>What are You looking for?</h4>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        <select name="brand" id="brand" class="form-control">
+                            <option selected disabled hidden>Brand</option>
+                            @foreach (var item in Model.BrandList)
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        </select>
+                    </div>
 
-    <div>
-        <ul id="recommendedcarslider">
-            @foreach (var item in Model.Slider)
-            {
-                <li>
-                    <a href="/Car/ShowCar?id=@item.carId">
-                        <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
-                    </a>
-                </li>
-            }
-        </ul>
+                    <div class="form-group col-md-6">
+                        <select id="model" name="model" class="form-control">
+                            <option selected disabled hidden>Model</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        <div class="row no-gutter col-md-8">
+                            <input type="text" class="form-control" name="minPrice" placeholder="&lt; price">
+                        </div>
+                        <div class="row no-gutter col-md-8">
+                            <input type="text" class="form-control" name="maxPrice" placeholder="&gt; price">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="row no-gutter col-md-8">
+                            <input type="text" class="form-control" name="yearFrom" placeholder="&lt; year">
+                        </div>
+                        <div class="row no-gutter col-md-8">
+                            <input type="text" class="form-control" name="yearTo" placeholder="&gt; year">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        <div class="row no-gutter col-md-8">
+                            <input type="text" class="form-control" name="milleageFrom" placeholder="&lt; milleage">
+                        </div>
+                        <div class="row no-gutter col-md-8">
+                            <input type="text" class="form-control" name="milleageTo" placeholder="&gt; milleage">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select name="fuel" class="form-control">
+                            <option selected disabled hidden>Fuel</option>
+                            @foreach (var item in Model.FuelTypeList)
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        </select>
+                    </div>
+
+                </div>
+                <div class="text-center">
+                    <button type="submit" value="Submit" class="btn btn-success btn-product">
+                        Search <span class="glyphicon glyphicon-search"></span>&nbsp;
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div align="center">
@@ -67,7 +142,7 @@
         {
             <li>
                 <p style="text-align: center">@item.description</p>
-                <a href="/Car/ShowCar?id=@item.carId">
+                <a href="@Url.Action("ShowCar", "Car", new {id=item.carId})">
                     <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
                 </a>
                 <p style="text-align: center">Price: only @item.price$</p>
@@ -81,22 +156,14 @@
 
     <ul id="newcarslider" class="elastislide-list" style="max-height: 100%">
         @foreach (var item in Model.NewCars)
-            {
+        {
             <li>
                 <p style="text-align: center">@item.description</p>
-                <a href="/Car/ShowCar?id=@item.carId">
-                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description" />
+                <a href="@Url.Action("ShowCar", "Car", new {id=item.carId})">
+                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
                 </a>
                 <p style="text-align: center">Price: only @item.price$</p>
             </li>
         }
     </ul>
-
-    <div align="center">
-        <p>
-            It was not child's play tackling those horses. Some of the kind-hearted station folk in the backblocks had sent down some wild warrigals of the West; bucking brumbies that beat the band; old outlaws off the grass that the station hands could never master. But Colonel Cox ("Fighting Charlie" we called him) had in his command some of the crack rough-riders of Australia. And it was a joy to see these men tackle the outlaws. There were Crouch of Wagga, McDonald of Barrington, Whiteley of Wellington, Bullock of Melbourne, Sievewright of Gunnedah, Kennedy of Gloucester, Rex Moffatt of Goulburn, Harry Heath of Moree, and a score of others. Nearly every man in the regiment could sit a buck, or puff nonchalantly at his pipe while his mount pigrooted merrily. So when the wild horses were led forth there were hundreds volunteering for the honour of riding the rebels. One after another the horses were saddled up, and while the regiment cheered itself hoarse, there was enacted again and again the old-time struggle for mastery. There were plunging and reefing and rooting and sidling and rearing and bucking, as the panting chargers swung this way and that in vain endeavour to dislodge the riders. But the bush boys stuck to the saddles as the Old Man of the Sea stuck to Sindbad the Sailor, and one after another the bucking brumbies were broken and led away.
-            But even a plague of locusts does not last for ever—and Egypt does. Egypt the wonderful! Egypt the kaleidoscopic! No, gentle reader, do not waste your sympathies on us. It was tiresome work, marching, training—training for the front, which for months never seemed to get any nearer, and some of "the boys"—those of them who were "spoiling for a fight," as the saying is—used at times to kick over the traces and paint the town vermilion; but there are compensations in Egypt for all who would seek them. What did it matter that we had no hot cross buns for Easter, no hard-boiled eggs, no ling, no salmon? We had omelettes and quail on toast, and chicken and curry and strawberries (no cream) and oranges and custard and jelly and Turkish coffee and Nile fish and pancakes and fritters and iced butter and beautiful jam and marmalade—and cigars. So we managed to get "a snack," you see. And I know that I, for one, had no desire just then to swap places with any man in Australia.
-            It was night when we got back to camp. Oh, those Egyptian nights! The winter cold has gone, and spring is in the air. The nights are fine and fair, clear and cloudless, with the moon pure silver. The reflections in the Nile are just wonderful. The huge date palms stand out sharply from a star-spangled sky that somehow has a tint of green in its blue. One thinks of the Arabian Nights. The very street scenes make one think of them. Motors glide up and down the streets with rich Syrians, Greeks, Egyptians, Italians, Frenchmen and Englishmen, going to the Continental, or to Shepheard's, or to private entertainments. It is a gorgeous splash of colour. They had no motor-cars that I remember in those old Arabian Nights, but the magic of the thing and the colour of it all were surely much the same. And the roads of Egypt—how beautiful they are!—clean and smooth as a billiard table. Are there any finer roads in the whole world than the Mena road and that to Heliopolis? Fifty miles an hour is easy. I sometimes shudder now when I recall the races that we used to have along those roads at night, crying "Egre! Egre!"—Faster! Faster!
-        </p>
-    </div>
 </div>

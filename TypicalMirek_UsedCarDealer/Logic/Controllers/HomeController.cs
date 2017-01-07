@@ -16,11 +16,15 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     {
         private readonly ISliderPhotoManager sliderPhotoManager;
         private readonly ICarManager carManager;
+        private readonly IBrandManager brandManager;
+        private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
 
         public HomeController(IManagerFactory managerFactory)
         {
             sliderPhotoManager = managerFactory.Get<SliderPhotoManager>();
             carManager = managerFactory.Get<CarManager>();
+            brandManager = managerFactory.Get<BrandManager>();
+            sourceOfEnergyRepository = new SourceOfEnergyRepository();
         }
 
         public ActionResult Index()
@@ -67,6 +71,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                     price = it.Price
                 });
             }
+
+            parameters.BrandList = brandManager.GetAll().Select(it => it.Name);
+
+            parameters.FuelTypeList = sourceOfEnergyRepository.GetAll().Select(it => it.Name);
 
             return View(parameters);
         }

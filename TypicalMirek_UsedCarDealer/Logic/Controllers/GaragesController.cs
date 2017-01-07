@@ -38,9 +38,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(userGarage);
         }
 
-        public ActionResult OrderCar(int carId)
+        public ActionResult OrderCar(int? carId)
         {
-            garageManager.OrderCar(carId, userId);
+            if (carId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            garageManager.OrderCar(Convert.ToInt32(carId), userId);
             return RedirectToAction("Index");
         }
 

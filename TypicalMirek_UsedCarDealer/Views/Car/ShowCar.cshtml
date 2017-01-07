@@ -153,5 +153,5 @@
 }
 
 <div class="col-md-12 col-xs-12" style="text-align: center; margin: 0 auto">
-    <a href="/Garages/OrderCar?carId=@Model.Id" class="btn btn-primary btn-product col-md-12 col-xs-12" style="text-align: center; margin: 0 auto"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+    <a href="@Url.Action("OrderCar", "Garages", new {carId=Model.Id})"  class="btn btn-primary btn-product col-md-12 col-xs-12" style="text-align: center; margin: 0 auto"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
 </div>
