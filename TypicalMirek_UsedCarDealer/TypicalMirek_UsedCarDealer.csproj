@@ -319,6 +319,10 @@
     <Compile Include="Migrations\201701061417251_InitUserGarage.Designer.cs">
       <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701071154519_OrderConfirmation.cs" />
+    <Compile Include="Migrations\201701071154519_OrderConfirmation.Designer.cs">
+      <DependentUpon>201701071154519_OrderConfirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -571,13 +575,11 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\List.cshtml" />
-    <Content Include="Views\Garages\Create.cshtml" />
-    <Content Include="Views\Garages\Delete.cshtml" />
-    <Content Include="Views\Garages\Details.cshtml" />
-    <Content Include="Views\Garages\Edit.cshtml" />
     <Content Include="Views\Garages\Index.cshtml" />
     <Content Include="Views\Garages\PartialViews\NoOrders.cshtml" />
     <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
+    <Content Include="Views\Garages\ShowOrder.cshtml" />
+    <Content Include="Views\Garages\DeleteOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -635,6 +637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701061417251_InitUserGarage.resx">
       <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701071154519_OrderConfirmation.resx">
+      <DependentUpon>201701071154519_OrderConfirmation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

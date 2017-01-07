@@ -21,17 +21,17 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     public class GaragesController : Controller
     {
         #region Properties
-        private TypicalMirekEntities db = new TypicalMirekEntities();
         private readonly IGarageManager garageManager;
         private string userId => User.Identity.GetUserId();
         #endregion
 
+        #region Controller
         public GaragesController(ManagerFactory managerFactory)
         {
             garageManager = managerFactory.Get<GarageManager>();
         }
+        #endregion
 
-        // GET: Garages
         public ActionResult Index()
         {
             var userGarage = garageManager.GetGarageByUserId(userId);
@@ -40,106 +40,59 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult OrderCar(int carId)
         {
-            garageManager.OrderCar(carId,userId);
+            garageManager.OrderCar(carId, userId);
             return RedirectToAction("Index");
         }
 
-        // GET: Garages/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult ShowOrder(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Garage garage = db.UserGarage.Find(id);
-            if (garage == null)
+            var order = garageManager.GetOrderById(Convert.ToInt32(id));
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(garage);
+            return View(order);
         }
 
-        // GET: Garages/Create
-        public ActionResult Create()
-        {
-            ViewBag.UserId = userId;
-            return View();
-        }
-
-        // POST: Garages/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId")] Garage garage)
-        {
-            if (ModelState.IsValid)
-            {
-                db.UserGarage.Add(garage);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            //System.Web.HttpContext.Current.User.Identity.
-            ViewBag.UserId = userId;
-            return View(garage);
-        }
-
-        // GET: Garages/Edit/5
-        public ActionResult Edit(int? id)
+        //[HttpPost]
+        public ActionResult ConfirmOrder(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Garage garage = db.UserGarage.Find(id);
-            if (garage == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.UserId = userId;
-            return View(garage);
-        }
+            garageManager.ConfirmOrder(Convert.ToInt32(id));
 
-        // POST: Garages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId")] Garage garage)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(garage).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.UserId = userId;
-            return View(garage);
+            return RedirectToAction("Index");
         }
 
         // GET: Garages/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteOrder(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Garage garage = db.UserGarage.Find(id);
-            if (garage == null)
+
+            var order = garageManager.GetOrderById(Convert.ToInt32(id));
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(garage);
+            return View(order);
         }
 
         // POST: Garages/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteOrder")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteOrderConfirmed(int id)
         {
-            Garage garage = db.UserGarage.Find(id);
-            db.UserGarage.Remove(garage);
-            db.SaveChanges();
+            var order = garageManager.GetOrderById(Convert.ToInt32(id));
+            garageManager.DeleteOrderByEntity(order);
             return RedirectToAction("Index");
         }
 
@@ -147,7 +100,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                garageManager.Dispose();
             }
             base.Dispose(disposing);
         }

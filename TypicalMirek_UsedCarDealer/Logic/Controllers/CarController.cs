@@ -51,7 +51,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [HttpPost]
         public ActionResult Models(string[] depdrop_parents, IDictionary<string, string> depdrop_all_params)
         {
-            string brand = depdrop_parents[0];
+            var brand = depdrop_parents[0];
 
             var itemsToDropdown = new ItemsToDependendDropdownViewModel {output = new List<Output>()};
             foreach (var it in modelRepository.GetAll().Where(it => it.Brand.Name == brand).Select(it => it.Name))
@@ -93,7 +93,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
             //get all cars id which are current and get CarDetailsViewModel by those ids
             var cars = new List<CarDetailsViewModel>();
-            foreach (var it in carManager.GetAllCars().Where(it => it.DeleteTime == null))
+            foreach (var it in carManager.GetAllCars().Where(it => it.DeleteTime == null && it.IsInOrder.Equals(false)))
             {
                 cars.Add(carManager.GetCarDetailsViewModelById(it.Id));
             }
@@ -264,7 +264,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
             parametersToCarList.Cars = cars;
             #endregion
-
 
             #region Define BodyList
 

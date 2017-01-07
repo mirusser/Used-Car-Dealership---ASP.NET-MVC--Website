@@ -1,13 +1,13 @@
 ﻿@model TypicalMirek_UsedCarDealer.Models.Garage
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Garage";
 }
 
 <h2>Your garage @User.Identity.Name</h2>
 
 
-@if (Model.Orders != null)
+@if (Model.Orders?.Count > 0)
 {
     <h3>Your Orders</h3>
     Html.RenderPartial("PartialViews/Orders", Model.Orders);
