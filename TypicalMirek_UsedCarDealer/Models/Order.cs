@@ -9,6 +9,11 @@ namespace TypicalMirek_UsedCarDealer.Models
 {
     public class Order
     {
+        public Order()
+        {
+            IsConfirmed = false;
+        }
+
         [Key]
         [Required]
         public int Id { get; set; }
@@ -23,5 +28,6 @@ namespace TypicalMirek_UsedCarDealer.Models
         public virtual Car Car { get; set; }
 
         public DateTime DateOfOrder { get; set; }
+        public bool IsConfirmed { get; set; }
     }
 }

@@ -197,6 +197,7 @@
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
     <Compile Include="Logic\Controllers\CountriesController.cs" />
+    <Compile Include="Logic\Controllers\GaragesController.cs" />
     <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Logic\Managers\CharacterManager.cs" />
     <Compile Include="Logic\Managers\ColorManager.cs" />
     <Compile Include="Logic\Managers\CountryManager.cs" />
+    <Compile Include="Logic\Managers\GarageManager.cs" />
     <Compile Include="Logic\Managers\EmailConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IBrandManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICarBodyManager.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="Logic\Managers\Interfaces\ICharacterManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IColorManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ICountryManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IGarageManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IEmailConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
@@ -328,6 +331,10 @@
     <Compile Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.cs" />
     <Compile Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.Designer.cs">
       <DependentUpon>201701062111263_AddEmailConfigurationAndWebsiteContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701071154519_OrderConfirmation.cs" />
+    <Compile Include="Migrations\201701071154519_OrderConfirmation.Designer.cs">
+      <DependentUpon>201701071154519_OrderConfirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -590,6 +597,11 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\List.cshtml" />
+    <Content Include="Views\Garages\Index.cshtml" />
+    <Content Include="Views\Garages\PartialViews\NoOrders.cshtml" />
+    <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
+    <Content Include="Views\Garages\ShowOrder.cshtml" />
+    <Content Include="Views\Garages\DeleteOrder.cshtml" />
     <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
     <Content Include="Views\Home\EditFooter.cshtml" />
@@ -653,6 +665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701061417251_InitUserGarage.resx">
       <DependentUpon>201701061417251_InitUserGarage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701071154519_OrderConfirmation.resx">
+      <DependentUpon>201701071154519_OrderConfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.resx">
       <DependentUpon>201701062111263_AddEmailConfigurationAndWebsiteContext.cs</DependentUpon>

@@ -1,0 +1,41 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.Order
+
+@{
+    ViewBag.Title = "Show Order";
+}
+
+<h2>Show Order</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.MainData.Model.Brand.Name)
+            @Html.DisplayFor(model => model.Car.MainData.Model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfOrder)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

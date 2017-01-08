@@ -38,5 +38,6 @@ namespace TypicalMirek_UsedCarDealer.Models
         public DateTime AddTime { get; set; }
         public DateTime? DeleteTime { get; set; }
         public long NumberOfViews { get; set; }
+        public bool IsInOrder { get; set; } 
     }
 }

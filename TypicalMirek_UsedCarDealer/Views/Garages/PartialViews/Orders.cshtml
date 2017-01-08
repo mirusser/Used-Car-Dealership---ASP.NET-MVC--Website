@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Order>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Car)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsConfirmed)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.MainData.Model.Brand.Name)
+                @Html.DisplayFor(modelItem => item.Car.MainData.Model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsConfirmed)
+            </td>
+            <td>
+                @if (item.IsConfirmed)
+                {
+                    @Html.ActionLink("Deny", "DenyOrder", new { id = item.Id });
+                }
+                else
+                {
+                    @Html.ActionLink("Confirm", "ConfirmOrder", new { id = item.Id });
+                }
+
+                | @Html.ActionLink("Show order", "ShowOrder", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteOrder", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

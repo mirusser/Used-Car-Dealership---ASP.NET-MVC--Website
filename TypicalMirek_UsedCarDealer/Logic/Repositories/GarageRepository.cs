@@ -11,5 +11,9 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class GarageRepository : BaseRepository<Garage, TypicalMirekEntities>, IGarageRepository
     {
+        public Garage GetGarageByUserId(string userId)
+        {
+            return Items.SingleOrDefault(g => g.UserId.Equals(userId));
+        }
     }
 }
