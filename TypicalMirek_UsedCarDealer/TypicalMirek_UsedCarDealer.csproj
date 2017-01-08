@@ -414,9 +414,9 @@
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\pwstabs.css" />
     <Content Include="Content\sidenav.css" />
-    <Content Include="Content\sidenav.min.css" />
     <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\slippry.css" />
     <Content Include="Content\summernote.css" />
@@ -429,6 +429,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
     <Content Include="Scripts\elastislide.js" />
+    <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Scripts\jquery.mCustomScrollbar.js" />
     <Content Include="Scripts\mb.browser.min.js" />
     <Content Include="Scripts\mb.CSSAnimate.min.js" />
     <Content Include="Scripts\mb.thumbGallery.js" />
@@ -437,7 +439,6 @@
     <Content Include="Scripts\pwstabs.js" />
     <Content Include="Scripts\sendPost.js" />
     <Content Include="Scripts\sidenav.js" />
-    <Content Include="Scripts\sidenav.min.js" />
     <Content Include="Scripts\slippry.min.js" />
     <Content Include="Scripts\summernote.js" />
     <Content Include="Views\Account\ChangeUserRole.cshtml" />

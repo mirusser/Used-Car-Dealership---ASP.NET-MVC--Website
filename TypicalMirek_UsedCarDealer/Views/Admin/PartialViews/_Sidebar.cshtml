@@ -2,7 +2,10 @@
 @using TypicalMirek_UsedCarDealer.Models
 @using TypicalMirek_UsedCarDealer.Models.Enums
 
-<nav class="sidenav" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+@*If background colour will be changed, remember change theme of scroolbar! Check script section in _AdminLayout
+http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/scrollbar_themes_demo.html*@
+
+<nav class="mCustomScrollbar sidenav" id="adminMenu" data-sidenav data-sidenav-toggle="#sidenav-toggle" style="overflow-y: hidden;">
     <div class="sidenav-header">
         Section Header
     </div>
@@ -46,25 +49,25 @@
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>
-                    @Html.ActionLink(linkText: "Car bodies", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.BodiesList, Id = null})
+                    @Html.ActionLink(linkText: "Car bodies", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.BrandList, Id = null})
+                    @Html.ActionLink(linkText: "Car brands", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Car characters", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.CharacterList, Id = null})
+                    @Html.ActionLink(linkText: "Car characters", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CharacterList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Car types", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.TypeList, Id = null})
+                    @Html.ActionLink(linkText: "Car types", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.TypeList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Car categories", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.CategoryList, Id = null})
+                    @Html.ActionLink(linkText: "Car categories", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CategoryList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Colors", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.ColorList, Id = null})
+                    @Html.ActionLink(linkText: "Colors", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.ColorList, Id = null })
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Countries", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.CountryList, Id = null})
+                    @Html.ActionLink(linkText: "Countries", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CountryList, Id = null })
                 </li>
             </ul>
         </li>
@@ -87,8 +90,7 @@
                 </span>
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
-                <li>@Html.ActionLink(linkText: "Slider", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.Nothing, Id = null})</li>
-                <li>@Html.ActionLink(linkText: "Recommended", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.Nothing, Id = null})</li>
+                <li>@Html.ActionLink(linkText: "Home slider", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.Nothing, Id = null })</li>
             </ul>
         </li>
         <li>
@@ -96,7 +98,7 @@
                 <span class="sidenav-link-icon">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </span>
-                <span class="sidenav-link-title">Edit site content</span>
+                <span class="sidenav-link-title">Change content</span>
                 <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </span>
@@ -106,13 +108,13 @@
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>
-                    @Html.ActionLink(linkText: "Edit Contact", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditContact, Id = null }, htmlAttributes: null)
+                    @Html.ActionLink(linkText: "Edit 'Contact'", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditContact, Id = null }, htmlAttributes: null)
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Edit About", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditAbout, Id = null }, htmlAttributes: null)
+                    @Html.ActionLink(linkText: "Edit 'About'", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditAbout, Id = null }, htmlAttributes: null)
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Edit footer", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditFooter, Id = null }, htmlAttributes: null)
+                    @Html.ActionLink(linkText: "Edit 'footer'", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditFooter, Id = null }, htmlAttributes: null)
                 </li>
             </ul>
         </li>
@@ -122,7 +124,7 @@
     </div>
     <ul class="sidenav-menu">
         <li>
-            <a href=@Url.Action(actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.ChangeUserRole, Id = null })>
+            <a href=@Url.Action(actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.ChangeUserRole, Id = null})>
                 <span class="sidenav-link-icon">
                     <i class="glyphicon glyphicon-user"></i>
                 </span>
@@ -131,5 +133,4 @@
         </li>
     </ul>
 </nav>
-
 
