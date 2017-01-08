@@ -1,0 +1,65 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.ParametersToWysiwyg
+
+@Styles.Render("~/Content/WYSIWYG")
+@Scripts.Render("~/bundles/WYSIWYG")
+
+@Scripts.Render("~/bundles/SendPost")
+
+@{
+    var summerNoteParameters = "";
+    if (Model.Height != null)
+    {
+        summerNoteParameters += "height: " + Model.Height + ",\n";
+    }
+    if (Model.MinHeight != null)
+    {
+        summerNoteParameters += "minHeight: " + Model.MinHeight + ",\n";
+    }
+    if (Model.MaxHeight != null)
+    {
+        summerNoteParameters += "maxHeight: " + Model.MaxHeight + ",\n";
+    }
+    if (Model.Focus != null)
+    {
+        summerNoteParameters += "focus: " + Model.Focus + "\n";
+    }
+
+    if (string.IsNullOrEmpty(Model.ActionNameForPost))
+    {
+        Model.ActionNameForPost = "SavePageContent";
+    }
+    if (string.IsNullOrEmpty(Model.ControllerNameForPost))
+    {
+        Model.ControllerNameForPost = "Api";
+    }
+
+    var currentController = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var currentAction = @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            @summerNoteParameters
+        });
+
+        $('#summernote').summernote('code', '@Html.Raw(Model.Context)');
+    });
+</script>
+
+<div class="row">
+    @if (string.IsNullOrEmpty(Model.SiteName))
+    {
+        <h3>Invalid SiteName passed into _WysiwygPartial</h3>
+    }
+    else
+    {
+        <div id="summernote"></div>
+
+            <button class="btn btn-success btn-product"
+                    onclick="send('@Url.Action(Model.ActionNameForPost, Model.ControllerNameForPost)', $('#summernote').summernote('code'), '@Model.SiteName', '@currentController', '@currentAction')">
+                Save
+            </button>
+    }
+
+</div>

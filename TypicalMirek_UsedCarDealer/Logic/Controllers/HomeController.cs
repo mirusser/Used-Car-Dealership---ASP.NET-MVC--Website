@@ -9,6 +9,9 @@ using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -18,6 +21,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly ICarManager carManager;
         private readonly IBrandManager brandManager;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
+        private readonly IWebsiteContextManager websiteContextManager;
 
         public HomeController(IManagerFactory managerFactory)
         {
@@ -25,11 +29,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             carManager = managerFactory.Get<CarManager>();
             brandManager = managerFactory.Get<BrandManager>();
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
+            websiteContextManager = managerFactory.Get<WebsiteContextManager>();
         }
 
         public ActionResult Index()
         {
-            ParametersToHome parameters = new ParametersToHome
+            var parameters = new ParametersToHome
             {
                 Slider = new List<CarPhotoViewModel>(),
                 HotCars = new List<CarPhotoViewModel>(),
@@ -79,18 +84,79 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(parameters);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        #region About
 
-            return View();
+        public ActionResult About(string result = null)
+        {
+            var context = websiteContextManager.GetContextByName("Contact");
+
+            return View(model: context?.Context);
         }
 
-        public ActionResult Contact()
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditAbout()
         {
-            ViewBag.Message = "Your contact page.";
+            var context = websiteContextManager.GetContextByName("About");
 
-            return View();
+            var parameters = new ParametersToWysiwyg
+            {
+                Context = context?.Context,
+                SiteName = "About"
+            };
+
+            return View(parameters);
         }
+
+        #endregion
+
+
+        #region Contact
+        public ActionResult Contact(string result = null)
+        {
+            var context = websiteContextManager.GetContextByName("Contact");
+            string content = null;
+            if (context != null)
+            {
+                content = context.Context;
+            }
+
+            var parametersToContact = new ParametersToContact
+            {
+                Result = result,
+                Content = content
+            };
+            return View(parametersToContact);
+        }
+        
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditContact()
+        {
+            var context = websiteContextManager.GetContextByName("Contact");
+
+            var parameters = new ParametersToWysiwyg
+            {
+                Context = context?.Context,
+                SiteName = "Contact"
+            };
+
+            return View(parameters);
+        }
+        #endregion
+
+        #region Footer
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditFooter()
+        {
+            var context = websiteContextManager.GetContextByName("Footer");
+
+            var parameters = new ParametersToWysiwyg
+            {
+                Context = context?.Context,
+                SiteName = "Footer"
+            };
+
+            return View(parameters);
+        }
+        #endregion
     }
 }

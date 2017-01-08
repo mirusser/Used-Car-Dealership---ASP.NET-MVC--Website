@@ -26,5 +26,7 @@ namespace TypicalMirek_UsedCarDealer.Models.Context
         public DbSet<IdentityUserRole> IdentityUserRoles { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Garage> UserGarage { get; set; }
+        public DbSet<EmailConfiguration> EmailConfigurations { get; set; }
+        public DbSet<WebsiteContext> WebsiteContexts { get; set; }
     }
 }

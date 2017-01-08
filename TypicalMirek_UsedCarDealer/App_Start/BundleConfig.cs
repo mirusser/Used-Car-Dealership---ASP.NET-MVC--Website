@@ -30,7 +30,7 @@ namespace TypicalMirek_UsedCarDealer
                       "~/Content/fileinput.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/AdminMenu").Include(
-                      "~/Scripts/sidenav.min.js"));
+                      "~/Scripts/sidenav.js"));
 
             bundles.Add(new StyleBundle("~/Content/AdminMenu").Include(
                       "~/Content/sidenav.css"));
@@ -77,6 +77,21 @@ namespace TypicalMirek_UsedCarDealer
 
             bundles.Add(new StyleBundle("~/Content/DependendDropdown").Include(
                       "~/Content/dependent-dropdown.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/WYSIWYG").Include(
+                      "~/Scripts/summernote.js"));
+
+            bundles.Add(new StyleBundle("~/Content/WYSIWYG").Include(
+                      "~/Content/summernote.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/SendPost").Include(
+                      "~/Scripts/sendPost.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/AdminMenuScroll").Include(
+                      "~/Scripts/jquery.mCustomScrollbar.js"));
+
+            bundles.Add(new StyleBundle("~/Content/AdminMenuScroll").Include(
+                      "~/Content/jquery.mCustomScrollbar.css"));
         }
     }
 }

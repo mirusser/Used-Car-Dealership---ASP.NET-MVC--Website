@@ -1,17 +1,50 @@
-﻿@{
+﻿@using TypicalMirek_UsedCarDealer.Models.ViewModels
+@model TypicalMirek_UsedCarDealer.Models.ParametersToContact
+
+@{
     ViewBag.Title = "Contact";
+    var model = new EmailFormViewModel();
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="container">
+    <h2>@Model.Result</h2>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            @using (Html.BeginForm("SendEmail", "Api", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(m => model.FromName, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => model.FromName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => model.FromName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => model.FromEmail, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => model.FromEmail, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => model.FromEmail)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => model.Message, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => model.Message, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => model.Message)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Send"/>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            @Html.Raw(Model.Content)
+        </div>
+    </div>
+</div>

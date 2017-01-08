@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Typical Mirek</title>
     @Scripts.Render("~/bundles/jquery")
@@ -9,16 +9,23 @@
     @RenderSection("scripts", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/HideNavbar")
     @* Below admin sidebar *@
     @Styles.Render("~/Content/AdminMenu")
     @Scripts.Render("~/bundles/AdminMenu")
+    @Styles.Render("~/Content/AdminMenuScroll")
+    @Scripts.Render("~/bundles/AdminMenuScroll")
     <script type="text/javascript">
-    $(document).ready(function () {
-        $('[data-sidenav]').sidenav();
-    });
+        $(document).ready(function() {
+            $('[data-sidenav]').sidenav();
+
+            $("#adminMenu").mCustomScrollbar({
+                mouseWheel: { scrollAmount: 1000 }, //because standard is quite slow
+                theme: "light-thin" //this theme seems to be nicer
+            });
+        });
     </script>
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -28,7 +35,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Typical Mirek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="javascript:;" class="toggle" id="sidenav-toggle">
+                    <i class="glyphicon glyphicon-th-list navbar-brand" style="color:white"></i>
+                </a>
+                @Html.ActionLink("Typical Mirek", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -39,26 +49,25 @@
                     {
                         <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
                     }
-                    
+                    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <li>@Html.ActionLink("Garage", "Index", "Garages")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
 <div class="container body-content">
-    <a href="javascript:;" class="toggle" id="sidenav-toggle">
-        <i class="glyphicon glyphicon-th-list"></i>
-    </a>
     @{
-        Html.RenderPartial($"../Admin/PartialViews/_Sidebar");
+        Html.RenderPartial($"~/Views/Admin/PartialViews/_Sidebar.cshtml");
     }
     @RenderBody()
 </div>
     <div class="center-block">
         <hr />
         <footer class="text-center">
-            <p>&copy; @DateTime.Now.Year - Typical Mirek - Used car dealership</p>
-            @*<p>Przedstawiona oferta cenowa ma charakter informacyjny, nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</p>*@
+            @Html.Partial("_Footer")
         </footer>
     </div>
 
