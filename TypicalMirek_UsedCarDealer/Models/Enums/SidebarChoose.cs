@@ -49,6 +49,9 @@ namespace TypicalMirek_UsedCarDealer.Models.Enums
         EditCountry,
         DeleteCountry,
         ChangeUserRole,
-        ChangeUserRolePost
+        ChangeUserRolePost,
+        EditFooter,
+        EditAbout,
+        EditContact
     }
 }

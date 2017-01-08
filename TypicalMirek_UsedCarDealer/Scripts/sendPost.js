@@ -1,5 +1,5 @@
-﻿function send(path, context) {
-    var params = { htmlmarkups: context }
+﻿function send(path, context, adress, currentController, currentAction) {
+    var params = { htmlmarkups: context, site: adress, controller: currentController, action: currentAction}
     var method = "post";
 
     var form = document.createElement("form");

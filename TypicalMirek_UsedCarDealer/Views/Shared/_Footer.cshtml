@@ -1,0 +1,6 @@
+﻿@using TypicalMirek_UsedCarDealer.Logic.Repositories
+@{
+    var repo = new WebsiteContextRepository();
+    var footer = repo.Items.FirstOrDefault(it => it.SiteName == "Footer");
+}
+@DateTime.Now.Year - @Html.Raw(footer?.Context)

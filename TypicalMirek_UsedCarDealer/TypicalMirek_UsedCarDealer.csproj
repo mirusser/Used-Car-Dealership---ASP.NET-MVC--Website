@@ -188,6 +188,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Logic\Controllers\AccountController.cs" />
     <Compile Include="Logic\Controllers\AdminController.cs" />
+    <Compile Include="Logic\Controllers\ApiController.cs" />
     <Compile Include="Logic\Controllers\BrandsController.cs" />
     <Compile Include="Logic\Controllers\CarBodiesController.cs" />
     <Compile Include="Logic\Controllers\CarManagementController.cs" />
@@ -590,6 +591,9 @@
     <Content Include="Views\Countries\List.cshtml" />
     <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
+    <Content Include="Views\Home\EditFooter.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\EditAbout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -601,6 +605,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
+    <Folder Include="Views\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

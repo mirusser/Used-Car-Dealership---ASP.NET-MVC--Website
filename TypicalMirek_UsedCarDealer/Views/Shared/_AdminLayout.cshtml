@@ -50,15 +50,14 @@
         <i class="glyphicon glyphicon-th-list"></i>
     </a>
     @{
-        Html.RenderPartial($"../Admin/PartialViews/_Sidebar");
+            Html.RenderPartial($"~/Views/Admin/PartialViews/_Sidebar.cshtml");
     }
     @RenderBody()
 </div>
     <div class="center-block">
         <hr />
         <footer class="text-center">
-            <p>&copy; @DateTime.Now.Year - Typical Mirek - Used car dealership</p>
-            @*<p>Przedstawiona oferta cenowa ma charakter informacyjny, nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</p>*@
+            @Html.Partial("_Footer")
         </footer>
     </div>
 

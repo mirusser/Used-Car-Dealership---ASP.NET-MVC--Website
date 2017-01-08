@@ -226,6 +226,21 @@
                             @Html.Action("ChangeUserRole", "Account", routeValues: new { result = Model.ChangeUserRoleViewModel })
                             break;
                         }
+                    case SidebarChoose.EditAbout:
+                        {
+                            @Html.Action("EditAbout", "Home")
+                            break;
+                        }
+                    case SidebarChoose.EditContact:
+                        {
+                            @Html.Action("EditContact", "Home")
+                            break;
+                        }
+                    case SidebarChoose.EditFooter:
+                        {
+                            @Html.Action("EditFooter", "Home")
+                            break;
+                        }
                 }
             }
         </div>
