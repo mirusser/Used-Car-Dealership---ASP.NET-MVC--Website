@@ -9,6 +9,9 @@ using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -18,6 +21,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly ICarManager carManager;
         private readonly IBrandManager brandManager;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
+        private readonly IEmailConfigurationManager emailConfigurationManager;
+        private readonly IWebsiteContextManager websiteContextManager;
 
         public HomeController(IManagerFactory managerFactory)
         {
@@ -25,11 +30,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             carManager = managerFactory.Get<CarManager>();
             brandManager = managerFactory.Get<BrandManager>();
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
+            emailConfigurationManager = managerFactory.Get<EmailConfigurationManager>();
+            websiteContextManager = managerFactory.Get<WebsiteContextManager>();
         }
 
         public ActionResult Index()
         {
-            ParametersToHome parameters = new ParametersToHome
+            var parameters = new ParametersToHome
             {
                 Slider = new List<CarPhotoViewModel>(),
                 HotCars = new List<CarPhotoViewModel>(),
@@ -86,11 +93,94 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(string result = null)
         {
-            ViewBag.Message = "Your contact page.";
+            var context = websiteContextManager.GetContextByName("Contact");
+            string content = null;
+            if (context != null)
+            {
+                content = context.Context;
+            }
 
-            return View();
+            var parametersToContact = new ParametersToContact
+            {
+                Result = result,
+                Content = content
+            };
+            return View(parametersToContact);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SendEmail(EmailFormViewModel model)
+        {
+            if (!ModelState.IsValid) return RedirectToAction("Contact", "Home", new { result = "Model is invalid"});
+            var activeConfiguration = emailConfigurationManager.GetActive();
+            if (activeConfiguration == null)
+            {
+                return RedirectToAction("Contact", "Home", new { result = "There is no active configurationon database" });
+            }
+
+            const string body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(activeConfiguration.To));
+            message.From = new MailAddress(activeConfiguration.From);
+            message.Subject = "Message from customer";
+            message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = activeConfiguration.Username,
+                    Password = activeConfiguration.Password
+                };
+                smtp.Credentials = credential;
+                smtp.Host = activeConfiguration.Host;
+                smtp.Port = activeConfiguration.Port;
+                smtp.EnableSsl = activeConfiguration.EnableSsl;
+                await smtp.SendMailAsync(message);
+                return RedirectToAction("Contact", "Home", new { result = "Your message has been sent"});
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditContact()
+        {
+            var context = websiteContextManager.GetContextByName("Contact");
+
+            var parameters = new ParametersToWysiwyg
+            {
+                ActionNameForPost = "SaveContact",
+                ControllerNameForPost = "Home",
+                Context = context?.Context
+            };
+
+            return View(parameters);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)] //bo niebezieczna wartość
+        public ActionResult SaveContact(string htmlmarkups)
+        {
+            if(!ModelState.IsValid) return RedirectToAction("EditContact", "Home");
+
+            var context = websiteContextManager.GetContextByName("Contact");
+            if (context == null)
+            {
+                context = new WebsiteContext
+                {
+                    Id = 1,
+                    SiteName = "Contact",
+                    Context = htmlmarkups
+                };
+                websiteContextManager.Add(context);
+            }
+            context.Context = htmlmarkups;
+            websiteContextManager.Modify(context);
+
+            return RedirectToAction("EditContact", "Home");
         }
     }
 }

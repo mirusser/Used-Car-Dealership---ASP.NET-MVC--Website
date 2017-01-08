@@ -1,0 +1,46 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.ParametersToWysiwyg
+
+@Styles.Render("~/Content/WYSIWYG")
+@Scripts.Render("~/bundles/WYSIWYG")
+
+@Scripts.Render("~/bundles/SendPost")
+
+@{
+    var summerNoteParameters = "";
+    if (Model.Height != null)
+    {
+        summerNoteParameters += "height: " + Model.Height + ",\n";
+    }
+    if (Model.MinHeight != null)
+    {
+        summerNoteParameters += "minHeight: " + Model.MinHeight + ",\n";
+    }
+    if (Model.MaxHeight != null)
+    {
+        summerNoteParameters += "maxHeight: " + Model.MaxHeight + ",\n";
+    }
+    if (Model.Focus != null)
+    {
+        summerNoteParameters += "focus: " + Model.Focus + "\n";
+    }
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            @summerNoteParameters
+        });
+
+        $('#summernote').summernote('code', '@Model.Context');
+    });
+</script>
+
+<div class="row">
+
+    <div id="summernote"></div>
+
+    <button class="btn btn-success btn-product"
+            onclick="send('@Url.Action(Model.ActionNameForPost, Model.ControllerNameForPost)', $('#summernote').summernote('code'))">
+        Save
+    </button>
+</div>
