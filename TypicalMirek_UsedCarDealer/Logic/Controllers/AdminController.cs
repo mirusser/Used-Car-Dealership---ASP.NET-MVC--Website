@@ -31,24 +31,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 {
                     parametersToAdminMenu.Id = 0;
                 }
-                return parametersToAdminMenu == null ? View(new ParametersToAdminMenu
-                {
-                    Chose = SidebarChoose.Nothing,
-                    Id = parametersToAdminMenu.Id
-                }) : View(new ParametersToAdminMenu
+                return View(new ParametersToAdminMenu
                 {
                     Chose = parametersToAdminMenu.Chose,
                     Id = parametersToAdminMenu.Id
                 });
             }
 
-            //TODO
-            return View(/*info about validation errot*/parametersToAdminMenu);
-        }
-
-        public ActionResult CreateCar()
-        {
-            return RedirectToAction("Create", "CarManagement");
+            return View(parametersToAdminMenu);
         }
     }
 }

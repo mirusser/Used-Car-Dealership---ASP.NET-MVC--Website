@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Ninject.Infrastructure.Language;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
@@ -18,18 +19,34 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     {
         private readonly IWebsiteContextManager websiteContextManager;
         private readonly IEmailConfigurationManager emailConfigurationManager;
+        private readonly ISliderPhotoManager sliderPhotoManager;
 
         public ApiController(IManagerFactory managerFactory)
         {
             websiteContextManager = managerFactory.Get<WebsiteContextManager>();
             emailConfigurationManager = managerFactory.Get<EmailConfigurationManager>();
+            sliderPhotoManager = managerFactory.Get<SliderPhotoManager>();
         }
 
         [HttpPost]
         [ValidateInput(false)] //bo niebezieczna wartość
-        public ActionResult SavePageContent(string htmlmarkups, string site, string controller, string action)
+        public ActionResult UpdateSliderPhotos(string cars, string returnUrl)
         {
-            if (!ModelState.IsValid) return RedirectToAction(action, controller);
+            IList<int> ids = cars.Split(',').Select(int.Parse).ToEnumerable().ToList();
+
+            //bug of Entity framwework XD must be "to_list" or "source will be open" 
+            foreach (var slide in sliderPhotoManager.GetAllSlides().ToList().Where(slide => !ids.Contains(slide.CarId)))
+            {
+                sliderPhotoManager.Delete(slide.Id);
+            }
+            return Redirect(returnUrl);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)] //bo niebezieczna wartość
+        public ActionResult SavePageContent(string htmlmarkups, string site, string returnUrl)
+        {
+            if (!ModelState.IsValid) return Redirect(returnUrl);
 
             var context = websiteContextManager.GetContextByName(site);
             if (context == null)
@@ -44,7 +61,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             context.Context = htmlmarkups;
             websiteContextManager.Modify(context);
 
-            return RedirectToAction(action, controller);
+            return Redirect(returnUrl);
         }
 
         [HttpPost]
