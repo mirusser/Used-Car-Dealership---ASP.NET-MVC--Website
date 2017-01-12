@@ -202,6 +202,7 @@
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
     <Compile Include="Logic\Controllers\CarController.cs" />
+	<Compile Include="Logic\Controllers\SliderController.cs" />
     <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
@@ -357,6 +358,7 @@
     <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToContact.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
+    <Compile Include="Models\ParametersToSlider.cs" />
     <Compile Include="Models\ParametersToWysiwyg.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -418,9 +420,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\car-list.css" />
+	<Content Include="Content\chosen.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
+	<Content Include="Content\ImageSelect.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\pwstabs.css" />
     <Content Include="Content\sidenav.css" />
@@ -435,7 +439,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
-    <Content Include="Scripts\elastislide.js" />
+	<Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\elastislide.js" />		    
+    <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.js" />
     <Content Include="Scripts\mb.browser.min.js" />
@@ -445,6 +451,8 @@
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
     <Content Include="Scripts\sendPost.js" />
+	<Content Include="Scripts\sendDeleteSlidePost.js" />
+    <Content Include="Scripts\sendWysiwygPost.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\slippry.min.js" />
     <Content Include="Scripts\summernote.js" />
@@ -457,7 +465,14 @@
     <Content Include="fonts\svg\close.svg" />
     <Content Include="fonts\svg\next.svg" />
     <Content Include="fonts\svg\prev.svg" />
+	<Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="App_Data\Slider\arrows.svg" />
+	<Content Include="Views\Slider\PartialViews\_SelectCars.cshtml" />
+    <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
+    <Content Include="Views\Slider\SliderImages.cshtml" />
+	<Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="fonts\summernote.eot" />
     <Content Include="fonts\summernote.ttf" />
     <Content Include="fonts\summernote.woff" />

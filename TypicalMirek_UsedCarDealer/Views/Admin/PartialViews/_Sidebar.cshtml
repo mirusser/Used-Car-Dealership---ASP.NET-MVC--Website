@@ -30,8 +30,8 @@ http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/scrollbar_theme
                 </span>
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
-                <li>@Html.ActionLink(linkText: "Show all cars", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList, Id = null })</li>
-                <li>@Html.ActionLink(linkText: "Add new car", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null })</li>
+                <li>@Html.ActionLink(linkText: "Show all", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList, Id = null })</li>
+                <li>@Html.ActionLink(linkText: "Add new", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null })</li>
             </ul>
         </li>
         <li>
@@ -108,13 +108,13 @@ http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/scrollbar_theme
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>
-                    @Html.ActionLink(linkText: "Edit 'Contact'", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditContact, Id = null }, htmlAttributes: null)
+                    @Html.ActionLink(linkText: "Contact", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditContact, Id = null }, htmlAttributes: null)
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Edit 'About'", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditAbout, Id = null }, htmlAttributes: null)
+                    @Html.ActionLink(linkText: "About", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditAbout, Id = null }, htmlAttributes: null)
                 </li>
                 <li>
-                    @Html.ActionLink(linkText: "Edit 'footer'", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditFooter, Id = null }, htmlAttributes: null)
+                    @Html.ActionLink(linkText: "Footer", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditFooter, Id = null }, htmlAttributes: null)
                 </li>
             </ul>
         </li>
