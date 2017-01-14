@@ -85,6 +85,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public AddCarViewModel Add(AddCarViewModel car)
         {
             var carToAdd = MappingHelper.MappAddingCarViewModelToCarModel(car);
+            carToAdd.AddTime = DateTime.Now;
 
             carRepository.Add(carToAdd);
             carRepository.Save();

@@ -26,14 +26,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             carManager = managerFactory.Get<CarManager>();
         }
 
-        // GET: CarManagement
         public ActionResult List()
         {
             var cars = carManager.GetAllCarsToDisplay();
             return View(cars.ToList());
         }
 
-        // GET: CarManagement/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,16 +46,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
-        // GET: CarManagement/Create
         public ActionResult Create()
         {
             var carToAdd = carManager.CreateAddCarViewModel();        
             return View(carToAdd);
         }
-
-        //// POST: CarManagement/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(AddCarViewModel car)
@@ -93,7 +87,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
-        // GET: CarManagement/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,10 +100,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
             return View(car);
         }
-
-        // POST: CarManagement/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AddCarViewModel car)
@@ -124,7 +114,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
-        // GET: CarManagement/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -139,15 +128,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
-        // POST: CarManagement/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //var car = carManager.GetCarById(Convert.ToInt32(id));
-            //db.Cars.Remove(car);
-            //db.SaveChanges();
-
             carManager.RemoveCarById(id);
             return View("List", carManager.GetAllCarsToDisplay());
         }
