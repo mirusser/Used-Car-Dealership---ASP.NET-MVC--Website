@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -490,20 +491,39 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
+        private List<SelectListItem> populateSelectListRoles()
+        {
+            var roles = new List<SelectListItem>();
+            entities.Roles.ToList().ForEach(r =>
+            {
+                var role = new SelectListItem
+                {
+                    Text = r.Name,
+                    Value = r.Id
+                };
+                roles.Add(role);
+            });
+            return roles;
+        }
         #endregion
 
         public ActionResult ChangeUserRole()
         {
-            return View(new ChangeUserRoleViewModel());
+            var changeUserRoleViewModel = new ChangeUserRoleViewModel {Roles = populateSelectListRoles()};
+
+            return View(changeUserRoleViewModel);
         }
 
         [HttpPost]
         public ActionResult ChangeUserRole(ChangeUserRoleViewModel result)
         {
+            result.Roles = populateSelectListRoles();
+
             if (ModelState.IsValid)
             {
                 var user = entities.Users.FirstOrDefault(i => i.Email.Equals(result.UserName));
-                var role = entities.Roles.FirstOrDefault(i => i.Name.Equals(result.RoleName));
+                var role = entities.Roles.FirstOrDefault(r => r.Id == result.SelectedRoleId);
 
                 if (user != null && role != null)
                 {
@@ -516,14 +536,19 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                             UserId = user.Id,
                             RoleId = role.Id
                         });
-                        
+
                         entities.SaveChanges();
                         result.IsSucces = true;
                         return View(result);
                     }
                 }
                 result.IsSucces = false;
-            }            
+            }
+            else
+            {
+                result.IsSucces = false;
+            }
+            
             return View(result);
         }
     }

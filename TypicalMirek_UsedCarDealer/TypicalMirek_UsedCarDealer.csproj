@@ -202,7 +202,7 @@
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
     <Compile Include="Logic\Controllers\CarController.cs" />
-    <Compile Include="Logic\Controllers\SliderController.cs" />
+	<Compile Include="Logic\Controllers\SliderController.cs" />
     <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
@@ -420,7 +420,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\car-list.css" />
-    <Content Include="Content\chosen.css" />
+	<Content Include="Content\chosen.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
@@ -452,7 +452,8 @@
     <Content Include="Scripts\mb.thumbGallery.min.js" />
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
-    <Content Include="Scripts\sendDeleteSlidePost.js" />
+    <Content Include="Scripts\sendPost.js" />
+	<Content Include="Scripts\sendDeleteSlidePost.js" />
     <Content Include="Scripts\sendWysiwygPost.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\slippry.min.js" />
@@ -466,6 +467,7 @@
     <Content Include="fonts\svg\close.svg" />
     <Content Include="fonts\svg\next.svg" />
     <Content Include="fonts\svg\prev.svg" />
+	<Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="App_Data\Slider\arrows.svg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -629,6 +631,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
+    <Folder Include="Views\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

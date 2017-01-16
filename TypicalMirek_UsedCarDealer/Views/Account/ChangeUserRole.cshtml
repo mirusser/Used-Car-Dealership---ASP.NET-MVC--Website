@@ -15,7 +15,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @if (Model.IsSucces != null && (bool)Model.IsSucces)
+        @if (Model.IsSucces != null && (bool) Model.IsSucces)
         {
             <div class="form-group">
                 <div class="col-md-12 text-success">
@@ -23,37 +23,36 @@
                 </div>
             </div>
         }
-        else if (Model.IsSucces != null && !(bool)Model.IsSucces)
+        else if (Model.IsSucces != null && !(bool) Model.IsSucces)
         {
             <div class="form-group">
                 <div class="col-md-12 text-danger">
-                    <p>User or role doesn't exist</p>
+                    <p>User doesn't exist</p>
                 </div>
             </div>
         }
 
-        <hr />
-        @Html.ValidationSummary(true, "dfgbdfgsdfgdfgdfgdfg", new { @class = "text-danger" })
+        <hr/>
+        @Html.ValidationSummary(true, string.Empty, new {@class = "text-danger"})
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text-danger" })
+                @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.UserName, null, new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Roles, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RoleName, null, new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.SelectedRoleId, Model.Roles, string.Empty, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Roles, null, new {@class = "text-danger"})
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Change" class="btn btn-default" />
+                <input type="submit" value="Change" class="btn btn-default"/>
             </div>
         </div>
 

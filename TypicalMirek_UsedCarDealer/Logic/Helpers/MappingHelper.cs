@@ -122,6 +122,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 BodyId = addCarViewModel.BodyId,
                 PropulsionId = addCarViewModel.PropulsionId,
                 SourceOfEnergyId = addCarViewModel.SourceOfEnergyId,
+                Price = addCarViewModel.Price,
+                Description = addCarViewModel.Description,
+                AddTime = addCarViewModel.AddTime,
+                DeleteTime = addCarViewModel.DeleteTime,
                 Photos = new List<CarPhoto>(),
                 MainData = new MainData
                 {
@@ -224,7 +228,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                 Price = car.Price,
                 AddTime = car.AddTime,
                 DeleteTime = car.DeleteTime,
-                numberOfViews = car.NumberOfViews
+                NumberOfViews = car.NumberOfViews
             };
         }
 

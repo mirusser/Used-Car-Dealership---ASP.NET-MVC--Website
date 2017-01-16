@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Typical Mirek</title>
     @Scripts.Render("~/bundles/jquery")
@@ -9,18 +9,16 @@
     @RenderSection("scripts", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @* Below admin sidebar *@
     @Styles.Render("~/Content/AdminMenu")
     @Scripts.Render("~/bundles/AdminMenu")
     @Styles.Render("~/Content/AdminMenuScroll")
     @Scripts.Render("~/bundles/AdminMenuScroll")
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('[data-sidenav]').sidenav();
 
             $("#adminMenu").mCustomScrollbar({
-                mouseWheel: { scrollAmount: 1000 }, //because standard is quite slow
-                theme: "light-thin" //this theme seems to be nicer
+                mouseWheel: { scrollAmount: 1000 }
             });
         });
     </script>
@@ -38,7 +36,7 @@
                 <a href="javascript:;" class="toggle" id="sidenav-toggle">
                     <i class="glyphicon glyphicon-th-list navbar-brand" style="color:white"></i>
                 </a>
-                @Html.ActionLink("Typical Mirek", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                @Html.ActionLink("Typical Mirek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -58,12 +56,12 @@
             </div>
         </div>
     </div>
-<div class="container body-content">
-    @{
-        Html.RenderPartial($"~/Views/Admin/PartialViews/_Sidebar.cshtml");
-    }
-    @RenderBody()
-</div>
+    <div class="container body-content">
+        @{
+            Html.RenderPartial($"~/Views/Admin/PartialViews/_Sidebar.cshtml");
+        }
+        @RenderBody()
+    </div>
     <div class="center-block">
         <hr />
         <footer class="text-center">
