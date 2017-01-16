@@ -81,7 +81,7 @@ http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/scrollbar_theme
                 <span class="sidenav-link-icon">
                     <i class="glyphicon glyphicon-home"></i>
                 </span>
-                <span class="sidenav-link-title">Home page</span>
+                <span class="sidenav-link-title">Home slider</span>
                 <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </span>
@@ -90,7 +90,8 @@ http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/scrollbar_theme
                 </span>
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
-                <li>@Html.ActionLink(linkText: "Home slider", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.Nothing, Id = null })</li>
+                <li>@Html.ActionLink(linkText: "Delete slide", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.DeleteSlide})</li>
+                <li>@Html.ActionLink(linkText: "Add slide", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.AddSlide })</li>
             </ul>
         </li>
         <li>

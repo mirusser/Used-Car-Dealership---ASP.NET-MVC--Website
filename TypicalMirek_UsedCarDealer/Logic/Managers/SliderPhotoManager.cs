@@ -17,6 +17,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         private readonly ICarPhotoRepository carPhotoRepository;
         private readonly ICarRepository carRepository;
 
+        public SliderPhoto Add(SliderPhoto slider)
+        {
+            if (slider == null)
+            {
+                return null;
+            }
+
+            if (sliderPhotoRepository.GetById(slider.Id) != null)
+            {
+                return null;
+            }
+
+            sliderPhotoRepository.Add(slider);
+            sliderPhotoRepository.Save();
+
+            return slider;
+        }
+
 
         public SliderPhotoManager(IRepositoryFactory repositoryFactory)
         {

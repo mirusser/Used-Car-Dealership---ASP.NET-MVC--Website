@@ -25,13 +25,12 @@
 <h2>Current images in slider</h2>
 <h4>Press [x] near photo wchich You want to delete and press button</h4>
 
-    <select multiple="multiple" id="carsInSlider">
-        @foreach (var it in Model)
-        {
-            <option data-img-src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = it.imageName})" selected="selected" value="@it.carId">@it.description</option>
-        }
-
-    </select>
+<select multiple="multiple" id="carsInSlider">
+    @foreach (var it in Model)
+    {
+        <option data-img-src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = it.imageName})" selected="selected" value="@it.carId">@it.description</option>
+    }
+</select>
 
 <button class="btn btn-success btn-product"
         onclick="send('@Url.Action("UpdateSliderPhotos", "Api")', getValues(), '@Request.Url.PathAndQuery')">

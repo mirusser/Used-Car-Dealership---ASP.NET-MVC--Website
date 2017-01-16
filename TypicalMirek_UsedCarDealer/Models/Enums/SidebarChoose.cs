@@ -52,6 +52,8 @@ namespace TypicalMirek_UsedCarDealer.Models.Enums
         ChangeUserRolePost,
         EditFooter,
         EditAbout,
-        EditContact
+        EditContact,
+        AddSlide,
+        DeleteSlide
     }
 }

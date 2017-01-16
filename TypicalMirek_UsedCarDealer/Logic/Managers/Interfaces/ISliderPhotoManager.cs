@@ -10,6 +10,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
 {
     public interface ISliderPhotoManager : IManager
     {
+        SliderPhoto Add(SliderPhoto slider);
         IList<string> GetNames();
         string GetName(int id);
         IQueryable<SliderPhoto> GetAllSlides();

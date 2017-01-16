@@ -20,26 +20,62 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly IWebsiteContextManager websiteContextManager;
         private readonly IEmailConfigurationManager emailConfigurationManager;
         private readonly ISliderPhotoManager sliderPhotoManager;
+        private readonly ICarManager carManager;
 
         public ApiController(IManagerFactory managerFactory)
         {
             websiteContextManager = managerFactory.Get<WebsiteContextManager>();
             emailConfigurationManager = managerFactory.Get<EmailConfigurationManager>();
             sliderPhotoManager = managerFactory.Get<SliderPhotoManager>();
+            carManager = managerFactory.Get<CarManager>();
         }
 
         [HttpPost]
-        [ValidateInput(false)] //bo niebezieczna wartość
         public ActionResult UpdateSliderPhotos(string cars, string returnUrl)
         {
-            IList<int> ids = cars.Split(',').Select(int.Parse).ToEnumerable().ToList();
+            IList<int> ids = cars.Split(',').Select(int.Parse).ToList();
 
-            //bug of Entity framwework XD must be "to_list" or "source will be open" 
             foreach (var slide in sliderPhotoManager.GetAllSlides().ToList().Where(slide => !ids.Contains(slide.CarId)))
             {
                 sliderPhotoManager.Delete(slide.Id);
             }
             return Redirect(returnUrl);
+        }
+
+        [HttpPost]
+        public ActionResult AddSliderPhotos(string[] carIds, string[] photosNames, string returnUrl)
+        {
+            for (var i = 0; i < carIds.Length; i++)
+            {
+                var x = new SliderPhoto
+                {
+                    CarId = Convert.ToInt32(carIds[i]),
+                    Car = carManager.GetCarById(Convert.ToInt32(carIds[i])),
+                    CarPhoto =
+                        carManager.GetCarById(Convert.ToInt32(carIds[i]))
+                            .Photos.FirstOrDefault(it => it.Name == photosNames[i]),
+                    CarPhotoId =
+                        carManager.GetCarById(Convert.ToInt32(carIds[i]))
+                            .Photos.FirstOrDefault(it => it.Name == photosNames[i]).Id
+                };
+
+                sliderPhotoManager.Add(x);
+            }
+
+            return Redirect(returnUrl);
+        }
+
+        [HttpGet]
+        public ActionResult SelectPhotosToSlider(int[] cars)
+        {
+            var parameters = cars.Select(it => new CarPhotosToSlider
+            {
+                CarId = it,
+                CarName = carManager.GetCarById(it).MainData.Model.Brand.Name + " " + carManager.GetCarById(it).MainData.Model.Name,
+                PhotosNames = carManager.GetCarById(it).Photos.Select(p => p.Name)
+            }).ToList();
+
+            return PartialView($"~/Views/Slider/PartialViews/_SelectPhotosForCars.cshtml", parameters);
         }
 
         [HttpPost]

@@ -241,6 +241,16 @@
                             @Html.Action("EditFooter", "Home")
                             break;
                         }
+                    case SidebarChoose.AddSlide:
+                        {
+                            @Html.Action("AddPhotosToSlider", "Slider")
+                            break;
+                        }
+                    case SidebarChoose.DeleteSlide:
+                        {
+                            @Html.Action("SliderImages", "Slider")
+                            break;
+                        }
                 }
             }
         </div>

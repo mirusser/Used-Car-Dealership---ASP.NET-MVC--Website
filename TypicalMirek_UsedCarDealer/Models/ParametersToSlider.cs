@@ -6,17 +6,16 @@ using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Models
 {
-    public class ParametersToSlider
-    {
-        public IList<CarPhotoViewModel> SliderPhotos { get; set; }
-        public IList<CarPhotos> CarsPhotos { get; set; }
-
-    }
-
-    public class CarPhotos
+    public class CarPhotosToSlider
     {
         public int CarId { get; set; }
         public string CarName { get; set; }
-        public virtual ICollection<CarPhoto> Photos { get; set; }
+        public virtual IEnumerable<string> PhotosNames { get; set; }
+    }
+
+    public class CarToSlider
+    {
+        public int CarId { get; set; }
+        public string CarName { get; set; }
     }
 }

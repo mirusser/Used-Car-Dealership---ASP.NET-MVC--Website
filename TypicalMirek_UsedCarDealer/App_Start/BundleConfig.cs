@@ -107,6 +107,12 @@ namespace TypicalMirek_UsedCarDealer
 
             bundles.Add(new StyleBundle("~/Content/ImageSelect").Include(
                       "~/Content/ImageSelect.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ImageSelect2").Include(
+                      "~/Scripts/image-picker.js"));
+
+            bundles.Add(new StyleBundle("~/Content/ImageSelect2").Include(
+                      "~/Content/image-picker.css"));
         }
     }
 }

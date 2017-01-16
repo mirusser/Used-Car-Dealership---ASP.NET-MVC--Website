@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,51 +23,23 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             carManager = managerFactory.Get<CarManager>();
         }
 
-        //public ActionResult SelectCar()
-        //{
-        //    var sliderPhotos = sliderPhotoManager.GetAllAsCarPhotoViewModel();
-
-        //    IList<Car> cars = carManager.GetAllCars().ToList();
-
-        //    foreach (var it in sliderPhotos)
-        //    {
-        //        cars.Remove();
-        //    }
-
-        //    return View(cars);
-        //}        //public ActionResult SelectCar()
-        //{
-        //    var sliderPhotos = sliderPhotoManager.GetAllAsCarPhotoViewModel();
-
-        //    IList<Car> cars = carManager.GetAllCars().ToList();
-
-        //    foreach (var it in sliderPhotos)
-        //    {
-        //        cars.Remove();
-        //    }
-
-        //    return View(cars);
-        //}
-
-        [HttpPost]
-        public ActionResult SelectPhotosForCars(string CarIds)
+        public ActionResult AddPhotosToSlider()
         {
-            //var parameters = new ParametersToSlider
-            //{
-            //    SliderPhotos = sliderPhotoManager.GetAllAsCarPhotoViewModel(),
-            //    CarsPhotos = new List<CarPhotos>()
-            //};
+            var idsCarInSlider = sliderPhotoManager.GetAllSlides().Select(it => it.CarId).ToArray();
 
-            //foreach (var it in carManager.GetAllCars())
-            //{
-            //    parameters.CarsPhotos.Add(new CarPhotos
-            //    {
-            //        CarId = it.Id,
-            //        CarName = it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name,
-            //        Photos = it.Photos
-            //    });
-            //}
-            return View();
+            var cars =
+                carManager.GetAllCars()
+                    .Where(it => it.Photos.Count > 0) //has any photos
+                    .Where(it => it.DeleteTime == null) //is available
+                    .Where(c => idsCarInSlider.Any(s => c.Id != s)); //without cars currently exist in slider
+
+            var parameters = cars.Select(it => new CarToSlider
+            {
+                CarId = it.Id,
+                CarName = it.Id + " " + it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name
+            });
+
+            return View(parameters);
         }
 
         public ActionResult SliderImages()

@@ -424,6 +424,7 @@
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\image-picker.css" />
     <Content Include="Content\ImageSelect.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\pwstabs.css" />
@@ -441,6 +442,7 @@
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\elastislide.js" />
+    <Content Include="Scripts\image-picker.js" />
     <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.js" />
@@ -610,15 +612,16 @@
     <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
     <Content Include="Views\Garages\ShowOrder.cshtml" />
     <Content Include="Views\Garages\DeleteOrder.cshtml" />
-
-    <Content Include="Web.config" />    <Content Include="Views\Home\EditContact.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
     <Content Include="Views\Home\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Slider\PartialViews\_SelectCars.cshtml" />
     <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
     <Content Include="Views\Slider\SliderImages.cshtml" />
-    <None Include="Web.Debug.config">      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Views\Slider\AddPhotosToSlider.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
