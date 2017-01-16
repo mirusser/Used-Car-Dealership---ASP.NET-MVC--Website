@@ -93,13 +93,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             orderRepository.Save();
         }
 
-        public void DenyOrder(int orderId)
-        {
-            var order = orderRepository.GetById(orderId);
-            order.IsConfirmed = false;
-            orderRepository.Save();
-        }
-
         public void Dispose()
         {
             garageRepository.Dispose();

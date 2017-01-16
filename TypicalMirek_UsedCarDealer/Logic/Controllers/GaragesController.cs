@@ -75,17 +75,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DenyOrder(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            garageManager.DenyOrder(Convert.ToInt32(id));
-
-            return RedirectToAction("Index");
-        }
-
         // GET: Garages/Delete/5
         public ActionResult DeleteOrder(int? id)
         {

@@ -592,7 +592,6 @@
     <Content Include="Views\Types\Details.cshtml" />
     <Content Include="Views\Types\Edit.cshtml" />
     <Content Include="Views\Types\List.cshtml" />
-    <Content Include="Web.config" />
     <Content Include="Views\Car\ShowCar.cshtml" />
     <Content Include="Views\Car\CarList.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
@@ -611,21 +610,18 @@
     <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
     <Content Include="Views\Garages\ShowOrder.cshtml" />
     <Content Include="Views\Garages\DeleteOrder.cshtml" />
-    <Content Include="Views\Home\EditContact.cshtml" />
+
+    <Content Include="Web.config" />    <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
     <Content Include="Views\Home\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Home\EditAbout.cshtml" />
     <Content Include="Views\Slider\PartialViews\_SelectCars.cshtml" />
     <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
     <Content Include="Views\Slider\SliderImages.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
+    <None Include="Web.Debug.config">      <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
