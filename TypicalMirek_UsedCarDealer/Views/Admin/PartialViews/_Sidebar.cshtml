@@ -29,7 +29,8 @@
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>@Html.ActionLink("Show all", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CarList, Id = null })</li>
-                <li>@Html.ActionLink("Add new", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null })</li>
+                @*<li>@Html.ActionLink("Add new", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null })</li>*@
+                <li>@Html.ActionLink("Add new", "Create", "CarManagement")</li> 
             </ul>
         </li>
         <li>

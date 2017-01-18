@@ -3,13 +3,22 @@
 @using TypicalMirek_UsedCarDealer.Models.Enums
 @model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
 
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")*@
+@Styles.Render("~/Content/AdminMenu")
+@*@Scripts.Render("~/bundles/AdminMenu")*@
+@*@Styles.Render("~/Content/AdminMenuScroll")*@
+@*@Scripts.Render("~/bundles/AdminMenuScroll")*@
+
 @{
     ViewBag.Title = "Create";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
 <h2>Add car</h2>
-@using (Html.BeginForm("Create", $"CarManagement", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <hr/>
@@ -21,6 +30,8 @@
     {
         Html.RenderPartial($"PartialViews/_UploadCarPhotos", Model);
     }
+
+    <input type="file" name="Files" id="Files" multiple />
 
     {
         Html.RenderPartial($"PartialViews/_CreateCarAdditionalData", Model);

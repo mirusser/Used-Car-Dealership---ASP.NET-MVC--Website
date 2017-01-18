@@ -60,21 +60,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 try
                 {
-                    if (car.Files != null)
-                    {
-                        foreach (var file in car.Files)
-                        {
-                            if (file.ContentLength > 0)
-                            {
-                                var fileName = Path.GetFileName(file.FileName);
-                                if (fileName != null)
-                                {
-                                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
-                                    file.SaveAs(path);
-                                }
-                            }
-                        }
-                    }
+                    saveFileOnServer(car.Files);
                     carManager.Add(car);
                     return View("List", carManager.GetAllCarsToDisplay());
                 }
@@ -85,6 +71,30 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
 
             return View(car);
+        }
+
+        private void saveFileOnServer(IEnumerable<HttpPostedFileBase> files)
+        {
+            if (Request.Files.Count > 0)
+            {
+                
+            }
+
+            if (files != null)
+            {
+                foreach (var file in files)
+                {
+                    if (file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        if (fileName != null)
+                        {
+                            var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                            file.SaveAs(path);
+                        }
+                    }
+                }
+            }
         }
 
         public ActionResult Edit(int? id)

@@ -14,10 +14,11 @@
     @Styles.Render("~/Content/AdminMenuScroll")
     @Scripts.Render("~/bundles/AdminMenuScroll")
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('[data-sidenav]').sidenav();
+        var jq = jQuery.noConflict();
+        jq(document).ready(function () {
+            jq('#adminMenu').sidenavMove();
 
-            $("#adminMenu").mCustomScrollbar({
+            jq("#adminMenu").mCustomScrollbar({
                 mouseWheel: { scrollAmount: 1000 }
             });
         });
@@ -34,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="javascript:;" class="toggle" id="sidenav-toggle">
-                    <i class="glyphicon glyphicon-th-list navbar-brand" style="color:white"></i>
+                    <i class="glyphicon glyphicon-th-list navbar-brand" style="color: white"></i>
                 </a>
                 @Html.ActionLink("Typical Mirek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
