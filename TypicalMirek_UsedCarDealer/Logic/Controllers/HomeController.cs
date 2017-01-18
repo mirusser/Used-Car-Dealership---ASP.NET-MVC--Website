@@ -126,6 +126,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult EditContact()
         {
+            var foo = Request;
             var context = websiteContextManager.GetContextByName("Contact");
 
             var parameters = new ParametersToWysiwyg

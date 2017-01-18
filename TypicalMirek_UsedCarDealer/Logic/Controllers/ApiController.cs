@@ -47,19 +47,17 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             for (var i = 0; i < carIds.Length; i++)
             {
-                var x = new SliderPhoto
+                var carId = Convert.ToInt32(carIds[i]);
+                var car = carManager.GetCarById(carId);
+                var carPhoto = car.Photos.FirstOrDefault(it => it.Name == photosNames[i]);
+
+                var sliderPhoto = new SliderPhoto
                 {
-                    CarId = Convert.ToInt32(carIds[i]),
-                    Car = carManager.GetCarById(Convert.ToInt32(carIds[i])),
-                    CarPhoto =
-                        carManager.GetCarById(Convert.ToInt32(carIds[i]))
-                            .Photos.FirstOrDefault(it => it.Name == photosNames[i]),
-                    CarPhotoId =
-                        carManager.GetCarById(Convert.ToInt32(carIds[i]))
-                            .Photos.FirstOrDefault(it => it.Name == photosNames[i]).Id
+                    CarId = car.Id,
+                    CarPhotoId = carPhoto.Id
                 };
 
-                sliderPhotoManager.Add(x);
+                sliderPhotoManager.Add(sliderPhoto);
             }
 
             return Redirect(returnUrl);
