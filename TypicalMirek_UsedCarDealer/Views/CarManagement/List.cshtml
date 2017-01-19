@@ -4,7 +4,7 @@
 
 @{
     ViewBag.Title = "Car list";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
 <h2>Car List</h2>
@@ -38,9 +38,13 @@
                 }
             </td>
             <td>
-                @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCar, Id = item.Id }, htmlAttributes: null) |
-                @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsCar, Id = item.Id }, htmlAttributes: null) |
-                @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteCar, Id = item.Id }, htmlAttributes: null)
+                @*@Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCar, Id = item.Id }, htmlAttributes: null) |
+             @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsCar, Id = item.Id }, htmlAttributes: null) |
+            @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteCar, Id = item.Id }, htmlAttributes: null)*@
+
+                @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CarManagement", routeValues: new  {  Id = item.Id }, htmlAttributes: null) |
+                @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "CarManagement", routeValues: new { Id = item.Id }, htmlAttributes: null) |
+                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "CarManagement", routeValues: new { Id = item.Id }, htmlAttributes: null)
             </td>
         </tr>
     }

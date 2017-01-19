@@ -202,7 +202,7 @@
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
     <Compile Include="Logic\Controllers\CarController.cs" />
-	<Compile Include="Logic\Controllers\SliderController.cs" />
+    <Compile Include="Logic\Controllers\SliderController.cs" />
     <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
@@ -391,28 +391,6 @@
   <ItemGroup>
     <Content Include="App_Data\Header\logoFun.jpg" />
     <Content Include="App_Data\Header\logoNormal.jpg" />
-    <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
-    <Content Include="App_Data\Images\Diagram.png" />
-    <Content Include="App_Data\Images\ex1.png" />
-    <Content Include="App_Data\Images\exception — kopia.png" />
-    <Content Include="App_Data\Images\exception.png" />
-    <Content Include="App_Data\Images\fractal blue.jpg" />
-    <Content Include="App_Data\Images\how to send signal to another object.PNG" />
-    <Content Include="App_Data\Images\image1.jpg" />
-    <Content Include="App_Data\Images\image2.jpg" />
-    <Content Include="App_Data\Images\image3.jpg" />
-    <Content Include="App_Data\Images\image4.jpg" />
-    <Content Include="App_Data\Images\image5.jpg" />
-    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana — kopia.jpg" />
-    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana.jpg" />
-    <Content Include="App_Data\Images\projekt2016_Mirosław_Nawrot.png" />
-    <Content Include="App_Data\Images\sad funky face — kopia.png" />
-    <Content Include="App_Data\Images\sad funky face.png" />
-    <Content Include="App_Data\Images\sad.png" />
-    <Content Include="App_Data\Images\slack.png" />
-    <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
-    <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
-    <Content Include="App_Data\Images\ubrana w cień.jpg" />
     <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="App_Data\Slider\nav.png" />
     <Content Include="App_Data\Slider\sy-loader.gif" />
@@ -420,11 +398,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\car-list.css" />
-	<Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
-	<Content Include="Content\ImageSelect.css" />
+    <Content Include="Content\ImageSelect.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\pwstabs.css" />
     <Content Include="Content\sidenav.css" />
@@ -439,8 +417,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
-	<Content Include="Scripts\chosen.jquery.js" />
-    <Content Include="Scripts\elastislide.js" />		    
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\elastislide.js" />
     <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.js" />
@@ -451,7 +429,7 @@
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
     <Content Include="Scripts\sendPost.js" />
-	<Content Include="Scripts\sendDeleteSlidePost.js" />
+    <Content Include="Scripts\sendDeleteSlidePost.js" />
     <Content Include="Scripts\sendWysiwygPost.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\slippry.min.js" />
@@ -465,12 +443,12 @@
     <Content Include="fonts\svg\close.svg" />
     <Content Include="fonts\svg\next.svg" />
     <Content Include="fonts\svg\prev.svg" />
-	<Content Include="Views\Home\EditContact.cshtml" />
+    <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="App_Data\Slider\arrows.svg" />
-	<Content Include="Views\Slider\PartialViews\_SelectCars.cshtml" />
+    <Content Include="Views\Slider\PartialViews\_SelectCars.cshtml" />
     <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
     <Content Include="Views\Slider\SliderImages.cshtml" />
-	<Content Include="Web.config">
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="fonts\summernote.eot" />
@@ -615,12 +593,13 @@
     <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
     <Content Include="Views\Garages\ShowOrder.cshtml" />
     <Content Include="Views\Garages\DeleteOrder.cshtml" />
-
-    <Content Include="Web.config" />    <Content Include="Views\Home\EditContact.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
     <Content Include="Views\Home\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Home\EditAbout.cshtml" />    <None Include="Web.Debug.config">
+    <Content Include="Views\Home\EditAbout.cshtml" />
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
@@ -629,6 +608,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
+    <Folder Include="App_Data\Images\" />
     <Folder Include="Views\Api\" />
   </ItemGroup>
   <ItemGroup>

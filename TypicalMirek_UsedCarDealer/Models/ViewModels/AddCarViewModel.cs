@@ -11,7 +11,6 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
     {
         public AddCarViewModel()
         {
-            Price = 0;
             IsInOrder = false;
             NumberOfViews = 0;
         }

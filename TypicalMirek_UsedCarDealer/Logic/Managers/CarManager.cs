@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -103,34 +104,46 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return null;
         }
 
-        public void RemoveCarById(int id)
+        public void RemoveCarById(int carId)
         {
-            var car = carRepository.GetById(id);
+            var car = carRepository.GetById(carId);
+            var mainDataId = car.MainData.Id;
+            var additionalDataId = car.AdditionalData?.Id;
+            var additionalEqupmentId = car.AdditionalData?.AdditionalEquipment?.Id;
+            var modelId = car.MainData.Model.Id;
 
-            if (car.AdditionalData != null)
-            {
-                if (car.AdditionalData.AdditionalEquipment != null)
-                {
-                    additionalEquipmentRepository.Delete(car.AdditionalData.AdditionalEquipment);
-                    car.AdditionalData.AdditionalEquipmentId = null;
-                    car.AdditionalData.AdditionalEquipment = null;
-                    additionalDataRepository.Save();
-                    additionalEquipmentRepository.Save();
-                }
-
-                additionalDataRepository.Delete(car.AdditionalData);
-                car.AdditionalDataId = null;
-                additionalDataRepository.Save();
-            }
-
-            mainDataRepository.Delete(car.MainData.Id);
             foreach (var carphoto in car.Photos)
             {
                 carPhotoRepository.Delete(carphoto.Id);
             }
             carPhotoRepository.Save();
 
-            carRepository.Delete(car);
+            modelRepository.Delete(modelId);
+            modelRepository.Save();
+
+            if (additionalDataId != null)
+            {
+                var additionalData = additionalDataRepository.GetById(Convert.ToInt32(additionalDataId));
+
+                if (additionalData != null && additionalEqupmentId != null && additionalEqupmentId > 0)
+                {
+                    additionalData.AdditionalEquipmentId = null;
+                    additionalDataRepository.Save();
+
+                    additionalEquipmentRepository.Delete(additionalEqupmentId.Value);
+                    additionalEquipmentRepository.Save();
+                }
+                if (additionalDataId > 0)
+                {
+                    additionalDataRepository.Delete(Convert.ToInt32(additionalDataId));
+                    additionalDataRepository.Save();
+                }
+            }
+
+            mainDataRepository.Delete(mainDataId);
+            mainDataRepository.Save();
+
+            carRepository.Delete(carId);
             carRepository.Save();
         }
 
@@ -142,18 +155,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public AddCarViewModel GetAddCarViewModel(int id)
         {
             var car = MappingHelper.MappCarModelToAddingCarViewModel(GetCarById(id));
-            car.Types = GetSelectListItem(typeRepository);
-            car.Characters = GetSelectListItem(characterRepository);
-            car.Brands = GetSelectListItem(brandRepository);
-            car.Bodies = GetSelectListItem(bodyRepository);
-            car.Propulsions = GetSelectListItem(propulsionRepository);
-            car.SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository);
-            car.Models = GetSelectListItem(modelRepository);
-            car.Colors = GetSelectListItem(colorRepository);
-            car.Gearboxes = GetSelectListItem(gearboxRepository);
-            car.Countries = GetSelectListItem(countryRepository);
-            car.PositionsOfSteeringWheel = GetSelectListItem(positionOfSteeringWheelRepository);
+            car = SetCarSelecLists(car);
             return car;
+        }
+
+        public AddCarViewModel SetCarSelecLists(AddCarViewModel addCarViewModel)
+        {
+            addCarViewModel.Types = GetSelectListItem(typeRepository);
+            addCarViewModel.Characters = GetSelectListItem(characterRepository);
+            addCarViewModel.Brands = GetSelectListItem(brandRepository);
+            addCarViewModel.Bodies = GetSelectListItem(bodyRepository);
+            addCarViewModel.Propulsions = GetSelectListItem(propulsionRepository);
+            addCarViewModel.SourcesOfEnergy = GetSelectListItem(sourceOfEnergyRepository);
+            addCarViewModel.Models = GetSelectListItem(modelRepository);
+            addCarViewModel.Colors = GetSelectListItem(colorRepository);
+            addCarViewModel.Gearboxes = GetSelectListItem(gearboxRepository);
+            addCarViewModel.Countries = GetSelectListItem(countryRepository);
+            addCarViewModel.PositionsOfSteeringWheel = GetSelectListItem(positionOfSteeringWheelRepository);
+            return addCarViewModel;
         }
 
         public CarDetailsViewModel GetCarDetailsViewModelById(int id)
@@ -171,9 +190,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return MappingHelper.MapCarsToListOfCarsToDisplay(carRepository.GetAll());
         }
 
+        public List<CarPhoto> GetAllCarPhotos(int carId)
+        {
+            return carPhotoRepository.GetAllCarPhotosByCarId(carId).ToList();
+        } 
+
         public void IncrementNumberOfViews(int id)
         {
-            carRepository.GetById(id).NumberOfViews++;
+            var car = carRepository.GetById(id);
+            if (car!= null)
+            {
+                car.NumberOfViews++;
+            }
             carRepository.Save();
         }
 

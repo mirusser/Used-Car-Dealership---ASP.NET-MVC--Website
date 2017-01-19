@@ -17,14 +17,19 @@ using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CarManagementController : Controller
     {
+        #region Properties
         private readonly ICarManager carManager;
+        #endregion
 
+        #region Constructors
         public CarManagementController(IManagerFactory managerFactory)
         {
             carManager = managerFactory.Get<CarManager>();
         }
+        #endregion
 
         public ActionResult List()
         {
@@ -48,10 +53,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult Create()
         {
-            var carToAdd = carManager.CreateAddCarViewModel();        
+            var carToAdd = carManager.CreateAddCarViewModel();
             return View(carToAdd);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(AddCarViewModel car)
@@ -62,29 +67,26 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 {
                     saveFileOnServer(car.Files);
                     carManager.Add(car);
-                    return View("List", carManager.GetAllCarsToDisplay());
+                    return RedirectToAction("List");
                 }
                 catch (Exception ex)
                 {
+                    car = carManager.SetCarSelecLists(car);
                     return View(car);
                 }
             }
 
+            car = carManager.SetCarSelecLists(car);
             return View(car);
         }
 
         private void saveFileOnServer(IEnumerable<HttpPostedFileBase> files)
         {
-            if (Request.Files.Count > 0)
-            {
-                
-            }
-
             if (files != null)
             {
                 foreach (var file in files)
                 {
-                    if (file.ContentLength > 0)
+                    if (file?.ContentLength > 0)
                     {
                         var fileName = Path.GetFileName(file.FileName);
                         if (fileName != null)
@@ -110,7 +112,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
             return View(car);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AddCarViewModel car)
@@ -118,7 +120,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             if (ModelState.IsValid)
             {
                 carManager.Modify(car);
-                return View("List", carManager.GetAllCarsToDisplay());
+                return RedirectToAction("List");
             }
 
             return View(car);
@@ -142,8 +144,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var carPhotos = carManager.GetAllCarPhotos(id);
+            carPhotos.ForEach(p =>
+            {
+                var imagePath = getImagePath(p.Name);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            });
+
             carManager.RemoveCarById(id);
-            return View("List", carManager.GetAllCarsToDisplay());
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)
@@ -157,14 +169,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult GetCarImage(string imageName)
         {
+            var path = getImagePath(imageName);
+            return File(path, "image/jpeg/png/PNG/jpg");
+        }
+
+        private string getImagePath(string imageName)
+        {
             if (string.IsNullOrEmpty(imageName))
             {
                 imageName = "empty";
             }
             var path = Path.Combine(Server.MapPath("~/App_Data/Images"), imageName);
-            path = Path.GetFullPath(path);
-
-            return File(path, "image/jpeg/png/PNG/jpg");
+            return Path.GetFullPath(path);
         }
     }
 }

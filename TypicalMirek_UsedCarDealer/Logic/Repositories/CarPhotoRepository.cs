@@ -10,14 +10,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class CarPhotoRepository : BaseRepository<CarPhoto, TypicalMirekEntities>, ICarPhotoRepository
     {
-        public CarPhotoRepository()
-        {
-            
-        }
+        public CarPhotoRepository() { }
 
-        public CarPhotoRepository(TypicalMirekEntities entities) : base(entities)
+        public CarPhotoRepository(TypicalMirekEntities entities) : base(entities){}
+
+        public IQueryable<CarPhoto> GetAllCarPhotosByCarId(int carId)
         {
-            
+            return Items.Where(p => p.CarId.Equals(carId));
         }
     }
 }
