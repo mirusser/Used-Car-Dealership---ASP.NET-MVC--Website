@@ -599,6 +599,7 @@
     <Content Include="Views\Home\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\EditAbout.cshtml" />
+    <Content Include="Views\CarBodies\RelatedDataDeleteError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

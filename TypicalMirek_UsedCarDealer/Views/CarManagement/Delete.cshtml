@@ -59,9 +59,24 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList }, htmlAttributes: null)
+        @*<div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger btn-product col-md-6 col-xs-12"/>
+            @Html.ActionLink("Back to List", "List", "CarManagement", htmlAttributes: new {@class = "btn btn-primary btn-product col-md-6 col-xs-12"})
+        </div>*@
+
+        <div class="form-horizontal col-md-12">
+            <div class="form-group col-md-12">
+                <div>
+                    <input type="submit" value="Delete" class="btn btn-danger btn-product col-md-12 col-xs-12" />
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal col-md-12">
+            <div class="form-group col-md-12">
+                <div>
+                    @Html.ActionLink("Back to List", "List", "CarManagement", new { @class = "btn btn-default col-md-12 col-xs-12" })
+                </div>
+            </div>
         </div>
     }
 </div>

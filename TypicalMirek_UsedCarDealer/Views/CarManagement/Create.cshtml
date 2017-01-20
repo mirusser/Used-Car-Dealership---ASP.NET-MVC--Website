@@ -13,7 +13,7 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <hr/>
+    <hr />
 
     {
         Html.RenderPartial($"PartialViews/_CreateCarMainData");
@@ -23,7 +23,7 @@
         Html.RenderPartial($"PartialViews/_UploadCarPhotos", Model);
     }
 
-    <input type="file" name="Files" id="Files" multiple />
+    @*<input type="file" name="Files" id="Files" multiple />*@
 
     {
         Html.RenderPartial($"PartialViews/_CreateCarAdditionalData", Model);
@@ -34,12 +34,17 @@
     <div class="form-horizontal col-md-12">
         <div class="form-group col-md-12">
             <div>
-                <input type="submit" name="submit" value="Create" class="btn btn-default col-md-12 col-xs-12"/>
+                <input type="submit" name="submit" value="Create" class="btn btn-primary col-md-12 col-xs-12" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList}, htmlAttributes: null)
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "List", "CarManagement", new { @class = "btn btn-default col-md-12 col-xs-12" })
+        </div>
+    </div>
 </div>

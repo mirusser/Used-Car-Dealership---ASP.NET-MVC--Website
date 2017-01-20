@@ -4,13 +4,13 @@
 
 @{
     ViewBag.Title = "List of car bodies";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<h2>List of car bodies</h2>
+<h1 style="text-align: center">List of car bodies</h1>
 
 <p>
-    @Html.ActionLink(linkText: "New car body", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateBodies, Id = null }, htmlAttributes: null)
+    @Html.ActionLink("New car body", "Create", "CarBodies", new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
 </p>
 <table class="table">
     <tr>
@@ -20,17 +20,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditBodies, Id = item.Id }, htmlAttributes: null) |
-            @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsBodies, Id = item.Id }, htmlAttributes: null) |
-            @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteBodies, Id = item.Id }, htmlAttributes: null)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "CarBodies", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                @Html.ActionLink("Details", "Details", "CarBodies", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                @Html.ActionLink("Delete", "Delete", "CarBodies", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
+            </td>
+        </tr>
+    }
 
 </table>

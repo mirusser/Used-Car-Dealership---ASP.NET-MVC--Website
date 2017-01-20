@@ -7,11 +7,15 @@
     Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<h2>Car List</h2>
+<h1 style="text-align: center">Car List</h1>
 
-<p>
-    @Html.ActionLink(linkText: "New Car", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null }, htmlAttributes: null)
-</p>
+<div class="col-md-12">
+    @Html.ActionLink("New Car", "Create", "CarManagement", new {@class = "btn btn-primary btn-product col-md-12 col-xs-12"})
+</div>
+
+<br />
+<br />
+
 <table class="table">
     <tr>
         <th>
@@ -33,18 +37,14 @@
                 @if (!string.IsNullOrEmpty(item.CarImageName))
                 {
                     <div>
-                        <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.CarImageName})" alt="" height="100" width="100" />
+                        <img src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.CarImageName})" alt="" height="120" width="120" />
                     </div>
                 }
             </td>
             <td>
-                @*@Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCar, Id = item.Id }, htmlAttributes: null) |
-             @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsCar, Id = item.Id }, htmlAttributes: null) |
-            @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteCar, Id = item.Id }, htmlAttributes: null)*@
-
-                @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CarManagement", routeValues: new  {  Id = item.Id }, htmlAttributes: null) |
-                @Html.ActionLink(linkText: "Details", actionName: "Details", controllerName: "CarManagement", routeValues: new { Id = item.Id }, htmlAttributes: null) |
-                @Html.ActionLink(linkText: "Delete", actionName: "Delete", controllerName: "CarManagement", routeValues: new { Id = item.Id }, htmlAttributes: null)
+                @Html.ActionLink("Edit", "Edit", "CarManagement", new  {  Id = item.Id }, new  {@class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                @Html.ActionLink("Details", "Details", "CarManagement", new { Id = item.Id }, new {@class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                @Html.ActionLink("Delete", "Delete", "CarManagement", new { Id = item.Id }, new {@class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
             </td>
         </tr>
     }

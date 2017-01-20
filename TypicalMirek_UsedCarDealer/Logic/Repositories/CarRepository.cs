@@ -11,14 +11,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 {
     public class CarRepository : BaseRepository<Car, TypicalMirekEntities>, ICarRepository
     {
-        public CarRepository()
-        {
-            
-        }
+        public CarRepository(){ }
 
-        public CarRepository(TypicalMirekEntities entities) : base(entities)
+        public CarRepository(TypicalMirekEntities entities) : base(entities) { }
+
+        public bool CheckIfExistCarForBodyId(int bodyId)
         {
-            
+            return Items.Any(c => c.BodyId.Equals(bodyId));
         }
     }
 }

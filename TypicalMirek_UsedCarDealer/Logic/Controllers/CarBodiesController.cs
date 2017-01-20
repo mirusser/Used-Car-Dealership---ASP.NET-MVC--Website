@@ -17,15 +17,17 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CarBodiesController : Controller
     {
-        //private TypicalMirekEntities db = new TypicalMirekEntities();
-
+        #region Properties
         private readonly ICarBodyManager carBodyManager;
+        #endregion
 
+        #region Constructors
         public CarBodiesController(IManagerFactory managerFactory)
         {
             carBodyManager = managerFactory.Get<CarBodyManager>();
         }
-        // GET: CarBodies
+        #endregion
+
         public ActionResult List()
         {
             return View(carBodyManager.GetAll().ToList());
@@ -60,7 +62,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             if (ModelState.IsValid)
             {
                 carBodyManager.Add(body);
-                return View("List", carBodyManager.GetAll().ToList());
+                return RedirectToAction($"List");
             }
 
             return View(body);
@@ -89,7 +91,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             if (ModelState.IsValid)
             {
                 carBodyManager.Modify(body);
-                return View("List", carBodyManager.GetAll().ToList());
+                return RedirectToAction($"List");
             }
             return View(body);
         }
@@ -114,8 +116,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            carBodyManager.Delete(id);
-            return View("List", carBodyManager.GetAll().ToList());
+            if (carBodyManager.Delete(id))
+            {
+                return RedirectToAction($"List");
+            }
+            else
+            {
+                return View($"RelatedDataDeleteError");
+            }
         }
 
         protected override void Dispose(bool disposing)

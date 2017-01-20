@@ -15,12 +15,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
     {
         #region Properties
         private readonly IBodyRepository bodyRepository;
-
+        private readonly ICarRepository carRepository;
         #endregion
 
         public CarBodyManager(IRepositoryFactory repositoryFactory)
         {
             bodyRepository = repositoryFactory.Get<BodyRepository>();
+            carRepository = repositoryFactory.Get<CarRepository>();
         }
 
         public Body Add(Body body)
@@ -46,14 +47,19 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return bodyToModify;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var bodyToDelete = bodyRepository.GetById(id);
             if (bodyToDelete != null)
             {
-                bodyRepository.Delete(bodyToDelete);
-                bodyRepository.Save();
+                if (!carRepository.CheckIfExistCarForBodyId(id))
+                {
+                    bodyRepository.Delete(bodyToDelete);
+                    bodyRepository.Save();
+                    return true;
+                }
             }
+            return false;
         }
 
         public void Delete(Body body)
