@@ -1,18 +1,15 @@
-﻿@using TypicalMirek_UsedCarDealer.Models
-@using TypicalMirek_UsedCarDealer.Models.Enums
-@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Country>
+﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Country>
 
 @{
     ViewBag.Title = "List";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
 @using (Html.BeginForm("List", "Countries", null, FormMethod.Get))
 {
-    <h2>List of countries</h2>
-
+    <h1 style="text-align: center">List of countires</h1>
     <p>
-        @Html.ActionLink(linkText: "New country", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateCountry, Id = null }, htmlAttributes: null)
+        @Html.ActionLink("New country", "Create", "Countries", new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
     </p>
     <table class="table">
         <tr>
@@ -29,9 +26,9 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCountry, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsCountry, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteCountry, Id = item.Id }, htmlAttributes: null)
+                    @Html.ActionLink("Edit", "Edit", "Countries", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Details", "Details", "Countries", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Delete", "Delete", "Countries", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
                 </td>
             </tr>
         }

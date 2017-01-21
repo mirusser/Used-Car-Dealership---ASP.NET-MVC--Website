@@ -6,5 +6,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
     {
         Color GetByName(string name);
         bool CheckIfEntityWithNameExists(int id, string name);
+        bool CheckIfColorWithExactNameExists(string colorName);
     }
 }

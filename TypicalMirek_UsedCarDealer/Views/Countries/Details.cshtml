@@ -1,16 +1,14 @@
-﻿@using TypicalMirek_UsedCarDealer.Models
-@using TypicalMirek_UsedCarDealer.Models.Enums
-@model TypicalMirek_UsedCarDealer.Models.Country
+﻿@model TypicalMirek_UsedCarDealer.Models.Country
 
 @{
     ViewBag.Title = "Details";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h1 style="text-align: center">Details</h1>
 
 <div>
-    <h4>Country</h4>
+    <h4 style="text-align: center">Country</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -22,7 +20,18 @@
         </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCountry, Id = Model.Id }, htmlAttributes: null) |
-    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CountryList }, htmlAttributes: null)
-</p>
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Edit", "Edit", "Countries", new { Id = Model.Id }, new { @class = "btn btn-info col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "List", "Countries", new { @class = "btn btn-default col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>

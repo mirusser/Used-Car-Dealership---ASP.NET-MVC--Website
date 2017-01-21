@@ -10,39 +10,65 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
     public class CountryManager : Manager, ICountryManager
     {
+        #region Properties
         private readonly ICountryRepository countryRepository;
+        private readonly IAdditionalDataRepository additionalDataRepository;
+        #endregion
 
+        #region Constructors
         public CountryManager() { }
 
         public CountryManager(IRepositoryFactory repositoryFactory)
         {
             countryRepository = repositoryFactory.Get<CountryRepository>();
+            additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
         }
+        #endregion
 
-        //TODO check if country exist
-        public T Add<T>(T entity)
+        public Country Add(Country country)
         {
-            var country = entity as Country;
+            if (country == null)
+            {
+                return null;
+            }
+
+            if (countryRepository.GetById(country.Id) != null || countryRepository.CheckIfCountryWithExactNameExists(country.Name))
+            {
+                return null;
+            }
 
             countryRepository.Add(country);
             countryRepository.Save();
 
-            return (T)Convert.ChangeType(country, typeof(T));
+            return country;
         }
 
-        //TODO check if country exist
-        public T Modify<T>(T entity)
+        public Country Modify(Country country)
         {
-            var country = entity as Country;
+            var countryToModify = countryRepository.GetById(country.Id);
+            var isModyfiedNameEqual = country.Name.Equals(countryToModify.Name);
 
-            countryRepository.Update(country);
+            if (countryRepository.CheckIfCountryWithExactNameExists(country.Name) && !isModyfiedNameEqual)
+            {
+                return null;
+            }
+            countryToModify.Name = country.Name;
             countryRepository.Save();
-
-            return (T)Convert.ChangeType(country, typeof(T));
+            return countryToModify;
         }
 
         public void Delete(Country country)
         {
+            if (additionalDataRepository.CheckIfCountryIsUsed(country.Id))
+            {
+                var additionalDatas = additionalDataRepository.GetAllAdditionalDatasByCountryId(country.Id);
+                additionalDatas.ToList().ForEach(a =>
+                {
+                    a.CountryId = null;
+                });
+                additionalDataRepository.Save();
+            }
+
             countryRepository.Delete(country);
             countryRepository.Save();
         }
@@ -60,6 +86,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public void Dispose()
         {
             countryRepository.Dispose();
+            additionalDataRepository.Dispose();
         }
     }
 }

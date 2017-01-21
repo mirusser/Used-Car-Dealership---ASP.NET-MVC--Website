@@ -28,7 +28,7 @@
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>@Html.ActionLink("Show all", "List", "CarManagement")</li>
-                <li>@Html.ActionLink("Add new", "Create", "CarManagement")</li> 
+                <li>@Html.ActionLink("Add new", "Create", "CarManagement")</li>
             </ul>
         </li>
         <li>
@@ -118,11 +118,11 @@
     </div>
     <ul class="sidenav-menu">
         <li>
-            <a href=@Url.Action("Admin", new ParametersToAdminMenu {Chose = SidebarChoose.ChangeUserRole, Id = null})>
-                <span class="sidenav-link-icon">
-                    <i class="glyphicon glyphicon-user" style="color: white"></i>
-                </span>
-                <span class="sidenav-link-title" style="color: white">Change user role</span>
+            <a href=@Url.Action("ChangeUserRole", "Account")>
+            <span class="sidenav-link-icon">
+                <i class="glyphicon glyphicon-user" style="color: white"></i>
+            </span>
+            <span class="sidenav-link-title" style="color: white">Change user role</span>
             </a>
         </li>
     </ul>

@@ -5,8 +5,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
 {
     public interface ICountryManager : IManager
     {
-        T Add<T>(T entity);
-        T Modify<T>(T entity);
+        Country Add(Country country);
+        Country Modify(Country country);
         void Delete(Country country);
         Country GetById(int id);
         IQueryable<Country> GetAll();

@@ -9,26 +9,29 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
     public class ColorManager : Manager, IColorManager
     {
+        #region Properties
         private readonly IColorRepository colorRepository;
         private readonly IAdditionalDataRepository additionalDataRepository;
+        #endregion
 
-        public ColorManager() {}
+        #region Constructors
+        public ColorManager() { }
 
         public ColorManager(IRepositoryFactory repositoryFactory)
         {
             colorRepository = repositoryFactory.Get<ColorRepository>();
             additionalDataRepository = repositoryFactory.Get<AdditionalDataRepository>();
         }
+        #endregion
 
-        //TODO check if color exist
-        public Color Add (Color color)
+        public Color Add(Color color)
         {
             if (color == null)
             {
                 return null;
             }
 
-            if (colorRepository.GetById(color.Id) != null || colorRepository.GetByName(color.Name) != null)
+            if (colorRepository.GetById(color.Id) != null || colorRepository.CheckIfColorWithExactNameExists(color.Name))
             {
                 return null;
             }
@@ -39,30 +42,34 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return color;
         }
 
-        //TODO check if color exist
         public Color Modify(Color color)
         {
-            if (colorRepository.CheckIfEntityWithNameExists(color.Id, color.Name))
+            var colorToModify = colorRepository.GetById(color.Id);
+            var isModyfiedNameEqual = color.Name.Equals(colorToModify.Name);
+
+            if (colorRepository.CheckIfColorWithExactNameExists(color.Name) && !isModyfiedNameEqual)
             {
                 return null;
             }
-            
-            colorRepository.Update(color);
+            colorToModify.Name = color.Name;
             colorRepository.Save();
-
-            return color;
+            return colorToModify;
         }
 
-        public bool Delete(Color color)
+        public void Delete(Color color)
         {
             if (additionalDataRepository.CheckIfColorIsUsed(color.Id))
             {
-                return false;
+                var additionalDatas = additionalDataRepository.GetAllAdditionalDatasByColorId(color.Id);
+                additionalDatas.ToList().ForEach(a =>
+                {
+                    a.ColorId = null;
+                });
+                additionalDataRepository.Save();
             }
 
             colorRepository.Delete(color);
             colorRepository.Save();
-            return true;
         }
 
         public Color GetById(int id)
@@ -78,6 +85,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public void Dispose()
         {
             colorRepository.Dispose();
+            additionalDataRepository.Dispose();
         }
     }
 }
