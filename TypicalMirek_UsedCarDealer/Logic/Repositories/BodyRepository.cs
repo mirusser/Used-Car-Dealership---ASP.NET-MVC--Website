@@ -19,5 +19,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         {
             
         }
+
+        public bool CheckIfBodyWithExactNameExists(string bodyName)
+        {
+            return Items.FirstOrDefault(b => b.Name.Equals(bodyName)) != null;
+        }
     }
 }

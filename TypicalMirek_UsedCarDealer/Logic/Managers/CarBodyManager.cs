@@ -18,16 +18,23 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         private readonly ICarRepository carRepository;
         #endregion
 
+        #region Constructors
         public CarBodyManager(IRepositoryFactory repositoryFactory)
         {
             bodyRepository = repositoryFactory.Get<BodyRepository>();
             carRepository = repositoryFactory.Get<CarRepository>();
         }
+        #endregion
 
         public Body Add(Body body)
         {
             if (body.Id <= 0)
             {
+                if (bodyRepository.GetById(body.Id) != null || bodyRepository.CheckIfBodyWithExactNameExists(body.Name))
+                {
+                    return null;
+                }
+
                 bodyRepository.Add(body);
                 bodyRepository.Save();
             }
@@ -38,7 +45,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public Body Modify(Body body)
         {
             var bodyToModify = bodyRepository.GetById(body.Id);
-            if (bodyToModify != null)
+            if (bodyToModify == null || bodyRepository.CheckIfBodyWithExactNameExists(body.Name))
+            {
+                return null;
+            }
+            else
             {
                 bodyToModify.Name = body.Name;
                 bodyRepository.Save();
@@ -85,6 +96,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public void Dispose()
         {
             bodyRepository.Dispose();
+            carRepository.Dispose();
         }
     }
 }

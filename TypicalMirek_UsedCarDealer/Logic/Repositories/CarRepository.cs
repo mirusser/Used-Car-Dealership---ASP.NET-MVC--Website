@@ -19,5 +19,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         {
             return Items.Any(c => c.BodyId.Equals(bodyId));
         }
+
+        public bool CheckIfExistCarForBrandId(int brandId)
+        {
+            return Items.Any(c => c.MainData.Model.BrandId.Equals(brandId));
+        }
     }
 }

@@ -4,15 +4,15 @@
 
 @{
     ViewBag.Title = "List";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
 @using (Html.BeginForm("List", "Brands", null, FormMethod.Get))
 {
-    <h2>List of brands</h2>
+    <h1 style="text-align: center">List of brands</h1>
 
     <p>
-        @Html.ActionLink(linkText: "New brand", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateBrand, Id = null }, htmlAttributes: null)
+        @Html.ActionLink("New brand", "Create", "Brands", new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
     </p>
     <table class="table">
         <tr>
@@ -35,9 +35,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditBrand, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsBrand, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteBrand, Id = item.Id }, htmlAttributes: null)
+                    @Html.ActionLink("Edit", "Edit", "Brands", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Details", "Details", "Brands", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Delete", "Delete", "Brands", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
                 </td>
             </tr>
         }

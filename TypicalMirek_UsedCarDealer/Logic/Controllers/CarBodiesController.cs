@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Controllers.Strings;
 using TypicalMirek_UsedCarDealer.Logic.Factories;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
+using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -61,7 +63,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                carBodyManager.Add(body);
+                if (carBodyManager.Add(body) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(body);
+                }
                 return RedirectToAction($"List");
             }
 
@@ -90,7 +96,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                carBodyManager.Modify(body);
+                if (carBodyManager.Modify(body) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(body);
+                }
                 return RedirectToAction($"List");
             }
             return View(body);
@@ -122,7 +132,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
             else
             {
-                return View($"RelatedDataDeleteError");
+                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
+                {
+                    ControllerName = "CarBodies",
+                    ModelName = nameof(Body)
+                };
+
+                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
             }
         }
 

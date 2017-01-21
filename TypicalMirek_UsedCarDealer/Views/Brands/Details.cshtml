@@ -4,13 +4,13 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = string.Empty;
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h1 style="text-align: center">Details</h1>
 
 <div>
-    <h4>Brand</h4>
+    <h4 style="text-align: center">Brand</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -31,8 +31,18 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditBrand, Id = Model.Id }, htmlAttributes: null) |
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Edit", "Edit", "Brands", new { Id = Model.Id }, new { @class = "btn btn-info col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>
 
-    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.BrandList }, htmlAttributes: null)
-</p>
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "List", "Brands", new { @class = "btn btn-default col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>

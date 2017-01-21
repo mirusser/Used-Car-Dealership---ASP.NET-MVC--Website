@@ -13,5 +13,9 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         public BrandRepository() {}
         public BrandRepository(TypicalMirekEntities entities) : base(entities) {}
 
+        public bool CheckIfBrandWithExactNameExists(string brandName)
+        {
+            return Items.FirstOrDefault(b => b.Name.Equals(brandName)) != null;
+        }
     }
 }
