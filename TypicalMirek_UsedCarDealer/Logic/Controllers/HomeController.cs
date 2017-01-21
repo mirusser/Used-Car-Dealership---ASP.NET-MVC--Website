@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
@@ -9,9 +8,6 @@ using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {

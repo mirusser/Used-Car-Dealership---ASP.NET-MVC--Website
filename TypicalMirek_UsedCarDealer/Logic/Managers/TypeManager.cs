@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using TypicalMirek_UsedCarDealer.Logic.Factories;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
@@ -13,23 +9,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
     public class TypeManager : Manager, ITypeManager
     {
+        #region Properties
         private readonly ITypeRepository typeRepository;
-        private readonly IMainDataRepository mainDataRepository;
+        private readonly ICarRepository carRepository;
+        #endregion
 
+        #region Constructors
         public TypeManager(IRepositoryFactory repositoryFactory)
         {
             typeRepository = repositoryFactory.Get<TypeRepository>();
-            mainDataRepository = repositoryFactory.Get<MainDataRepository>();
+            carRepository = repositoryFactory.Get<CarRepository>();
         }
-
+        #endregion
 
         public Type Add(Type type)
         {
-            if (typeRepository.GetByName(type.Name) != null)
+            if (typeRepository.GetById(type.Id) != null || typeRepository.CheckIfTypeWithExactNameExists(type.Name))
             {
-                //TODO inform user that he cannot add type with existing in database name
                 return null;
-
             }
 
             typeRepository.Add(type);
@@ -40,36 +37,30 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public Type Modify(Type type)
         {
             var typeToModify = typeRepository.GetById(type.Id);
-            if (typeToModify != null)
-            {
-                var typeWithTheSameName = typeRepository.GetByName(type.Name);
-                if (typeWithTheSameName != null && typeToModify.Id != typeWithTheSameName.Id )
-                {
-                    //TODO inform user that type with that name already exists what is very baaad
-                    return type;
-                }
-                typeToModify.Name = type.Name;
-                typeToModify.Description = type.Description;
-                typeRepository.Save();
-                return typeToModify;
-            }
+            var isModyfiedNameEqual = type.Name.Equals(typeToModify.Name);
 
-            //TODO inform user that this type doesn't exist in database
-            return type;
+            if (typeRepository.CheckIfTypeWithExactNameExists(type.Name) && !isModyfiedNameEqual)
+            {
+                return null;
+            }
+            typeToModify.Name = type.Name;
+            typeToModify.Description = type.Description;
+            typeRepository.Save();
+            return typeToModify;
         }
 
-        public void Delete(Type type)
+        public bool Delete(Type type)
         {
-            var typeToDelete = typeRepository.GetById(type.Id);
-            if (typeToDelete != null)
+            if (type != null)
             {
-                if (!mainDataRepository.Contains(typeToDelete))
+                if (!carRepository.CheckIfExistCarForTypeId(type.Id))
                 {
-                    typeRepository.Delete(typeToDelete);
+                    typeRepository.Delete(type);
                     typeRepository.Save();
+                    return true;
                 }
-                //TODO inform user that this field cannot be deleted because exists in anothe table as foreign key
             }
+            return false;
         }
 
         public Type GetById(int id)
@@ -85,6 +76,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public void Dispose()
         {
             typeRepository.Dispose();
+            carRepository.Dispose();
         }
     }
 }

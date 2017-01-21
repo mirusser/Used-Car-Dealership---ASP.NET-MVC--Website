@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TypicalMirek_UsedCarDealer.Logic.Factories;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
-using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.Context;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
@@ -110,6 +105,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return HttpNotFound();
             }
+
+            car = carManager.SetCarSelecLists(car);
             return View(car);
         }
 
@@ -123,6 +120,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 return RedirectToAction("List");
             }
 
+            car = carManager.SetCarSelecLists(car);
             return View(car);
         }
 

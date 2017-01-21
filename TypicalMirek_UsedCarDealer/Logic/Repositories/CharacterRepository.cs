@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
@@ -18,6 +15,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         public CharacterRepository(TypicalMirekEntities entities) : base(entities)
         {
             
+        }
+    
+        public bool CheckIfCharacterWithExactNameExists(string character)
+        {
+            return Items.FirstOrDefault(c => c.Name.Equals(character)) != null;
         }
     }
 }

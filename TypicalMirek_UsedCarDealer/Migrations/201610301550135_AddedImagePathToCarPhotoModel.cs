@@ -1,6 +1,5 @@
 namespace TypicalMirek_UsedCarDealer.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     
     public partial class AddedImagePathToCarPhotoModel : DbMigration

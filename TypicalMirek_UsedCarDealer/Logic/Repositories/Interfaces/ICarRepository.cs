@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TypicalMirek_UsedCarDealer.Models;
+﻿using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
 {
@@ -11,5 +6,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces
     {
         bool CheckIfExistCarForBodyId(int bodyId);
         bool CheckIfExistCarForBrandId(int bodyId);
+        bool CheckIfExistCarForCharacterId(int characterId);
+        bool CheckIfExistCarForTypeId(int typeId);
     }
 }

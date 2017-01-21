@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Controllers.Strings;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
-using TypicalMirek_UsedCarDealer.Logic.Repositories;
-using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
-using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.Context;
+using TypicalMirek_UsedCarDealer.Models.ViewModels;
 using Type = TypicalMirek_UsedCarDealer.Models.Type;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class TypesController : Controller
     {
+        #region Properties
         private readonly ITypeManager typeManager;
+        #endregion
 
+        #region Constructors
         public TypesController(IManagerFactory managerFactory)
         {
             typeManager = managerFactory.Get<TypeManager>();
         }
+        #endregion
 
         // GET: Types
         public ActionResult List()
@@ -54,16 +52,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: Types/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description")] Type type)
         {
             if (ModelState.IsValid)
             {
-                typeManager.Add(type);
-                return View("List", typeManager.GetAll().ToList());
+                if (typeManager.Add(type) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(type);
+                }
+                return RedirectToAction($"List");
             }
 
             return View(type);
@@ -85,16 +85,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: Types/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Description")] Type type)
         {
             if (ModelState.IsValid)
             {
-                typeManager.Modify(type);
-                return View("List", typeManager.GetAll().ToList());
+                if (typeManager.Modify(type) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(type);
+                }
+                return RedirectToAction($"List");
             }
             return View(type);
         }
@@ -120,8 +122,19 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var type = typeManager.GetById(id);
-            typeManager.Delete(type);
-            return View("List", typeManager.GetAll().ToList());
+            if (typeManager.Delete(type))
+            {
+                return RedirectToAction($"List");
+            }
+            else
+            {
+                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
+                {
+                    ControllerName = "Types",
+                    ModelName = nameof(Type)
+                };
+                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
+            }
         }
 
         protected override void Dispose(bool disposing)

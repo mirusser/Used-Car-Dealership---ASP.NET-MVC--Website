@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Antlr.Runtime;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
@@ -23,6 +19,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         public bool CheckIfExistCarForBrandId(int brandId)
         {
             return Items.Any(c => c.MainData.Model.BrandId.Equals(brandId));
+        }
+
+        public bool CheckIfExistCarForCharacterId(int characterId)
+        {
+            return Items.Any(c => c.MainData.CharacterId.Equals(characterId));
+        }
+
+        public bool CheckIfExistCarForTypeId(int typeId)
+        {
+            return Items.Any(c => c.MainData.TypeId.Equals(typeId));
         }
     }
 }

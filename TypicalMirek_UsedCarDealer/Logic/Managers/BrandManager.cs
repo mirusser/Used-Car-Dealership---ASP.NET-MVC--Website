@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.UnitOfWork;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
@@ -51,14 +47,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public Brand Modify(Brand brand)
         {
             var brandToModify = brandRepository.GetById(brand.Id);
-            if (brandToModify == null || brandRepository.CheckIfBrandWithExactNameExists(brand.Name))
+            var isModyfiedNameEqual = brand.Name.Equals(brandToModify.Name);
+
+            if (brandRepository.CheckIfBrandWithExactNameExists(brand.Name) && !isModyfiedNameEqual)
             {
                 return null;
             }
             brandToModify.Name = brand.Name;
             brandToModify.Description = brand.Description;
             brandRepository.Save();
-            return brand;
+            return brandToModify;
         }
 
         public bool Delete(Brand brand)

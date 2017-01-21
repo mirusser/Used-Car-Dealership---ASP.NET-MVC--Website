@@ -1,18 +1,16 @@
-﻿@using TypicalMirek_UsedCarDealer.Models
-@using TypicalMirek_UsedCarDealer.Models.Enums
-@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Type>
+﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Type>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = string.Empty;
+    ViewBag.Title = "List";
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("List", "Brands", null, FormMethod.Get))
+@using (Html.BeginForm("List", "Types", null, FormMethod.Get))
 {
-    <h2>List of types</h2>
+    <h1 style="text-align: center">List of types</h1>
 
     <p>
-        @Html.ActionLink(linkText: "New type", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CreateType, Id = null }, htmlAttributes: null)
+        @Html.ActionLink("New type", "Create", "Types", new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
     </p>
     <table class="table">
         <tr>
@@ -35,9 +33,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditType, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Details", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DetailsType, Id = item.Id }, htmlAttributes: null) |
-                    @Html.ActionLink(linkText: "Delete", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.DeleteType, Id = item.Id }, htmlAttributes: null)
+                    @Html.ActionLink("Edit", "Edit", "Types", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Details", "Details", "Types", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Delete", "Delete", "Types", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
                 </td>
             </tr>
         }

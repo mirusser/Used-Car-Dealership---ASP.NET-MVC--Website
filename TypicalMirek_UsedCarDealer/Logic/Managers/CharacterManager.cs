@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
@@ -12,15 +9,26 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
     public class CharacterManager : Manager, ICharacterManager
     {
+        #region Properties
         private readonly ICharacterRepository characterRepository;
+        private readonly ICarRepository carRepository;
+        #endregion
 
+        #region Constructors
         public CharacterManager(IRepositoryFactory repositoryFactory)
         {
             characterRepository = repositoryFactory.Get<CharacterRepository>();
+            carRepository = repositoryFactory.Get<CarRepository>();
         }
+        #endregion
 
         public Character Add(Character character)
         {
+            if (characterRepository.GetById(character.Id) != null || characterRepository.CheckIfCharacterWithExactNameExists(character.Name))
+            {
+                return null;
+            }
+
             characterRepository.Add(character);
             characterRepository.Save();
             return character;
@@ -29,25 +37,30 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public Character Modify(Character character)
         {
             var characterToModify = characterRepository.GetById(character.Id);
+            var isModyfiedNameEqual = character.Name.Equals(characterToModify.Name);
 
-            if (characterToModify != null)
+            if (characterRepository.CheckIfCharacterWithExactNameExists(character.Name) && !isModyfiedNameEqual)
             {
-                characterToModify.Name = character.Name;
-                characterRepository.Save();
+                return null;
             }
 
+            characterToModify.Name = character.Name;
+            characterRepository.Save();
             return characterToModify;
         }
 
-        public void Delete(Character character)
+        public bool Delete(Character character)
         {
-            var characterToDelete = characterRepository.GetById(character.Id);
-
-            if (characterToDelete != null)
+            if (character != null)
             {
-                characterRepository.Delete(characterToDelete);
-                characterRepository.Save();
+                if (!carRepository.CheckIfExistCarForBrandId(character.Id))
+                {
+                    characterRepository.Delete(character);
+                    characterRepository.Save();
+                    return true;
+                }
             }
+            return false;
         }
 
         public Character GetById(int id)
@@ -63,6 +76,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public void Dispose()
         {
             characterRepository.Dispose();
+            carRepository.Dispose();
         }
     }
 }

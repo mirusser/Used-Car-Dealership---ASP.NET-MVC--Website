@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Controllers.Strings;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.Context;
+using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CharactersController : Controller
     {
+        #region Properties
         private readonly ICharacterManager characterManager;
+        #endregion
 
+        #region Constructors
         public CharactersController(IManagerFactory managerFactory)
         {
             characterManager = managerFactory.Get<CharacterManager>();
         }
+        #endregion
 
         // GET: Characters
         public ActionResult List()
@@ -51,16 +52,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: Characters/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Character character)
         {
             if (ModelState.IsValid)
             {
-                characterManager.Add(character);
-                return View("List", characterManager.GetAll().ToList());
+                if (characterManager.Add(character) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(character);
+                }
+                return RedirectToAction($"List");
             }
 
             return View(character);
@@ -82,16 +85,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: Characters/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] Character character)
         {
             if (ModelState.IsValid)
             {
-                characterManager.Modify(character);
-                return View("List", characterManager.GetAll().ToList());
+                if (characterManager.Modify(character) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(character);
+                }
+                return RedirectToAction($"List");
             }
             return View(character);
         }
@@ -117,8 +122,19 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             var character = characterManager.GetById(id);
-            characterManager.Delete(character);
-            return View("List", characterManager.GetAll().ToList());
+            if (characterManager.Delete(character))
+            {
+                return RedirectToAction($"List");
+            }
+            else
+            {
+                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
+                {
+                    ControllerName = "Characters",
+                    ModelName = nameof(Character)
+                };
+                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
+            }
         }
 
         protected override void Dispose(bool disposing)

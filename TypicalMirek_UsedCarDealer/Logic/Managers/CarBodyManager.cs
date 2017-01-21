@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using TypicalMirek_UsedCarDealer.Logic.Factories;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
@@ -45,7 +41,9 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public Body Modify(Body body)
         {
             var bodyToModify = bodyRepository.GetById(body.Id);
-            if (bodyToModify == null || bodyRepository.CheckIfBodyWithExactNameExists(body.Name))
+            var isModyfiedNameEqual = body.Name.Equals(bodyToModify.Name);
+
+            if (bodyRepository.CheckIfBodyWithExactNameExists(body.Name) && !isModyfiedNameEqual)
             {
                 return null;
             }
