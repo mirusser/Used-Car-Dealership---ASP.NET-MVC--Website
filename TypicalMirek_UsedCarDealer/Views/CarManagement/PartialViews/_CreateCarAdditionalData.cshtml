@@ -9,7 +9,7 @@
 
     <div class="form-group">
         <div class="col-md-12">
-            @Html.DropDownListFor(model => model.ColorId, Model.Colors, nameof(Model.Colors), htmlAttributes: new { @class = "form-control"})
+            @Html.DropDownListFor(model => model.ColorId, Model.Colors, nameof(Model.Colors), htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ColorId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
@@ -30,49 +30,59 @@
 
     <div class="form-group">
         <div class="col-md-12">
-            @Html.DropDownListFor(model => model.PositionOfSteeringWheelId, Model.PositionsOfSteeringWheel, nameof(Model.PositionsOfSteeringWheel), htmlAttributes: new { @class = "form-control"})
+            @Html.DropDownListFor(model => model.PositionOfSteeringWheelId, Model.PositionsOfSteeringWheel, nameof(Model.PositionsOfSteeringWheel), htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.PositionOfSteeringWheelId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
+            @{ Html.EnableClientValidation(false); }
             @Html.TextBoxFor(model => model.EngineCapacity, new { @class = "form-control", @placeholder = nameof(Model.EngineCapacity) })
+            @{ Html.EnableClientValidation(true); }
             @Html.ValidationMessageFor(model => model.EngineCapacity, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
+            @{ Html.EnableClientValidation(false); }
             @Html.TextBoxFor(model => model.FuelTankCapacity, new { @class = "form-control", @placeholder = nameof(Model.FuelTankCapacity) })
+            @{ Html.EnableClientValidation(true); }
             @Html.ValidationMessageFor(model => model.FuelTankCapacity, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.EnginePower, new { @class = "form-control", @type = "number", @min = "0", @placeholder = nameof(Model.EnginePower)})
+            @Html.TextBoxFor(model => model.EnginePower, new { @class = "form-control", @type = "number", @min = "0", @placeholder = nameof(Model.EnginePower) })
             @Html.ValidationMessageFor(model => model.EnginePower, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.Length, new { @class = "form-control", @type = "price", @min = "1", @placeholder = nameof(Model.Length) })
+            @{ Html.EnableClientValidation(false); }
+            @Html.TextBoxFor(model => model.Length, new { @class = "form-control", @min = "0", @placeholder = nameof(Model.Length) })
+            @{ Html.EnableClientValidation(true); }
             @Html.ValidationMessageFor(model => model.Length, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
+            @{ Html.EnableClientValidation(false); }
             @Html.TextBoxFor(model => model.Mass, new { @class = "form-control", @placeholder = nameof(Model.Mass) })
+            @{ Html.EnableClientValidation(true); }
             @Html.ValidationMessageFor(model => model.Mass, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
+            @{ Html.EnableClientValidation(false); }
             @Html.TextBoxFor(model => model.Milleage, new { @class = "form-control", @placeholder = nameof(Model.Milleage) })
+            @{ Html.EnableClientValidation(true); }
             @Html.ValidationMessageFor(model => model.Milleage, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
