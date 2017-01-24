@@ -196,12 +196,19 @@
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
+    <Compile Include="Logic\Controllers\EditContentController.cs" />
+    <Compile Include="Logic\Controllers\Strings\ControllerStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControllerStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Logic\Controllers\CountriesController.cs" />
     <Compile Include="Logic\Controllers\GaragesController.cs" />
     <Compile Include="Logic\Controllers\GetPhotoController.cs" />
     <Compile Include="Logic\Controllers\HomeController.cs" />
     <Compile Include="Logic\Controllers\ManageController.cs" />
     <Compile Include="Logic\Controllers\CarController.cs" />
+    <Compile Include="Logic\Controllers\SliderController.cs" />
     <Compile Include="Logic\Controllers\TypesController.cs" />
     <Compile Include="Logic\Factories\Factory.cs" />
     <Compile Include="Logic\Factories\Interfaces\IManagerFactory.cs" />
@@ -357,6 +364,7 @@
     <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToContact.cs" />
     <Compile Include="Models\ParametersToHome.cs" />
+    <Compile Include="Models\ParametersToSlider.cs" />
     <Compile Include="Models\ParametersToWysiwyg.cs" />
     <Compile Include="Models\PositionOfSteeringWheel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -378,6 +386,7 @@
     <Compile Include="Models\ViewModels\DisplayCarViewModel.cs" />
     <Compile Include="Models\ViewModels\EmailFormViewModel.cs" />
     <Compile Include="Models\ViewModels\ItemsToDependendDropdownViewModel.cs" />
+    <Compile Include="Models\ViewModels\RelatedDataDeleteErrorViewModel.cs" />
     <Compile Include="Models\WebsiteContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\Repositories\BaseRepository.cs" />
@@ -418,9 +427,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\car-list.css" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\image-picker.css" />
+    <Content Include="Content\ImageSelect.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\pwstabs.css" />
     <Content Include="Content\sidenav.css" />
@@ -435,7 +447,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\elastislide.js" />
+    <Content Include="Scripts\image-picker.js" />
+    <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.js" />
     <Content Include="Scripts\mb.browser.min.js" />
@@ -444,7 +459,9 @@
     <Content Include="Scripts\mb.thumbGallery.min.js" />
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
-    <Content Include="Scripts\sendPost.js" />
+    <Content Include="Scripts\sendSelectPhotosForCarsPost.js" />
+    <Content Include="Scripts\sendDeleteSlidePost.js" />
+    <Content Include="Scripts\sendWysiwygPost.js" />
     <Content Include="Scripts\sidenav.js" />
     <Content Include="Scripts\slippry.min.js" />
     <Content Include="Scripts\summernote.js" />
@@ -458,7 +475,9 @@
     <Content Include="fonts\svg\next.svg" />
     <Content Include="fonts\svg\prev.svg" />
     <Content Include="App_Data\Slider\arrows.svg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="fonts\summernote.eot" />
     <Content Include="fonts\summernote.ttf" />
     <Content Include="fonts\summernote.woff" />
@@ -583,7 +602,6 @@
     <Content Include="Views\Types\Details.cshtml" />
     <Content Include="Views\Types\Edit.cshtml" />
     <Content Include="Views\Types\List.cshtml" />
-    <Content Include="Web.config" />
     <Content Include="Views\Car\ShowCar.cshtml" />
     <Content Include="Views\Car\CarList.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
@@ -602,18 +620,20 @@
     <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
     <Content Include="Views\Garages\ShowOrder.cshtml" />
     <Content Include="Views\Garages\DeleteOrder.cshtml" />
-    <Content Include="Views\Home\EditContact.cshtml" />
+    <Content Include="Web.config" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
-    <Content Include="Views\Home\EditFooter.cshtml" />
+    <Content Include="Views\EditContent\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Home\EditAbout.cshtml" />
+    <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
+    <Content Include="Views\Slider\SliderImages.cshtml" />
+    <Content Include="Views\Slider\AddPhotosToSlider.cshtml" />
+    <Content Include="Views\EditContent\EditAbout.cshtml" />
+    <Content Include="Views\EditContent\EditContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -632,6 +652,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Logic\Controllers\Strings\ControllerStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ControllerStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610210044090_Initial.resx">
       <DependentUpon>201610210044090_Initial.cs</DependentUpon>
     </EmbeddedResource>

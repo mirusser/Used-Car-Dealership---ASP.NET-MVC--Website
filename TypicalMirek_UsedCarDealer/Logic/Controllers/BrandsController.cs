@@ -1,28 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Controllers.Strings;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.Context;
-using TypicalMirek_UsedCarDealer.Models.Enums;
+using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class BrandsController : Controller
     {
-        private IBrandManager brandManager;
+        #region Properties
+        private readonly IBrandManager brandManager;
+        #endregion
 
+        #region Constructors
         public BrandsController(IManagerFactory managerFactory)
         {
             brandManager = managerFactory.Get<BrandManager>();
         }
+        #endregion
+
         // GET: Brands
         public ActionResult List()
         {
@@ -51,20 +52,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: Brands/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //TODO what if brand exist in database
         public ActionResult Create([Bind(Include = "Id,Name,Description")] Brand brand)
         {
             if (ModelState.IsValid)
             {
                 if (brandManager.Add(brand) == null)
                 {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
                     return View(brand);
                 }
-                return View("List", brandManager.GetAll().ToList());
+                return RedirectToAction("List");
             }
 
             return View(brand);
@@ -86,20 +85,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         // POST: Brands/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //TODO what if brand doesn't exist in database
         public ActionResult Edit([Bind(Include = "Id,Name,Description")] Brand brand)
         {
             if (ModelState.IsValid)
             {
                 if (brandManager.Modify(brand) == null)
                 {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
                     return View(brand);
                 }
-                return View("List", brandManager.GetAll().ToList());
+                return RedirectToAction("List");
             }
             return View(brand);
         }
@@ -129,8 +126,20 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return HttpNotFound();
             }
-            brandManager.Delete(brand);
-            return View("List", brandManager.GetAll().ToList());
+
+            if (brandManager.Delete(brand))
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
+                {
+                    ControllerName = "Brands",
+                    ModelName = nameof(Brand)
+                };
+                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
+            }
         }
 
         protected override void Dispose(bool disposing)

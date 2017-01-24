@@ -3,7 +3,7 @@
 @Styles.Render("~/Content/WYSIWYG")
 @Scripts.Render("~/bundles/WYSIWYG")
 
-@Scripts.Render("~/bundles/SendPost")
+@Scripts.Render("~/bundles/sendWysiwygPost")
 
 @{
     var summerNoteParameters = "";
@@ -33,17 +33,16 @@
         Model.ControllerNameForPost = "Api";
     }
 
-    var currentController = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
-    var currentAction = @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    var pathAndQuery = @Request.Url.PathAndQuery;
 }
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#summernote').summernote({
+    jQuery(document).ready(function () {
+        jQuery('#summernote').summernote({
             @summerNoteParameters
         });
 
-        $('#summernote').summernote('code', '@Html.Raw(Model.Context)');
+        jQuery('#summernote').summernote('code', '@Html.Raw(Model.Context)');
     });
 </script>
 
@@ -57,7 +56,7 @@
         <div id="summernote"></div>
 
             <button class="btn btn-success btn-product"
-                    onclick="send('@Url.Action(Model.ActionNameForPost, Model.ControllerNameForPost)', $('#summernote').summernote('code'), '@Model.SiteName', '@currentController', '@currentAction')">
+                    onclick="send('@Url.Action(Model.ActionNameForPost, Model.ControllerNameForPost)', $('#summernote').summernote('code'), '@Model.SiteName', '@pathAndQuery')">
                 Save
             </button>
     }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
@@ -90,13 +88,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         {
             var order = orderRepository.GetById(orderId);
             order.IsConfirmed = true;
-            orderRepository.Save();
-        }
-
-        public void DenyOrder(int orderId)
-        {
-            var order = orderRepository.GetById(orderId);
-            order.IsConfirmed = false;
             orderRepository.Save();
         }
 

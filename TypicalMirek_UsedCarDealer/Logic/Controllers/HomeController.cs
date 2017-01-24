@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
@@ -9,9 +8,6 @@ using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -41,16 +37,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 NewCars = new List<CarPhotoViewModel>()
             };
 
-            foreach (var it in sliderPhotoManager.GetAllSlides())
-            {
-                parameters.Slider.Add(new CarPhotoViewModel
-                {
-                    imageName = sliderPhotoManager.GetName(it.CarPhotoId),
-                    description = it.Car.MainData.Model.Brand.Name + " " + it.Car.MainData.Model.Name,
-                    carId = it.Car.Id,
-                    price = it.Car.Price
-                });
-            }
+            //TEMPORARY - should be when any car is deleted or suspended
+            sliderPhotoManager.CheckIfAllCarExist();
+            // ---
+
+            parameters.Slider = sliderPhotoManager.GetAllAsCarPhotoViewModel();
 
             var hotCars = carManager.GetAllCars().Where(it => it.Photos.Count > 0 && it.DeleteTime == null).OrderByDescending(it => it.NumberOfViews).Take(8);
 
@@ -85,30 +76,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         #region About
-
         public ActionResult About(string result = null)
         {
             var context = websiteContextManager.GetContextByName("Contact");
 
             return View(model: context?.Context);
         }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditAbout()
-        {
-            var context = websiteContextManager.GetContextByName("About");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "About"
-            };
-
-            return View(parameters);
-        }
-
         #endregion
-
 
         #region Contact
         public ActionResult Contact(string result = null)
@@ -126,36 +100,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 Content = content
             };
             return View(parametersToContact);
-        }
-        
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditContact()
-        {
-            var context = websiteContextManager.GetContextByName("Contact");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "Contact"
-            };
-
-            return View(parameters);
-        }
-        #endregion
-
-        #region Footer
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditFooter()
-        {
-            var context = websiteContextManager.GetContextByName("Footer");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "Footer"
-            };
-
-            return View(parameters);
         }
         #endregion
     }

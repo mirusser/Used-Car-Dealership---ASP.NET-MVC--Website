@@ -1,0 +1,48 @@
+﻿@model IQueryable<TypicalMirek_UsedCarDealer.Models.CarToSlider>
+
+@Styles.Render("~/Content/Chosen")
+@Scripts.Render("~/bundles/Chosen")
+
+@Styles.Render("~/Content/ImageSelect2")
+@Scripts.Render("~/bundles/ImageSelect2")
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#chooseCars").chosen({
+            width: "100%",
+            html_template: '{text} <img style="padding:0px;margin-right:4px;min-height:100px;width: auto;" class="{class_name}" src="{url}" />'
+        });
+
+        jQuery("#refreshPartial").on("click", function () {
+            jQuery.ajax({
+                url: "@Url.Action("SelectPhotosToSlider", "Api")",
+                type: "GET",
+                data: { cars: jQuery("#chooseCars").val() },
+                traditional: true
+            })
+            .done(function (partialViewResult) {
+                jQuery("#partial").html(partialViewResult);
+            });
+        });
+    });
+</script>
+
+<div class="container">
+    <h4>Here You can see all cars with one or more photo which are not currently on slider.</h4>
+    <h4>Choose cars and then You can select images for each car.</h4>
+    <h4>You can select only one image per car.</h4>
+    <select data-placeholder="Choose cars" class="chosen-select" multiple id="chooseCars">
+        <option value=""></option>
+        @foreach (var it in Model)
+        {
+            <option value="@it.CarId">@it.CarName</option>
+        }
+    </select>
+
+    <button class="btn btn-success btn-product" id="refreshPartial">Select photos for this cars!</button>
+
+    <div id="partial">
+        <!-- partial view content will be inserted here -->
+    </div>
+</div>
+

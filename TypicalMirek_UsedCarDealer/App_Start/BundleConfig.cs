@@ -84,14 +84,38 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new StyleBundle("~/Content/WYSIWYG").Include(
                       "~/Content/summernote.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/SendPost").Include(
-                      "~/Scripts/sendPost.js"));
+            bundles.Add(new ScriptBundle("~/bundles/sendWysiwygPost").Include(
+                      "~/Scripts/sendWysiwygPost.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sendDeleteSlidePost").Include(
+                      "~/Scripts/sendDeleteSlidePost.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/SendSelectPhotosForCarsPost").Include(
+                      "~/Scripts/sendSelectPhotosForCarsPost.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/AdminMenuScroll").Include(
                       "~/Scripts/jquery.mCustomScrollbar.js"));
 
             bundles.Add(new StyleBundle("~/Content/AdminMenuScroll").Include(
                       "~/Content/jquery.mCustomScrollbar.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Chosen").Include(
+                      "~/Scripts/chosen.jquery.js"));
+
+            bundles.Add(new StyleBundle("~/Content/Chosen").Include(
+                      "~/Content/chosen.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ImageSelect").Include(
+                      "~/Scripts/ImageSelect.jquery.js"));
+
+            bundles.Add(new StyleBundle("~/Content/ImageSelect").Include(
+                      "~/Content/ImageSelect.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ImageSelect2").Include(
+                      "~/Scripts/image-picker.js"));
+
+            bundles.Add(new StyleBundle("~/Content/ImageSelect2").Include(
+                      "~/Content/image-picker.css"));
         }
     }
 }

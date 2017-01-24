@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
@@ -15,9 +13,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         AddCarViewModel CreateAddCarViewModel();
         IQueryable<Car> GetAllCars();
         IList<DisplayCarViewModel> GetAllCarsToDisplay();
+        IQueryable<Car> GetCarsForAddToSlider(int[] idsCarInSlider);
         Car GetCarById(int id);
         AddCarViewModel GetAddCarViewModel(int id);
         CarDetailsViewModel GetCarDetailsViewModelById(int id);
+        AddCarViewModel SetCarSelecLists(AddCarViewModel addCarViewModel);
+        List<CarPhoto> GetAllCarPhotos(int carId);
         void IncrementNumberOfViews(int id);
         void Dispose();
     }

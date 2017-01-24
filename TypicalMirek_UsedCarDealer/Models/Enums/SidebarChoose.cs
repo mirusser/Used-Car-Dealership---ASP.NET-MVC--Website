@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace TypicalMirek_UsedCarDealer.Models.Enums
+﻿namespace TypicalMirek_UsedCarDealer.Models.Enums
 {
     public enum SidebarChoose
     {
@@ -52,6 +47,8 @@ namespace TypicalMirek_UsedCarDealer.Models.Enums
         ChangeUserRolePost,
         EditFooter,
         EditAbout,
-        EditContact
+        EditContact,
+        AddSlide,
+        DeleteSlide
     }
 }

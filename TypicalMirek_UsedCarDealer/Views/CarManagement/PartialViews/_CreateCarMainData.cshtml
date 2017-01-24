@@ -1,46 +1,43 @@
 ﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
 
 <div class="form-horizontal">
-    <h4>Main Data</h4>
+    <h4>
+        Main Data
+    </h4>
     <hr />
     @Html.ValidationSummary(true, "Validation for car main data failed.", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.TypeId, htmlAttributes: new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.TypeId, Model.Types, string.Empty, htmlAttributes: new { @class = "form-control drop-down-list"})
-            @Html.ValidationMessageFor(model => model.TypeId, "", new {@class = "text-danger"})
+        <div class="col-md-12">
+            @Html.DropDownListFor(model => model.TypeId, Model.Types, nameof(Model.Types), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TypeId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Characters, "Character", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CharacterId, Model.Characters, string.Empty, htmlAttributes: new { @class = "form-control", Placeholder = "Character" })
-            @Html.ValidationMessageFor(model => model.CharacterId, "", new { @class = "text-danger" })
+        <div class="col-md-12">
+            @Html.DropDownListFor(model => model.CharacterId, Model.Characters, nameof(Model.Characters), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CharacterId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Propulsions, "Propulsion", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.PropulsionId, Model.Propulsions, string.Empty, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PropulsionId, "", new { @class = "text-danger" })
+        <div class="col-md-12">
+            @Html.DropDownListFor(model => model.PropulsionId, Model.Propulsions, nameof(Model.Propulsions), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PropulsionId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.SourcesOfEnergy, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.SourceOfEnergyId, Model.SourcesOfEnergy, string.Empty, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SourceOfEnergyId, "", new { @class = "text-danger" })
+        <div class="col-md-12">
+            @Html.DropDownListFor(model => model.SourceOfEnergyId, Model.SourcesOfEnergy, nameof(Model.SourcesOfEnergy), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SourceOfEnergyId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Bodies, "Bodies", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.BodyId, Model.Bodies, string.Empty, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.BodyId, "", new { @class = "text-danger" })
+        <div class="col-md-12">
+            @Html.DropDownListFor(model => model.BodyId, Model.Bodies, nameof(Model.Bodies), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BodyId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
@@ -48,5 +45,22 @@
         Html.RenderPartial($"PartialViews/_CreateCarModel", Model);
     }
 
-    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Description, nameof(Model.Description), htmlAttributes: new { @class = "form-control", @placeholder = nameof(Model.Description) })
+            @Html.ValidationMessageFor(model => model.Description, string.Empty, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <h4>
+        @nameof(Model.Price)
+    </h4>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @type = "number", @min = "0", @placeholder = nameof(Model.Price) })
+            @Html.ValidationMessageFor(model => model.Price, string.Empty, new { @class = "text-danger" })
+        </div>
+    </div>
+
 </div>

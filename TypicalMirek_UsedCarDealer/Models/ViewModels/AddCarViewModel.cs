@@ -9,6 +9,12 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
 {
     public class AddCarViewModel
     {
+        public AddCarViewModel()
+        {
+            IsInOrder = false;
+            NumberOfViews = 0;
+        }
+
         public int Id { get; set; }
 
         #region Additional Data
@@ -60,7 +66,6 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
         public IQueryable<SelectListItem> Characters { get; set; }
 
         #region Model
-        //Model?
         [Display(Name = "Model")]
         public int ModelId { get; set; }
         public IQueryable<SelectListItem> Models { get; set; }
@@ -92,6 +97,7 @@ namespace TypicalMirek_UsedCarDealer.Models.ViewModels
         public double Price { get; set; }
         public DateTime AddTime { get; set; }
         public DateTime? DeleteTime { get; set; }
-        public long numberOfViews { get; set; }
+        public long NumberOfViews { get; set; }
+        public bool IsInOrder { get; set; }
     }
 }

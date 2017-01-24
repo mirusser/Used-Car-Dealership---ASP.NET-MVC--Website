@@ -1,0 +1,19 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.RelatedDataDeleteErrorViewModel
+
+@{
+    ViewBag.Title = "Related data - delete error";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="text-align: center">@Model.ModelName can not be delated because has related data</h2>
+
+<br />
+<br />
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "List", @Model.ControllerName, new { @class = "btn btn-default col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>

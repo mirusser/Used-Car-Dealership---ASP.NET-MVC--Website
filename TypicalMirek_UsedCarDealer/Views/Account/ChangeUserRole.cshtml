@@ -1,16 +1,13 @@
-﻿@using TypicalMirek_UsedCarDealer.Models
-@using TypicalMirek_UsedCarDealer.Models.Enums
-@model TypicalMirek_UsedCarDealer.Models.ViewModels.ChangeUserRoleViewModel
+﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.ChangeUserRoleViewModel
 
 @{
-    Layout = null;
-    ViewBag.Title = "Change user role";
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
-<h2>Change user role</h2>
+<h1 style="text-align: center">Change user role</h1>
 
 
-@using (Html.BeginForm("ChangeUserRole", "Account", FormMethod.Post, new { @class = "form-horizontal"}))
+@using (Html.BeginForm("ChangeUserRole", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
 
@@ -27,33 +24,30 @@
         {
             <div class="form-group">
                 <div class="col-md-12 text-danger">
-                    <p>User or role doesn't exist</p>
+                    <p>User doesn't exist</p>
                 </div>
             </div>
         }
 
         <hr />
-        @Html.ValidationSummary(true, "dfgbdfgsdfgdfgdfgdfg", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+        <div class="form-horizontal col-md-12">
+            <div class="form-group col-md-12">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = nameof(Model.UserName) } })
                 @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RoleName, null, new { @class = "text-danger" })
+        <div class="form-horizontal col-md-12">
+            <div class="form-group col-md-12">
+                @Html.DropDownListFor(model => model.SelectedRoleId, Model.Roles, nameof(Model.Roles), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Roles, null, new { @class = "text-danger" })
             </div>
         </div>
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Change" class="btn btn-default" />
+        <div class="form-horizontal col-md-12">
+            <div class="form-group col-md-12">
+                <input type="submit" value="Change" class="btn btn-primary col-md-12 col-xs-12" />
             </div>
         </div>
 

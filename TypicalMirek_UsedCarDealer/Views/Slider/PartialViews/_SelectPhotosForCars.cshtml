@@ -1,0 +1,54 @@
+﻿@model IList<TypicalMirek_UsedCarDealer.Models.CarPhotosToSlider>
+
+@Scripts.Render("~/bundles/SendSelectPhotosForCarsPost")
+
+<script>
+    jQuery(document).ready(function () {
+        @foreach (var it in Model)
+        {
+            @Html.Raw("jQuery(\"#" + it.CarId + "\").imagepicker();\n")
+        }
+    });
+
+    function getCarIds() {
+        const ids = [];
+        @foreach(var it in Model)
+        {
+            var bufor = "ids.push(\"" + it.CarId + "\");\n";
+            @Html.Raw(bufor)
+        }
+        return ids;
+    }
+
+    function getSelectedPhotos() {
+        const photoNames = [];
+        @foreach(var it in Model)
+        {
+            var bufor = "photoNames.push(jQuery(\"#" + it.CarId + "\").val());\n";
+            @Html.Raw(bufor)
+        }
+        return photoNames;
+    }
+</script>
+
+<h3>Select images to slider for selected cars</h3>
+@foreach (var it in Model)
+{
+    <div class="group-result">
+        <h4>@it.CarId @it.CarName</h4>
+        <select class="image-picker show-html selectPhotoForCar" id="@it.CarId">
+            @foreach(var img in it.PhotosNames)
+            {
+                <option data-img-src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = img})"
+                        value="@img"/>
+            }
+        </select>
+    </div>
+}
+
+<button class="btn btn-success btn-product"
+        onclick="send('@Url.Action("AddSliderPhotos", "Api")',
+        getCarIds(),
+        getSelectedPhotos(), '@Url.Action("AddPhotosToSlider", "Slider")')">
+    Save
+</button>

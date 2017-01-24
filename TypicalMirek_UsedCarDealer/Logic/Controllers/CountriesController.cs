@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Controllers.Strings;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
@@ -11,12 +12,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CountriesController : Controller
     {
+        #region Properties
         private readonly ICountryManager countryManager;
+        #endregion
 
+        #region Cnstructors
         public CountriesController(IManagerFactory managerFactory)
         {
             countryManager = managerFactory.Get<CountryManager>();
         }
+        #endregion
 
         public ActionResult List()
         {
@@ -48,8 +53,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                countryManager.Add(country);
-                return View("List", countryManager.GetAll().ToList());
+                if (countryManager.Add(country) != null)
+                {
+                    return RedirectToAction($"List");
+                };
+
+                ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
             }
 
             return View(country);
@@ -75,8 +84,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                countryManager.Modify(country);
-                return View("List", countryManager.GetAll().ToList());
+                if (countryManager.Modify(country) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(country);
+                }
+                return RedirectToAction($"List");
             }
             return View(country);
         }
@@ -101,7 +114,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             var country = countryManager.GetById(Convert.ToInt32(id));
             countryManager.Delete(country);
-            return View("List", countryManager.GetAll().ToList());
+            return RedirectToAction($"List");
         }
 
         protected override void Dispose(bool disposing)
