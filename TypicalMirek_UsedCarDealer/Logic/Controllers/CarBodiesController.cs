@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using TypicalMirek_UsedCarDealer.Logic.Factories;
+using TypicalMirek_UsedCarDealer.Logic.Controllers.Strings;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.Context;
+using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class CarBodiesController : Controller
     {
-        //private TypicalMirekEntities db = new TypicalMirekEntities();
-
+        #region Properties
         private readonly ICarBodyManager carBodyManager;
+        #endregion
 
+        #region Constructors
         public CarBodiesController(IManagerFactory managerFactory)
         {
             carBodyManager = managerFactory.Get<CarBodyManager>();
         }
-        // GET: CarBodies
+        #endregion
+
         public ActionResult List()
         {
             return View(carBodyManager.GetAll().ToList());
@@ -59,8 +57,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                carBodyManager.Add(body);
-                return View("List", carBodyManager.GetAll().ToList());
+                if (carBodyManager.Add(body) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(body);
+                }
+                return RedirectToAction($"List");
             }
 
             return View(body);
@@ -88,8 +90,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             if (ModelState.IsValid)
             {
-                carBodyManager.Modify(body);
-                return View("List", carBodyManager.GetAll().ToList());
+                if (carBodyManager.Modify(body) == null)
+                {
+                    ModelState.AddModelError(string.Empty, ControllerStrings.NameIsTaken);
+                    return View(body);
+                }
+                return RedirectToAction($"List");
             }
             return View(body);
         }
@@ -114,8 +120,20 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            carBodyManager.Delete(id);
-            return View("List", carBodyManager.GetAll().ToList());
+            if (carBodyManager.Delete(id))
+            {
+                return RedirectToAction($"List");
+            }
+            else
+            {
+                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
+                {
+                    ControllerName = "CarBodies",
+                    ModelName = nameof(Body)
+                };
+
+                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
+            }
         }
 
         protected override void Dispose(bool disposing)

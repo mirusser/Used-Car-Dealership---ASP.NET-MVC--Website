@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Microsoft.SqlServer.Server;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
@@ -26,6 +25,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         public bool CheckIfEntityWithNameExists(int id, string name)
         {
             return Items.Any(c => c.Name == name && c.Id != id);
+        }
+
+        public bool CheckIfColorWithExactNameExists(string colorName)
+        {
+            return Items.FirstOrDefault(c => c.Name.Equals(colorName)) != null;
         }
     }
 } 

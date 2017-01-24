@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Web;
-
-namespace TypicalMirek_UsedCarDealer.Models.ViewModels
+﻿namespace TypicalMirek_UsedCarDealer.Models.ViewModels
 {
     public class DisplayCarViewModel
     {

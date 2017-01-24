@@ -1,5 +1,4 @@
-﻿@using System.Activities.Expressions
-@using TypicalMirek_UsedCarDealer.Models
+﻿@using TypicalMirek_UsedCarDealer.Models
 @using TypicalMirek_UsedCarDealer.Models.Enums
 
 @*If background colour will be changed, remember change theme of scroolbar! Check script section in _AdminLayout
@@ -28,8 +27,8 @@
                 </span>
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
-                <li>@Html.ActionLink("Show all", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CarList, Id = null })</li>
-                <li>@Html.ActionLink("Add new", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CreateCar, Id = null })</li>
+                <li>@Html.ActionLink("Show all", "List", "CarManagement")</li>
+                <li>@Html.ActionLink("Add new", "Create", "CarManagement")</li>
             </ul>
         </li>
         <li>
@@ -47,25 +46,22 @@
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>
-                    @Html.ActionLink("Car bodies", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.BodiesList, Id = null })
+                    @Html.ActionLink("Car bodies", "List", "CarBodies")
                 </li>
                 <li>
-                    @Html.ActionLink("Car brands", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.BrandList, Id = null })
+                    @Html.ActionLink("Car brands", "List", "Brands")
                 </li>
                 <li>
-                    @Html.ActionLink("Car characters", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CharacterList, Id = null })
+                    @Html.ActionLink("Car characters", "List", "Characters")
                 </li>
                 <li>
-                    @Html.ActionLink("Car types", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.TypeList, Id = null })
+                    @Html.ActionLink("Car types", "List", "Types")
                 </li>
                 <li>
-                    @Html.ActionLink("Car categories", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CategoryList, Id = null })
+                    @Html.ActionLink("Colors", "List", "Colors")
                 </li>
                 <li>
-                    @Html.ActionLink("Colors", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.ColorList, Id = null })
-                </li>
-                <li>
-                    @Html.ActionLink("Countries", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.CountryList, Id = null })
+                    @Html.ActionLink("Countries", "List", "Countries")
                 </li>
             </ul>
         </li>
@@ -123,11 +119,11 @@
     </div>
     <ul class="sidenav-menu">
         <li>
-            <a href=@Url.Action("Admin", new ParametersToAdminMenu {Chose = SidebarChoose.ChangeUserRole, Id = null})>
-                <span class="sidenav-link-icon">
-                    <i class="glyphicon glyphicon-user" style="color: white"></i>
-                </span>
-                <span class="sidenav-link-title" style="color: white">Change user role</span>
+            <a href=@Url.Action("ChangeUserRole", "Account")>
+            <span class="sidenav-link-icon">
+                <i class="glyphicon glyphicon-user" style="color: white"></i>
+            </span>
+            <span class="sidenav-link-title" style="color: white">Change user role</span>
             </a>
         </li>
     </ul>

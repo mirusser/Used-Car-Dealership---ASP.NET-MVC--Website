@@ -25,19 +25,19 @@
         }
     }
 
-
     <div class="form-group">
         <div class="col-md-12 col-xs-12">
-                <div class="form-group">
-                    <input id="file-4" type="file" class="file" data-upload-url="#">
-                </div>
+            <div class="form-group">
+                <input type="file" name="Files" id="Files" multiple class="btn btn-default btn-xs col-md-12 col-xs-12"/>
+            </div>
             @Html.ValidationMessageFor(model => Model.Photos)
         </div>
     </div>
 
 </div>
-<hr />
-<script>
+<hr/>
+
+@*<script>
     $('#file-fr').fileinput({
         language: 'fr',
         uploadUrl: '#',
@@ -107,4 +107,4 @@
         });
         */
     });
-</script>
+</script>*@

@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.UnitOfWork;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Managers
 {
     public class BrandManager : Manager, IBrandManager
     {
+        #region Properties
         private readonly IBrandRepository brandRepository;
+        private readonly ICarRepository carRepository;
+        #endregion
 
-        //private readonly UnitOfWork unitOfWork;
-
+        #region Constructors
         public BrandManager(IRepositoryFactory repositoryFactory)
         {
-           // unitOfWork = unitOfWorkFactory.Get<UnitOfWork>();
             brandRepository = repositoryFactory.Get<BrandRepository>();
+            carRepository = repositoryFactory.Get<CarRepository>();
         }
+        #endregion
 
         public IQueryable<Brand> GetAll()
         {
@@ -35,10 +34,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public Brand Add(Brand brand)
         {
-            if (brandRepository.GetById(brand.Id) != null && brandRepository.GetAll().FirstOrDefault(b => b.Name.Equals(brand.Name)) != null)
+            if (brandRepository.GetById(brand.Id) != null || brandRepository.CheckIfBrandWithExactNameExists(brand.Name))
             {
                 return null;
             }
+
             brandRepository.Add(brand);
             brandRepository.Save();
             return brand;
@@ -47,26 +47,36 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public Brand Modify(Brand brand)
         {
             var brandToModify = brandRepository.GetById(brand.Id);
-            if (brandToModify == null)
+            var isModyfiedNameEqual = brand.Name.Equals(brandToModify.Name);
+
+            if (brandRepository.CheckIfBrandWithExactNameExists(brand.Name) && !isModyfiedNameEqual)
             {
                 return null;
             }
             brandToModify.Name = brand.Name;
             brandToModify.Description = brand.Description;
             brandRepository.Save();
-            return brand;
+            return brandToModify;
         }
 
-        public void Delete(Brand brand)
+        public bool Delete(Brand brand)
         {
-            brandRepository.Delete(brand);
-            brandRepository.Save();
+            if (brand != null)
+            {
+                if (!carRepository.CheckIfExistCarForBrandId(brand.Id))
+                {
+                    brandRepository.Delete(brand);
+                    brandRepository.Save();
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Dispose()
         {
             brandRepository.Dispose();
-            //unitOfWork.Dispose();
+            carRepository.Dispose();
         }
     }
 }

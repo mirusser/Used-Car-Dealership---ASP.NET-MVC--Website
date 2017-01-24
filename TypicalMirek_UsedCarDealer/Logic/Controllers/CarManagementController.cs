@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TypicalMirek_UsedCarDealer.Logic.Factories;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
-using TypicalMirek_UsedCarDealer.Models;
-using TypicalMirek_UsedCarDealer.Models.Context;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CarManagementController : Controller
     {
+        #region Properties
         private readonly ICarManager carManager;
+        #endregion
 
+        #region Constructors
         public CarManagementController(IManagerFactory managerFactory)
         {
             carManager = managerFactory.Get<CarManager>();
         }
+        #endregion
 
         public ActionResult List()
         {
@@ -48,10 +48,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult Create()
         {
-            var carToAdd = carManager.CreateAddCarViewModel();        
+            var carToAdd = carManager.CreateAddCarViewModel();
             return View(carToAdd);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(AddCarViewModel car)
@@ -60,31 +60,38 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 try
                 {
-                    if (car.Files != null)
-                    {
-                        foreach (var file in car.Files)
-                        {
-                            if (file.ContentLength > 0)
-                            {
-                                var fileName = Path.GetFileName(file.FileName);
-                                if (fileName != null)
-                                {
-                                    var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
-                                    file.SaveAs(path);
-                                }
-                            }
-                        }
-                    }
+                    saveFileOnServer(car.Files);
                     carManager.Add(car);
-                    return View("List", carManager.GetAllCarsToDisplay());
+                    return RedirectToAction("List");
                 }
                 catch (Exception ex)
                 {
+                    car = carManager.SetCarSelecLists(car);
                     return View(car);
                 }
             }
 
+            car = carManager.SetCarSelecLists(car);
             return View(car);
+        }
+
+        private void saveFileOnServer(IEnumerable<HttpPostedFileBase> files)
+        {
+            if (files != null)
+            {
+                foreach (var file in files)
+                {
+                    if (file?.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        if (fileName != null)
+                        {
+                            var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                            file.SaveAs(path);
+                        }
+                    }
+                }
+            }
         }
 
         public ActionResult Edit(int? id)
@@ -98,9 +105,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return HttpNotFound();
             }
+
+            car = carManager.SetCarSelecLists(car);
             return View(car);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AddCarViewModel car)
@@ -108,9 +117,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             if (ModelState.IsValid)
             {
                 carManager.Modify(car);
-                return View("List", carManager.GetAllCarsToDisplay());
+                return RedirectToAction("List");
             }
 
+            car = carManager.SetCarSelecLists(car);
             return View(car);
         }
 
@@ -132,8 +142,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var carPhotos = carManager.GetAllCarPhotos(id);
+            carPhotos.ForEach(p =>
+            {
+                var imagePath = getImagePath(p.Name);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            });
+
             carManager.RemoveCarById(id);
-            return View("List", carManager.GetAllCarsToDisplay());
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)
@@ -147,14 +167,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult GetCarImage(string imageName)
         {
+            var path = getImagePath(imageName);
+            return File(path, "image/jpeg/png/PNG/jpg");
+        }
+
+        private string getImagePath(string imageName)
+        {
             if (string.IsNullOrEmpty(imageName))
             {
                 imageName = "empty";
             }
             var path = Path.Combine(Server.MapPath("~/App_Data/Images"), imageName);
-            path = Path.GetFullPath(path);
-
-            return File(path, "image/jpeg/png/PNG/jpg");
+            return Path.GetFullPath(path);
         }
     }
 }

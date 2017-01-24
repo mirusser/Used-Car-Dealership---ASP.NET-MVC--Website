@@ -1,9 +1,8 @@
-﻿@using TypicalMirek_UsedCarDealer.Models
-@using TypicalMirek_UsedCarDealer.Models.Enums
-@model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
+﻿@model TypicalMirek_UsedCarDealer.Models.ViewModels.AddCarViewModel
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "../Shared/_AdminLayout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -25,14 +24,21 @@
         Html.RenderPartial($"PartialViews/_CreateCarAdditionalData", Model);
     }
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Edit" class="btn btn-default" />
+    <div class="form-horizontal col-md-12">
+        <div class="form-group col-md-12">
+            <div>
+                <input type="submit" value="Edit" class="btn btn-primary col-md-12 col-xs-12" />
+            </div>
         </div>
     </div>
 }
-<div>
-    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList }, htmlAttributes: null)
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "List", "CarManagement", new { @class = "btn btn-default col-md-12 col-xs-12" })
+        </div>
+    </div>
 </div>
 
 @section Scripts {

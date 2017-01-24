@@ -60,7 +60,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 
         public virtual void Delete(int id)
         {
-            Delete(GetById(id));
+            var entity = GetById(id);
+            if (entity != null)
+            {
+                Delete(entity);
+            }
         }
 
         public virtual void Delete(T entity)

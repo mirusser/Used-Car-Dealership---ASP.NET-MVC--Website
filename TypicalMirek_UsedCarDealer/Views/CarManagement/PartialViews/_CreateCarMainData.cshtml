@@ -8,14 +8,14 @@
     @Html.ValidationSummary(true, "Validation for car main data failed.", new { @class = "text-danger" })
     <div class="form-group">
         <div class="col-md-12">
-            @Html.DropDownListFor(model => model.TypeId, Model.Types, nameof(Model.Types), htmlAttributes: new { @class = "form-control drop-down-list" })
+            @Html.DropDownListFor(model => model.TypeId, Model.Types, nameof(Model.Types), htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.TypeId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-12">
-            @Html.DropDownListFor(model => model.CharacterId, Model.Characters, nameof(Model.Characters), htmlAttributes: new { @class = "form-control", Placeholder = "Character" })
+            @Html.DropDownListFor(model => model.CharacterId, Model.Characters, nameof(Model.Characters), htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CharacterId, string.Empty, new { @class = "text-danger" })
         </div>
     </div>
