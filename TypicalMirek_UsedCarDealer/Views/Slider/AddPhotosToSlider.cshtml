@@ -7,21 +7,21 @@
 @Scripts.Render("~/bundles/ImageSelect2")
 
 <script>
-    $(document).ready(function () {
-        $("#chooseCars").chosen({
+    jQuery(document).ready(function () {
+        jQuery("#chooseCars").chosen({
             width: "100%",
             html_template: '{text} <img style="padding:0px;margin-right:4px;min-height:100px;width: auto;" class="{class_name}" src="{url}" />'
         });
 
-        $("#refreshPartial").on("click", function () {
-            $.ajax({
+        jQuery("#refreshPartial").on("click", function () {
+            jQuery.ajax({
                 url: "@Url.Action("SelectPhotosToSlider", "Api")",
                 type: "GET",
-                data: { cars: $("#chooseCars").val() },
+                data: { cars: jQuery("#chooseCars").val() },
                 traditional: true
             })
             .done(function (partialViewResult) {
-                $("#partial").html(partialViewResult);
+                jQuery("#partial").html(partialViewResult);
             });
         });
     });

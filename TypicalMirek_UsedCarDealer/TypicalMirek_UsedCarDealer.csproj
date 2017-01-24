@@ -196,6 +196,7 @@
     <Compile Include="Logic\Controllers\CategoriesController.cs" />
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
+    <Compile Include="Logic\Controllers\EditContentController.cs" />
     <Compile Include="Logic\Controllers\Strings\ControllerStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -458,7 +459,7 @@
     <Content Include="Scripts\mb.thumbGallery.min.js" />
     <Content Include="Scripts\onescrollheader.min.js" />
     <Content Include="Scripts\pwstabs.js" />
-    <Content Include="Scripts\sendPost.js" />
+    <Content Include="Scripts\sendSelectPhotosForCarsPost.js" />
     <Content Include="Scripts\sendDeleteSlidePost.js" />
     <Content Include="Scripts\sendWysiwygPost.js" />
     <Content Include="Scripts\sidenav.js" />
@@ -473,7 +474,6 @@
     <Content Include="fonts\svg\close.svg" />
     <Content Include="fonts\svg\next.svg" />
     <Content Include="fonts\svg\prev.svg" />
-    <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="App_Data\Slider\arrows.svg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -621,13 +621,14 @@
     <Content Include="Views\Garages\ShowOrder.cshtml" />
     <Content Include="Views\Garages\DeleteOrder.cshtml" />
     <Content Include="Web.config" />
-    <Content Include="Views\Home\EditContact.cshtml" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
-    <Content Include="Views\Home\EditFooter.cshtml" />
+    <Content Include="Views\EditContent\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
     <Content Include="Views\Slider\SliderImages.cshtml" />
     <Content Include="Views\Slider\AddPhotosToSlider.cshtml" />
+    <Content Include="Views\EditContent\EditAbout.cshtml" />
+    <Content Include="Views\EditContent\EditContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -637,7 +638,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
-    <Folder Include="App_Data\Images\" />
     <Folder Include="Views\Api\" />
   </ItemGroup>
   <ItemGroup>

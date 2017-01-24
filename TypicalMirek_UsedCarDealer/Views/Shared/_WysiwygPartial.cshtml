@@ -37,12 +37,12 @@
 }
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#summernote').summernote({
+    jQuery(document).ready(function () {
+        jQuery('#summernote').summernote({
             @summerNoteParameters
         });
 
-        $('#summernote').summernote('code', '@Html.Raw(Model.Context)');
+        jQuery('#summernote').summernote('code', '@Html.Raw(Model.Context)');
     });
 </script>
 

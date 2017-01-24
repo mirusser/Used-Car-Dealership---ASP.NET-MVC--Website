@@ -84,8 +84,12 @@
                 </span>
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
-                <li>@Html.ActionLink(linkText: "Delete slide", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.DeleteSlide})</li>
-                <li>@Html.ActionLink(linkText: "Add slide", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.AddSlide })</li>
+                <li>
+                    @Html.ActionLink("Delete", "SliderImages", "Slider")
+                </li>
+                <li>
+                    @Html.ActionLink("Add", "AddPhotosToSlider", "Slider")
+                </li>
             </ul>
         </li>
         <li>
@@ -103,13 +107,13 @@
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
                 <li>
-                    @Html.ActionLink("Contact", "Admin", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.EditContact, Id = null }, null)
+                    @Html.ActionLink("Contact", "EditContact", "EditContent")
                 </li>
                 <li>
-                    @Html.ActionLink("About", "Admin", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.EditAbout, Id = null }, null)
+                    @Html.ActionLink("About", "EditAbout", "EditContent")
                 </li>
                 <li>
-                    @Html.ActionLink("Footer", "Admin", "Admin", new ParametersToAdminMenu { Chose = SidebarChoose.EditFooter, Id = null }, null)
+                    @Html.ActionLink("Footer", "EditFooter", "EditContent")
                 </li>
             </ul>
         </li>

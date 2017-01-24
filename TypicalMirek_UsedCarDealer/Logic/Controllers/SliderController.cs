@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
+using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -25,11 +26,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             var idsCarInSlider = sliderPhotoManager.GetAllSlides().Select(it => it.CarId).ToArray();
 
-            var cars =
-                carManager.GetAllCars()
-                    .Where(it => it.Photos.Count > 0) //has any photos
-                    .Where(it => it.DeleteTime == null) //is available
-                    .Where(c => idsCarInSlider.Any(s => c.Id != s)); //without cars currently exist in slider
+            var cars = carManager.GetCarsForAddToSlider(idsCarInSlider);
 
             var parameters = cars.Select(it => new CarToSlider
             {

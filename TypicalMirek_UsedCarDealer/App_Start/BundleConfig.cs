@@ -90,6 +90,9 @@ namespace TypicalMirek_UsedCarDealer
             bundles.Add(new ScriptBundle("~/bundles/sendDeleteSlidePost").Include(
                       "~/Scripts/sendDeleteSlidePost.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/SendSelectPhotosForCarsPost").Include(
+                      "~/Scripts/sendSelectPhotosForCarsPost.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/AdminMenuScroll").Include(
                       "~/Scripts/jquery.mCustomScrollbar.js"));
 

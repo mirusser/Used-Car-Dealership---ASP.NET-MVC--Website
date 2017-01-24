@@ -76,30 +76,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         #region About
-
         public ActionResult About(string result = null)
         {
             var context = websiteContextManager.GetContextByName("Contact");
 
             return View(model: context?.Context);
         }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditAbout()
-        {
-            var context = websiteContextManager.GetContextByName("About");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "About"
-            };
-
-            return View(parameters);
-        }
-
         #endregion
-
 
         #region Contact
         public ActionResult Contact(string result = null)
@@ -117,36 +100,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 Content = content
             };
             return View(parametersToContact);
-        }
-        
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditContact()
-        {
-            var context = websiteContextManager.GetContextByName("Contact");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "Contact"
-            };
-
-            return View(parameters);
-        }
-        #endregion
-
-        #region Footer
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditFooter()
-        {
-            var context = websiteContextManager.GetContextByName("Footer");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "Footer"
-            };
-
-            return View(parameters);
         }
         #endregion
     }
