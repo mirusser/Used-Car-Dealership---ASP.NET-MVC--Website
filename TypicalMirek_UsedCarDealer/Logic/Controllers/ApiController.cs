@@ -11,6 +11,7 @@ using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -32,33 +33,41 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [HttpPost]
         public ActionResult UpdateSliderPhotos(string cars, string returnUrl)
         {
-            IList<int> ids = cars.Split(',').Select(int.Parse).ToList();
-
-            foreach (var slide in sliderPhotoManager.GetAllSlides().ToList().Where(slide => !ids.Contains(slide.CarId)))
+            if (cars == "null")
             {
-                sliderPhotoManager.Delete(slide.Id);
+                sliderPhotoManager.DeleteAll();
+                return Redirect(returnUrl);
             }
+
+            var ids = cars.Split(',').Select(int.Parse).ToArray();
+
+            sliderPhotoManager.UpdateSliderPhotos(ids);
+
             return Redirect(returnUrl);
         }
 
         [HttpPost]
-        public ActionResult AddSliderPhotos(string[] carIds, string[] photosNames, string returnUrl)
+        public ActionResult AddSliderPhotos(string carIds, string photosNames, string returnUrl)
         {
-            for (var i = 0; i < carIds.Length; i++)
-            {
-                var x = new SliderPhoto
-                {
-                    CarId = Convert.ToInt32(carIds[i]),
-                    Car = carManager.GetCarById(Convert.ToInt32(carIds[i])),
-                    CarPhoto =
-                        carManager.GetCarById(Convert.ToInt32(carIds[i]))
-                            .Photos.FirstOrDefault(it => it.Name == photosNames[i]),
-                    CarPhotoId =
-                        carManager.GetCarById(Convert.ToInt32(carIds[i]))
-                            .Photos.FirstOrDefault(it => it.Name == photosNames[i]).Id
-                };
+            IList<int> ids = carIds.Split(',').Select(int.Parse).ToList();
+            IList<string> photos = photosNames.Split(',').ToList();
 
-                sliderPhotoManager.Add(x);
+            for (var i = 0; i < ids.Count; i++)
+            {
+                var carId = ids[i];
+                var car = carManager.GetCarById(carId);
+                var carPhoto = sliderPhotoManager.GetCarPhoto(carId, photos[i]);
+
+                if (carPhoto != null)
+                {
+                    var sliderPhoto = new SliderPhoto
+                    {
+                        CarId = car.Id,
+                        CarPhotoId = carPhoto.Id
+                    };
+
+                    sliderPhotoManager.Add(sliderPhoto);
+                }
             }
 
             return Redirect(returnUrl);

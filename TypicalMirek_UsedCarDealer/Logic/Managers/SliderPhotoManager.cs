@@ -56,6 +56,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return carPhotoRepository.GetById(id).Name;
         }
 
+        public CarPhoto GetCarPhoto(int carId, string photoName)
+        {
+            var car = carRepository.GetById(carId);
+            return car.Photos.FirstOrDefault(it => it.Name == photoName);
+        }
+
         public void Delete(int id)
         {
             var slideToDelete = sliderPhotoRepository.GetById(id);
@@ -68,6 +74,15 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         {
             if (sliderPhoto == null) return;
             sliderPhotoRepository.Delete(sliderPhoto);
+            sliderPhotoRepository.Save();
+        }
+
+        public void DeleteAll()
+        {
+            foreach (var it in sliderPhotoRepository.GetAll())
+            {
+                sliderPhotoRepository.Delete(it);
+            }
             sliderPhotoRepository.Save();
         }
 
@@ -103,6 +118,16 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public IQueryable<SliderPhoto> GetAllSlides()
         {
             return sliderPhotoRepository.GetAll();
+        }
+
+        public void UpdateSliderPhotos(int[] ids)
+        {
+            foreach (var slide in sliderPhotoRepository.GetAll().ToArray().Where(slide => !ids.Contains(slide.CarId)))
+            {
+                sliderPhotoRepository.Delete(slide);
+            }
+
+            sliderPhotoRepository.Save();
         }
     }
 }

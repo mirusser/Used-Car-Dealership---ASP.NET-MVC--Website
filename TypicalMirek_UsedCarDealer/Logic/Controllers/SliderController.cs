@@ -26,17 +26,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         {
             var idsCarInSlider = sliderPhotoManager.GetAllSlides().Select(it => it.CarId).ToArray();
 
-            var cars =
-                carManager.GetAllCars()
-                    .Where(it => it.Photos.Count > 0) 
-                    .Where(it => it.DeleteTime == null) 
-                    .Where(c => idsCarInSlider.Any(s => c.Id != s)); 
+            var cars = carManager.GetCarsForAddToSlider(idsCarInSlider);
             var foo = carManager.GetAllCars();
             var boo = foo.Where(it => it.Photos.Count > 0);
             var goo = boo.Where(it => it.DeleteTime == null);
             var too = goo.Where(c => !idsCarInSlider.Any(s => s != c.Id));
 
-            var parameters = too.Select(it => new CarToSlider
+            var parameters = cars.Select(it => new CarToSlider
             {
                 CarId = it.Id,
                 CarName = it.Id + " " + it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name

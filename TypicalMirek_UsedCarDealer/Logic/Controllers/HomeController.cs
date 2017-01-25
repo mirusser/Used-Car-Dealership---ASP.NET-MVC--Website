@@ -18,6 +18,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly IBrandManager brandManager;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
         private readonly IWebsiteContextManager websiteContextManager;
+        private readonly IMarkersConfigurationManager markersConfigurationManager;
 
         public HomeController(IManagerFactory managerFactory)
         {
@@ -26,6 +27,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             brandManager = managerFactory.Get<BrandManager>();
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
             websiteContextManager = managerFactory.Get<WebsiteContextManager>();
+            markersConfigurationManager = managerFactory.Get<MarkersConfigurationManager>();
         }
 
         public ActionResult Index()
@@ -76,30 +78,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         #region About
-
         public ActionResult About(string result = null)
         {
-            var context = websiteContextManager.GetContextByName("Contact");
-
-            return View(model: context?.Context);
-        }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditAbout()
-        {
-            var context = websiteContextManager.GetContextByName("About");
-
-            var parameters = new ParametersToWysiwyg
+            var parameters = new ParametersToAbout
             {
-                Context = context?.Context,
-                SiteName = "About"
+                MapLocalization = markersConfigurationManager.GetMapLocalization(),
+                Markerslocalizations = markersConfigurationManager.GetAllMarkers(),
+                PageContent = websiteContextManager.GetContextByName("Contact")?.Context
             };
 
             return View(parameters);
         }
-
         #endregion
-
 
         #region Contact
         public ActionResult Contact(string result = null)
@@ -117,36 +107,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 Content = content
             };
             return View(parametersToContact);
-        }
-        
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditContact()
-        {
-            var context = websiteContextManager.GetContextByName("Contact");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "Contact"
-            };
-
-            return View(parameters);
-        }
-        #endregion
-
-        #region Footer
-        [Authorize(Roles = "Admin")]
-        public ActionResult EditFooter()
-        {
-            var context = websiteContextManager.GetContextByName("Footer");
-
-            var parameters = new ParametersToWysiwyg
-            {
-                Context = context?.Context,
-                SiteName = "Footer"
-            };
-
-            return View(parameters);
         }
         #endregion
     }

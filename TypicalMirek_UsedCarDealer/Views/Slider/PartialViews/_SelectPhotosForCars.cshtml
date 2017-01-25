@@ -1,10 +1,12 @@
 ﻿@model IList<TypicalMirek_UsedCarDealer.Models.CarPhotosToSlider>
 
+@Scripts.Render("~/bundles/SendSelectPhotosForCarsPost")
+
 <script>
-    $(document).ready(function () {
+    jQuery(document).ready(function () {
         @foreach (var it in Model)
         {
-            @Html.Raw("$(\"#" + it.CarId + "\").imagepicker();\n")
+            @Html.Raw("jQuery(\"#" + it.CarId + "\").imagepicker();\n")
         }
     });
 
@@ -22,19 +24,10 @@
         const photoNames = [];
         @foreach(var it in Model)
         {
-            var bufor = "photoNames.push($(\"#" + it.CarId + "\").val());\n";
+            var bufor = "photoNames.push(jQuery(\"#" + it.CarId + "\").val());\n";
             @Html.Raw(bufor)
         }
         return photoNames;
-    }
-
-    function send(path, carIds, photosNames, returnUrl) {
-        $.ajax({
-            url: path,
-            type: "POST",
-            data: { carIds: carIds, photosNames: photosNames, returnUrl: returnUrl },
-            traditional: true
-        });
     }
 </script>
 

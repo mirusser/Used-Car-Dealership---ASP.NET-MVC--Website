@@ -8,6 +8,7 @@ using TypicalMirek_UsedCarDealer.Logic.Repositories;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
+using WebGrease.Css.Extensions;
 using static TypicalMirek_UsedCarDealer.Logic.Helpers.SelectListItemHelper;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Managers
@@ -184,6 +185,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         public IList<DisplayCarViewModel> GetAllCarsToDisplay()
         {
             return MappingHelper.MapCarsToListOfCarsToDisplay(carRepository.GetAll());
+        }
+
+        public IQueryable<Car> GetCarsForAddToSlider(int[] idsCarInSlider)
+        {
+            return GetAllCars()
+                .Where(it => it.Photos.Count > 0) //has any photos
+                .Where(it => it.DeleteTime == null) //is available
+                .Where(it => !idsCarInSlider.Contains(it.Id)); //without cars currently exist in slider
         }
 
         public List<CarPhoto> GetAllCarPhotos(int carId)
