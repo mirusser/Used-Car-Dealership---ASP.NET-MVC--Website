@@ -1,0 +1,70 @@
+﻿@model TypicalMirek_UsedCarDealer.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+<h1 style="text-align: center">Details</h1>
+
+<div>
+    <h4 style="text-align: center">Brand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.MainData.Model.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.MainData.Model.Brand.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.MainData.Model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.MainData.Model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.MainData.Model.Version)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.MainData.Model.Version)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsConfirmed)
+        </dd>
+
+    </dl>
+</div>
+
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "List", "OrdersManagement", new {@class = "btn btn-default col-md-12 col-xs-12"})
+        </div>
+    </div>
+</div>

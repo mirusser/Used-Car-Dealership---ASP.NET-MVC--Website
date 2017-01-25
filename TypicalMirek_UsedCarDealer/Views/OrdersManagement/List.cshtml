@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.Order>
+
+@{
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm("List", "OrdersManagement", null, FormMethod.Get))
+{
+    <h1 style="text-align: center">List of orders</h1>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.MainData.Model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.MainData.Model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.MainData.Model.Version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsConfirmed)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.MainData.Model.Brand.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.MainData.Model.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car.MainData.Model.Version)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsConfirmed)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "OrdersManagement", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Delete", "Delete", "OrdersManagement", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Delete car", "Delete", "CarManagement", new { Id = item.Car.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
+                </td>
+            </tr>
+        }
+    </table>
+}
