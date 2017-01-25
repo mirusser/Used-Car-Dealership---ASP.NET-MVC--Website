@@ -28,5 +28,6 @@ namespace TypicalMirek_UsedCarDealer.Models.Context
         public DbSet<Garage> UserGarage { get; set; }
         public DbSet<EmailConfiguration> EmailConfigurations { get; set; }
         public DbSet<WebsiteContext> WebsiteContexts { get; set; }
+        public DbSet<MarkersConfiguration> MarkersConfiguration { get; set; }
     }
 }

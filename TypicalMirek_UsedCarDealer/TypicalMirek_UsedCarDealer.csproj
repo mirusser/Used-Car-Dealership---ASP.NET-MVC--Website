@@ -242,9 +242,11 @@
     <Compile Include="Logic\Managers\Interfaces\IGarageManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IEmailConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IMarkersConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ITypeManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IWebsiteContextManager.cs" />
+    <Compile Include="Logic\Managers\MarkersConfigurationManager.cs" />
     <Compile Include="Logic\Managers\TypeManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
     <Compile Include="Logic\Managers\SliderPhotoManager.cs" />
@@ -274,6 +276,7 @@
     <Compile Include="Logic\Repositories\Interfaces\IBrandRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICarRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\ICharacterRepository.cs" />
+    <Compile Include="Logic\Repositories\Interfaces\IMarkersConfigurationRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IModelRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IOrderRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IPositionOfSteeringWheelRepository.cs" />
@@ -283,6 +286,7 @@
     <Compile Include="Logic\Repositories\Interfaces\ITypeRepository.cs" />
     <Compile Include="Logic\Repositories\Interfaces\IWebsiteContextRepository.cs" />
     <Compile Include="Logic\Repositories\MainDataRepository.cs" />
+    <Compile Include="Logic\Repositories\MarkersConfigurationRepository.cs" />
     <Compile Include="Logic\Repositories\ModelRepository.cs" />
     <Compile Include="Logic\Repositories\OrderRepository.cs" />
     <Compile Include="Logic\Repositories\PositionOfSteeringWheelRepository.cs" />
@@ -343,6 +347,10 @@
     <Compile Include="Migrations\201701071154519_OrderConfirmation.Designer.cs">
       <DependentUpon>201701071154519_OrderConfirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701250100368_AddShopsLocationToGoogleMapsPlugin.cs" />
+    <Compile Include="Migrations\201701250100368_AddShopsLocationToGoogleMapsPlugin.Designer.cs">
+      <DependentUpon>201701250100368_AddShopsLocationToGoogleMapsPlugin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdditionalData.cs" />
@@ -359,7 +367,9 @@
     <Compile Include="Models\Enums\SidebarChoose.cs" />
     <Compile Include="Models\Garage.cs" />
     <Compile Include="Models\Gearbox.cs" />
+    <Compile Include="Models\MarkersConfiguration.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\ParametersToAbout.cs" />
     <Compile Include="Models\ParametersToAdminMenu.cs" />
     <Compile Include="Models\ParametersToCarList.cs" />
     <Compile Include="Models\ParametersToContact.cs" />
@@ -449,6 +459,7 @@
     <Content Include="Scripts\bootstrap-autohidingnavbar.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\elastislide.js" />
+    <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\image-picker.js" />
     <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
@@ -695,6 +706,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701062111263_AddEmailConfigurationAndWebsiteContext.resx">
       <DependentUpon>201701062111263_AddEmailConfigurationAndWebsiteContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701250100368_AddShopsLocationToGoogleMapsPlugin.resx">
+      <DependentUpon>201701250100368_AddShopsLocationToGoogleMapsPlugin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

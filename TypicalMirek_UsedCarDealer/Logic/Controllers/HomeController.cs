@@ -18,6 +18,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly IBrandManager brandManager;
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
         private readonly IWebsiteContextManager websiteContextManager;
+        private readonly IMarkersConfigurationManager markersConfigurationManager;
 
         public HomeController(IManagerFactory managerFactory)
         {
@@ -26,6 +27,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             brandManager = managerFactory.Get<BrandManager>();
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
             websiteContextManager = managerFactory.Get<WebsiteContextManager>();
+            markersConfigurationManager = managerFactory.Get<MarkersConfigurationManager>();
         }
 
         public ActionResult Index()
@@ -78,9 +80,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         #region About
         public ActionResult About(string result = null)
         {
-            var context = websiteContextManager.GetContextByName("Contact");
+            var parameters = new ParametersToAbout
+            {
+                MapLocalization = markersConfigurationManager.GetMapLocalization(),
+                Markerslocalizations = markersConfigurationManager.GetAllMarkers(),
+                PageContent = websiteContextManager.GetContextByName("Contact")?.Context
+            };
 
-            return View(model: context?.Context);
+            return View(parameters);
         }
         #endregion
 
