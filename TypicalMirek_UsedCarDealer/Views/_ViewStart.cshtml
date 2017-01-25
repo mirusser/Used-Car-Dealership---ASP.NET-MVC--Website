@@ -1,7 +1,7 @@
 ﻿@{
     var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
 
-    var adminControllers = new List<string> {"Admin", "Slider", "EditContent"};
+    var adminControllers = new List<string> {"Admin", "Slider", "EditContent", "MarkersConfigurations", "EmailConfigurations" };
 
     if (adminControllers.Contains(controller))
     {

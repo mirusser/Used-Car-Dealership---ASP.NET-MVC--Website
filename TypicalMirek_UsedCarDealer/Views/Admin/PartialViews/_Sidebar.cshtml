@@ -117,17 +117,65 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" data-sidenav-dropdown-toggle class="active">
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-map-marker"></i>
+                </span>
+                <span class="sidenav-link-title">Configure map</span>
+                <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </span>
+                <span class="sidenav-dropdown-icon" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </span>
+            </a>
+            <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                <li>
+                    @Html.ActionLink("Show configuration", "Index", "MarkersConfigurations")
+                </li>
+                <li>
+                    @Html.ActionLink("Map localization", "CreateOrEditMapLocalization", "MarkersConfigurations")
+                </li>
+                <li>
+                    @Html.ActionLink("Add marker", "CreateMarker", "MarkersConfigurations")
+                </li>
+            </ul>
+        </li>
     </ul>
     <div class="sidenav-header">
-        <p>Users</p>
+        <p>Configuration</p>
     </div>
     <ul class="sidenav-menu">
         <li>
+            <a href="javascript:;" data-sidenav-dropdown-toggle class="active">
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                </span>
+                <span class="sidenav-link-title">E-mail</span>
+                <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </span>
+                <span class="sidenav-dropdown-icon" data-sidenav-dropdown-icon>
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </span>
+            </a>
+            <ul class="sidenav-dropdown" data-sidenav-dropdown>
+                <li>
+                    @Html.ActionLink("Show configurations", "Index", "EmailConfigurations")
+                </li>
+                <li>
+                    @Html.ActionLink("Add configuration", "Create", "EmailConfigurations")
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href=@Url.Action("ChangeUserRole", "Account")>
-            <span class="sidenav-link-icon">
-                <i class="glyphicon glyphicon-user" style="color: white"></i>
-            </span>
-            <span class="sidenav-link-title" style="color: white">Change user role</span>
+                <span class="sidenav-link-icon">
+                    <i class="glyphicon glyphicon-user" style="color: white"></i>
+                </span>
+                <span class="sidenav-link-title" style="color: white">Change user role</span>
             </a>
         </li>
     </ul>

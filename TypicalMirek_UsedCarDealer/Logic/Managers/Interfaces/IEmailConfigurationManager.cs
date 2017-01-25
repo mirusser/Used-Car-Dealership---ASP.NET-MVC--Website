@@ -9,6 +9,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         EmailConfiguration GetActive();
         EmailConfiguration Modify(EmailConfiguration emailConfiguration);
         bool Delete(EmailConfiguration emailConfiguration);
+        void SetActive(int id);
         EmailConfiguration GetById(int id);
         IQueryable<EmailConfiguration> GetAll();
         void Dispose();

@@ -15,6 +15,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         MarkersConfiguration GetMapLocalization();
 
         IQueryable<MarkersConfiguration> GetAllMarkers();
+        MarkersConfiguration GetMarkerById(int id);
 
         MarkersConfiguration AddMarker(MarkersConfiguration markersConfiguration);
 
