@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
+using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
@@ -27,11 +28,15 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
             var cars =
                 carManager.GetAllCars()
-                    .Where(it => it.Photos.Count > 0) //has any photos
-                    .Where(it => it.DeleteTime == null) //is available
-                    .Where(c => idsCarInSlider.Any(s => c.Id != s)); //without cars currently exist in slider
+                    .Where(it => it.Photos.Count > 0) 
+                    .Where(it => it.DeleteTime == null) 
+                    .Where(c => idsCarInSlider.Any(s => c.Id != s)); 
+            var foo = carManager.GetAllCars();
+            var boo = foo.Where(it => it.Photos.Count > 0);
+            var goo = boo.Where(it => it.DeleteTime == null);
+            var too = goo.Where(c => !idsCarInSlider.Any(s => s != c.Id));
 
-            var parameters = cars.Select(it => new CarToSlider
+            var parameters = too.Select(it => new CarToSlider
             {
                 CarId = it.Id,
                 CarName = it.Id + " " + it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name
@@ -42,7 +47,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult SliderImages()
         {
-            return View(sliderPhotoManager.GetAllAsCarPhotoViewModel());
+            var cars = sliderPhotoManager.GetAllAsCarPhotoViewModel();
+            return View(cars);
         }
     }
 }

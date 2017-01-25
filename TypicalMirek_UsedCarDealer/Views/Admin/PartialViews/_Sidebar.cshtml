@@ -84,8 +84,8 @@
                 </span>
             </a>
             <ul class="sidenav-dropdown" data-sidenav-dropdown>
-                <li>@Html.ActionLink(linkText: "Delete slide", actionName: "Admin", routeValues: new ParametersToAdminMenu {Chose = SidebarChoose.DeleteSlide})</li>
-                <li>@Html.ActionLink(linkText: "Add slide", actionName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.AddSlide })</li>
+                <li>@Html.ActionLink("Delete slide", "SliderImages","Slider")</li>
+                <li>@Html.ActionLink("Add slide", "AddPhotosToSlider", "Slider")</li>
             </ul>
         </li>
         <li>
