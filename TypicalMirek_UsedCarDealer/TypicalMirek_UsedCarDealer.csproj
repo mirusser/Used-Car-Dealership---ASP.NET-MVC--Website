@@ -197,6 +197,7 @@
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
     <Compile Include="Logic\Controllers\EditContentController.cs" />
+    <Compile Include="Logic\Controllers\MarkersConfigurationsController.cs" />
     <Compile Include="Logic\Controllers\Strings\ControllerStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -640,6 +641,11 @@
     <Content Include="Views\Slider\AddPhotosToSlider.cshtml" />
     <Content Include="Views\EditContent\EditAbout.cshtml" />
     <Content Include="Views\EditContent\EditContact.cshtml" />
+    <Content Include="Views\MarkersConfigurations\CreateMarker.cshtml" />
+    <Content Include="Views\MarkersConfigurations\DeleteMarker.cshtml" />
+    <Content Include="Views\MarkersConfigurations\Index.cshtml" />
+    <Content Include="Views\MarkersConfigurations\EditMarker.cshtml" />
+    <Content Include="Views\MarkersConfigurations\CreateOrEditMapLocalization.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -649,7 +655,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Car\" />
-    <Folder Include="Views\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -84,7 +84,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 MapLocalization = markersConfigurationManager.GetMapLocalization(),
                 Markerslocalizations = markersConfigurationManager.GetAllMarkers(),
-                PageContent = websiteContextManager.GetContextByName("Contact")?.Context
+                PageContent = websiteContextManager.GetContextByName("About")?.Context
             };
 
             return View(parameters);
