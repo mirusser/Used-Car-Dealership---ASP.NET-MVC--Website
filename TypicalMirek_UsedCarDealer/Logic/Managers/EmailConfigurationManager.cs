@@ -28,7 +28,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
             var configurationWithTheSameId = emailConfigurationRepository.GetAll().FirstOrDefault(it => it.Id == emailConfiguration.Id);
 
-            if (configurationWithTheSameId == null)
+            if (configurationWithTheSameId != null)
             {
                 return null;
             }
@@ -57,19 +57,20 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public EmailConfiguration Modify(EmailConfiguration emailConfiguration)
         {
-            if (emailConfiguration == null)
+            var emailConfigurationToModify = emailConfigurationRepository.GetById(emailConfiguration.Id);
+            if (emailConfigurationToModify == null)
             {
                 return null;
             }
 
-            var configurationWithTheSameId = emailConfigurationRepository.GetAll().FirstOrDefault(it => it.Id == emailConfiguration.Id);
+            emailConfigurationToModify.EnableSsl = emailConfiguration.EnableSsl;
+            emailConfigurationToModify.From = emailConfiguration.From;
+            emailConfigurationToModify.Host = emailConfiguration.Host;
+            emailConfigurationToModify.Password = emailConfiguration.Password;
+            emailConfigurationToModify.Port = emailConfiguration.Port;
+            emailConfigurationToModify.To = emailConfiguration.To;
+            emailConfigurationToModify.Username = emailConfiguration.Username;
 
-            if (configurationWithTheSameId == null)
-            {
-                return null;
-            }
-
-            emailConfigurationRepository.Update(emailConfiguration);
             emailConfigurationRepository.Save();
 
             return emailConfiguration;
@@ -95,6 +96,24 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             emailConfigurationRepository.Delete(emailConfiguration);
             emailConfigurationRepository.Save();
             return true;
+        }
+
+        public void SetActive(int id)
+        {
+            var toSetActive = GetById(id);
+            if (toSetActive == null)
+            {
+                return;
+            }
+
+            var currentActive = GetActive();
+            if (currentActive != null)
+            {
+                currentActive.Active = false;
+            }
+
+            toSetActive.Active = true;
+            Modify(toSetActive);
         }
 
         public EmailConfiguration GetById(int id)

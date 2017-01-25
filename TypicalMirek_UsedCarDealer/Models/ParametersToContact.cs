@@ -4,5 +4,6 @@
     {
         public string Result { get; set; }
         public string Content { get; set; }
+        public bool EmailConfigurationExist { get; set; }
     }
 }

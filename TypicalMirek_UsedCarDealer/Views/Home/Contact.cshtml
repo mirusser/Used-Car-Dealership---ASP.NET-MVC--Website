@@ -11,37 +11,53 @@
 
     <div class="col-md-12">
         <div class="col-md-6">
-            @using (Html.BeginForm("SendEmail", "Api", FormMethod.Post))
+            @if (Model.EmailConfigurationExist == true)
             {
-                @Html.AntiForgeryToken()
+                using (Html.BeginForm("SendEmail", "Api", FormMethod.Post))
+                 {
+                     @Html.AntiForgeryToken()
 
-                <div class="form-group">
-                    @Html.LabelFor(m => model.FromName, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => model.FromName, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(m => model.FromName)
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => model.FromEmail, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => model.FromEmail, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(m => model.FromEmail)
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => model.Message, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(m => model.Message, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(m => model.Message)
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-default" value="Send"/>
-                    </div>
-                </div>
+                     <div class="form-group">
+                         @Html.LabelFor(m => model.FromName, new {@class = "col-md-2 control-label"})
+                         <div class="col-md-10">
+                             @Html.TextBoxFor(m => model.FromName, new {@class = "form-control"})
+                             @Html.ValidationMessageFor(m => model.FromName)
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(m => model.FromEmail, new {@class = "col-md-2 control-label"})
+                         <div class="col-md-10">
+                             @Html.TextBoxFor(m => model.FromEmail, new {@class = "form-control"})
+                             @Html.ValidationMessageFor(m => model.FromEmail)
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         @Html.LabelFor(m => model.Message, new {@class = "col-md-2 control-label"})
+                         <div class="col-md-10">
+                             @Html.TextAreaFor(m => model.Message, new {@class = "form-control"})
+                             @Html.ValidationMessageFor(m => model.Message)
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <div class="col-md-offset-2 col-md-10">
+                             <input type="submit" class="btn btn-default" value="Send"/>
+                         </div>
+                     </div>
+                 }
             }
+            else
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <p>You not configure e-mail account. Please press button below to configure it.</p>
+                    @Html.ActionLink("Configure now!", "Create", "EmailConfigurations", null, new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+                }
+                else
+                {
+                    <h2>Sorry, You can not send e-mail now. Please try later.</h2>
+                }
+            }
+
         </div>
         <div class="col-md-6">
             @Html.Raw(Model.Content)

@@ -49,11 +49,15 @@
     else
     {
         <div class="col-md-6">
-            <h2>Map is not correctly configured :(</h2>
             @if (User.IsInRole("Admin"))
             {
+                <h2>Map is not correctly configured :(</h2>
                 <p>Check if You have typed map localization and minimum one markup in admin menu.</p>
-                @Html.ActionLink("Check now configuration!", "Index", "MarkersConfigurations", null, new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+                @Html.ActionLink("Check now configuration!", "Index", "MarkersConfigurations", null, new {@class = "btn btn-primary btn-product col-md-12 col-xs-12"})
+            }
+            else
+            {
+                <h2>You can not see map now. Please try later.</h2>
             }
             </div>
     }

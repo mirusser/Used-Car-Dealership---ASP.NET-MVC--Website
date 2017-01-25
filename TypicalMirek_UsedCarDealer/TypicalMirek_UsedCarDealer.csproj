@@ -197,6 +197,7 @@
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
     <Compile Include="Logic\Controllers\EditContentController.cs" />
+    <Compile Include="Logic\Controllers\EmailConfigurationsController.cs" />
     <Compile Include="Logic\Controllers\MarkersConfigurationsController.cs" />
     <Compile Include="Logic\Controllers\Strings\ControllerStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -646,6 +647,10 @@
     <Content Include="Views\MarkersConfigurations\Index.cshtml" />
     <Content Include="Views\MarkersConfigurations\EditMarker.cshtml" />
     <Content Include="Views\MarkersConfigurations\CreateOrEditMapLocalization.cshtml" />
+    <Content Include="Views\EmailConfigurations\Create.cshtml" />
+    <Content Include="Views\EmailConfigurations\Delete.cshtml" />
+    <Content Include="Views\EmailConfigurations\Edit.cshtml" />
+    <Content Include="Views\EmailConfigurations\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
