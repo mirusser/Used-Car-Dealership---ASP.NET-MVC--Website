@@ -92,7 +92,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
             //get all cars id which are current and get CarDetailsViewModel by those ids
             var cars = new List<CarDetailsViewModel>();
-            foreach (var it in carManager.GetAllCars().Where(it => it.DeleteTime == null && it.IsInOrder.Equals(false)))
+            foreach (var it in carManager.GetAllCars().Where(it => it.DeleteTime == null))
             {
                 cars.Add(carManager.GetCarDetailsViewModelById(it.Id));
             }
