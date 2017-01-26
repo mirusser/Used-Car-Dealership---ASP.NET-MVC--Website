@@ -27,6 +27,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             var idsCarInSlider = sliderPhotoManager.GetAllSlides().Select(it => it.CarId).ToArray();
 
             var cars = carManager.GetCarsForAddToSlider(idsCarInSlider);
+            var foo = carManager.GetAllCars();
+            var boo = foo.Where(it => it.Photos.Count > 0);
+            var goo = boo.Where(it => it.DeleteTime == null);
+            var too = goo.Where(c => !idsCarInSlider.Any(s => s != c.Id));
 
             var parameters = cars.Select(it => new CarToSlider
             {
@@ -39,7 +43,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         public ActionResult SliderImages()
         {
-            return View(sliderPhotoManager.GetAllAsCarPhotoViewModel());
+            var cars = sliderPhotoManager.GetAllAsCarPhotoViewModel();
+            return View(cars);
         }
     }
 }
