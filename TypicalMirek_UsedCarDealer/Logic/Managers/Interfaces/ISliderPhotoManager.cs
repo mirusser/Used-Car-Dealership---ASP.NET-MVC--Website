@@ -18,5 +18,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         void CheckIfAllCarExist();
         List<CarPhotoViewModel> GetAllAsCarPhotoViewModel();
         void UpdateSliderPhotos(int[] ids);
+        void DeleteByCarId(int carId);
     }
 }

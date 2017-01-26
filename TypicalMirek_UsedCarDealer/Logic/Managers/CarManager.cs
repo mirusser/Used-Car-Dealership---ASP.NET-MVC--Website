@@ -34,17 +34,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
         private readonly IGearboxRepository gearboxRepository;
         private readonly ICountryRepository countryRepository;
         private readonly IPositionOfSteeringWheelRepository positionOfSteeringWheelRepository;
-
-        private readonly ISliderPhotoManager sliderPhotoManager;
         #endregion
 
         #region Constructors
         public CarManager() { }
-
-        public CarManager(IManagerFactory managerFactory)
-        {
-            sliderPhotoManager = managerFactory.Get<SliderPhotoManager>();
-        }
 
         public CarManager(IRepositoryFactory repositoryFactory)
         {
@@ -149,18 +142,20 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
             carRepository.Delete(carId);
             carRepository.Save();
-
-            sliderPhotoManager.CheckIfAllCarExist();
         }
 
-        public void SuspendCarById(int id)
+        public bool SuspendCarById(int id)
         {
             var carToSuspend = carRepository.GetById(id);
-            carToSuspend.DeleteTime = DateTime.Now;
-            carRepository.Update(carToSuspend);
-            carRepository.Save();
+            if (carToSuspend != null)
+            {
+                carToSuspend.DeleteTime = DateTime.Now;
+                carRepository.Save();
 
-            sliderPhotoManager.CheckIfAllCarExist();
+                return true;
+            }
+            return false;
+
         }
 
         public Car GetCarById(int id)

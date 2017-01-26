@@ -51,9 +51,10 @@
                     @Html.DisplayFor(modelItem => item.IsConfirmed)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", "OrdersManagement", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
-                    @Html.ActionLink("Delete", "Delete", "OrdersManagement", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
-                    @Html.ActionLink("Delete car", "Delete", "CarManagement", new { Id = item.Car.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
+                    @Html.ActionLink("Details", "Details", "OrdersManagement", new { Id = item.Id }, new { @class = "btn btn-info btn-xs col-md-3 col-xs-12" })
+                    @Html.ActionLink("Delete", "Delete", "OrdersManagement", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-3 col-xs-12" })
+                    @Html.ActionLink("Delete car", "Delete", "CarManagement", new { Id = item.Car.Id }, new { @class = "btn btn-danger btn-xs col-md-3 col-xs-12" })
+                    @Html.ActionLink("Suspend car", "Suspend", "CarManagement", new { Id = item.Car.Id }, new { @class = "btn btn-danger btn-xs col-md-3 col-xs-12" })
                 </td>
             </tr>
         }

@@ -64,6 +64,20 @@
 <div class="form-horizontal col-md-12">
     <div class="form-group col-md-12">
         <div>
+            @Html.ActionLink("Delete", "Delete", "CarManagement", new {Id = Model.Id}, new {@class = "btn btn-danger col-md-12 col-xs-12"})
+        </div>
+    </div>
+</div>
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Suspend", "Suspend", "CarManagement", new {Id = Model.Id} ,new { @class = "btn btn-danger col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
             @Html.ActionLink("Back to List", "List", "OrdersManagement", new {@class = "btn btn-default col-md-12 col-xs-12"})
         </div>
     </div>

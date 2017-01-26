@@ -19,6 +19,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         CarDetailsViewModel GetCarDetailsViewModelById(int id);
         AddCarViewModel SetCarSelecLists(AddCarViewModel addCarViewModel);
         List<CarPhoto> GetAllCarPhotos(int carId);
+        bool SuspendCarById(int id);
         void IncrementNumberOfViews(int id);
         void Dispose();
     }

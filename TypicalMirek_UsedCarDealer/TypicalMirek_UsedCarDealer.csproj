@@ -647,7 +647,8 @@
     <Content Include="Views\EditContent\EditContact.cshtml" />
     <Content Include="Views\OrdersManagement\Delete.cshtml" />
     <Content Include="Views\OrdersManagement\Details.cshtml" />
-    <Content Include="Views\OrdersManagement\List.cshtml" />    <Content Include="Views\MarkersConfigurations\CreateMarker.cshtml" />
+    <Content Include="Views\OrdersManagement\List.cshtml" />
+    <Content Include="Views\MarkersConfigurations\CreateMarker.cshtml" />
     <Content Include="Views\MarkersConfigurations\DeleteMarker.cshtml" />
     <Content Include="Views\MarkersConfigurations\Index.cshtml" />
     <Content Include="Views\MarkersConfigurations\EditMarker.cshtml" />
@@ -656,6 +657,7 @@
     <Content Include="Views\EmailConfigurations\Delete.cshtml" />
     <Content Include="Views\EmailConfigurations\Edit.cshtml" />
     <Content Include="Views\EmailConfigurations\Index.cshtml" />
+    <Content Include="Views\CarManagement\Suspend.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
