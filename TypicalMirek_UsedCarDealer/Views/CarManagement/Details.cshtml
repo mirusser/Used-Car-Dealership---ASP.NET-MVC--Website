@@ -234,18 +234,7 @@
 
     </dl>
 </div>
-
-<div class="form-horizontal col-md-12">
-    <div class="form-group col-md-12">
-        <div>
-            @Html.ActionLink("Edit", "Edit", "CarManagement", new {Id = Model.Id}, new { @class = "btn btn-info col-md-12 col-xs-12" })
-        </div>
-    </div>
-</div>
-<div class="form-horizontal col-md-12">
-    <div class="form-group col-md-12">
-        <div>
-            @Html.ActionLink("Back to List", "List", "CarManagement", new { @class = "btn btn-default col-md-12 col-xs-12" })
-        </div>
-    </div>
-</div>
+<p>
+    @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CarManagement", routeValues: new { Id = Model.Id}, htmlAttributes: new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+    @Html.ActionLink(linkText: "Back to List", actionName: "List", controllerName: "CarManagement", routeValues: null, htmlAttributes: new { @class = "btn btn-default col-md-12 col-xs-12" })
+</p>
