@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Managers;
 using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
@@ -19,6 +20,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         private readonly ISourceOfEnergyRepository sourceOfEnergyRepository;
         private readonly IWebsiteContextManager websiteContextManager;
         private readonly IMarkersConfigurationManager markersConfigurationManager;
+        private readonly IEmailConfigurationManager emailConfigurationManager;
 
         public HomeController(IManagerFactory managerFactory)
         {
@@ -28,6 +30,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             sourceOfEnergyRepository = new SourceOfEnergyRepository();
             websiteContextManager = managerFactory.Get<WebsiteContextManager>();
             markersConfigurationManager = managerFactory.Get<MarkersConfigurationManager>();
+            emailConfigurationManager = managerFactory.Get<EmailConfigurationManager>();
         }
 
         public ActionResult Index()
@@ -100,7 +103,8 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             var parametersToContact = new ParametersToContact
             {
                 Result = result,
-                Content = content
+                Content = content,
+                EmailConfigurationExist = emailConfigurationManager.GetActive() != null
             };
             return View(parametersToContact);
         }
