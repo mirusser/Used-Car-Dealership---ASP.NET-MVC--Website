@@ -39,10 +39,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 NewCars = new List<CarPhotoViewModel>()
             };
 
-            //TEMPORARY - should be when any car is deleted or suspended
-            sliderPhotoManager.CheckIfAllCarExist();
-            // ---
-
             parameters.Slider = sliderPhotoManager.GetAllAsCarPhotoViewModel();
 
             var hotCars = carManager.GetAllCars().Where(it => it.Photos.Count > 0 && it.DeleteTime == null).OrderByDescending(it => it.NumberOfViews).Take(8);
@@ -84,7 +80,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 MapLocalization = markersConfigurationManager.GetMapLocalization(),
                 Markerslocalizations = markersConfigurationManager.GetAllMarkers(),
-                PageContent = websiteContextManager.GetContextByName("Contact")?.Context
+                PageContent = websiteContextManager.GetContextByName("About")?.Context
             };
 
             return View(parameters);

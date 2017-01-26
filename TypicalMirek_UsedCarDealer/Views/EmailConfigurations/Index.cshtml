@@ -1,0 +1,161 @@
+﻿@model IEnumerable<TypicalMirek_UsedCarDealer.Models.EmailConfiguration>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @{
+        var activeConfiguration = Model.FirstOrDefault(it => it.Active == true);
+    }
+    <h2>Active configuration</h2>
+    @if (activeConfiguration != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Host)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Port)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EnableSsl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.From)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.To)
+                </th>
+                <th></th>
+            </tr>
+
+
+            <tr>
+                <td>
+                    @activeConfiguration.Username
+                </td>
+                <td>
+                    *****
+                </td>
+                <td>
+                    @activeConfiguration.Host
+                </td>
+                <td>
+                    @activeConfiguration.Port
+                </td>
+                <td>
+                    @Html.CheckBox("EnableSsl", activeConfiguration.EnableSsl, new { @disabled = "disabled" })
+                </td>
+                <td>
+                    @activeConfiguration.From
+                </td>
+                <td>
+                    @activeConfiguration.To
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = activeConfiguration.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12", @style="min-width: 83px;" })
+                </td>
+            </tr>
+
+        </table>
+    }
+    else
+    {
+        <p>There is no active configuration!</p>
+        if (!Model.Any())
+        {
+            <p>Add configuration with active option!</p>
+        }
+        else
+        {
+            <p>Press active button near one of configuration to make it active!</p>
+        }
+    }
+
+    <h2>Alternative configuration</h2>
+    @{
+        var alternativeConfigurations = Model.Where(it => it.Active == false).ToList();
+    }
+
+
+    @if (alternativeConfigurations.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Host)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Port)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EnableSsl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.From)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.To)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in alternativeConfigurations)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        *****
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Host)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Port)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnableSsl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.From)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.To)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12", @style = "min-width: 83px;" })
+                        @Html.ActionLink("Set active", "SetActive", new { id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12", @style = "min-width: 83px;" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12", @style = "min-width: 83px;" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>There is no active configuration.</p>
+    }
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+    </p>
+</body>
+</html>

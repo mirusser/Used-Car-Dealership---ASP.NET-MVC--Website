@@ -32,6 +32,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             return markersConfigurationRepository.GetAll().Where(it => it.IsMarker == true);
         }
 
+        public MarkersConfiguration GetMarkerById(int id)
+        {
+            var markersConfiguration = markersConfigurationRepository.GetById(id);
+
+            //return only if marker with id exist and has IsMarker value as true
+            return markersConfiguration?.IsMarker == true ? markersConfiguration : null;
+        }
+
         public MarkersConfiguration AddMarker(MarkersConfiguration markersConfiguration)
         {
             if (markersConfiguration.IsMarker == false)

@@ -1,0 +1,108 @@
+﻿@using System.Globalization
+@model IEnumerable<TypicalMirek_UsedCarDealer.Models.MarkersConfiguration>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @{
+        var mapLocalization = Model.FirstOrDefault(it => it.IsMarker == false);
+    }
+
+    <h2>Map localization</h2>
+    @if (mapLocalization == null)
+    {
+        <p>There is no map localization configuration, You should add it!</p>
+        <p>
+            @Html.ActionLink("Create new map localization", "CreateOrEditMapLocalization", null, new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+        </p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitude)
+                </th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>
+                    @mapLocalization.Latitude.ToString(CultureInfo.CurrentCulture)
+                </td>
+                <td>
+                    @mapLocalization.Longitude.ToString(CultureInfo.CurrentCulture)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "CreateOrEditMapLocalization", new { id = mapLocalization.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                </td>
+            </tr>
+        </table>
+    }
+
+    <h2>Markers configurations</h2>
+
+
+    @{
+        var markers = Model.Where(it => it.IsMarker == true);
+    }
+
+    @if (markers.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitude)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Info)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.Where(it => it.IsMarker == true))
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Info)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditMarker", new { id = item.Id }, new { @class = "btn btn-info btn-xs col-md-4 col-xs-12" })
+                        @Html.ActionLink("Delete", "DeleteMarker", new { id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>There is no map markers, You should add them!</p>
+    }
+
+    
+    @Html.ActionLink("Create new marker", "CreateMarker", null, new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+    
+</body>
+</html>
