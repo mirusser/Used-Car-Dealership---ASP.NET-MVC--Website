@@ -392,8 +392,14 @@
     </div>
     <div class="col-md-12">
         @foreach (var item in Model.Cars)
+        {
+            var value = 360;
+            if (User.IsInRole("Admin"))
             {
-            <div class="col-sm-4 col-md-3" style="height: 360px">
+                value += 39;
+            }
+            var height = value + "px";
+            <div class="col-sm-4 col-md-3" style="height: @height">
                 <div class="thumbnail" id="over">
                     @if (@item.Photos.Count == 0)
                     {
@@ -414,8 +420,22 @@
                                 <a href="@Url.Action("OrderCar", "Garages", new {carId=item.Id})" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
                             </div>
                             <div class="col-md-12">
-                                <a href="@Url.Action("ShowCar", "Car", new {id=item.Id})" class="btn btn-success btn-product"> Show</a>
+                                <a href="@Url.Action("ShowCar", "Car", new {id = item.Id})" class="btn btn-success btn-product"> Show</a>
                             </div>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="col-md-12">
+                                    <div class="row col-md-6" style="width: 47%;">
+                                        <a href="@Url.Action("Details", "CarManagement", new {id = item.Id})" class="btn btn-success btn-product"> Details</a>
+                                    </div>
+                                    <div class="row col-md-6" style="width: 50%;">
+                                        <a href="@Url.Action("Suspend", "CarManagement", new {id = item.Id})" class="btn btn-success btn-product"> Suspend</a>
+                                    </div>
+                                    <div class="row col-md-5" style="width: 44%;">
+                                        <a href="@Url.Action("Delete", "CarManagement", new {id = item.Id})" class="btn btn-warning btn-product"> Delete</a>
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <p></p>
                     </div>

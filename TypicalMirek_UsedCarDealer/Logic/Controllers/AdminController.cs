@@ -1,4 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Managers;
+using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
@@ -6,28 +12,49 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        #region Constructors
-        public AdminController()
-        {
+        private readonly ICarManager carManager;
+        private readonly IBrandManager brandManager;
+        private readonly ITypeManager typeManager;
 
+        public AdminController(IManagerFactory managerFactory)
+        {
+            carManager = managerFactory.Get<CarManager>();
+            brandManager = managerFactory.Get<BrandManager>();
+            typeManager = managerFactory.Get<TypeManager>();
         }
-        #endregion
 
-        // GET: Admin
-        public ActionResult Admin(ParametersToAdminMenu parametersToAdminMenu)
+        public ActionResult Admin(string brandName = null, string carType = null)
         {
-            if (ModelState.IsValid)
+            var cars = carManager.GetAllCars();
+
+            if (brandName != null)
             {
-                if (parametersToAdminMenu.Id == null)
+                cars = cars.Where(it => it.MainData.Model.Brand.Name == brandName);
+            }
+
+            if (carType != null)
+            {
+                cars = cars.Where(it => it.MainData.Type.Name == carType);
+            }
+
+            cars = cars.OrderByDescending(it => it.NumberOfViews).Take(10);
+
+            var values = new List<Values>();
+            foreach (var it in cars)
+            {
+                values.Add(new Values
                 {
-                    parametersToAdminMenu.Id = 0;
-                }
-                return View(new ParametersToAdminMenu
-                {
-                    Chose = parametersToAdminMenu.Chose,
-                    Id = parametersToAdminMenu.Id
+                    Name = it.Id + " " + it.MainData.Model.Brand.Name + " " + it.MainData.Model.Name,
+                    Value = it.NumberOfViews
                 });
             }
+
+            var parametersToAdminMenu = new ParametersToAdminMenu
+            {
+                Values = values,
+                BrandNames = brandManager.GetAll().Select(it => it.Name),
+                Cartypes = typeManager.GetAll().Select(it => it.Name)
+            };
 
             return View(parametersToAdminMenu);
         }

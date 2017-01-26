@@ -462,6 +462,7 @@
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\elastislide.js" />
     <Content Include="Scripts\gmaps.js" />
+    <Content Include="Scripts\hBarChart.js" />
     <Content Include="Scripts\image-picker.js" />
     <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />

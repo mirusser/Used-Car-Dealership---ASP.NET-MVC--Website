@@ -20,8 +20,6 @@
     });
 </script>
 
-
-@*TODO move style to css file!*@
 <div>
     <h1 style="text-align: center">
         @if (Model.MainData.Model.Brand.Name != null)
@@ -153,5 +151,17 @@
 }
 
 <div class="col-md-12 col-xs-12" style="text-align: center; margin: 0 auto">
-    <a href="@Url.Action("OrderCar", "Garages", new {carId=Model.Id})"  class="btn btn-primary btn-product col-md-12 col-xs-12" style="text-align: center; margin: 0 auto"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+    <a href="@Url.Action("OrderCar", "Garages", new {carId=Model.Id})" class="btn btn-primary btn-product col-md-12 col-xs-12" style="text-align: center; margin: 0 auto"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
 </div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="col-md-12 col-xs-12">
+        <div class="col-md-6">
+            <a href="@Url.Action("Suspend", "CarManagement", new {id = Model.Id})" class="btn btn-success btn-product col-md-12 col-xs-12"> Suspend</a>
+        </div>
+        <div class="col-md-6">
+            <a href="@Url.Action("Delete", "CarManagement", new {id = Model.Id})" class="btn btn-warning btn-product col-md-12 col-xs-12"> Delete</a>
+        </div>
+    </div>
+}
