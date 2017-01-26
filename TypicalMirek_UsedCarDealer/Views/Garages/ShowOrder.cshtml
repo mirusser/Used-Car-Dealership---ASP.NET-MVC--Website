@@ -4,10 +4,10 @@
     ViewBag.Title = "Show Order";
 }
 
-<h2>Show Order</h2>
+<h1 style="text-align: center">Show order</h1>
 
 <div>
-    <h4>Order</h4>
+    <h4 style="text-align: center">Order</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -36,6 +36,10 @@
         </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Back to List", "Index", "Garages", new { @class = "btn btn-default col-md-12 col-xs-12" })
+        </div>
+    </div>
+</div>

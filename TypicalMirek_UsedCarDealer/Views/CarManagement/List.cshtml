@@ -40,9 +40,10 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "CarManagement", new  {  Id = item.Id }, new  {@class = "btn btn-info btn-xs col-md-4 col-xs-12" })
-                @Html.ActionLink("Details", "Details", "CarManagement", new { Id = item.Id }, new {@class = "btn btn-info btn-xs col-md-4 col-xs-12" })
-                @Html.ActionLink("Delete", "Delete", "CarManagement", new { Id = item.Id }, new {@class = "btn btn-danger btn-xs col-md-4 col-xs-12" })
+                @Html.ActionLink("Edit", "Edit", "CarManagement", new  {  Id = item.Id }, new  {@class = "btn btn-info btn-xs col-md-3 col-xs-12" })
+                @Html.ActionLink("Details", "Details", "CarManagement", new { Id = item.Id }, new {@class = "btn btn-info btn-xs col-md-3 col-xs-12" })
+                @Html.ActionLink("Delete", "Delete", "CarManagement", new { Id = item.Id }, new {@class = "btn btn-danger btn-xs col-md-3 col-xs-12" })
+                @Html.ActionLink("Suspend", "Suspend", "CarManagement", new { Id = item.Id }, new { @class = "btn btn-danger btn-xs col-md-3 col-xs-12" })
             </td>
         </tr>
     }

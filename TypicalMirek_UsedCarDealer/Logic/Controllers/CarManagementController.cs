@@ -17,12 +17,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     {
         #region Properties
         private readonly ICarManager carManager;
+        private readonly ISliderPhotoManager sliderPhotoManager;
         #endregion
 
         #region Constructors
         public CarManagementController(IManagerFactory managerFactory)
         {
             carManager = managerFactory.Get<CarManager>();
+            sliderPhotoManager = managerFactory.Get<SliderPhotoManager>();
         }
         #endregion
 
@@ -154,6 +156,32 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
             carManager.RemoveCarById(id);
             return RedirectToAction("List");
+        }
+
+        public ActionResult Suspend(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var car = carManager.GetCarById(Convert.ToInt32(id));
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+            return View(car);
+        }
+
+        [HttpPost, ActionName("Suspend")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SuspendConfirmed(int id)
+        {
+            if (carManager.SuspendCarById(id))
+            {
+                sliderPhotoManager.DeleteByCarId(id);
+                return RedirectToAction("List");
+            }
+            return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)

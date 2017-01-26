@@ -2,7 +2,6 @@
 
 @Styles.Render("~/Content/WYSIWYG")
 @Scripts.Render("~/bundles/WYSIWYG")
-@Scripts.Render("~/bundles/$")
 @Scripts.Render("~/bundles/sendWysiwygPost")
 
 @{
@@ -37,12 +36,12 @@
 }
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#summernote').summernote({
+    jQuery(document).ready(function () {
+        jQuery('#summernote').summernote({
             @summerNoteParameters
         });
 
-        $('#summernote').summernote('code', '@Html.Raw(Model.Context)');
+        jQuery('#summernote').summernote('code', '@Html.Raw(Model.Context)');
     });
 </script>
 
@@ -56,7 +55,7 @@
         <div id="summernote"></div>
 
             <button class="btn btn-success btn-product"
-                    onclick="send('@Url.Action(Model.ActionNameForPost, Model.ControllerNameForPost)', $('#summernote').summernote('code'), '@Model.SiteName', '@pathAndQuery')">
+                    onclick="send('@Url.Action(Model.ActionNameForPost, Model.ControllerNameForPost)', jQuery('#summernote').summernote('code'), '@Model.SiteName', '@pathAndQuery')">
                 Save
             </button>
     }

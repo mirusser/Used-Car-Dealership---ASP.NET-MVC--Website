@@ -197,6 +197,7 @@
     <Compile Include="Logic\Controllers\CharactersController.cs" />
     <Compile Include="Logic\Controllers\ColorsController.cs" />
     <Compile Include="Logic\Controllers\EditContentController.cs" />
+    <Compile Include="Logic\Controllers\OrdersManagementController.cs" />
     <Compile Include="Logic\Controllers\EmailConfigurationsController.cs" />
     <Compile Include="Logic\Controllers\MarkersConfigurationsController.cs" />
     <Compile Include="Logic\Controllers\Strings\ControllerStrings.Designer.cs">
@@ -245,10 +246,12 @@
     <Compile Include="Logic\Managers\Interfaces\IEmailConfigurationManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IMarkersConfigurationManager.cs" />
+    <Compile Include="Logic\Managers\Interfaces\IOrderManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ISliderPhotoManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\ITypeManager.cs" />
     <Compile Include="Logic\Managers\Interfaces\IWebsiteContextManager.cs" />
     <Compile Include="Logic\Managers\MarkersConfigurationManager.cs" />
+    <Compile Include="Logic\Managers\OrderManager.cs" />
     <Compile Include="Logic\Managers\TypeManager.cs" />
     <Compile Include="Logic\Managers\Manager.cs" />
     <Compile Include="Logic\Managers\SliderPhotoManager.cs" />
@@ -643,6 +646,9 @@
     <Content Include="Views\Slider\AddPhotosToSlider.cshtml" />
     <Content Include="Views\EditContent\EditAbout.cshtml" />
     <Content Include="Views\EditContent\EditContact.cshtml" />
+    <Content Include="Views\OrdersManagement\Delete.cshtml" />
+    <Content Include="Views\OrdersManagement\Details.cshtml" />
+    <Content Include="Views\OrdersManagement\List.cshtml" />
     <Content Include="Views\MarkersConfigurations\CreateMarker.cshtml" />
     <Content Include="Views\MarkersConfigurations\DeleteMarker.cshtml" />
     <Content Include="Views\MarkersConfigurations\Index.cshtml" />
@@ -652,6 +658,7 @@
     <Content Include="Views\EmailConfigurations\Delete.cshtml" />
     <Content Include="Views\EmailConfigurations\Edit.cshtml" />
     <Content Include="Views\EmailConfigurations\Index.cshtml" />
+    <Content Include="Views\CarManagement\Suspend.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
