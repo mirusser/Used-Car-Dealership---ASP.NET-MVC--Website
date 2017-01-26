@@ -32,13 +32,13 @@
                     </div>
                     <div class="form-horizontal col-md-12">
                         <div class="form-group col-md-12">
-                            @Html.TextAreaFor(m => model.Message, new {@class = "form-control col-md-12 col-xs-12", @placeholder = nameof(model.Message)})
+                            @Html.TextAreaFor(m => model.Message, new {@class = "form-control", @placeholder = nameof(model.Message)})
                             @Html.ValidationMessageFor(m => model.Message)
                         </div>
                     </div>
                     <div class="form-horizontal col-md-12">
                         <div class="form-group col-md-12">
-                            <input type="submit" value="Create" class="btn btn-primary col-md-12 col-xs-12"/>
+                            <input type="submit" value="Send!" class="btn btn-primary col-md-12 col-xs-12"/>
                         </div>
                     </div>
                 }
