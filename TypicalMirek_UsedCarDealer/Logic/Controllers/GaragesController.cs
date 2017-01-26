@@ -62,8 +62,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             garageManager.ConfirmOrder(Convert.ToInt32(id));
-
-            return RedirectToAction("Index");
+            return RedirectToAction("SendEmailAboutUserOrderConfirmation", "Api");
         }
 
         // GET: Garages/Delete/5
