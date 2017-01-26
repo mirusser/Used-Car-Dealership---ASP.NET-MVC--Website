@@ -393,7 +393,7 @@
     <div class="col-md-12">
         @foreach (var item in Model.Cars)
         {
-            var value = 360;
+            var value = 370;
             if (User.IsInRole("Admin"))
             {
                 value += 39;
@@ -401,23 +401,25 @@
             var height = value + "px";
             <div class="col-sm-4 col-md-3" style="height: @height">
                 <div class="thumbnail" id="over">
-                    @if (@item.Photos.Count == 0)
-                    {
-                        <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive car-image" alt="">
-                    }
-                    else
-                    {
-                        <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive car-image" alt="">
-                    }
+                    <div style="min-height: 165px">
+                        @if (@item.Photos.Count == 0)
+                        {
+                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = "empty.png"})" class="img-responsive car-image" alt="">
+                        }
+                        else
+                        {
+                            <img href="/Car/ShowCar?id=@item.Id" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.Photos.First().Name})" class="img-responsive car-image" alt="">
+                        }
+                    </div>
 
                     <div class="caption" style="text-align: center">
                         <div class="row">
-                            <h4>@item.Brand @item.ModelName</h4>
+                            <h4 style="min-height: 40px">@item.Brand @item.ModelName</h4>
                             <p>Only @item.Price$</p>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="@Url.Action("OrderCar", "Garages", new {carId=item.Id})" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
+                                <a href="@Url.Action("OrderCar", "Garages", new {carId = item.Id})" class="btn btn-primary btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Order</a>
                             </div>
                             <div class="col-md-12">
                                 <a href="@Url.Action("ShowCar", "Car", new {id = item.Id})" class="btn btn-success btn-product"> Show</a>
@@ -425,13 +427,10 @@
                             @if (User.IsInRole("Admin"))
                             {
                                 <div class="col-md-12">
-                                    <div class="row col-md-6" style="width: 47%;">
-                                        <a href="@Url.Action("Details", "CarManagement", new {id = item.Id})" class="btn btn-success btn-product"> Details</a>
-                                    </div>
-                                    <div class="row col-md-6" style="width: 50%;">
+                                    <div class="row col-md-6" style="width: 64%;">
                                         <a href="@Url.Action("Suspend", "CarManagement", new {id = item.Id})" class="btn btn-success btn-product"> Suspend</a>
                                     </div>
-                                    <div class="row col-md-5" style="width: 44%;">
+                                    <div class="row col-md-6" style="width: 63%;">
                                         <a href="@Url.Action("Delete", "CarManagement", new {id = item.Id})" class="btn btn-warning btn-product"> Delete</a>
                                     </div>
                                 </div>

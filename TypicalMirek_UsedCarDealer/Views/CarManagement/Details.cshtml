@@ -235,7 +235,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink(linkText: "Edit", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.EditCar, Id = Model.Id }, htmlAttributes: null) |
-
-    @Html.ActionLink(linkText: "Back to List", actionName: "Admin", controllerName: "Admin", routeValues: new ParametersToAdminMenu { Chose = SidebarChoose.CarList }, htmlAttributes: null)
+    @Html.ActionLink(linkText: "Edit", actionName: "Edit", controllerName: "CarManagement", routeValues: new { Id = Model.Id}, htmlAttributes: new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })
+    @Html.ActionLink(linkText: "Back to List", actionName: "List", controllerName: "CarManagement", routeValues: null, htmlAttributes: new { @class = "btn btn-default col-md-12 col-xs-12" })
 </p>
