@@ -1,261 +1,94 @@
 ﻿@using TypicalMirek_UsedCarDealer.Models
 @using TypicalMirek_UsedCarDealer.Models.Enums
-
 @model ParametersToAdminMenu
-@{
-    SidebarChoose? choise = (dynamic)Model.Chose;
-}
+
+@Scripts.Render("~/bundles/Statistic")
+
+<script>
+    jQuery(function () {
+        jQuery("#statistic").hBarChart({
+
+            // background color
+            bgColor: 'blue',
+
+            // text color
+            textColor: 'Orange',
+
+            // label,data,both
+            show: 'both',
+
+            // re-sort according to your data
+            sorting: true,
+
+            // style your maximum value bar
+            maxStyle: {
+                bg: 'red',
+                text: 'white'
+            }
+        });
+    })
+
+    function redirect(path, brandName, carType) {
+        const adres = path + '?brandName=' + brandName + '&carType=' + carType;
+        window.location(adres);
+    }
+</script>
 
 @using (Html.BeginForm())
 {
-        <div>
-            @{
-                switch (choise)
+    <h1>Number of views - statistic</h1>
+    <div class="container">
+        <div class="form-group col-md-4">
+            <select name="brandName" class="form-control">
+                <option selected disabled hidden>Brand</option>
+                @foreach (var item in Model.BrandNames)
                 {
-                    case SidebarChoose.Nothing:
-                        {
-                            break;
-                        }
-                    case SidebarChoose.CarList:
-                        {
-                            @Html.Action("List", "CarManagement")
-                            break;
-                        }
-                    case SidebarChoose.CreateCar:
-                        {
-                            @Html.Action("Create", "CarManagement")
-                            break;
-                        }
-                    case SidebarChoose.DetailsCar:
-                        {
-                            @Html.Action("Details", "CarManagement", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditCar:
-                        {
-                            @Html.Action("Edit", "CarManagement", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteCar:
-                        {
-                            @Html.Action("Delete", "CarManagement", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.BodiesList:
-                        {
-                            @Html.Action("List", "CarBodies")
-                            break;
-                        }
-                    case SidebarChoose.CreateBodies:
-                        {
-                            @Html.Action("Create", "CarBodies")
-                            break;
-                        }
-                    case SidebarChoose.DetailsBodies:
-                        {
-                            @Html.Action("Details", "CarBodies", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditBodies:
-                        {
-                            @Html.Action("Edit", "CarBodies", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteBodies:
-                        {
-                            @Html.Action("Delete", "CarBodies", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.BrandList:
-                        {
-                            @Html.Action("List", "Brands")
-                            break;
-                        }
-                    case SidebarChoose.CreateBrand:
-                        {
-                            @Html.Action("Create", "Brands")
-                            break;
-                        }
-                    case SidebarChoose.DetailsBrand:
-                        {
-                            @Html.Action("Details", "Brands", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditBrand:
-                        {
-                            @Html.Action("Edit", "Brands", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteBrand:
-                        {
-                            @Html.Action("Delete", "Brands", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.CharacterList:
-                        {
-                            @Html.Action("List", "Characters")
-                            break;
-                        }
-                    case SidebarChoose.CreateCharacter:
-                        {
-                            @Html.Action("Create", "Characters")
-                            break;
-                        }
-                    case SidebarChoose.DetailsCharacter:
-                        {
-                            @Html.Action("Details", "Characters", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditCharacter:
-                        {
-                            @Html.Action("Edit", "Characters", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteCharacter:
-                        {
-                            @Html.Action("Delete", "Characters", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.TypeList:
-                        {
-                            @Html.Action("List", "Types")
-                            break;
-                        }
-                    case SidebarChoose.CreateType:
-                        {
-                            @Html.Action("Create", "Types")
-                            break;
-                        }
-                    case SidebarChoose.DetailsType:
-                        {
-                            @Html.Action("Details", "Types", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditType:
-                        {
-                            @Html.Action("Edit", "Types", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteType:
-                        {
-                            @Html.Action("Delete", "Types", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.CategoryList:
-                        {
-                            @Html.Action("List", "Categories")
-                            break;
-                        }
-                    case SidebarChoose.CreateCategory:
-                        {
-                            @Html.Action("Create", "Categories")
-                            break;
-                        }
-                    case SidebarChoose.DetailsCategory:
-                        {
-                            @Html.Action("Details", "Categories", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditCategory:
-                        {
-                            @Html.Action("Edit", "Categories", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteCategory:
-                        {
-                            @Html.Action("Delete", "Categories", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.ColorList:
-                        {
-                            @Html.Action("List", "Colors")
-                            break;
-                        }
-                    case SidebarChoose.CreateColor:
-                        {
-                            @Html.Action("Create", "Colors")
-                            break;
-                        }
-                    case SidebarChoose.DetailsColor:
-                        {
-                            @Html.Action("Details", "Colors", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditColor:
-                        {
-                            @Html.Action("Edit", "Colors", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteColor:
-                        {
-                            @Html.Action("Delete", "Colors", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.CountryList:
-                        {
-                            @Html.Action("List", "Countries")
-                            break;
-                        }
-                    case SidebarChoose.CreateCountry:
-                        {
-                            @Html.Action("Create", "Countries")
-                            break;
-                        }
-                    case SidebarChoose.DetailsCountry:
-                        {
-                            @Html.Action("Details", "Countries", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.EditCountry:
-                        {
-                            @Html.Action("Edit", "Countries", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.DeleteCountry:
-                        {
-                            @Html.Action("Delete", "Countries", routeValues: new { id = Model.Id })
-                            break;
-                        }
-                    case SidebarChoose.ChangeUserRole:
-                        {
-                            @Html.Action("ChangeUserRole", "Account")
-                            break;
-                        }
-                    case SidebarChoose.ChangeUserRolePost:
-                        {
-                            @Html.Action("ChangeUserRole", "Account", routeValues: new { result = Model.ChangeUserRoleViewModel })
-                            break;
-                        }
-                    case SidebarChoose.EditAbout:
-                        {
-                            @Html.Action("EditAbout", "Home")
-                            break;
-                        }
-                    case SidebarChoose.EditContact:
-                        {
-                            @Html.Action("EditContact", "Home")
-                            break;
-                        }
-                    case SidebarChoose.EditFooter:
-                        {
-                            @Html.Action("EditFooter", "Home")
-                            break;
-                        }
-                    case SidebarChoose.AddSlide:
-                        {
-                            @Html.Action("AddPhotosToSlider", "Slider")
-                            break;
-                        }
-                    case SidebarChoose.DeleteSlide:
-                        {
-                            @Html.Action("SliderImages", "Slider")
-                            break;
-                        }
+                    if (Request.QueryString["brandName"] == item)
+                    {
+                        <option selected value="@item">@item</option>
+                    }
+                    else
+                    {
+                        <option value="@item">@item</option>
+                    }
                 }
-            }
+            </select>
         </div>
-}
 
+        <div class="form-group col-md-4">
+            <select name="carType" class="form-control">
+                <option selected disabled hidden>Type</option>
+                @foreach (var item in Model.Cartypes)
+                {
+                    if (Request.QueryString["carType"] == item)
+                    {
+                        <option selected value="@item">@item</option>
+                    }
+                    else
+                    {
+                        <option value="@item">@item</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group col-md-3">
+            <button class="btn btn-info btn-product"
+                    onclick="redirect('@Url.Action("Admin", "Admin")', $('#brandName').val(), $('#carType').val())">
+                Show
+            </button>
+        </div>
+
+    </div>
+        <ul id="statistic">
+            @foreach (var it in Model.Values)
+            {
+                <li data-data="@it.Value">
+                    @it.Name
+                </li>
+            }
+        </ul>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

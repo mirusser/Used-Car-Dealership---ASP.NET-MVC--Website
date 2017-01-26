@@ -119,6 +119,9 @@ namespace TypicalMirek_UsedCarDealer
 
             bundles.Add(new ScriptBundle("~/bundles/GoogleMaps").Include(
                      "~/Scripts/gmaps.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Statistic").Include(
+                     "~/Scripts/hBarChart.js"));
         }
     }
 }
