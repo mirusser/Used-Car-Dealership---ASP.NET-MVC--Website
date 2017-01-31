@@ -60,18 +60,24 @@
 
     </dl>
 </div>
-
 <div class="form-horizontal col-md-12">
     <div class="form-group col-md-12">
         <div>
-            @Html.ActionLink("Delete", "Delete", "CarManagement", new {Id = Model.Id}, new {@class = "btn btn-danger col-md-12 col-xs-12"})
+            @Html.ActionLink("Delete order", "Delete", "OrdersManagement", new { Id = Model.Id }, new { @class = "btn btn-danger col-md-12 col-xs-12" })
         </div>
     </div>
 </div>
 <div class="form-horizontal col-md-12">
     <div class="form-group col-md-12">
         <div>
-            @Html.ActionLink("Suspend", "Suspend", "CarManagement", new {Id = Model.Id} ,new { @class = "btn btn-danger col-md-12 col-xs-12" })
+            @Html.ActionLink("Delete car", "Delete", "CarManagement", new {Id = Model.CarId}, new {@class = "btn btn-danger col-md-12 col-xs-12"})
+        </div>
+    </div>
+</div>
+<div class="form-horizontal col-md-12">
+    <div class="form-group col-md-12">
+        <div>
+            @Html.ActionLink("Suspend car", "Suspend", "CarManagement", new {Id = Model.CarId} ,new { @class = "btn btn-danger col-md-12 col-xs-12" })
         </div>
     </div>
 </div>

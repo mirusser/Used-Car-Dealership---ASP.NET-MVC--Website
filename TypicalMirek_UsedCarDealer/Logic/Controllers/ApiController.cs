@@ -142,5 +142,40 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
                 return RedirectToAction("Contact", "Home", new { result = "Your message has been sent" });
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult> SendEmailAboutUserOrderConfirmation(int id)
+        {
+            if (!ModelState.IsValid) return RedirectToAction("Contact", "Home", new { result = "Model is invalid" });
+            var activeConfiguration = emailConfigurationManager.GetActive();
+            if (activeConfiguration == null)
+            {
+                return RedirectToAction("Contact", "Home", new { result = "There is no active email configurationon in database" });
+            }
+
+            const string body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(activeConfiguration.To));
+            message.From = new MailAddress(activeConfiguration.From);
+            message.Subject = "Order confirmation";
+            message.Body = string.Format(body, "User", User.Identity.Name, "User confirm ordering car");
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = activeConfiguration.Username,
+                    Password = activeConfiguration.Password
+                };
+                smtp.Credentials = credential;
+                smtp.Host = activeConfiguration.Host;
+                smtp.Port = activeConfiguration.Port;
+                smtp.EnableSsl = activeConfiguration.EnableSsl;
+                await smtp.SendMailAsync(message);
+                return RedirectToAction("List", "OrdersManagement");
+            }
+
+        }
     }
 }
