@@ -12,7 +12,6 @@ using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class CarManagementController : Controller
     {
         #region Properties
@@ -28,12 +27,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
         #endregion
 
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
             var cars = carManager.GetAllCarsToDisplay();
             return View(cars.ToList());
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,6 +49,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var carToAdd = carManager.CreateAddCarViewModel();
@@ -56,6 +58,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(AddCarViewModel car)
         {
             if (ModelState.IsValid)
@@ -77,6 +80,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
+        [Authorize(Roles = "Admin")]
         private void saveFileOnServer(IEnumerable<HttpPostedFileBase> files)
         {
             if (files != null)
@@ -96,6 +100,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -114,6 +119,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(AddCarViewModel car)
         {
             if (ModelState.IsValid)
@@ -126,6 +132,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(car);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -142,6 +149,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             var carPhotos = carManager.GetAllCarPhotos(id);
@@ -158,6 +166,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return RedirectToAction("List");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Suspend(int? id)
         {
             if (id == null)
@@ -174,6 +183,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 
         [HttpPost, ActionName("Suspend")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult SuspendConfirmed(int id)
         {
             if (carManager.SuspendCarById(id))
@@ -184,6 +194,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return HttpNotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         protected override void Dispose(bool disposing)
         {
             if (disposing)
