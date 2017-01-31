@@ -492,12 +492,10 @@
     <Content Include="fonts\svg\next.svg" />
     <Content Include="fonts\svg\prev.svg" />
     <Content Include="App_Data\Slider\arrows.svg" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="fonts\summernote.eot" />
     <Content Include="fonts\summernote.ttf" />
     <Content Include="fonts\summernote.woff" />
+    <None Include="Properties\PublishProfiles\mirekcardealership.aspnet.pl - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
@@ -549,9 +547,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\simple-sidebar.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -637,7 +632,6 @@
     <Content Include="Views\Garages\PartialViews\Orders.cshtml" />
     <Content Include="Views\Garages\ShowOrder.cshtml" />
     <Content Include="Views\Garages\DeleteOrder.cshtml" />
-    <Content Include="Web.config" />
     <Content Include="Views\Shared\_WysiwygPartial.cshtml" />
     <Content Include="Views\EditContent\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -659,6 +653,11 @@
     <Content Include="Views\EmailConfigurations\Edit.cshtml" />
     <Content Include="Views\EmailConfigurations\Index.cshtml" />
     <Content Include="Views\CarManagement\Suspend.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="TypicalMirek_UsedCarDealer.wpp.targets" />
+    <Content Include="Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
