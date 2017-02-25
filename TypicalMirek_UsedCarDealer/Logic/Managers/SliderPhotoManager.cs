@@ -70,6 +70,18 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             sliderPhotoRepository.Save();
         }
 
+        public void Delete(IList<int> id)
+        {
+            var slidesToDelete = sliderPhotoRepository.GetAll().Where(it => id.Any(it2 => it.CarId == it2));
+
+            if (!slidesToDelete.Any()) return;
+            foreach (var slide in slidesToDelete)
+            {
+                sliderPhotoRepository.Delete(slide);
+            }
+            sliderPhotoRepository.Save();
+        }
+
         public void DeleteByCarId(int carId)
         {
             var sliderPhoto = sliderPhotoRepository.GetByCarId(carId);

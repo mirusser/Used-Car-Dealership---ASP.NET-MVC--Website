@@ -6,7 +6,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
     public class GetPhotoController : Controller
     {
         [AcceptVerbs(HttpVerbs.Get)]
-        //[OutputCache(CacheProfile = "SliderImages")]
         public FileResult Car(int id)
         {
             var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Car/" + id + ".jpg");
@@ -14,7 +13,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        //[OutputCache(CacheProfile = "SliderImages")]
         public FileResult SliderIcon(string name, string extension)
         {
             var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Slider/" + name + "." + extension);
@@ -23,7 +21,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        //[OutputCache(CacheProfile = "SliderImages")]
         public FileResult HeaderImage(string name, string extension)
         {
             var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Header/" + name + "." + extension);

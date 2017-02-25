@@ -1,0 +1,46 @@
+﻿@model IList<TypicalMirek_UsedCarDealer.Models.ViewModels.CarPhotoViewModel>
+
+@Styles.Render("~/Content/Chosen")
+@Scripts.Render("~/bundles/Chosen")
+
+@Scripts.Render("~/bundles/sendDeleteSlidePost")
+
+@Styles.Render("~/Content/ImageSelect")
+@Scripts.Render("~/bundles/ImageSelect")
+
+
+@if (Model.Count != 0)
+{
+    <script>
+        jQuery(document).ready(function() {
+            jQuery("#carsInSlider").imagepicker();
+        });
+
+        function getValues() {
+            const values = jQuery("#carsInSlider").val();
+            return values;
+        }
+     </script>
+}
+
+@if (Model.Count != 0)
+{
+    <h2>Current images in slider</h2>
+    <h4>Select all photos which You want to delete and press button</h4>
+    <select multiple="multiple" class="image-picker show-html" id="carsInSlider">
+        @foreach (var it in Model)
+        {
+            <option data-img-src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = it.imageName})" value="@it.carId">@it.description</option>
+        }
+    </select>
+
+    <button class="btn btn-success btn-product"
+            onclick="send('@Url.Action("DeleteSliderPhotos", "Api")', getValues(), '@Request.Url.PathAndQuery')">
+        Delete
+    </button>
+}
+else
+{
+    <h2>There is no photos in slider.</h2>
+    <h4>You can add some @Html.ActionLink("here", "AddPhotosToSlider", "Slider")</h4>
+}

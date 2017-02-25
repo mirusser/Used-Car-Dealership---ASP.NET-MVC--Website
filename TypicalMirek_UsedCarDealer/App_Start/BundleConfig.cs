@@ -106,15 +106,9 @@ namespace TypicalMirek_UsedCarDealer
                       "~/Content/chosen.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/ImageSelect").Include(
-                      "~/Scripts/ImageSelect.jquery.js"));
-
-            bundles.Add(new StyleBundle("~/Content/ImageSelect").Include(
-                      "~/Content/ImageSelect.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/ImageSelect2").Include(
                       "~/Scripts/image-picker.js"));
 
-            bundles.Add(new StyleBundle("~/Content/ImageSelect2").Include(
+            bundles.Add(new StyleBundle("~/Content/ImageSelect").Include(
                       "~/Content/image-picker.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/GoogleMaps").Include(

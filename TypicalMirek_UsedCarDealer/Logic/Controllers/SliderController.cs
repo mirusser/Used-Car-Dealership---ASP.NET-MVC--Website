@@ -41,7 +41,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(parameters);
         }
 
-        public ActionResult SliderImages()
+        public ActionResult DeletePhotosFromSlider()
         {
             var cars = sliderPhotoManager.GetAllAsCarPhotoViewModel();
             return View(cars);

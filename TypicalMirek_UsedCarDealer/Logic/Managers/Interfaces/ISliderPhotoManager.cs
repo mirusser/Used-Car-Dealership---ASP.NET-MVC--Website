@@ -13,6 +13,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces
         CarPhoto GetCarPhoto(int carId, string photoName);
         IQueryable<SliderPhoto> GetAllSlides();
         void Delete(int id);
+        void Delete(IList<int> id);
         void Delete(SliderPhoto sliderPhoto);
         void DeleteAll();
         void CheckIfAllCarExist();

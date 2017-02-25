@@ -31,17 +31,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSliderPhotos(string cars, string returnUrl)
+        public ActionResult DeleteSliderPhotos(string cars, string returnUrl)
         {
-            if (cars == "null")
-            {
-                sliderPhotoManager.DeleteAll();
-                return Redirect(returnUrl);
-            }
+            if (cars == "null") return Redirect(returnUrl);
 
-            var ids = cars.Split(',').Select(int.Parse).ToArray();
+            var ids = cars.Split(',').Select(int.Parse).ToList();
 
-            sliderPhotoManager.UpdateSliderPhotos(ids);
+            sliderPhotoManager.Delete(ids);
 
             return Redirect(returnUrl);
         }
@@ -87,7 +83,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         }
 
         [HttpPost]
-        [ValidateInput(false)] //bo niebezieczna wartość
+        [ValidateInput(false)]
         public ActionResult SavePageContent(string htmlmarkups, string site, string returnUrl)
         {
             if (!ModelState.IsValid) return Redirect(returnUrl);

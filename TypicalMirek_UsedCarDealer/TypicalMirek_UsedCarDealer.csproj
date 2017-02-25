@@ -442,13 +442,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\car-list.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
     <Content Include="Content\dependent-dropdown.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fileinput.css" />
     <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\image-picker.css" />
-    <Content Include="Content\ImageSelect.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\pwstabs.css" />
     <Content Include="Content\sidenav.css" />
@@ -469,7 +470,6 @@
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\hBarChart.js" />
     <Content Include="Scripts\image-picker.js" />
-    <Content Include="Scripts\ImageSelect.jquery.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.js" />
     <Content Include="Scripts\mb.browser.min.js" />
@@ -638,7 +638,7 @@
     <Content Include="Views\EditContent\EditFooter.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Slider\PartialViews\_SelectPhotosForCars.cshtml" />
-    <Content Include="Views\Slider\SliderImages.cshtml" />
+    <Content Include="Views\Slider\DeletePhotosFromSlider.cshtml" />
     <Content Include="Views\Slider\AddPhotosToSlider.cshtml" />
     <Content Include="Views\EditContent\EditAbout.cshtml" />
     <Content Include="Views\EditContent\EditContact.cshtml" />

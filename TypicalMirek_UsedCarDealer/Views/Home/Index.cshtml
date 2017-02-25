@@ -13,7 +13,7 @@
 @Styles.Render("~/Content/ProductShopSlider")
 @Scripts.Render("~/bundles/ProductShopSlider")
 
-@Styles.Render("~/Content/car-list") @*for btn-product*@
+@Styles.Render("~/Content/car-list")
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -41,23 +41,37 @@
 <div class="container">
     <div class="col-md-12">
         <div class="form-group col-md-7">
-            <div>
+            @if (Model.Slider.Count != 0)
+            {
                 <ul id="recommendedcarslider">
                     @foreach (var item in Model.Slider)
                     {
                         <li>
-                            <a href="@Url.Action("ShowCar", "Car", new {id=item.carId})">
-                                <img style="max-height: 400px; width: auto" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
+                            <a href="@Url.Action("ShowCar", "Car", new {id = item.carId})">
+                                <img style="max-height: 400px; width: auto" src="@Url.Action("GetCarImage", "CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
                             </a>
                         </li>
                     }
                 </ul>
-            </div>
+            }
+            else
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <h2>You did not added photos in slider.</h2>
+                    <p>@Html.ActionLink("Add them now!", "AddPhotosToSlider", "Slider", null, new { @class = "btn btn-primary btn-product col-md-12 col-xs-12" })</p>
+                }
+                else
+                {
+                    <h2>Sorry, we can not show recommended car now. Please try later.</h2>
+                }
+            }
+
         </div>
 
         <div class="form-group col-md-5">
             <div align="center">
-                <img class="img-responsive" src="@Url.Action("HeaderImage", "GetPhoto", new {name="logoFun"@*zmienic na logoNormal*@, extension="jpg"})"/>
+                <img class="img-responsive" src="@Url.Action("HeaderImage", "GetPhoto", new {name="logoFun"@*zmienic na logoNormal*@, extension="jpg"})" />
             </div>
 
             <form action=@Url.Action("CarList", "Car") method="get" style="background-color: rgb(242, 242, 242);">
@@ -143,7 +157,7 @@
             <li>
                 <p style="text-align: center">@item.description</p>
                 <a href="@Url.Action("ShowCar", "Car", new {id=item.carId})">
-                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
+                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description" />
                 </a>
                 <p style="text-align: center">Price: only @item.price$</p>
             </li>
@@ -160,7 +174,7 @@
             <li>
                 <p style="text-align: center">@item.description</p>
                 <a href="@Url.Action("ShowCar", "Car", new {id=item.carId})">
-                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description"/>
+                    <img style="height: 200px; max-width: 300px; margin: 0 auto; display: block" src="@Url.Action($"GetCarImage", $"CarManagement", new {imageName = @item.imageName})" alt="@item.description" />
                 </a>
                 <p style="text-align: center">Price: only @item.price$</p>
             </li>
