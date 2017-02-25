@@ -11,6 +11,7 @@ using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BrandsController : Controller
     {
         #region Properties
@@ -126,20 +127,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return HttpNotFound();
             }
+            brandManager.Delete(brand);
 
             if (brandManager.Delete(brand))
             {
                 return RedirectToAction("List");
             }
-            else
-            {
-                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
-                {
-                    ControllerName = "Brands",
-                    ModelName = nameof(Brand)
-                };
-                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
-            }
+            return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)

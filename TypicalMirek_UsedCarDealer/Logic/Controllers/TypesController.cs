@@ -126,15 +126,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 return RedirectToAction($"List");
             }
-            else
-            {
-                var relatedDataDeleteErrorViewModel = new RelatedDataDeleteErrorViewModel
-                {
-                    ControllerName = "Types",
-                    ModelName = nameof(Type)
-                };
-                return View("RelatedDataDeleteError", relatedDataDeleteErrorViewModel);
-            }
+            return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)
