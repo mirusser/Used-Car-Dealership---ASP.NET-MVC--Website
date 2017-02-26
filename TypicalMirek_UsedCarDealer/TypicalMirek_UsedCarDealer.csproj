@@ -413,28 +413,6 @@
     <Content Include="App_Data\Favicon\favicon.ico" />
     <Content Include="App_Data\Header\logoFun.jpg" />
     <Content Include="App_Data\Header\logoNormal.jpg" />
-    <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
-    <Content Include="App_Data\Images\Diagram.png" />
-    <Content Include="App_Data\Images\ex1.png" />
-    <Content Include="App_Data\Images\exception — kopia.png" />
-    <Content Include="App_Data\Images\exception.png" />
-    <Content Include="App_Data\Images\fractal blue.jpg" />
-    <Content Include="App_Data\Images\how to send signal to another object.PNG" />
-    <Content Include="App_Data\Images\image1.jpg" />
-    <Content Include="App_Data\Images\image2.jpg" />
-    <Content Include="App_Data\Images\image3.jpg" />
-    <Content Include="App_Data\Images\image4.jpg" />
-    <Content Include="App_Data\Images\image5.jpg" />
-    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana — kopia.jpg" />
-    <Content Include="App_Data\Images\pomysły programowanie od Pana Fabiana.jpg" />
-    <Content Include="App_Data\Images\projekt2016_Mirosław_Nawrot.png" />
-    <Content Include="App_Data\Images\sad funky face — kopia.png" />
-    <Content Include="App_Data\Images\sad funky face.png" />
-    <Content Include="App_Data\Images\sad.png" />
-    <Content Include="App_Data\Images\slack.png" />
-    <Content Include="App_Data\Images\ubrana w cień — kopia %282%29.jpg" />
-    <Content Include="App_Data\Images\ubrana w cień — kopia.jpg" />
-    <Content Include="App_Data\Images\ubrana w cień.jpg" />
     <Content Include="App_Data\Slider\loading.gif" />
     <Content Include="App_Data\Slider\nav.png" />
     <Content Include="App_Data\Slider\sy-loader.gif" />
@@ -667,7 +645,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
