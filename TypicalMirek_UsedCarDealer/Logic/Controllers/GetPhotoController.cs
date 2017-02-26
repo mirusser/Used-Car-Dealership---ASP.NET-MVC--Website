@@ -55,5 +55,13 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, "favicon.ico");
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public FileResult Chosen(string name)
+        {
+            var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Chosen/" + name);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
+        }
     }
 }
