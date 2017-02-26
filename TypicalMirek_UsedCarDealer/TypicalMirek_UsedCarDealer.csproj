@@ -413,9 +413,9 @@
     <Content Include="App_Data\Favicon\favicon.ico" />
     <Content Include="App_Data\Header\logoFun.jpg" />
     <Content Include="App_Data\Header\logoNormal.jpg" />
-    <Content Include="App_Data\Images\843071927_1_1080x720_314-cdi-doka-skrzynia-fabryczna-wyprzedaz-szczecin.jpg" />
-    <Content Include="App_Data\Images\843071927_2_1080x720_314-cdi-doka-skrzynia-fabryczna-wyprzedaz-dodaj-zdjecia.jpg" />
-    <Content Include="App_Data\Images\843071927_3_1080x720_314-cdi-doka-skrzynia-fabryczna-wyprzedaz-dostawcze.jpg" />
+    <Content Include="App_Data\Images\cdi-doka-skrzynia-fabryczna-wyprzedaz-szczecin.jpg" />
+    <Content Include="App_Data\Images\cdi-doka-skrzynia-fabryczna-wyprzedaz-dodaj-zdjecia.jpg" />
+    <Content Include="App_Data\Images\cdi-doka-skrzynia-fabryczna-wyprzedaz-dostawcze.jpg" />
     <Content Include="App_Data\Images\BMW_E46_front_20080822.jpg" />
     <Content Include="App_Data\Images\Ford focus.jpg" />
     <Content Include="App_Data\Images\golf 4.jpg" />
