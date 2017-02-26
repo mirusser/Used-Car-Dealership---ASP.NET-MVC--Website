@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
 using TypicalMirek_UsedCarDealer.Logic.Helpers;
@@ -88,7 +89,17 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
             carRepository.Add(carToAdd);
             carRepository.Save();
 
-            return null;
+            if (car.Files == null) return car;
+
+            foreach (var file in car.Files)
+            {
+                if (!(file?.ContentLength > 0)) continue;
+                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Images"), fileName);
+                file.SaveAs(path);
+            }
+
+            return car;
         }
 
         public AddCarViewModel Modify(AddCarViewModel car)

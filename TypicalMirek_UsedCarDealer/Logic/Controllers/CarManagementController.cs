@@ -65,11 +65,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             {
                 try
                 {
-                    saveFileOnServer(car.Files);
                     carManager.Add(car);
+                    saveFileOnServer(car.Files);
                     return RedirectToAction("List");
                 }
-                catch (Exception ex)
+                catch
                 {
                     car = carManager.SetCarSelecLists(car);
                     return View(car);
@@ -83,20 +83,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
         [Authorize(Roles = "Admin")]
         private void saveFileOnServer(IEnumerable<HttpPostedFileBase> files)
         {
-            if (files != null)
+            if (files == null) return;
+
+            foreach (var file in files)
             {
-                foreach (var file in files)
-                {
-                    if (file?.ContentLength > 0)
-                    {
-                        var fileName = Path.GetFileName(file.FileName);
-                        if (fileName != null)
-                        {
-                            var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
-                            file.SaveAs(path);
-                        }
-                    }
-                }
+                if (!(file?.ContentLength > 0)) continue;
+                var fileName = file.FileName;
+                var path = Path.Combine(Server.MapPath("~/App_Data/Images"), fileName);
+                file.SaveAs(path);
             }
         }
 

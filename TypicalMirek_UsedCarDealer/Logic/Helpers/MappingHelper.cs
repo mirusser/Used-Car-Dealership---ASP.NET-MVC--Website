@@ -112,7 +112,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
 
         public static Car MappAddingCarViewModelToCarModel(AddCarViewModel addCarViewModel)
         {
-            //TODO fill another properties of Car class
             var car = new Car
             {
                 BodyId = addCarViewModel.BodyId,
@@ -172,8 +171,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
                             car.Photos.Add(new CarPhoto
                             {
                                 Image = memoryStream.GetBuffer(),
-                                //Name = Path.GetFileNameWithoutExtension(file.FileName),
-                                Name = file.FileName,
+                                Name = Guid.NewGuid() + Path.GetExtension(file.FileName),
                                 CarId = car.Id,
                                 ImagePath = AppDomain.CurrentDomain.BaseDirectory + "App_Data\\Images\\" + file.FileName,
                             });
@@ -184,7 +182,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
             return car;
         }
 
-        //TODO add another properties
         public static AddCarViewModel MappCarModelToAddingCarViewModel(Car car)
         {
             return new AddCarViewModel
@@ -228,7 +225,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
             };
         }
 
-        //TODO refactor this method
         public static IList<DisplayCarViewModel> MapCarsToListOfCarsToDisplay(/*ICarRepository carRepository*/IQueryable<Car> cars )
         {
             var listOfCarsToDisplay = new List<DisplayCarViewModel>();
