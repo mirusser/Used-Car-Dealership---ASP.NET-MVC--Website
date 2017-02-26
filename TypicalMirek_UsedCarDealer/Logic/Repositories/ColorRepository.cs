@@ -17,6 +17,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
 
         }
 
+        public override IQueryable<Color> GetAll()
+        {
+            return base.GetAll().OrderBy(x => x.Name);
+        }
+
         public Color GetByName(string name)
         {
             return Items.FirstOrDefault(c => c.Name == name);

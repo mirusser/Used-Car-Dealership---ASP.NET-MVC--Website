@@ -14,5 +14,10 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         {
             return Items.FirstOrDefault(b => b.Name.Equals(brandName)) != null;
         }
+
+        public override IQueryable<Brand> GetAll()
+        {
+            return base.GetAll().OrderBy(x => x.Name);
+        }
     }
 }

@@ -11,6 +11,7 @@ using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CarBodiesController : Controller
     {
         #region Properties

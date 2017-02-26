@@ -410,6 +410,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Favicon\favicon.ico" />
     <Content Include="App_Data\Header\logoFun.jpg" />
     <Content Include="App_Data\Header\logoNormal.jpg" />
     <Content Include="App_Data\Images\12038553_930787180327309_6763496845325193537_n.jpg" />
@@ -456,7 +457,6 @@
     <Content Include="Content\slippry.css" />
     <Content Include="Content\summernote.css" />
     <Content Include="Content\thumbGrid.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -583,7 +583,7 @@
     <Content Include="Views\CarModels\Delete.cshtml" />
     <Content Include="Views\CarModels\Details.cshtml" />
     <Content Include="Views\CarModels\Edit.cshtml" />
-    <Content Include="Views\CarModels\Index.cshtml" />
+    <Content Include="Views\CarModels\List.cshtml" />
     <Content Include="Views\CarBodies\Create.cshtml" />
     <Content Include="Views\CarBodies\Delete.cshtml" />
     <Content Include="Views\CarBodies\Details.cshtml" />
@@ -659,6 +659,7 @@
     </Content>
     <Content Include="TypicalMirek_UsedCarDealer.wpp.targets" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\EditContent\EditFavicon.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -667,7 +668,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Car\" />
+    <Folder Include="App_Data\Chosen\" />
+    <Folder Include="Views\ChangeFavicon\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

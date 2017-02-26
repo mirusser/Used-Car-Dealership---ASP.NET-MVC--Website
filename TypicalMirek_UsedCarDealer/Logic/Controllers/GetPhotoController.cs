@@ -1,15 +1,35 @@
 ﻿using System.IO;
 using System.Web.Mvc;
+using TypicalMirek_UsedCarDealer.Logic.Factories.Interfaces;
+using TypicalMirek_UsedCarDealer.Logic.Managers;
+using TypicalMirek_UsedCarDealer.Logic.Managers.Interfaces;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
     public class GetPhotoController : Controller
     {
-        [AcceptVerbs(HttpVerbs.Get)]
-        public FileResult Car(int id)
+        private readonly IWebsiteContextManager websiteContextManager;
+
+        public GetPhotoController(IManagerFactory managerFactory)
         {
-            var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Car/" + id + ".jpg");
-            return new FileStreamResult(new FileStream(path, FileMode.Open), "image/jpeg");
+            websiteContextManager = managerFactory.Get<WebsiteContextManager>();
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetCarImage(string imageName)
+        {
+            var path = getImagePath(imageName);
+            return File(path, "image/jpeg/png/PNG/jpg");
+        }
+
+        private string getImagePath(string imageName)
+        {
+            if (string.IsNullOrEmpty(imageName))
+            {
+                imageName = "empty";
+            }
+            var path = Path.Combine(Server.MapPath("~/App_Data/Images"), imageName);
+            return Path.GetFullPath(path);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -26,6 +46,14 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Header/" + name + "." + extension);
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name + "." + extension);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public FileResult Favicon()
+        {
+            var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/Favicon/favicon.ico");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, "favicon.ico");
         }
     }
 }

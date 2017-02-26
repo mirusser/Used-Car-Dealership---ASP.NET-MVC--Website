@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
 using TypicalMirek_UsedCarDealer.Models.ViewModels;
 
@@ -19,7 +20,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Helpers
             {
                 Text = x.Name,
                 Value = x.Id.ToString()
-            });
+            }).OrderBy(x => x);
         }
     }
 }

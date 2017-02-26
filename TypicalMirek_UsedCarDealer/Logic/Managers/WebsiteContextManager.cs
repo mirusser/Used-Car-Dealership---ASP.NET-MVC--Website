@@ -44,7 +44,7 @@ namespace TypicalMirek_UsedCarDealer.Logic.Managers
 
         public WebsiteContext Modify(WebsiteContext websiteContext)
         {
-            var websiteContextToModify = websiteContextRepository.GetById(websiteContext.Id);
+            var websiteContextToModify = GetContextByName(websiteContext.SiteName);
             if (websiteContextToModify == null)
             {
                 return null;

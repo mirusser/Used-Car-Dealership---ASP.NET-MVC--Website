@@ -55,13 +55,28 @@
                     @Html.ActionLink("Car characters", "List", "Characters")
                 </li>
                 <li>
+                    @Html.ActionLink("Car models", "List", "CarModels")
+                </li>
+                <li>
                     @Html.ActionLink("Car types", "List", "Types")
+                </li>
+                <li>
+                    @Html.ActionLink("Categories", "List", "Categories")
                 </li>
                 <li>
                     @Html.ActionLink("Colors", "List", "Colors")
                 </li>
                 <li>
                     @Html.ActionLink("Countries", "List", "Countries")
+                </li>
+                <li>
+                    <p>Fuel types</p>
+                </li>
+                <li>
+                    <p>propulsions</p>
+                </li>
+                <li>
+                    <p>position of stering wheel</p>
                 </li>
             </ul>
         </li>
@@ -97,7 +112,7 @@
                 <span class="sidenav-link-icon">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </span>
-                <span class="sidenav-link-title">Change content</span>
+                <span class="sidenav-link-title">Edit content</span>
                 <span class="sidenav-dropdown-icon show" data-sidenav-dropdown-icon>
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </span>
@@ -114,6 +129,9 @@
                 </li>
                 <li>
                     @Html.ActionLink("Footer", "EditFooter", "EditContent")
+                </li>
+                <li>
+                    @Html.ActionLink("Tab icon", "EditFavicon", "EditContent")
                 </li>
             </ul>
         </li>

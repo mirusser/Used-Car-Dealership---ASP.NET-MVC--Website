@@ -14,6 +14,7 @@ using TypicalMirek_UsedCarDealer.Models.Context;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class EmailConfigurationsController : Controller
     {
         private readonly IEmailConfigurationManager emailConfigurationManager;

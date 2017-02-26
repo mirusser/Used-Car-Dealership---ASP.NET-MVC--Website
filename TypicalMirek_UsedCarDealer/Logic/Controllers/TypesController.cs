@@ -11,6 +11,7 @@ using Type = TypicalMirek_UsedCarDealer.Models.Type;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TypesController : Controller
     {
         #region Properties

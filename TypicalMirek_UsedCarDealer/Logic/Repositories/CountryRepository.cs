@@ -17,6 +17,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
             
         }
 
+        public override IQueryable<Country> GetAll()
+        {
+            return base.GetAll().OrderBy(x => x.Name);
+        }
+
         public bool CheckIfCountryWithExactNameExists(string countryName)
         {
             return Items.FirstOrDefault(c => c.Name.Equals(countryName)) != null;

@@ -16,7 +16,12 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         {
             
         }
-    
+
+        public override IQueryable<Character> GetAll()
+        {
+            return base.GetAll().OrderBy(x => x.Name);
+        }
+
         public bool CheckIfCharacterWithExactNameExists(string character)
         {
             return Items.FirstOrDefault(c => c.Name.Equals(character)) != null;

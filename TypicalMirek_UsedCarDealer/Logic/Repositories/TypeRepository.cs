@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TypicalMirek_UsedCarDealer.Logic.Repositories.Interfaces;
+using TypicalMirek_UsedCarDealer.Models;
 using TypicalMirek_UsedCarDealer.Models.Context;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Repositories
@@ -9,6 +10,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Repositories
         public TypeRepository() { }
 
         public TypeRepository(TypicalMirekEntities entities) : base(entities) { }
+
+        public override IQueryable<Type> GetAll()
+        {
+            return base.GetAll().OrderBy(x => x.Name);
+        }
 
         public Models.Type GetByName(string name)
         {

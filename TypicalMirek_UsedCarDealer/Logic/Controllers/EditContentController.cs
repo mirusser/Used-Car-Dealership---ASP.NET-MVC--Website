@@ -10,6 +10,7 @@ using TypicalMirek_UsedCarDealer.Models;
 
 namespace TypicalMirek_UsedCarDealer.Logic.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class EditContentController : Controller
     {
         private readonly IWebsiteContextManager websiteContextManager;
@@ -19,7 +20,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             websiteContextManager = managerFactory.Get<WebsiteContextManager>();
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult EditAbout()
         {
             var context = websiteContextManager.GetContextByName("About");
@@ -33,8 +33,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(parameters);
         }
 
-
-        [Authorize(Roles = "Admin")]
         public ActionResult EditContact()
         {
             var context = websiteContextManager.GetContextByName("Contact");
@@ -48,7 +46,6 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             return View(parameters);
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult EditFooter()
         {
             var context = websiteContextManager.GetContextByName("Footer");
@@ -60,6 +57,11 @@ namespace TypicalMirek_UsedCarDealer.Logic.Controllers
             };
 
             return View(parameters);
+        }
+
+        public ActionResult EditFavicon()
+        {
+            return View();
         }
     }
 }
