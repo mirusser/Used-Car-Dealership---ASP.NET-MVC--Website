@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Typical Mirek</title>
+    <link rel="icon" type="image/png" href="@Url.Action("Favicon", "GetPhoto")" />
     <!--[if IE]>
     <link rel="shortcut icon" href="@Url.Action("Favicon", "GetPhoto")" type="image/vnd.microsoft.icon" />
     <![endif]-->
@@ -23,7 +24,7 @@
             jq('#adminMenu').sidenavMove();
 
             jq("#adminMenu").mCustomScrollbar({
-                mouseWheel: { scrollAmount: 1000 }
+                mouseWheel: { scrollAmount: 300 }
             });
         });
     </script>
