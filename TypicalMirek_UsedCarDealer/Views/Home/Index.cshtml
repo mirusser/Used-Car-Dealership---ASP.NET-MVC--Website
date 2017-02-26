@@ -48,7 +48,7 @@
                     {
                         <li>
                             <a href="@Url.Action("ShowCar", "Car", new {id = item.carId})">
-                                <img style="max-height: 400px; width: auto" src="@Url.Action("GetCarImage", "CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
+                                <img style="max-height: 400px;" src="@Url.Action("GetCarImage", "CarManagement", new {imageName = @item.imageName})" alt="@item.description for only @item.price$">
                             </a>
                         </li>
                     }
